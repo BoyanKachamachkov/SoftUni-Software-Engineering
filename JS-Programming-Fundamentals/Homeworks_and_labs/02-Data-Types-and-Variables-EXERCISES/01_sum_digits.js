@@ -1,4 +1,7 @@
 function sum(n) {
+  //transfer to string
+  //for cycle for the string
+  //use buffer variable and fill it up with Number per index of every char
   let nAsString = String(n);
   let sum = 0;
 
