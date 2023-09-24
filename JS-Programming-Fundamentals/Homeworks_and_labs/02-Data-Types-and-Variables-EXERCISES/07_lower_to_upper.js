@@ -1,6 +1,7 @@
 function check(char) {
   let code = char.charCodeAt();
 
+  //asci table below 90 are only UPPER CASE
   if (code <= 90) {
     console.log('upper-case');
   } else {
