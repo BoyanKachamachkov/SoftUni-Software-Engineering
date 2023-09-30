@@ -1,11 +1,14 @@
-function solve(arr) {
-  for (let i = 0; i < arr.length / 2; i++) {
-    let j = arr.length - 1 - i;
-    let temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
+function reverse(count, numbers) {
+  //create new arr
+  let result = []; //empty array
+
+  //reverse the elements
+  //take count elemenrs from number
+  for (let i = 0; i < count; i++) {
+    result[count - 1 - i] = numbers[i];
   }
-  console.log(arr.join(' '));
+  console.log(result.join(' '));
+
+  //print
 }
-solve(['a', 'b', 'c', 'd', 'e', 'f']);
-// solve(['abc', 'def', 'hig', 'klm', 'nop']);
+reverse(3, [10, 20, 30, 40, 50]);
