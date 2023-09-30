@@ -1,28 +1,36 @@
-function pyramid(base, increment) {
-  let finalPyramidHeight = 0;
+function pyramid(baseSize, increment) {
+  let height = 0;
   let stone = 0;
   let marble = 0;
-  let lapaz = 0;
+  let lapis = 0;
   let gold = 0;
 
-  while (base >= 0) {
-    let materialsPerStep = base * base; //121
-    base -= 2;
-    let stonesPerStep = base * base * increment;
-    materialsPerStep -= stonesPerStep;
-    marble = materialsPerStep;
+  let floor = 1;
 
-    console.log(materialsPerStep, stonesPerStep, marble);
+  for (let curSize = baseSize; curSize > 0; curSize -= 2) {
+    height += increment;
+    let totalArea = curSize ** 2;
+
+    if (curSize <= 2) {
+      gold = totalArea * increment;
+    } else {
+      let stoneArea = (curSize - 2) ** 2;
+      stone += stoneArea * increment;
+
+      if (floor % 5 == 0) {
+        let lapisArea = totalArea - stoneArea;
+        lapis += lapisArea * increment;
+      } else {
+        let marbleArea = totalArea - stoneArea;
+        marble += marbleArea * increment;
+      }
+    }
+    floor++;
   }
-
-  //bulk is stone, outer is marble, ever 5th step of outer is LAPAZ instead of marble
-  //final step is gold
-  //the first step is equal to the base
-  //every step is reduced by 2block (1x1)
+  console.log(`Stone required: ${Math.ceil(stone)}`);
+  console.log(`Marble required: ${Math.ceil(marble)}`);
+  console.log(`Lapis Lazuli required: ${Math.ceil(lapis)}`);
+  console.log(`Gold required: ${Math.ceil(gold)}`);
+  console.log(`Final pyramid height: ${Math.floor(height)}`);
 }
-pyramid(11, 1);
-/*
-Stone required: 165 1 Marble required: 112
-Lapis Lazuli required: 8
-Gold required: 1
-Final pyramid height: 6*/
+pyramid(23, 0.5);
