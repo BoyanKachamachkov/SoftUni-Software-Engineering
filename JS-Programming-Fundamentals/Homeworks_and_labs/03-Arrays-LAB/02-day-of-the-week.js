@@ -1,8 +1,20 @@
-function reverse(count, numbers) {
-  let result = [];
-  for (let i = count - 1; i >= 0; i--) {
-    result.push(numbers[i]);
+function solve(n) {
+  let days = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+    'Sunday',
+  ];
+
+  if (n >= 1 && n <= 7) {
+    console.log(days[n - 1]);
+  } else {
+    console.log('Invalid day!');
   }
-  console.log(result.join(' '));
 }
-reverse(3, [10, 20, 30, 40, 50]);
+solve(3);
+solve(6);
+solve(11);
