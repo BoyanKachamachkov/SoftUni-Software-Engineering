@@ -1,28 +1,22 @@
-//add at the end using push method
+function solve(arr1, arr2) {
+  //обхождам масив1 индекс по индекс и проверявам с инклудс дали всеки индекс е равен на същия в масив2
+  //ако са идентични, събирам стойностите на първия масив и ги принтирам като сума
 
-let students = [];
-students.push('boby');
-console.log(students);
+  let sum = 0;
 
-students.push('evtim');
-console.log(students);
+  for (let i = 0; i < arr1.length; i++) {
+    //буферна променлива за конкретния индекс
+    let curNum = arr1[i];
 
-//select element of invalid position
-console.log(students[100]);
+    if (arr2.includes(curNum)) {
+      sum += Number(curNum);
+    } else {
+      console.log(`Arrays are not identical. Found difference at ${i} index`);
+      return;
+    }
+  }
 
-//set element on non-exsisting position (creates empty positions until 24) auto resize
-students[23] = 'Yavor';
-console.log(students);
-console.log(students[23]);
-console.log(students[22]);
-
-//invalid index
-console.log(students[-1]); //bad practice
-students[-1] = 'ninja'; //not part of the array, practically
-
-console.log(students[-1]);
-
-// console.log(students.toString()); //spisuk svurzan sus zapetaq vinagi, ne e optimalen metod da se polzwa
-
-//Join elements inside array into string
-console.log(students.join(' ')); //sami opredelqme seperatora
+  console.log(`Arrays are identical. Sum: ${sum}`);
+}
+solve(['10', '20', '30'], ['10', '20', '30']); //Arrays are identical. Sum: 60
+solve(['1', '2', '3', '4', '5'], ['1', '2', '4', '4', '5']); //Arrays are not identical. Found difference at 2 index
