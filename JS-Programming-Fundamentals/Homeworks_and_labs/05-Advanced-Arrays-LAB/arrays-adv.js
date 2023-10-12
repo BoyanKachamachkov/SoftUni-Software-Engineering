@@ -15,3 +15,7 @@
 // shift()- remove from the beginning
 // includes()- look for value
 // indexOf()- find index of value
+
+// slice() creates a new array from part of another
+// gets a range of els from selected start to end (exclusive)
+// NOTE the original array will NOT BE MODIFIED from slicing it.
