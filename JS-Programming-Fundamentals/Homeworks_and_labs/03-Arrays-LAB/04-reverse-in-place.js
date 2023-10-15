@@ -1,12 +1,12 @@
-function solve(arr) {
+function reverseInPlace(arr) {
   for (let i = 0; i < arr.length / 2; i++) {
-    let j = arr.length - 1 - [i]; //e/d/c
-    let temp = arr[i];
+    let el = arr[i];
+    let lastIndex = arr.length - i - 1;
 
-    arr[i] = arr[j]; // a stava e na iteraciq 1 (koqto e s index 0)
-    arr[j] = temp; //e stava a na iteraciq 1 (index 4)
+    arr[i] = arr[lastIndex];
+    arr[lastIndex] = el;
   }
 
   console.log(arr.join(' '));
 }
-solve(['a', 'b', 'c', 'd', 'e']);
+reverseInPlace(['a', 'b', 'c', 'd', 'e']); //e d c b a
