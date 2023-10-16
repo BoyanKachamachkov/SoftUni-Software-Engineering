@@ -1,31 +1,22 @@
-function solve(arr) {
-  //празен масив за топ интс
-  let topInts = [];
+function max(arr) {
+  let topIntegersArr = [];
 
-  //изцикли масива
   for (let i = 0; i < arr.length; i++) {
-    //буферна променлива за конкретния индекс (елемент)
-    //буферна променлива която е първоначално ИСТИНА винаги
-    let el = arr[i];
+    let num = arr[i];
     let isTop = true;
 
     for (let j = i + 1; j < arr.length; j++) {
-      let rightNum = arr[j];
-
-      if (rightNum >= el) {
-        isTop = false; //ако дори само едно число надясно е по-голямо, излизаме от този 2-ри цикъл
-        break;
+      if (num > arr[j]) {
+      } else {
+        isTop = false;
       }
     }
+
     if (isTop) {
-      //ако на излизане от 2-рия цикъл нашето ЕЛ число все още е ИСТИНА, то тогава е било топ число!! и го добавяме към новия масив
-      topInts.push(el);
+      topIntegersArr.push(num);
     }
   }
-  //принтирай празния масив с ДЖОЙН + спейс
-  console.log(topInts.join(' '));
-}
 
-solve([1, 4, 3, 2]); //4 3 2
-solve([14, 24, 3, 19, 15, 17]); //24 19 17
-solve([41, 41, 34, 20]);
+  console.log(topIntegersArr.join(' '));
+}
+max([14, 24, 3, 19, 15, 17]); //24 19 17
