@@ -1,23 +1,20 @@
-function solve(arr1, arr2) {
-  //нов масив, комбинация от 2-та;
-  let newArr = [];
+// As output, you should print the resulting third array, each element separated by " - ".
 
-  //обхождаме масив-1 (имат еднаква дължина);
+function merger(arr1, arr2) {
+  let mergedArr = [];
+
   for (let i = 0; i < arr1.length; i++) {
-    //буферни индекс променливи от 2-та масива;
-    let el1 = arr1[i];
-    let el2 = arr2[i];
-
+    // • If the index of the element is even, add into the third array the sum of both elements at that index
     if (i % 2 == 0) {
-      // ако индекса на елемена е четен -> добавяме в новия масив сумата от 2-та елемента на тоя индекс (от 2-та масива)
-      newArr.push(Number(el1) + Number(el2));
+      mergedArr.push(Number(arr1[i]) + Number(arr2[i]));
     } else {
-      //ако индекса на елемента е нечетен -> добавяме КОНКАТЕНАЦИЯТА на 2-та елемента на този индекс (от 2-та масива);
-      newArr.push(el1 + el2);
+      // • If the index of the element is odd, add the concatenation of both elements at that index
+      mergedArr.push(arr1[i] + arr2[i]);
     }
   }
-  // принтираме 3-тия масив, като всеки елемент е разделен от -
-  console.log(newArr.join(' - '));
+
+  console.log(mergedArr.join(' - '));
 }
-solve(['5', '15', '23', '56', '35'], ['17', '22', '87', '36', '11']); //22 - 1522 - 110 - 5636 - 46
-solve(['13', '12312', '5', '77', '4'], ['22', '333', '5', '122', '44']); //35 - 12312333 - 10 - 77122 - 48
+merger(['5', '15', '23', '56', '35'], ['17', '22', '87', '36', '11']);
+
+//22 - 1522 - 110 - 5636 - 46
