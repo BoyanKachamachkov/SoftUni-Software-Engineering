@@ -11,7 +11,4 @@ function magicSum(arr, n) {
     }
   }
 }
-// magicSum([1, 7, 6, 2, 19, 23], 8);
-// 1 7
-// 6 2
 magicSum([14, 20, 60, 13, 7, 19, 8], 27);
