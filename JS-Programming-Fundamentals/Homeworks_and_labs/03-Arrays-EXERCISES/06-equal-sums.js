@@ -1,23 +1,30 @@
-// Write a function that determines if there exists an element in the array of numbers such that the sum of the elements on its left is equal to the sum of the elements on its right.
-// If there are NO elements to the left/right, their sum is 0.
-// Print the index that satisfies the required condition or "no" if there is no such index.
-
 function solve(arr) {
-  //цикъл на масива
+  let result = 'no';
+
+  if (arr.length == 1) {
+    console.log('0');
+    return;
+  }
+
   for (let i = 0; i < arr.length; i++) {
     let sumLeft = 0;
     let sumRight = 0;
 
-    for (let j = i + 1; j < arr.length; j++) {
-      let goRight = arr[j];
-      let goLeft = arr[i - 1];
+    for (let k = i + 1; k < arr.length; k++) {
+      sumRight += arr[k];
+    }
 
-      sumLeft += goLeft;
-      sumRight += goRight;
+    for (let j = 0; j < i; j++) {
+      sumLeft += arr[j];
+    }
+
+    if (sumLeft == sumRight) {
+      result = i;
+      break;
     }
   }
-  //две променили за сумата в ляво и дясно като на всяка итерация проверяваме всички елементи в 2-те посоки от индекса на който се намираме
 
-  //принтираме индекса на който това е истина или не, ако няма такъв
+  console.log(result);
 }
-solve([1, 2, 3, 3]); //2 At a[2] -> left sum = 3, right sum = 3  ;;; a[0] + a[1] = a[3]
+solve([1, 2, 3, 3]);
+solve([10, 5, 5, 99, 3, 4, 2, 5, 1, 1, 4]);
