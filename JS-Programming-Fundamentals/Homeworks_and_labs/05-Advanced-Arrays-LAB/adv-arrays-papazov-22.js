@@ -12,3 +12,4 @@
 // -не се приема оригиналния масив
 
 // --------------------------
+// map() creates a new array by applying a function to every element
