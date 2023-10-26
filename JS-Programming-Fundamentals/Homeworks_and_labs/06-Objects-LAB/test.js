@@ -30,6 +30,7 @@ let entries = Object.entries(peter);
 
 // iterate through keys
 // -  use for of cycle
+// -  you can also use for-in cycle
 
 for (let key of keys) {
   console.log(key, '->', peter[key]);
