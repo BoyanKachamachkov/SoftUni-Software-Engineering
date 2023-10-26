@@ -10,7 +10,7 @@ function houseParty(arr) {
         let index = guests.indexOf(name);
         guests.splice(index, 1); //we remove 1 el at INDEX in guest ARR
       } else {
-        console.log(`${name} is not on the list!`);
+        console.log(`${name} is not in the list!`);
       }
     } else {
       if (guests.includes(name)) {
@@ -20,11 +20,21 @@ function houseParty(arr) {
       }
     }
   }
-  console.log(guests.join(' '));
+  for (const el of guests) {
+    console.log(el);
+  }
 }
 houseParty([
   'Allie is going!',
   'George is going!',
   'John is not going!',
   'George is not going!',
+]);
+
+houseParty([
+  'Tom is going!',
+  'Annie is going!',
+  'Tom is going!',
+  'Garry is going!',
+  'Jerry is going!',
 ]);
