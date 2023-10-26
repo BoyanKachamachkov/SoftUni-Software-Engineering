@@ -32,7 +32,17 @@ numbers = [2, 4, 1, 6, 2, 100];
 //   }
 // });
 
-numbers.sort((a, b) => a - b); //b-a for descending order (низходящ) най-голямото отпред
+numbers.sort((a, b) => a - b); //ascending sorting (1,100)
+numbers.sort((a, b) => b - a); //descending sorting(100,1)
+
+// SORTING EXAMPLE
+let nums = [1, 3, 5, 55, 0];
+nums.sort((a, b) => a - b); //[0, 1, 3, 5, 55] - ASCENDING
+console.log(nums);
+
+nums.sort((a, b) => b - a); //[55, 5, 3, 1, 0] - DESCENDING
+console.log(nums);
+// SORTING EXAMPLE
 
 console.log(numbers);
 

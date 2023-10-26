@@ -10,7 +10,7 @@ function sorting(arr) {
     finalArr.push(maxNum, minNum);
   }
 
-  console.log(finalArr.join(' '));
+  console.log(finalArr.join(' ')); //join does not PRINT undefined values, but we have it at the end, since min value is empty array for the last one.
 }
 
 sorting([1, 21, 3, 52, 69, 63, 31, 2, 18, 94]);
