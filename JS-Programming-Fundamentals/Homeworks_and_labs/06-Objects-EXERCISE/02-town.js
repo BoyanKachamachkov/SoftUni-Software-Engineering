@@ -1,21 +1,13 @@
-function towns(arr) {
-  for (const info of arr) {
-    let town = info.split(' | ');
+function towns(list) {
+  let townInfo = {};
 
-    let [name, latitude, longitude] = town;
+  for (const line of list) {
+    let [town, latitude, longitude] = line.split(' | '); //destructure + 3 vars
 
-    latitude = Number(latitude).toFixed(2);
-    longitude = Number(longitude).toFixed(2);
-    // let townName = town.shift();
-    // let townLatitude = Number(town.shift()).toFixed(2);
-    // let townLongitude = Number(town.shift()).toFixed(2);
-
-    let object = {
-      town: name,
-      latitude: latitude,
-      longitude: longitude,
-    };
-
-    console.log(object);
+    townInfo.town = town; //push to object
+    townInfo.latitude = Number(latitude).toFixed(2); //push to object
+    townInfo.longitude = Number(longitude).toFixed(2); //push to object
+    console.log(townInfo);
   }
 }
+towns(['Sofia | 42.696552 | 23.32601', 'Beijing | 39.913818 | 116.363625']);
