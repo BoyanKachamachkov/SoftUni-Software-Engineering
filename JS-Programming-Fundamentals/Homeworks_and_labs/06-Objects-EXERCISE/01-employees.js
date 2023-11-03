@@ -1,9 +1,17 @@
-function employees(arr) {
-  for (const employeeName of arr) {
-    let employee = { name: employeeName, personalNum: employeeName.length };
+function employees(list) {
+  let employeeList = {};
 
-    console.log(
-      `Name: ${employee.name} -- Personal Number: ${employee.personalNum} `
-    );
+  list.forEach((person) => {
+    employeeList[person] = person.length;
+  });
+
+  for (let key in employeeList) {
+    console.log(`Name: ${key} -- Personal Number: ${employeeList[key]}`);
   }
 }
+employees([
+  'Silas Butler',
+  'Adnaan Buckley',
+  'Juan Peterson',
+  'Brendan Villarreal',
+]);
