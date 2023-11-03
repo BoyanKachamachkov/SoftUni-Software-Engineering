@@ -1,9 +1,26 @@
-function storeProvision(stock, orderededStock) {
-  let r = {};
+function storeProvision(stock, delivery) {
+  let storedProducts = {};
 
   for (let i = 0; i < stock.length; i += 2) {
     let product = stock[i];
     let qty = stock[i + 1];
+
+    storedProducts[product] = Number(qty); //push the given iteration to object
+  }
+
+  for (let i = 0; i < delivery.length; i += 2) {
+    let product = delivery[i];
+    let qty = delivery[i + 1];
+
+    if (!storedProducts.hasOwnProperty(product)) {
+      storedProducts[product] = 0;
+    }
+
+    storedProducts[product] += Number(qty);
+  }
+
+  for (const product in storedProducts) {
+    console.log(`${product} -> ${storedProducts[product]}`);
   }
 }
 storeProvision(
