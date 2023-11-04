@@ -17,11 +17,9 @@ function minerTask(arr) {
     if (product in r) {
       r[product] += qty;
     } else {
-        
-        r[product] = qty;
+      r[product] = qty;
     }
-    
-}
+  }
 
   let entries = Object.entries(r);
   for (const [product, qty] of entries) {
@@ -29,13 +27,4 @@ function minerTask(arr) {
   }
 }
 minerTask(["Gold", "155", "Silver", "10", "Copper", "17"]);
-minerTask([
-    'gold',
-    '155',
-    'silver',
-    '10',
-    'copper',
-    '17',
-    'gold',
-    '15'
-    ]);
+minerTask(["gold", "155", "silver", "10", "copper", "17", "gold", "15"]);
