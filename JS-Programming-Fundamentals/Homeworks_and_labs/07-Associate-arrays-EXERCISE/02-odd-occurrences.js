@@ -15,7 +15,6 @@ function oddOccurences(input) {
     .filter((double) => double[1] % 2 !== 0)
     .sort((a, b) => b[1] - a[1]);
 
-    
   let result = "";
 
   for (const [word, qty] of arrOfElements) {
