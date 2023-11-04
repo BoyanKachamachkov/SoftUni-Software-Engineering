@@ -18,12 +18,14 @@ function companyUsers(arr) {
   }
 
   // transform the OBJ to ARR + sort by NAME in ASC order
-  let entries = Object.entries(companyList).sort((a,b)=> a[0].localeCompare(b[0]));
+  let entries = Object.entries(companyList).sort((a, b) =>
+    a[0].localeCompare(b[0])
+  );
 
   // Print in specific format
   for (const [name, ids] of entries) {
-console.log(name);
-  ids.forEach(id => console.log(`-- ${id}`))
+    console.log(name);
+    ids.forEach((id) => console.log(`-- ${id}`));
   }
 }
 companyUsers([
