@@ -1,28 +1,34 @@
-function movieStore(list) {
+function movieStore(arr) {
   let movies = [];
 
-  list.forEach((line) => {
+  for (const line of arr) {
     if (line.includes("addMovie")) {
       let movieName = line.split("addMovie ")[1];
-      movies.push(movieName);
-    } else if (line.includes("directedBy ")) {
-      let [name, director] = line.split(" directedBy ");
-      let movie = movie.find((el) => el.name === name);
+      let movieObj = { name: movieName };
+      movies.push(movieObj);
+    } else if (line.includes("directedBy")) {
+      let [movieName, director] = line.split(" directedBy ");
 
+      let movie = movies.find((movie) => movie.name === movieName);
       if (movie) {
         movie.director = director;
       }
-    } else if (line.includes("onData")) {
-      let [name, date] = line.split(" onDate ");
+    } else if (line.includes("onDate")) {
+      let [movieName, date] = line.split(" onDate ");
 
-      let movie = movie.find((el) => el.name === name);
-
+      let movie = movies.find((movie) => movie.name === movieName);
       if (movie) {
         movie.date = date;
       }
     }
-  });
-  
+  }
+
+  for(let movie of movies){
+    if(movie.name && movie.director && movie.date){
+      
+      console.log(JSON.stringify(movie));
+    }
+  }
 }
 
 movieStore([
