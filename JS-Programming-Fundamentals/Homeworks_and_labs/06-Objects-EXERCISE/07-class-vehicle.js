@@ -12,6 +12,7 @@ class Vehicle {
   }
 }
 
+// classes are SYNTAX SUGAR! under the hood its functions!
 // function vehicle(type, model, parts, fuel)
 
 let parts = { engine: 6, power: 100 };
