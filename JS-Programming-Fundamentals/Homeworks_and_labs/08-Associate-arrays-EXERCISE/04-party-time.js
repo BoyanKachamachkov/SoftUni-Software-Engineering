@@ -4,7 +4,7 @@ function partyTime(input) {
 
   let command = input.shift();
 
-  while (command !== "PARTY") {
+  while (command !== "PARTY") { 
     let firstChar = command[0];
 
     if (isNaN(firstChar[0])) {
