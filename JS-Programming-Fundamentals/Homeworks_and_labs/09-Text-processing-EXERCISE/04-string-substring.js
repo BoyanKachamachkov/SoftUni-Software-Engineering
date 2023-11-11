@@ -1,7 +1,7 @@
 function strSubstr(word, text) {
-   text = text.toLowerCase().split(' ');
+  text = text.toLowerCase().split(' '); //transfer text to arr and split by space + lower case all
 
-//   console.log(text);
+  //use includes for arr to check
 
   if (text.includes(word)) {
     console.log(word);
