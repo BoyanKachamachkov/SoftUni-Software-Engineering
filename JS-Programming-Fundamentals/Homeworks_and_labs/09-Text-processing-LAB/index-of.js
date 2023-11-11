@@ -3,6 +3,7 @@
 let text =
   'Lorem ipsum dolor sit amet consectetur adipisicing elit. dolor Tempora eius ratione iusto voluptatem! Accusamus, exercitationem dicta nulla unde dignissimos  dolor obcaecati?';
 
+  
 let dolorIndex = text.indexOf('dolor');
 console.log(dolorIndex); //idx of first occur.
 
