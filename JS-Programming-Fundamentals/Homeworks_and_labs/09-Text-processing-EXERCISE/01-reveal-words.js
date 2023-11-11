@@ -1,15 +1,15 @@
 function revealWords(wordsStr, text) {
   let words = wordsStr.split(', ');
 
-  for(let word of words){
+  // cycle our replacement words and prepare templates based on their length
+  for (let word of words) {
     let starTemplate = '*'.repeat(word.length);
 
-
-    text = text.replace(starTemplate, word) //save new text
+    
+    text = text.replace(starTemplate, word); //save new text
   }
 
   console.log(text);
-
 }
 revealWords(
   'great',
@@ -17,6 +17,6 @@ revealWords(
 );
 
 revealWords(
-  "great, learning",
-  "softuni is ***** place for ******** new programming languages"
+  'great, learning',
+  'softuni is ***** place for ******** new programming languages'
 );
