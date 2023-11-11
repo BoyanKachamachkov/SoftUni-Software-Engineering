@@ -1,14 +1,13 @@
 function extractFile(path) {
-    // create arr and take last element 
+  // create arr and take last element
   let fileInfo = path.split('\\').pop();
 
-    let lastDotIdx = fileInfo.lastIndexOf('.')
+  let lastDotIdx = fileInfo.lastIndexOf('.');
 
-    // console.log(lastDotIdx);
+  // console.log(lastDotIdx);
 
-    let fileName = fileInfo.slice(0, lastDotIdx);
-    let fileExtension = fileInfo.slice(lastDotIdx + 1); //+1 to remove the dot, start from next index
-    
+  let fileName = fileInfo.slice(0, lastDotIdx);
+  let fileExtension = fileInfo.slice(lastDotIdx + 1); //+1 to remove the dot, start from next index
 
   console.log(`File name: ${fileName}`);
   console.log(`File extension: ${fileExtension}`);
