@@ -14,4 +14,4 @@ function cutAndReverse(str) {
 }
 
 cutAndReverse('tluciffiDsIsihTgnizamAoSsIsihT');
-cutAndReverse("sihToDtnaCuoYteBIboJsihTtAdooGoSmI");
+cutAndReverse('sihToDtnaCuoYteBIboJsihTtAdooGoSmI');

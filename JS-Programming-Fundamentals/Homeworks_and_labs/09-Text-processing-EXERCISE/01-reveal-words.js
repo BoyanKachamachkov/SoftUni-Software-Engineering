@@ -1,15 +1,19 @@
-function revealWords(string1, string2) {
+function revealWords(wordsStr, text) {
+  let words = wordsStr.split(', ');
 
-let wordsToUse = string1.split(', ')
+  for(let word of words){
+    let starTemplate = '*'.repeat(word.length);
 
-console.log(wordsToUse);
 
-let replaced = string2.replace(wordsToUse, )
+    text = text.replace(starTemplate, word) //save new text
+  }
+
+  console.log(text);
 
 }
 revealWords(
-  "great",
-  "softuni is ***** place for learning new programming languages"
+  'great',
+  'softuni is ***** place for learning new programming languages'
 );
 
 revealWords(
