@@ -5,8 +5,8 @@ function revealWords(wordsStr, text) {
   for (let word of words) {
     let starTemplate = '*'.repeat(word.length);
 
-    
-    text = text.replace(starTemplate, word); //save new text
+
+    text = text.replace(starTemplate, word); //save new text and replace one occurrence
   }
 
   console.log(text);
