@@ -1,10 +1,11 @@
 function censoredWords(text, word) {
 
-    let censored = text.replace(word, repeat(word))
-
-    console.log(text);
-
-
+    let result = text;
+    while(result.includes(word)){
+        result=result.replace(word, '*'.repeat(word.length))
+    }
+    console.log(result);
 }
-censoredWords("A small sentence with some words", "small");
-censoredWords("Find the hidden word", "hidden");
+
+censoredWords('A small sentence with some words', 'small');
+censoredWords('Find the hidden word', 'hidden');
