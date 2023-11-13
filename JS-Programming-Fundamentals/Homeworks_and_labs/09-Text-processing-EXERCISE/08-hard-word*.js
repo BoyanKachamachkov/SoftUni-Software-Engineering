@@ -3,17 +3,14 @@ function hardWords(arr) {
     let letterWords = letter.split(' '); //new arr with each word
     let filteredWords = letterWords.filter((word) => word.includes('_')); //new arr with _
 
-    for(let slot of filteredWords){
-
-        if(!slot.endsWith('_')){
-            slot = slot.slice(0, slot.length -1); //for edge case slots that end with , .
+    for (let slot of filteredWords) {
+        if (!slot.endsWith('_')) {
+            slot = slot.slice(0, slot.length - 1); //for edge case slots that end with , .
         }
 
-        //all slots are prepared
-
-        let wordToFill = fillerWords.find(word => word.length == slot.length) //check from arr with fillers for length coincidence
-            letter = letter.replace(slot, wordToFill) //replace the occurrence with the matching word
-    
+        //all slots are prepared to be equal length (we've removed , . at the end)
+        let wordToFill = fillerWords.find((word) => word.length == slot.length); //check from arr with fillers for length coincidence
+        letter = letter.replace(slot, wordToFill); //replace the occurrence with the matching word
     }
 
     console.log(letter);
