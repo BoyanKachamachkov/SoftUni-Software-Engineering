@@ -8,21 +8,22 @@ function pwGenerator(arr) {
 
     for (let char of concatedStr) {
         if (vowels.includes(char)) {
-            concatedStr = concatedStr.replace(char, replacementStr[idx].toUpperCase());
+            concatedStr = concatedStr.replace(
+                char,
+                replacementStr[idx].toUpperCase()
+            );
             idx++;
 
-            if(idx == replacementStr.length){
+            if (idx == replacementStr.length) {
                 idx = 0;
             }
         }
     }
 
-    //since we cannot reverse directly -> transfer to arr -> reverse -> join to STR again
-    let password = concatedStr.split('').reverse().join('') 
-
+    let password = concatedStr.split('').reverse().join('');
     console.log(`Your generated password is ${password}`);
 }
 
 // pwGenerator(['ilovepizza', 'ihatevegetables', 'orange']);
-pwGenerator(["easymoneyeazylife", "atleasttencharacters", "absolute"]);
+pwGenerator(['easymoneyeazylife', 'atleasttencharacters', 'absolute']);
 // pwGenerator(["areyousureaboutthisone", "notquitebutitrustyou", "disturbed"]);
