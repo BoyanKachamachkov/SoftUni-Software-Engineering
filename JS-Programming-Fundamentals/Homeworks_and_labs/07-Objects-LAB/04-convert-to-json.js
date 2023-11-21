@@ -1,11 +1,14 @@
-function convertToJSON(firstName, lastName, hairColor) {
-  let person = {
+function convertToJSON(firstName, lastName, hairColor){
+  // receive 3 param & set to object
+
+  let obj = {
     name: firstName,
     lastName: lastName,
-    hairColor: hairColor,
-  };
+    hairColor: hairColor
+  }
 
-  console.log(JSON.stringify(person));
+  // conv obj to json
+  console.log(JSON.stringify(obj));
+  // print it
 }
-
 convertToJSON('George', 'Jones', 'Brown');
