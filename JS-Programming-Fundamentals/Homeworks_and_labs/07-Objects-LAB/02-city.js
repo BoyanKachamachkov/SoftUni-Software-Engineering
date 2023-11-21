@@ -1,8 +1,9 @@
-function cityInfo(city) {
-  // we receive obj as input
+function cityInfo(object){
 
-  for (const key of Object.keys(city)) {
-    console.log(`${key} -> ${city[key]}`);
+  let entries = Object.entries(object);
+
+  for(entry of entries){
+    console.log(entry.join(' -> '));
   }
 }
 cityInfo({
