@@ -1,9 +1,9 @@
 function convertToObject(stringJSON) {
-  let object = JSON.parse(stringJSON);
+    let obj = JSON.parse(stringJSON);
 
-  for (const el of Object.keys(object)) {
-    console.log(`${el}: ${object[el]}`);
-  }
+    for (entry of Object.entries(obj)) {
+        console.log(entry.join(': '));
+    }
 }
 
 convertToObject('{"name": "George", "age": 40, "town": "Sofia"}');
