@@ -1,9 +1,7 @@
 function towns(arr) {
-
     let townInfo = {};
 
-    for(let string of arr){
-
+    for (let string of arr) {
         let [name, latitude, longitude] = string.split(' | ');
         townInfo.town = name;
         townInfo.latitude = Number(latitude).toFixed(2);
