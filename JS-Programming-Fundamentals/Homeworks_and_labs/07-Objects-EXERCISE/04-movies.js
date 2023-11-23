@@ -26,9 +26,9 @@ function movieStore(arr) {
         }
     }
 
-    for(let movie of movies){
-        if(movie.name && movie.director && movie.date){
-            console.log(JSON.stringify(movie))
+    for (let movie of movies) {
+        if (movie.name && movie.director && movie.date) {
+            console.log(JSON.stringify(movie));
         }
     }
 }
