@@ -1,32 +1,27 @@
 function inventory(input) {
-    // empty arr to save hero infos
-    let heroData = [];
+    let register = [];
 
     for (let line of input) {
-        let [heroName, heroLevel, items] = line.split(' / ');
+        let [name, level, items] = line.split(' / ');
 
-        // Object for each hero data
+        // create object with a few chars on ever iteration for each hero
         let hero = {
-            name: heroName,
-            level: heroLevel,
+            name: name,
+            level: level,
             items: items,
         };
 
-        // push object to general arr
-        heroData.push(hero);
+        // push the object to our array holder on each iteration
+        register.push(hero);
     }
 
-    // sort output by LEVEL in ASCENDING (a - b)
-    let sortedHeroData = heroData.sort((a, b) => a.level - b.level);
+    let sortedReg = register.sort((a, b) => a.level - b.level);
 
-    // print format
-    for(let hero of sortedHeroData){
-
+    for (let hero of sortedReg) {
         console.log(`Hero: ${hero.name}`);
         console.log(`level => ${hero.level}`);
-        console.log(`Items => ${hero.items}`);
+        console.log(`items => ${hero.items}`);
     }
-
 }
 inventory([
     'Isacc / 25 / Apple, GravityGun',
