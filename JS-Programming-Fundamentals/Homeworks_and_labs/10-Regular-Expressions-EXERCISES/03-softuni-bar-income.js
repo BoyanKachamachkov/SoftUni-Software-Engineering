@@ -8,18 +8,14 @@ function bar(arr) {
         let match = command.match(pattern);
 
         if (match != null) {
-
-            let {customer, product, count, price} = match.groups;
+            let { customer, product, count, price } = match.groups;
             count = Number(count);
             price = Number(price);
-
 
             let totalPrice = count * price;
             console.log(`${customer}: ${product} - ${totalPrice.toFixed(2)}`);
             income += totalPrice;
         }
-
-
 
         command = arr.shift();
     }
