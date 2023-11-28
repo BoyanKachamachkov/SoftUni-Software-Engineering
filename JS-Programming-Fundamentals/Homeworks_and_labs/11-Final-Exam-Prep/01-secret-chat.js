@@ -8,21 +8,35 @@ function secretChat(input) {
 
         switch (command) {
             case 'InsertSpace':
+                let index = Number(tokens[1]);
+                let firstHalf = message.slice(0, index);
+                let secondHalf = message.slice(index);
+                message = firstHalf + ' ' + secondHalf;
                 break;
             case 'Reverse':
+                let substring = tokens[1];
+                let firstIndex = message.indexOf(substring);
+
+                if (firstIndex == -1) {
+                    console.log('error');
+                    continue;
+                }
+                let left = message.slice(0, firstIndex);
+                let right = message.slice(firstIndex + substring.length);
+
+                message = left + right + substring.split('').reverse().join('');
                 break;
             case 'ChangeAll':
                 let match = tokens[1];
                 let replacement = tokens[2];
                 let parts = message.split(match); //V
-                message = parts.join(replacement)
+                message = parts.join(replacement);
 
-                console.log(parts);
-                console.log(message);
-                 
                 break;
         }
+        console.log(message);
     }
+    console.log(`You have a new text message: ${message}`);
 }
 
 secretChat([
