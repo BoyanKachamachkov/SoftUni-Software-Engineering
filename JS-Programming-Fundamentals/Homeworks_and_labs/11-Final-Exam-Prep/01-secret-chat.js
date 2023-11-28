@@ -1,42 +1,48 @@
 function secretChat(input) {
-    let message = input.shift();
+    let msg = input.shift();
 
-    while (input[0] != 'Reveal') {
-        let line = input.shift();
-        let tokens = line.split(':|:');
-        let command = tokens[0];
+    let command = input.shift();
 
-        switch (command) {
-            case 'InsertSpace':
-                let index = Number(tokens[1]);
-                let firstHalf = message.slice(0, index);
-                let secondHalf = message.slice(index);
-                message = firstHalf + ' ' + secondHalf;
+    while (command != 'Reveal') {
+        let tokens = command.split(':|:');
+        let action = tokens[0];
+
+        switch (action) {
+            case 'ChangeAll':
+                let match = tokens[1];
+                let replacement = tokens[2];
+                let parts = msg.split(match);
+                msg = parts.join(replacement);
                 break;
+
             case 'Reverse':
                 let substring = tokens[1];
-                let firstIndex = message.indexOf(substring);
+                let firstIndex = msg.indexOf(substring);
 
                 if (firstIndex == -1) {
                     console.log('error');
                     continue;
                 }
-                let left = message.slice(0, firstIndex);
-                let right = message.slice(firstIndex + substring.length);
 
-                message = left + right + substring.split('').reverse().join('');
+                let left = msg.slice(0, firstIndex);
+                let right = msg.slice(firstIndex + substring.length);
+                msg = left + substring.split('').reverse().join('');
+
                 break;
-            case 'ChangeAll':
-                let match = tokens[1];
-                let replacement = tokens[2];
-                let parts = message.split(match); //V
-                message = parts.join(replacement);
+
+            case 'InsertSpace':
+                let index = Number(tokens[1]);
+                let firstHalf = msg.slice(0, index);
+
+                let secondHalf = msg.slice(index);
+                msg = firstHalf + ' ' + secondHalf;
 
                 break;
         }
-        console.log(message);
+        command = input.shift();
+        console.log(msg);
     }
-    console.log(`You have a new text message: ${message}`);
+    console.log(`You have a new text message: ${msg}`);
 }
 
 secretChat([
