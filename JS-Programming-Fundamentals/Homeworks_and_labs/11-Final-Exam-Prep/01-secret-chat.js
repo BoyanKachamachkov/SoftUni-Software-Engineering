@@ -1,16 +1,28 @@
 function secretChat(arr) {
+    let msg = arr.shift();
+    let command = arr.shift();
 
-    let msg = arr.shift()
-    let command = arr.shift()
+    while (command != 'Reveal') {
+        let tokens = command.split(':|:');
+        let action = tokens.shift();
 
-    while(command != 'Reveal'){
+        switch (action) {
+            case 'InsertSpace':
+                break;
 
-        let tokens = command.split(':|:')
-        let action = tokens[0]
+            case 'Reverse':
+                break;
 
-        console.log(action, tokens);
-         command=arr.shift()
+            case 'ChangeAll':
+                let match = tokens[1];
+                let replacement = tokens[2];
 
+                let parse = msg.split(match)
+                parse.join(replacement)
+                break;
+        }
+
+        command = arr.shift();
     }
 }
 secretChat([
