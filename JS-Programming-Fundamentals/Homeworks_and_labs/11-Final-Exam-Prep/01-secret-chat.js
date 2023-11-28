@@ -1,30 +1,30 @@
-function secretChat(arr) {
-    let msg = arr.shift();
-    let command = arr.shift();
+function secretChat(input) {
+    let message = input.shift();
 
-    while (command != 'Reveal') {
-        let tokens = command.split(':|:');
-        let action = tokens.shift();
+    while (input[0] != 'Reveal') {
+        let line = input.shift();
+        let tokens = line.split(':|:');
+        let command = tokens[0];
 
-        switch (action) {
+        switch (command) {
             case 'InsertSpace':
                 break;
-
             case 'Reverse':
                 break;
-
             case 'ChangeAll':
                 let match = tokens[1];
                 let replacement = tokens[2];
+                let parts = message.split(match); //V
+                message = parts.join(replacement)
 
-                let parse = msg.split(match)
-                parse.join(replacement)
+                console.log(parts);
+                console.log(message);
+                 
                 break;
         }
-
-        command = arr.shift();
     }
 }
+
 secretChat([
     'heVVodar!gniV',
     'ChangeAll:|:V:|:l',
