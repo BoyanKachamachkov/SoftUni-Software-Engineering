@@ -21,7 +21,6 @@ function bar(arr) {
     }
     console.log(`Total income: ${income.toFixed(2)}`);
 }
-
 bar([
     '%George%<Croissant>|2|10.3$',
     '%Peter%<Gum>|1|1.3$',
