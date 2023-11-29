@@ -11,7 +11,7 @@ function activationKeys(input) {
                 let start = Number(arguments[1]);
                 let end = Number(arguments[2]);
 
-                let toDelete = activationKey.slice(start,end);
+                let toDelete = activationKey.slice(start, end);
                 activationKey = activationKey.replace(toDelete, '');
                 console.log(activationKey);
 
@@ -23,7 +23,7 @@ function activationKeys(input) {
                 let endIndex = Number(arguments[3]);
 
                 // let part = activationKey.slice(startIndex, endIndex);
-                let part = activationKey.substring(startIndex, endIndex)
+                let part = activationKey.substring(startIndex, endIndex);
                 let newPart =
                     casing == 'Upper' ? part.toUpperCase() : part.toLowerCase();
                 activationKey = activationKey.replace(part, newPart);
