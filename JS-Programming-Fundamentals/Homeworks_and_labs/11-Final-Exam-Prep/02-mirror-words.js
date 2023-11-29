@@ -24,12 +24,12 @@ function mirrorWords(input) {
     }
     if (counter == 0) {
         console.log('No word pairs found!');
-    } else{
+    } else {
         console.log(`${counter} word pairs found!`);
     }
     if (result.length == 0) {
         console.log('No mirror words!');
-    }else{
+    } else {
         console.log('The mirror words are:');
         console.log(result.join(', '));
     }
