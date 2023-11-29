@@ -1,51 +1,49 @@
 function activationKeys(input) {
-    let key = input.shift();
-    let command = input.shift();
+    let activationKey = input.shift();
+    let instruction = input.shift();
 
-    while (command != 'Generate') {
-        let tokens = command.split('>>>');
-        let action = tokens[0];
+    while (instruction != 'Generate') {
+        let arguments = instruction.split('>>>');
+        let instructionName = arguments[0];
 
-        switch (action) {
+        switch (instructionName) {
             case 'Slice':
-                let startIdx = Number(tokens[1]);
-                let endIdx = Number(tokens[2]);
+                let start = Number(arguments[1]);
+                let end = Number(arguments[2]);
 
-                let deletion = key.slice(startIdx, endIdx); //copy of what we ll delete
-                key = key.replace(deletion, ''); //replace those elems with nothing == delete
-                console.log(key);
+                let toDelete = activationKey.slice(start,end);
+                activationKey = activationKey.replace(toDelete, '');
+                console.log(activationKey);
+
                 break;
 
             case 'Flip':
-                let casing = tokens[1];
-                let start = Number(tokens[2]);
-                let end = Number(tokens[3]);
+                let casing = arguments[1];
+                let startIndex = Number(arguments[2]);
+                let endIndex = Number(arguments[3]);
 
-                let part = key.substring(start, end); //copy part of the string
+                // let part = activationKey.slice(startIndex, endIndex);
+                let part = activationKey.substring(startIndex, endIndex)
                 let newPart =
-                    casing == 'Upper' ? part.toUpperCase() : part.toLowerCase(); //transfer it based on casing with ternary operator
-
-                key = key.replace(part, newPart);
-                console.log(key);
-
+                    casing == 'Upper' ? part.toUpperCase() : part.toLowerCase();
+                activationKey = activationKey.replace(part, newPart);
+                console.log(activationKey);
                 break;
 
             case 'Contains':
-                let substring = tokens[1];
-
-                if (key.includes(substring)) {
-                    console.log(`${key} contains ${substring}.`);
+                let substring = arguments[1];
+                if (activationKey.includes(substring)) {
+                    console.log(`${activationKey} contains ${substring}`);
                 } else {
                     console.log('Substring not found!');
                 }
                 break;
         }
 
-        command = input.shift();
+        instruction = input.shift();
     }
-    console.log(`Your activation key is: ${key}`);
+    console.log(`Your activation key is: ${activationKey}`);
 }
-
 activationKeys([
     'abcdefghijklmnopqrstuvwxyz',
     'Slice>>>2>>>6',
