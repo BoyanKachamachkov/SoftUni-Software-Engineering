@@ -1,7 +1,7 @@
 function secretChat(input) {
     let msg = input.shift();
     let command = input.shift();
-    
+
     while (command != 'Reveal') {
         let tokens = command.split(':|:');
         let action = tokens[0];
