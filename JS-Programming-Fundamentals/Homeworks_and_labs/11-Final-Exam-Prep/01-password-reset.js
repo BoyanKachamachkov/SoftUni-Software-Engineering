@@ -32,7 +32,10 @@ function pwReset(input) {
                 let oldValue = tokens[1];
                 let newValue = tokens[2];
                 if (password.includes(oldValue)) {
-                    password = password.replace(new RegExp(oldValue, 'g'), newValue);
+                    password = password.replace(
+                        new RegExp(oldValue, 'g'),
+                        newValue
+                    );
                     console.log(password);
                 } else {
                     console.log('Nothing to replace!');
@@ -50,7 +53,6 @@ pwReset([
     'Substitute ! ***',
     'Substitute ? .!.',
     'Done',
-
 ]);
 console.log('---------');
 pwReset([
