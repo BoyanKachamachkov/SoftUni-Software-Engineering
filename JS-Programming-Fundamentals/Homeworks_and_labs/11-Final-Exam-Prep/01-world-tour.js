@@ -1,5 +1,5 @@
 function worldTour(input) {
-    let locs = input.shift();
+    let string = input.shift();
     let command = input.shift();
 
     while (command != 'Travel') {
@@ -9,41 +9,38 @@ function worldTour(input) {
 
         switch (action) {
             case 'Add Stop':
-                let idx = Number(tokens[1]);
-                if (idx < 0 || idx >= locs.length) {
-                    console.log(locs);
-                    break;
-                }
-                let city = tokens[2];
-
-                let left = locs.slice(0, idx);
-                let right = locs.slice(idx);
-                locs = left + city + right; //concat 3 parts
-                console.log(locs);
+                //take input
+                let startIdx = Number(tokens[1]);
+                let valueToAdd = tokens[2];
+                //separate string, add middle, concat
+                let leftPart = string.slice(0, startIdx);
+                let rightPart = string.slice(startIdx);
+                string = leftPart + valueToAdd + rightPart;
+                console.log(string);
                 break;
 
             case 'Remove Stop':
-                let startIdx = Number(tokens[1]);
-                let endIdx = Number(tokens[2]);
-
-                if (!locs[startIdx] || !locs[endIdx]) {
-                    console.log(locs);
+                //take input
+                let start = Number(tokens[1]);
+                let end = Number(tokens[2]);
+                if (start < 0 || end >= string.length) {
+                    console.log(string);
                     break;
                 }
-                let deletionPart = locs.slice(startIdx, endIdx + 1);
-
-                locs = locs.replace(deletionPart, '');
-                console.log(locs);
-
+                //find substring to remove (add +1 to include last letter), remove it with replace
+                let substring = string.substring(start, end + 1);
+                string = string.replace(substring, '');
+                console.log(string);
                 break;
 
             case 'Switch':
-                let old = tokens[1];
-                let newOne = tokens[2];
-                let pattern = new RegExp(old, 'g');
+                //take input
+                let oldValue = tokens[1];
+                let newValue = tokens[2];
+                let pattern = new RegExp(oldValue, 'g');
 
-                locs = locs.replace(pattern, newOne);
-                console.log(locs);
+                string = string.replace(pattern, newValue);
+                console.log(string);
 
                 break;
         }
@@ -51,7 +48,7 @@ function worldTour(input) {
         command = input.shift();
     }
 
-    console.log(`Ready for world tour! Planned stops: ${locs}`);
+    console.log(`Ready for world tour! Planned stops: ${string}`);
 }
 
 worldTour([
