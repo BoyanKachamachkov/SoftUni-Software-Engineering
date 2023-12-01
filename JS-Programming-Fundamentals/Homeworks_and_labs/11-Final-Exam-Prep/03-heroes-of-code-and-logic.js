@@ -39,7 +39,7 @@ function heroes(input) {
                     mpToRestore = 200 - hero.mp;
                 }
                 hero.mp += mpToRestore;
-                console.log(`${name} recharged for ${mpToRestore} MP!"`);
+                console.log(`${name} recharged for ${mpToRestore} MP!`);
                 break;
 
             case 'CastSpell':
@@ -48,7 +48,7 @@ function heroes(input) {
                 if (hero.mp >= mpCost) {
                     hero.mp -= mpCost;
                     console.log(
-                        `${name} has successfully cast ${spellName} and now has ${hero.mp} MP!"`
+                        `${name} has successfully cast ${spellName} and now has ${hero.mp} MP!`
                     );
                 } else {
                     console.log(
@@ -64,7 +64,7 @@ function heroes(input) {
                 if (hero.hp > 0) {
                     console.log(
                         `${name} was hit for ${damage} HP by ${attacker} and now has ${hero.hp} HP left!`
-                    )
+                    );
                 } else {
                     console.log(`${name} has been killed by ${attacker}!`);
                     delete party[name];
@@ -73,7 +73,8 @@ function heroes(input) {
         }
     }
 
-    for(let name in party){
+    // for-in for object printing
+    for (let name in party) {
         let hero = party[name];
 
         console.log(name);
