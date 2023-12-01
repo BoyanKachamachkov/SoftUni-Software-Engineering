@@ -9,34 +9,53 @@ function plant(input) {
         plants[plantName] = { rarity: Number(rarity), ratings: [] };
     }
 
-    console.log(plants);
-
     let command = input.shift();
     while (command != 'Exhibition') {
         // tokens here
         let [commandName, args] = command.split(': ');
         let [plantName, argument] = args.split(' - ');
 
-        switch (commandName) {
-            case 'Rate':
-                let rating = Number(argument);
-                plants[plantName].ratings.push(rating);
+        if (plants[plantName]) {
+            switch (commandName) {
+                case 'Rate':
+                    let rating = Number(argument);
+                    plants[plantName].ratings.push(rating);
 
-                break;
+                    break;
 
-            case 'Update':
-                let rarity = Number(argument);
-                plants[plantName].rarity = rarity;
-                break;
+                case 'Update':
+                    let rarity = Number(argument);
+                    plants[plantName].rarity = rarity;
+                    break;
 
-            case 'Reset':
-                break;
+                case 'Reset':
+                    plants[plantName].ratings = [];
+
+                    break;
+            }
+        }else{
+            console.log('error');
         }
-
         command = input.shift();
     }
 
-    console.table(plants);
+    console.log('Plants for the exhibition:');
+    for (const plant in plants) {
+        let sum = 0;
+        let ratingCount = plants[plant].ratings.length;
+        for (const rating of plants[plant].ratings) {
+            sum += rating;
+        }
+        let averageRating = sum / ratingCount;
+        if (!averageRating) {
+            averageRating = 0;
+        }
+        console.log(
+            `- ${plant}; Rarity: ${
+                plants[plant].rarity
+            }; Rating: ${averageRating.toFixed(2)}`
+        );
+    }
 }
 
 plant([
