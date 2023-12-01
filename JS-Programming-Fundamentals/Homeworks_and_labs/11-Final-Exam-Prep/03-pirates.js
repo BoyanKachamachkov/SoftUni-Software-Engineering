@@ -21,13 +21,26 @@ function pirates(arr) {
     command = arr.shift(); //prepare new command for 2nd cycle
 
     while (command != 'End') {
-
         let tokens = command.split('=>');
-        let action = tokens[0];
-        console.log(action);
+        let action = tokens.shift();
 
+        if (action == 'Plunder') {
+            let [city, people, gold] = tokens;
+            people = Number(people);
+            gold = Number(gold);
 
+            targets[city].population -= people;
+            targets[city].gold -= gold;
 
+            console.log(
+                `${town} plundered! ${gold} gold stolen, ${people} citizens killed.`
+            );
+            if (targets[city].population <= 0 || targets[city].gold <= 0) {
+                console.log(`${city} has been wiped off the map!`);
+                delete targets[city];
+            }
+        } else {
+        }
 
         command = arr.shift();
     }
