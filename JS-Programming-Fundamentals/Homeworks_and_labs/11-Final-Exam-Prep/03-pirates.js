@@ -4,6 +4,8 @@ function pirates(arr) {
 
     while (command != 'Sail') {
         let [city, population, gold] = command.split('||');
+        population = Number(population);
+        gold = Number(gold);
 
         if (city in targets) {
             targets[city].population += population;
@@ -33,16 +35,47 @@ function pirates(arr) {
             targets[city].gold -= gold;
 
             console.log(
-                `${town} plundered! ${gold} gold stolen, ${people} citizens killed.`
+                `${city} plundered! ${gold} gold stolen, ${people} citizens killed.`
             );
             if (targets[city].population <= 0 || targets[city].gold <= 0) {
                 console.log(`${city} has been wiped off the map!`);
                 delete targets[city];
             }
         } else {
+            let [city, gold] = tokens;
+            gold = Number(gold);
+
+            if (gold < 0) {
+                console.log('Gold added cannot be a negative number!');
+                command = arr.shift(); //take new command to not have a endless cycle
+                continue;
+            } else {
+                targets[city].gold += gold;
+                console.log(
+                    `${gold} gold added to the city treasury. ${city} now has ${targets[city].gold} gold.`
+                );
+            }
         }
 
         command = arr.shift();
+    }
+
+    // after END, if there are any existing settlements on your list of targets, you need to print all of them, in the following format:
+    // transfer to arr to check length?
+    let entries = Object.entries(targets);
+    if (entries.legnth == 0) {
+        console.log(
+            `Ahoy, Captain! All targets have been plundered and destroyed!`
+        );
+    } else {
+        console.log(
+            `Ahoy, Captain! There are ${entries.length} wealthy settlements to go to:`
+        );
+        entries.forEach(([city, stats]) =>
+            console.log(
+                `${city} -> Population: ${stats.population} citizens, Gold: ${stats.gold} kg`
+            )
+        );
     }
 }
 
