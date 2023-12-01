@@ -24,7 +24,7 @@ function fancyBarcode(data) {
         if (isValid) {
             concateDigits = concateDigits !== '' ? concateDigits : '00';
             console.log(`Product group: ${concateDigits}`);
-        }else{
+        } else {
             console.log('Invalid barcode');
         }
     }
