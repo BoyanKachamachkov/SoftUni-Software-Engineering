@@ -6,10 +6,37 @@ function plant(input) {
         let plant = input.shift();
         let [plantName, rarity] = plant.split('<->');
 
-        plants[plantName] = { rarity: rarity, rating: 0 };
+        plants[plantName] = { rarity: Number(rarity), ratings: [] };
     }
 
     console.log(plants);
+
+    let command = input.shift();
+    while (command != 'Exhibition') {
+        // tokens here
+        let [commandName, args] = command.split(': ');
+        let [plantName, argument] = args.split(' - ');
+
+        switch (commandName) {
+            case 'Rate':
+                let rating = Number(argument);
+                plants[plantName].ratings.push(rating);
+
+                break;
+
+            case 'Update':
+                let rarity = Number(argument);
+                plants[plantName].rarity = rarity;
+                break;
+
+            case 'Reset':
+                break;
+        }
+
+        command = input.shift();
+    }
+
+    console.table(plants);
 }
 
 plant([
