@@ -9,9 +9,6 @@ function pirates(arr) {
 
         if (city in targets) {
             targets[city].population += population;
-        }
-
-        if (city in targets) {
             targets[city].gold += gold;
         } else {
             targets[city] = { population, gold }; //create new city with obj as values
@@ -88,3 +85,17 @@ pirates([
     'Prosper=>Santo Domingo=>180',
     'End',
 ]);
+
+// pirates([
+//     'Nassau||95000||1000',
+//     'San Juan||930000||1250',
+//     'Campeche||270000||690',
+//     'Port Royal||320000||1000',
+//     'Port Royal||100000||2000',
+//     'Sail',
+//     'Prosper=>Port Royal=>-200',
+//     'Plunder=>Nassau=>94000=>750',
+//     'Plunder=>Nassau=>1000=>150',
+//     'Plunder=>Campeche=>150000=>690',
+//     'End',
+// ]);
