@@ -24,8 +24,7 @@ function solve(string) {
 
     if (mirrorWords.length == 0) {
         console.log('No mirror words!');
-
-    }else{
+    } else {
         console.log('The mirror words are:');
         console.log(mirrorWords.join(', '));
     }
