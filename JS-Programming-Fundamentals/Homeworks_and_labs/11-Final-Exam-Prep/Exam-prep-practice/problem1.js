@@ -19,7 +19,10 @@ function chat(input) {
 
                 let indexOfSubstring = message.indexOf(substring);
                 let leftPart = message.substring(0, indexOfSubstring);
-                let rightPart = message.slice(indexOfSubstring, substring.length)
+                let rightPart = message.slice(
+                    indexOfSubstring,
+                    substring.length
+                );
 
                 if (indexOfSubstring == -1) {
                     console.log('error');
@@ -28,8 +31,10 @@ function chat(input) {
                 }
 
                 message =
-                    leftPart + rightPart + substring.split('').reverse().join('');
-                    console.log(message);
+                    leftPart +
+                    rightPart +
+                    substring.split('').reverse().join('');
+                console.log(message);
 
                 break;
 
