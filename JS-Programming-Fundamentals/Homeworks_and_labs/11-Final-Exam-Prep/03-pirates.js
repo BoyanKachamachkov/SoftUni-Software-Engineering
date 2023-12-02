@@ -1,76 +1,71 @@
-function pirates(arr) {
+function pirates(input) {
     let targets = {};
-    let command = arr.shift();
 
+    let command = input.shift();
     while (command != 'Sail') {
-        let [city, population, gold] = command.split('||');
-        population = Number(population);
+        let [town, pop, gold] = command.split('||');
+        pop = Number(pop);
         gold = Number(gold);
 
-        if (city in targets) {
-            targets[city].population += population;
-            targets[city].gold += gold;
+        if (town in targets) {
+            targets[town].pop += pop;
+            targets[town].gold += gold;
         } else {
-            targets[city] = { population, gold }; //create new city with obj as values
+            targets[town] = { pop, gold };
         }
 
-        command = arr.shift();
+        command = input.shift();
     }
 
-    command = arr.shift(); //prepare new command for 2nd cycle
-
+    command = input.shift();
     while (command != 'End') {
-        let tokens = command.split('=>');
-        let action = tokens.shift();
+        let [action, town, pop, gold] = command.split('=>');
+        pop = Number(pop);
+        gold = Number(gold);
 
-        if (action == 'Plunder') {
-            let [city, people, gold] = tokens;
-            people = Number(people);
-            gold = Number(gold);
-
-            targets[city].population -= people;
-            targets[city].gold -= gold;
-
-            console.log(
-                `${city} plundered! ${gold} gold stolen, ${people} citizens killed.`
-            );
-            if (targets[city].population <= 0 || targets[city].gold <= 0) {
-                console.log(`${city} has been wiped off the map!`);
-                delete targets[city];
-            }
-        } else {
-            let [city, gold] = tokens;
-            gold = Number(gold);
-
-            if (gold < 0) {
-                console.log('Gold added cannot be a negative number!');
-                command = arr.shift(); //take new command to not have a endless cycle
-                continue;
-            } else {
-                targets[city].gold += gold;
+        switch (action) {
+            case 'Plunder':
                 console.log(
-                    `${gold} gold added to the city treasury. ${city} now has ${targets[city].gold} gold.`
+                    `${town} plundered! ${gold} gold stolen, ${pop} citizens killed.`
                 );
-            }
-        }
+                targets[town].gold -= gold;
+                targets[town].pop -= pop;
+                if (targets[town].pop <= 0 || targets[town].gold <= 0) {
+                    delete targets[town];
+                    console.log(`${town} has been wiped off the map!`);
+                }
+                break;
 
-        command = arr.shift();
+            case 'Prosper':
+                let newGold = pop;
+                if (newGold < 0) {
+                    console.log('Gold added cannot be a negative number!');
+                    command = input.shift();
+                    continue;
+                } else {
+                    targets[town].gold += newGold;
+                    console.log(
+                        `${newGold} gold added to the city treasury. ${town} now has ${targets[town].gold} gold.`
+                    );
+                }
+                break;
+        }
+        command = input.shift();
     }
 
-    // after END, if there are any existing settlements on your list of targets, you need to print all of them, in the following format:
-    // transfer to arr to check length?
-    let entries = Object.entries(targets);
-    if (entries.legnth == 0) {
+    let entries = Object.entries(targets); //its length
+
+    if (entries.length == 0) {
         console.log(
-            `Ahoy, Captain! All targets have been plundered and destroyed!`
+            'Ahoy, Captain! All targets have been plundered and destroyed!'
         );
     } else {
         console.log(
             `Ahoy, Captain! There are ${entries.length} wealthy settlements to go to:`
         );
-        entries.forEach(([city, stats]) =>
+        entries.forEach((entry) =>
             console.log(
-                `${city} -> Population: ${stats.population} citizens, Gold: ${stats.gold} kg`
+                `${entry[0]} -> Population: ${entry[1].pop} citizens, Gold: ${entry[1].gold} kg`
             )
         );
     }

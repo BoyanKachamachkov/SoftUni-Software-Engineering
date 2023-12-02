@@ -40,10 +40,10 @@ function pianist(input) {
                 break;
 
             case 'ChangeKey':
-                // 'ChangeKey|Moonlight Sonata|C# Major'
+                let newKey = composer; //key is on index 2, that's why we use composer
                 if (piece in collection) {
-                    collection[piece].key = composer; //with that command composer is the new key.
-                    console.log(`Changed the key of ${piece} to ${composer}!`);
+                    collection[piece].key = newKey;
+                    console.log(`Changed the key of ${piece} to ${newKey}!`);
                 } else {
                     console.log(
                         `Invalid operation! ${piece} does not exist in the collection.`
