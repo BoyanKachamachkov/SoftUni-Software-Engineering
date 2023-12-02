@@ -55,7 +55,12 @@ function pianist(input) {
         command = input.shift();
     }
 
-    console.log(collection);
+    let entries = Object.entries(collection);
+    entries.forEach((entry) =>
+        console.log(
+            `${entry[0]} -> Composer: ${entry[1].composer}, Key: ${entry[1].key}`
+        )
+    );
 }
 
 pianist([
