@@ -33,7 +33,7 @@ function plant(input) {
 
                     break;
             }
-        }else{
+        } else {
             console.log('error');
         }
         command = input.shift();
