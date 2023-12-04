@@ -21,14 +21,13 @@ function blackFlag(arr) {
         }
     }
 
-    if(totalPlunder >= targetPlunder){
+    if (totalPlunder >= targetPlunder) {
         console.log(`Ahoy! ${totalPlunder.toFixed(2)} plunder gained.`);
-    }else{
-        let percentage = (totalPlunder/targetPlunder * 100).toFixed(2);
+    } else {
+        let percentage = ((totalPlunder / targetPlunder) * 100).toFixed(2);
 
         console.log(`Collected only ${percentage}% of the plunder.`);
     }
-
 }
 blackFlag(['5', '40', '100']);
 blackFlag(['10', '20', '380']);
