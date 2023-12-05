@@ -11,7 +11,10 @@ function solve(arr) {
         maxBonus.push(Math.ceil(totalBonus));
     }
 
-    let lectures = arr.slice(0, arr.length).map(Number).sort((a, b) => b - a);
+    let lectures = arr
+        .slice(0, arr.length)
+        .map(Number)
+        .sort((a, b) => b - a);
     maxBonus = maxBonus.sort((a, b) => b - a);
 
     console.log(`Max Bonus: ${maxBonus[0]}.`);
