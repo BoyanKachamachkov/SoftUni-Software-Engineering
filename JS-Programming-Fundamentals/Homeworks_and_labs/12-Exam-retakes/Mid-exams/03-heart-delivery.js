@@ -1,5 +1,7 @@
 function heart(arr) {
     let x = arr.shift();
+    let neighborhood = x.split('@').map(Number);
+    console.log(neighborhood);
 
     let com = arr.shift();
     while (com != 'Love!') {
@@ -8,7 +10,6 @@ function heart(arr) {
         let idx = Number(tokens[1]);
 
         console.log(tokens);
-        console.log(idx);
 
 
         com = arr.shift();
