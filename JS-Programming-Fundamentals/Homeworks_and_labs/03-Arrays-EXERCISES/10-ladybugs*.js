@@ -4,6 +4,7 @@
 // commands -> {start index} {direction} {fly length}
 // if ladybug lands on another -> continues in same direction with same length
 // if out of fields -> it's gone
+// if no ladybug on given index => nothign happens
 
 function ladybugs(arr) {
     let fieldSize = arr[0];
@@ -20,11 +21,47 @@ function ladybugs(arr) {
     }
 
     // work with commands
-    for(let j = 2; j < arr.length; j++){
-        let command = arr[j]
-        let tokens = command.split(' ')
-        console.log(tokens);
+    for (let j = 2; j < arr.length; j++) {
+        let command = arr[j];
+        let tokens = command.split(' ');
+
+        let ladybugIdx = Number(tokens[0]);
+        let direction = tokens[1];
+        let flyLength = Number(tokens[2]);
+
+        if (!field[ladybugIdx]) {
+            continue;
+        }
+        field[ladybugIdx] = 0; //reset index as it will fly
+
+        if (direction == 'left') {
+            let newIdx = ladybugIdx - flyLength;
+
+            if (newIdx >= 0) {
+                while (field[newIdx] == 1) {
+                    newIdx -= flyLength;
+                }
+
+                if (newIdx >= 0) {
+                    field[newIdx] = 1; //it lands
+                }
+            }
+        } else {
+            let newIdx = ladybugIdx + flyLength;
+
+            if (newIdx < field.length) {
+                while (field[newIdx] == 1) {
+                    newIdx += flyLength;
+                }
+
+                if (newIdx < field.length) {
+                    field[newIdx] = 1; //it lands
+                }
+            }
+        }
     }
+
+    console.log(field.join(' '));
 }
 
 ladybugs([3, '0 1', '0 right 1', '2 right 1']);
