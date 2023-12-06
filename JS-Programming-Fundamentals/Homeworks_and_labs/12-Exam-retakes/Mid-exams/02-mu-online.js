@@ -29,7 +29,7 @@ function mu(rooms) {
             let damage = Number(tokens[1]);
             health -= damage;
             if (health > 0) {
-                console.log(`You slayed ${action}`);
+                console.log(`You slayed ${action}.`);
             } else {
                 console.log(`You died! Killed by ${action}.`);
                 console.log(`Best room: ${roomCount}`);
@@ -39,7 +39,7 @@ function mu(rooms) {
     }
     console.log("You've made it!");
     console.log(`Bitcoins: ${bitcoins}`);
-    console.log(`Health: ${health}"`);
+    console.log(`Health: ${health}`);
 }
 
 mu('rat 10|bat 20|potion 10|rat 10|chest 100|boss 70|chest 1000');
