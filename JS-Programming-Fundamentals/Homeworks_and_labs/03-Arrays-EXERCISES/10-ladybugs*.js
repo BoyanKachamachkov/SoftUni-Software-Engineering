@@ -47,6 +47,7 @@ function ladybugs(arr) {
                 }
             }
         } else {
+            // right direction
             let newIdx = ladybugIdx + flyLength;
 
             if (newIdx < field.length) {
