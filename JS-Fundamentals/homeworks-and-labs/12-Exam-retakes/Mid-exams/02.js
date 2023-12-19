@@ -8,7 +8,6 @@ function solve(arr) {
             let nums = tokens[1].split(' ').map(Number); //arr
             // nums = nums.sort((a, b) => b - a);
             sequence = sequence.concat(nums);
-
         } else if (command.includes('remove greater than')) {
             let tokens = command.split('remove greater than ');
             let num = Number(tokens[1]);
