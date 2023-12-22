@@ -2,14 +2,12 @@ function sameNums(num) {
     let numString = String(num);
     let sum = 0;
     let isSame = true;
+    let firstChar = numString[0];
     for (let i = 0; i < numString.length; i++) {
-        let el = Number(numString[i]);
-        let nextEl = Number(numString[i + 1]);
-        sum += el;
-
-        if (el != el) {
+        if (numString[i] !== firstChar) {
             isSame = false;
         }
+        sum += Number(numString[i]);
     }
 
     console.log(isSame);
