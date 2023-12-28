@@ -1,25 +1,30 @@
 function solve() {
-	// select first param
 	let text = document.getElementById('text').value;
-	console.log(text);
+	let convention = document.getElementById('naming-convention').value;
 
-	// select second param
-	let changer = document.getElementById('naming-convention').value;
-	console.log(changer);
+	let result = '';
 
-	let output = '';
-  text = text.toLowerCase();
-	console.log(text);
+	switch (convention) {
+		case 'Camel Case':
+			text = text.toLowerCase().split(' ');
+			result += text.shift();
 
-	if (changer == 'Pascal Case') {
+			text.forEach((e) => {
+				result += e[0].toUpperCase() + e.substring(1);
+			});
+			break;
 
+		case 'Pascal Case':
+			text = text.toLowerCase().split(' ');
+			text.forEach((e) => {
+				result += e[0].toUpperCase() + e.substring(1);
+			});
+			break;
 
-
-	} else if (changer == 'Camel Case') {
-
-
-
-	} else {
-		output = 'Error!';
+		default:
+			result = 'Error!';
+			break;
 	}
+
+	document.getElementById('result').textContent = result;
 }
