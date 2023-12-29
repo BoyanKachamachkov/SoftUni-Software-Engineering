@@ -1,30 +1,32 @@
 function solve() {
-	let text = document.getElementById('text').value;
-	let convention = document.getElementById('naming-convention').value;
+	let input = document.getElementById('text').value;
 
-	let result = '';
+	const convention = document.getElementById('naming-convention').value;
+
+	let output = '';
+	input = input.toLowerCase();
 
 	switch (convention) {
+		// "this is an example", "Camel Case"
 		case 'Camel Case':
-			text = text.toLowerCase().split(' ');
-			result += text.shift();
-
-			text.forEach((e) => {
-				result += e[0].toUpperCase() + e.substring(1);
+			input = input.split(' ');
+			output += input.shift();
+			input.forEach((e) => {
+				output += e[0].toUpperCase() + e.substring(1);
 			});
 			break;
+			debugger;
 
 		case 'Pascal Case':
-			text = text.toLowerCase().split(' ');
-			text.forEach((e) => {
-				result += e[0].toUpperCase() + e.substring(1);
+			input = input.split(' ');
+			input.forEach((e) => {
+				output += e[0].toUpperCase() + e.substring(1);
 			});
 			break;
 
 		default:
-			result = 'Error!';
+			output = 'Error!';
 			break;
 	}
-
-	document.getElementById('result').textContent = result;
+	document.getElementById('result').textContent = output;
 }
