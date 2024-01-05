@@ -7,3 +7,6 @@ function search() {
 
 	allLiElements.forEach((el) => (el.style['font-weight'] = 'normal'));
 }
+
+
+

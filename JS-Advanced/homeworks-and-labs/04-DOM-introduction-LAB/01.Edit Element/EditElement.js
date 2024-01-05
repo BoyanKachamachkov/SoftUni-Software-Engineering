@@ -1,6 +1,6 @@
-function editElement(ref, match, replacer) {
-	let text = ref.textContent;
-	let result = text.split(match).join(replacer);
+function editElement(ref, string, replacer) {
 
-	ref.textContent = result;
+	let e1Text = ref.textContent;
+	e1Text = e1Text.split(string).join(replacer)
+	ref.textContent = e1Text;
 }
