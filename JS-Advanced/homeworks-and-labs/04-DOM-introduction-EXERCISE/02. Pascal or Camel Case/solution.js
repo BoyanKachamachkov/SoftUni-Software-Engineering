@@ -1,32 +1,38 @@
-function solve() {
-	let input = document.getElementById('text').value;
+/* 
+Input	Output
+"this is an example", "Camel Case"	thisIsAnExample
+"secOND eXamPLE", "Pascal Case"	SecondExample
+"Invalid Input", "Another Case"	Error!
 
-	const convention = document.getElementById('naming-convention').value;
+*/
+
+function solve() {
+	let textField = document.getElementById('text').value;
+	const namingConventionField =
+		document.getElementById('naming-convention').value;
+	const resultEl = document.getElementById('result');
+	textField = textField.toLowerCase();
 
 	let output = '';
-	input = input.toLowerCase();
 
-	switch (convention) {
-		// "this is an example", "Camel Case"
+	switch (namingConventionField) {
 		case 'Camel Case':
-			input = input.split(' ');
-			output += input.shift();
-			input.forEach((e) => {
-				output += e[0].toUpperCase() + e.substring(1);
-			});
+			textField = textField.split(' ');
+			output += textField.shift();
+			textField.forEach((e) => (output += e[0].toUpperCase() + e.substring(1)));
+
 			break;
-			debugger;
 
 		case 'Pascal Case':
-			input = input.split(' ');
-			input.forEach((e) => {
-				output += e[0].toUpperCase() + e.substring(1);
-			});
+			textField = textField.split(' ');
+			textField.forEach((e) => (output += e[0].toUpperCase() + e.substring(1)));
+
 			break;
 
 		default:
 			output = 'Error!';
 			break;
 	}
-	document.getElementById('result').textContent = output;
+
+	resultEl.textContent = output;
 }
