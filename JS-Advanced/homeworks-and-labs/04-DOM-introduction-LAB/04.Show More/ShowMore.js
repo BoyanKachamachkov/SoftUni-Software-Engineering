@@ -1,9 +1,7 @@
 function showText() {
+	const readMoreEl = document.getElementById('more');
+	const hiddenTextEl = document.getElementById('text');
 
-  const text = document.getElementById('text')
-  text.style.display = 'inline';
-
-  const read = document.getElementById('more');
-  read.style.display = 'none'
-
+	hiddenTextEl.style.display = 'inline';
+	readMoreEl.style.display = 'none';
 }
