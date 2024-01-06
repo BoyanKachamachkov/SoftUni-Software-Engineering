@@ -1,9 +1,9 @@
 function subtract() {
-	const num1 = document.getElementById('firstNumber').value;
-	const num2 = document.getElementById('secondNumber').value;
+	const firstNumEl = document.getElementById('firstNumber').value;
+	const secNumEl = document.getElementById('secondNumber').value;
 
-	const sum = Number(num1) - Number(num2);
+	const resultEl = document.getElementById('result');
 
-	const output = document.getElementById('result');
-	output.textContent = sum;
+	const output = Number(firstNumEl) - Number(secNumEl);
+	resultEl.textContent = output;
 }
