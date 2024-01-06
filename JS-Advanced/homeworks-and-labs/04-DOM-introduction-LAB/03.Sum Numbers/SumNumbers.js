@@ -1,9 +1,9 @@
 function calc() {
-	let num1 = document.getElementById('num1').value;
-	let num2 = document.getElementById('num2').value;
+	const num1 = document.getElementById('num1').value;
+	const num2 = document.getElementById('num2').value;
 
-	let output = Number(num1) + Number(num2);
+	const output = Number(num1) + Number(num2);
 
-	let sum = document.getElementById('sum');
+	const sum = document.getElementById('sum');
 	sum.value = output;
 }
