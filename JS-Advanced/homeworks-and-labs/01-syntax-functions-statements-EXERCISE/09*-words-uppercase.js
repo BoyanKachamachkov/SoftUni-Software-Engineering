@@ -1,14 +1,15 @@
 function words(string) {
 	let pattern = /(?<words>\w+)/g;
-	let output = '';
+	let output = [];
 
 	let match = pattern.exec(string);
 	while (match) {
 		let word = match[0].toUpperCase();
-		output += `${word}, `;
+
+		output.push(word);
 		match = pattern.exec(string);
 	}
-	console.log(output);
+    console.log(output.join(', '));
 }
 
 words('Hi, how are you?');
