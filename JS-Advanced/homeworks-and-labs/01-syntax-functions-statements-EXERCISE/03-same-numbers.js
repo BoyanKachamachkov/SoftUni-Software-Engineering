@@ -10,6 +10,7 @@ function sameNums(num) {
         sum += Number(numString[i]);
     }
 
+
     console.log(isSame);
     console.log(sum);
 }
