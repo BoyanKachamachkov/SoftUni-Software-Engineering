@@ -12,7 +12,7 @@ function validityChecker(x1, y1, x2, y2) {
 	};
 	result(x1, y1, 0, 0); 
 	result(x2, y2, 0, 0);
-	result(x2, y1, x2, y2);
+	result(x1, y1, x2, y2);
 }
 
 validityChecker(3, 0, 0, 4);
