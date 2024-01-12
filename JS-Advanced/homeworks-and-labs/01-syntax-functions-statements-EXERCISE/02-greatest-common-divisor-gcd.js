@@ -1,4 +1,13 @@
-function solve(a, b) {}
+function gcd(firstNum, secondNum) {
+    while(secondNum){
+        // while its above 0
+        const temp = secondNum;
+        secondNum = firstNum % secondNum;
+        firstNum = temp;
+    }
 
-solve(15, 5);
-solve(2154, 458);
+    console.log(firstNum );
+}
+
+gcd(15, 5);
+gcd(2154, 458);
