@@ -1,4 +1,6 @@
-function roadRadar(speed, area) {}
+function roadRadar(speed, area) {
+    
+}
 
 // roadRadar(40, 'city');
 roadRadar(200, 'motorway');
