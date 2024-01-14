@@ -5,9 +5,29 @@ btn.onclick = function () {
 	console.log('I hope it worked!');
 };
 
-function scream(){
-    console.log('AHHHHH!');
-    console.log('STOP TOUCHING ME');
+function scream() {
+	console.log('AHHHHH!');
+	console.log('STOP TOUCHING ME');
 }
 
 btn.onmouseenter = scream;
+
+document.querySelector('h1').onclick = () => alert('you clicked in the h1!');
+
+const btn3 = document.querySelector('#v3');
+btn3.addEventListener('click', scream);
+
+function twist() {
+	console.log('twist');
+}
+
+function shout() {
+	console.log('shout');
+}
+
+const tasButton = document.querySelector('#tas');
+// tasButton.onclick = twist;
+// tasButton.onclick = shout;
+
+tasButton.addEventListener('click', twist);
+tasButton.addEventListener('click', shout);
