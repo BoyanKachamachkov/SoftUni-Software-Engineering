@@ -31,3 +31,9 @@ const tasButton = document.querySelector('#tas');
 
 tasButton.addEventListener('click', twist);
 tasButton.addEventListener('click', shout);
+
+
+const colorBtn = document.querySelector('#color');
+colorBtn.addEventListener('click', () =>{
+    console.log('click');
+})
