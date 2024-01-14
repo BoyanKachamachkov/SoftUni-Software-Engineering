@@ -21,3 +21,19 @@ const makeRandomColor = () => {
 	}
 	return `rgb(${r}, ${g}, ${b})`;
 };
+
+const h1Els = document.querySelectorAll('h1');
+const buttonEls = document.querySelectorAll('button');
+
+function colorize() {
+	this.style.backgroundColor = makeRandomColor();
+	this.style.color = makeRandomColor();
+}
+
+for (const el of h1Els) {
+	el.addEventListener('click', colorize);
+}
+
+for (let btn of buttonEls) {
+	btn.addEventListener('click', colorize);
+}
