@@ -17,4 +17,21 @@
 		-finally append div to the container!
 */
 
-const container = 
+const container = document.querySelector('#container');
+const baseURL =
+	'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
+
+for (let i = 1; i <= 151; i++) {
+	const pokemonDiv = document.createElement('div');
+	const pokemonImg = document.createElement('img');
+	const pokemonSpan = document.createElement('span');
+
+	pokemonImg.src = `${baseURL}${i}.png`;
+	pokemonSpan.innerText = `#${i}`;
+
+	pokemonDiv.appendChild(pokemonImg);
+	pokemonDiv.appendChild(pokemonSpan);
+	pokemonDiv.classList.add('pokemon');
+
+	container.appendChild(pokemonDiv);
+}
