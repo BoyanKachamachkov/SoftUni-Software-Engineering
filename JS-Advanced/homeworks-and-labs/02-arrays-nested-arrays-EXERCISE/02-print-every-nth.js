@@ -3,10 +3,8 @@ function printEveryN(arr, n) {
 
 	for (let i = 0; i < arr.length; i += n) {
 		result.push(arr[i]);
-
 	}
-    return result;
+	return result;
 }
 
 printEveryN(['5', '20', '31', '4', '20'], 2);
- 
