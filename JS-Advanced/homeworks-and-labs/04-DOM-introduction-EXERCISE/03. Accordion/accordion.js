@@ -1,7 +1,11 @@
 function toggle() {
-	let btn = document.getElementsByClassName('button')[0];
-	let text = document.getElementById('extra');
+	let btnMoreEl = document.getElementsByClassName('button')[0]; //0 , otherwise we get the HTML collection
 
-	btn.textContent = btn.textContent === 'More' ? 'Less' : 'More';
-    text.style.display = text.style.display === 'block' ? 'none' : 'block'
+	let textEl = document.getElementById('extra');
+
+	// change button text
+	btnMoreEl.textContent = btnMoreEl.textContent === 'More' ? 'Less' : 'More';
+
+	// show/hide text
+	textEl.style.display = textEl.style.display === 'block' ? 'none' : 'block';
 }
