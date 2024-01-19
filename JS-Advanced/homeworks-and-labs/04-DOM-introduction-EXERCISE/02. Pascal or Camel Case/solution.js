@@ -7,26 +7,30 @@ Input	Output
 */
 
 function solve() {
-	let textField = document.getElementById('text').value;
-	const namingConventionField =
-		document.getElementById('naming-convention').value;
-	const resultEl = document.getElementById('result');
-	textField = textField.toLowerCase();
+	let textInputEl = document.querySelector('#text').value;
+	const namingConvEl = document.querySelector('#naming-convention').value;
+
+	const result = document.querySelector('#result');
 
 	let output = '';
 
-	switch (namingConventionField) {
+	switch (namingConvEl) {
 		case 'Camel Case':
-			textField = textField.split(' ');
-			output += textField.shift();
-			textField.forEach((e) => (output += e[0].toUpperCase() + e.substring(1)));
+			textInputEl = textInputEl.toLowerCase().split(' ');
+			output += textInputEl.shift();
+
+			textInputEl.forEach((el) => {
+				output += el[0].toUpperCase() + el.substring(1);
+			});
 
 			break;
 
 		case 'Pascal Case':
-			textField = textField.split(' ');
-			textField.forEach((e) => (output += e[0].toUpperCase() + e.substring(1)));
+			textInputEl = textInputEl.toLowerCase().split(' ');
 
+			textInputEl.forEach((el) => {
+				output += el[0].toUpperCase() + el.substring(1);
+			});
 			break;
 
 		default:
@@ -34,5 +38,5 @@ function solve() {
 			break;
 	}
 
-	resultEl.textContent = output;
+	result.textContent = output;git s
 }
