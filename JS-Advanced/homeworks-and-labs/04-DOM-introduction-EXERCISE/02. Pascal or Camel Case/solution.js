@@ -38,5 +38,5 @@ function solve() {
 			break;
 	}
 
-	result.textContent = output;git s
+	result.textContent = output;
 }
