@@ -1,17 +1,17 @@
 function solve() {
-	//TODO
-	/* 
-  target textarea
-  split by .
-  check if every sentence has at least 1 char
+	// 1. select element
+	let textAreaElement = document.getElementById('input');
 
-  generate html Ps
-  use interpolation string `<p> {text} </p>`
+	// 2. extract text from text area
+	let text = textAreaElement.value;
 
-  append to div with ID "output"
-  */
+	// 3. split text by . to get sentences count and add '.' to the end because we need it in the output
+	let sentencesCount = text.split('.').map((x) => x + '.');
 
-	const textArea = Array.from(document.getElementById('input').value);
+	// 4. group sentences by 3 paragraphs
+	let paragraphSentences = [];
 
-	debugger;
+  
+
+	// 5. insert paragraphs into DOM
 }
