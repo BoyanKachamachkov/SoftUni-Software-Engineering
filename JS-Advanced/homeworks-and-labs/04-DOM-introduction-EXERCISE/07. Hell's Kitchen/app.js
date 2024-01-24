@@ -1,42 +1,30 @@
 function solve() {
 	document.querySelector('#btnSend').addEventListener('click', onClick);
 
+	// ! capture elements that we work with
+	const input = document.querySelector('#inputs>textarea');
+	const bestRestaurant = document.querySelector('#bestRestaurant>p');
+	const workersResult = document.querySelector('#workers>p');
+
 	function onClick() {
 		//   TODO:
 
-		// 1. select elements for input
-		const textAreaInput = document.querySelector('textarea');
+		const arr = JSON.parse(input.value);
 
-		// 2. extract/parase input data
-		let text = textAreaInput.value;
-		let inputArr = JSON.parse(text);
+		const restaurants = {};
 
-		// 3. add object to keep restaurant and workers data
-		let restaurants = {};
+		arr.forEach((element) => {
+			const [name, workers] = element.split(' - ');
+			console.log({ name });
+			console.log({ workers });
 
-		// 4. fill restaurant object with input data
-		for (let index = 0; index < inputArr.length; index++) {
-			let [restaurantName, workersString] = inputArr[index].split(' - ');
-			let workers = workersString.split(', ').map((w) => {
-				let [name, salary] = w.split(' ');
-				return { name, salary: Number(salary) };
-			});
+			const workersCollection = workers.split(', ');
 
-			if (!restaurants[restaurantName]) {
-				restaurants[restaurantName] = {
-					workers: [],
-					getAverageSalary: function () {
-						return (
-							this.workers.reduce((acc, el) => acc + el, 0) /
-							this.workers.length
-						);
-					},
-				};
+			const workersOutput = [];
+			for (const worker of workersCollection) {
+				const workersToken = worker.split(' ');
+				workersOutput.push();
 			}
-		}
-
-		// 5. calculate best restaurant
-
-		// 6. insert best restaurant and workers into DOM
+		});
 	}
 }
