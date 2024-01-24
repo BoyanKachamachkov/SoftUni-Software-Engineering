@@ -20,11 +20,40 @@ function solve() {
 
 			const workersCollection = workers.split(', ');
 
-			const workersOutput = [];
+			// ! workers dictionary collection
+			const workersDictCollection = [];
 			for (const worker of workersCollection) {
-				const workersToken = worker.split(' ');
-				workersOutput.push();
+				const [workerName, salary] = worker.split(' ');
+				workersDictCollection.push({ name: workerName, salary: salary });
 			}
+
+			if (restaurants[name]) {
+				workersDictCollection = workersDictCollection.concat(
+					restaurants[name].workers
+				);
+			}
+
+			workersDictCollection.sort((w1, w2) => w2.salary - w1.salary);
+
+			const bestSalary = workersDictCollection[0].salary;
+			const totalSalary = workersCollection.reduce(
+				(sum, w) => sum + w.salary,
+				0
+			);
+			const avgSalary = totalSalary / workersCollection.length;
+
+			restaurants[name] = {
+				workers: workersCollection,
+				averageSalary: avgSalary,
+				bestSalary,
+			};
 		});
+
+		let bestRestaurantResult = 0;
+		let bestRestaurant = undefined;
+
+		for (const name in restaurants) {
+			if(restaurants[name])
+		}
 	}
 }
