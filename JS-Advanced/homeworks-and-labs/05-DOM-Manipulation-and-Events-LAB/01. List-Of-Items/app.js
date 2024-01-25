@@ -11,6 +11,6 @@ function addItem() {
 	const ulEl = document.querySelector('#items');
 	ulEl.appendChild(newLiElement);
 
-    // ! clear input in the end
-	document.querySelector('#newItemText').value = ''
+	// ! clear input in the end
+	document.querySelector('#newItemText').value = '';
 }
