@@ -1,21 +1,27 @@
 function addItem() {
-	const input = document.querySelector('#newItemText').value;
-	const items = document.querySelector('#items');
+	const inputVal = document.getElementById('newItemText').value;
+	const ulEl = document.getElementById('items');
 
-	const newLi = document.createElement('li');
-	newLi.textContent = input;
+	// create new li el
+	let liEl = document.createElement('li');
+	liEl.textContent = inputVal;
 
-	let remove = document.createElement('a');
-	let linkText = document.createTextNode('[Delete]');
-
-	remove.appendChild(linkText);
-	remove.href = '#';
-	remove.addEventListener('click', deleteItem);
-
-	newLi.appendChild(remove);
-	items.appendChild(newLi);
+	// create new a el
+	let removeEl = document.createElement('a');
+	removeEl.href = '#';
+	let removeElText = document.createTextNode('[Delete]');
+	removeEl.appendChild(removeElText);
+	removeEl.addEventListener('click', deleteItem);
 
 	function deleteItem() {
-		newLi.remove();
+		liEl.remove();
 	}
+
+	// append to UL
+
+	liEl.appendChild(removeEl);
+	ulEl.appendChild(liEl);
+
+	// clear input
+	document.getElementById('newItemText').value = '';
 }
