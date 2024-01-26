@@ -25,3 +25,4 @@ function addItem() {
 	// clear input
 	document.getElementById('newItemText').value = '';
 }
+ 
