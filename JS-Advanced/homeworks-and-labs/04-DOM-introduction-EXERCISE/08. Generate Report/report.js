@@ -1,3 +1,5 @@
 function generateReport() {
-    //TODO
+	// upon click
+
+	const outputArea = document.querySelector('#output');
 }
