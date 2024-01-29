@@ -21,7 +21,8 @@ function solve() {
 		let liElement = document.createElement('li')
 		liElement.classList.add('flex')
 		let courseHeadingElement = document.createElement('h4')
-		// courseHeadingElement.textContent = lectureNameElement.value
+		courseHeadingElement.textContent = `${lectureNameElement.value} - ${formatDate(lectureDateElement.value)}`
+
 
 
 		// TODO: Create module
@@ -30,7 +31,7 @@ function solve() {
 
 	function formatDate(dateInput) {
 		let [date, time] = dateInput.split('T')
-		date = date.replace('-', '/')
+		date = date.replace(/-/g, '/')
 
 		return `${date} - ${time}`
 	}
