@@ -11,6 +11,27 @@ function solve() {
 		let lectureModuleElement = document.querySelector('select[name="lecture-module"]')
 
 
-		console.log(lectureModuleElement);
+		// valid input
+		if (!lectureNameElement.value || !lectureDateElement.value || lectureModuleElement == 'Select module') {
+			return;
+		}
+
+
+		// TODO Create lecture
+		let liElement = document.createElement('li')
+		liElement.classList.add('flex')
+		let courseHeadingElement = document.createElement('h4')
+		// courseHeadingElement.textContent = lectureNameElement.value
+
+
+		// TODO: Create module
 	});
+
+
+	function formatDate(dateInput) {
+		let [date, time] = dateInput.split('T')
+		date = date.replace('-', '/')
+
+		return `${date} - ${time}`
+	}
 }
