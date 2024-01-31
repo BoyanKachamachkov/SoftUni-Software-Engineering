@@ -1,18 +1,22 @@
-const name = document.getElementById('name')
+const nameInput = document.getElementById('name')
 const password = document.getElementById('password')
 const form = document.getElementById('form')
-const errorElement = 
+const errorMsgs = document.getElementById('errors')
+
+
 
 form.addEventListener('submit', (e) => {
-    e.preventDefault();
 
-    let messages = []
-    if (name.value === '' || name.value == null) {
-        messages.push('Name is required')
-    })
+    let errorMessages = []
+
+    if (nameInput.value === '' || nameInput.value === null) {
+        errorMessages.push('You need to type a name!')
+    }
+
+    if (errorMessages.length > 0) {
+        e.preventDefault();
+        errorMsgs.innerText = errorMessages.join(', ')
 
 
-if (messages.length > 0) {
-    e.preventDefault()
-}
+    }
 })

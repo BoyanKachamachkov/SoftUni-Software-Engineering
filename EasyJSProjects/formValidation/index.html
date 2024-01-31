@@ -3,17 +3,22 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Form</title>
+		<title>Validation Form</title>
 		<script defer src="script.js"></script>
 	</head>
 	<body>
-		<div id="error"></div>
-		<form action="/" method="get">
+		<!-- div for errors presentation -->
+		<div id="errors"></div>
+		<form id="form" action="#" method="get">
 			<div>
 				<label for="name">Name</label>
-				<input id="name" name="name" type="text" />
-				<input id="password" name="password" type="password" />
+				<input type="text" name="name" id="name" />
 			</div>
+			<div>
+				<label for="password">Password</label>
+				<input type="password" name="password" id="password" />
+			</div>
+
 			<button type="submit">Submit</button>
 		</form>
 	</body>
