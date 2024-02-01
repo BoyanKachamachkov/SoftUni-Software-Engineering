@@ -2,7 +2,8 @@ function sumRange(array, start, end) {
 
   // check arr
   if (!Array.isArray(array)) {
-    return NaN
+    // return NaN
+    throw new Error('Must give array')
   }
 
   if (start < 0) {
