@@ -1,12 +1,9 @@
 function add(a, b) {
-  return a + b
+  return a + b;
 }
 
 function product(a, b) {
-  return a * b
-};
-
-export {
-  add,
-  product
+  return a * b;
 }
+
+export { add, product };
