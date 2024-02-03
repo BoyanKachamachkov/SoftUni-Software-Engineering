@@ -19,5 +19,5 @@ function sumRange(array, start, end) {
   for (let i = start; i <= end; i++) {
     sum += Number(array[i])
   }
-  return sum
+  return sum;
 }
