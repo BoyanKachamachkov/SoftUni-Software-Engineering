@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>Click me</button>
+
+    <div id="main">
+      <span id="target">Hello</span>
+    </div>
+
+    <button id="btn2">Action</button>
+    <ul>
+      <li>First</li>
+      <li>Second</li>
+      <li>Third</li>
+      <li>Fourth</li>
+    </ul>
+
+    <script>
+      document.querySelector('button').addEventListener('click', () => {
+        const article = document.createElement('article');
+        article.textContent = 'Hello DOM';
+        const span = document.getElementById('target');
+        span.replaceWith(article);
+
+      document.getElementById('btn2').addEventListener('click', () => {
+        const li = document.createElement('li');
+        li.textContent = 'three and a half';
+
+        const list = document.querySelector('ul');
+        list.children[2].before(li);
+      });
+      });
+    </script>
+  </body>
+</html>
