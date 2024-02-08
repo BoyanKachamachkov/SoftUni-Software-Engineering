@@ -21,8 +21,10 @@
 })();
 
 let myArr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+let myArr2 = [1, 2, 3];
 console.log(myArr.last());
 console.log(myArr.skip(3));
 console.log(myArr.take(3));
 console.log(myArr.sum());
 console.log(myArr.average());
+
