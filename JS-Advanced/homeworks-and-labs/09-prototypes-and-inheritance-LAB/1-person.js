@@ -18,7 +18,6 @@ function Person(firstName, lastName) {
         this.lastName = matchResult.groups.lastName;
       }
       // pattern.exec(fullName);
-
     },
   });
 }
