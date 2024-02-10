@@ -1,5 +1,5 @@
 class OnlineShop {
-  warehouseSpace = 0;
+  warehouseSpace;
   products = [];
   sales = [];
 
@@ -8,27 +8,24 @@ class OnlineShop {
   }
 
   loadingStore(product, quantity, spaceRequired) {
-    // enough space or not?
-    if (this.warehouseSpace < spaceRequired) {
+    if (spaceRequired > this.warehouseSpace) {
       throw new Error('Not enough space in the warehouse.');
+    } else {
+      this.products.push({
+        product,
+        quantity,
+      });
+
+      this.warehouseSpace -= spaceRequired;
+
+      return `The ${product} has been successfully delivered in the warehouse.`;
     }
-
-    this.products.push({
-      product: product,
-      quantity: quantity,
-    });
-
-    // we took some space
-    this.warehouseSpace -= spaceRequired;
-
-    return `The ${product} has been successfully delivered in the warehouse.`;
   }
 
   quantityCheck(product, minimalQuantity) {
     const data = this.findProduct(product);
-
     if (!data) {
-      throw new Error(`There is no ${product} in the warehouse.`);
+      throw new Error(`There is no ${product} in the warehouse`);
     }
 
     if (minimalQuantity <= 0) {
@@ -36,36 +33,32 @@ class OnlineShop {
     }
 
     if (data.quantity >= minimalQuantity) {
-      return `You have enough from the product ${product}.`;
+      return `You have enough from product ${product}.`;
+    } else {
+      const difference = minimalQuantity - data.quantity;
+      data.quantity = minimalQuantity;
+      return `You added ${difference} more from the ${product} products.`;
     }
   }
 
-  sellProduct(product) {}
-
-  revision() {}
-
   findProduct(product) {
-    // is there such product already in our arr?
     const data = this.products.find((p) => p.product == product);
 
     if (!data) {
-      //if not truthy
-      throw new Error(`There is no ${product} in the warehouse.`);
+      throw new Error(`There is no ${product} in the warehouse`);
     }
+
     return data;
   }
 }
 
-// const myOnlineShop = new OnlineShop(500);
-// console.log(myOnlineShop.loadingStore('headphones', 10, 200));
-// console.log(myOnlineShop.loadingStore('laptop', 5, 200));
-// console.log(myOnlineShop.loadingStore('TV', 40, 500));
-
-
-const myOnlineShop = new OnlineShop(500)
+const myOnlineShop = new OnlineShop(500);
 console.log(myOnlineShop.loadingStore('headphones', 10, 200));
 console.log(myOnlineShop.loadingStore('laptop', 5, 200));
 
 console.log(myOnlineShop.quantityCheck('headphones', 10));
 console.log(myOnlineShop.quantityCheck('laptop', 10));
-console.log(myOnlineShop.quantityCheck('TV', 40,));
+
+console.log(myOnlineShop.sellProduct('headphones'));
+console.log(myOnlineShop.sellProduct('laptop'));
+console.log(myOnlineShop.sellProduct('keyboard'));
