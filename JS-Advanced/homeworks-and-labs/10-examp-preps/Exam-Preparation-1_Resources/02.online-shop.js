@@ -19,7 +19,7 @@ class OnlineShop {
   }
 
   quantityCheck(product, minimalQuantity) {
-    const data = this.products.find((p) => p.product == product);
+    const data = this.findProduct(product);
 
     if (!data) {
       throw new Error(`There is no ${product} in the warehouse.`);
@@ -38,7 +38,42 @@ class OnlineShop {
     }
   }
 
-  sellProduct(product) {}
+  sellProduct(product) {
+    const data = this.findProduct(product);
+
+    data.quantity--;
+    this.sales.push({
+      product,
+      quantity: 1,
+    });
+
+    return `The ${product} has been successfully sold.`;
+  }
+
+  findProduct(product) {
+    const data = this.products.find((p) => p.product == product);
+
+    if (!data) {
+      throw new Error(`There is no ${product} in the warehouse.`);
+    }
+
+    return data;
+  }
+
+  revision() {
+    if (this.sales.length == 0) {
+      throw new Error('There are no sales today!');
+    }
+
+    const result = [
+      `You sold ${sales} products today!`,
+      'Products in the warehouse:',
+    ];
+
+    for (let { product, quantity } of this.products) {
+      result.push(`${product}-${quantity} more left`);
+    }
+  }
 }
 
 const myOnlineShop = new OnlineShop(500);
