@@ -42,7 +42,7 @@ function solve() {
     const dateOut = inputs.dateOut.value;
     const peopleCount = Number(inputs.peopleCount.value);
     console.log(firstName, lastName, dateIn, dateOut, peopleCount);
-    
+
     // TODO! validate date in is before date out
     if (new Date(dateIn).getTime() >= new Date(dateOut).getTime()) {
       console.log('Check in is after check out!');
@@ -90,7 +90,11 @@ function solve() {
 
     // create btns & add classes
     const editBtn = e('button', 'Edit');
+
     editBtn.className = 'edit-btn';
+    editBtn.addEventListener('click', () =>
+      onEditClick(firstName, lastName, dateIn, dateOut, peopleCount)
+    );
     const continueBtn = e('button', 'Continue');
     continueBtn.className = 'continue-btn';
 
@@ -99,6 +103,21 @@ function solve() {
     element.appendChild(continueBtn);
 
     return element;
+  }
+
+  function onEditClick(firstName, lastName, dateIn, dateOut, peopleCount) {
+    // the other way around
+    inputs.firstName.value = firstName;
+    inputs.lastName.value = lastName;
+    inputs.dateIn.value = dateIn;
+    inputs.dateOut.value = dateOut;
+    inputs.peopleCount.value = peopleCount;
+
+    // delete element with infoList without params
+    infoList.replaceChildren();
+
+    // next btn re-enable
+    nextBtn.disabled = false;
   }
 
   //   factory element creation function
