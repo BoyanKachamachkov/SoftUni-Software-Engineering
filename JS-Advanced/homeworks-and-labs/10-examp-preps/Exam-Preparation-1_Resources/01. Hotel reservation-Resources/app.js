@@ -16,7 +16,10 @@ function solve() {
   };
 
   // закачаме функция на некст бутона
-  document.getElementById('next-btn').addEventListener('click', onNextClick);
+  const nextBtn = document.getElementById('next-btn');
+  nextBtn.addEventListener('click', onNextClick);
+
+  const infoList = document.querySelector('.info-list');
 
   function onNextClick(event) {
     event.preventDefault();
@@ -35,21 +38,77 @@ function solve() {
     // all input values content
     const firstName = inputs.firstName.value;
     const lastName = inputs.lastName.value;
-    const dateIn = new Date(inputs.dateIn.value);
-    const dateOut = new Date(inputs.dateOut.value);
+    const dateIn = inputs.dateIn.value;
+    const dateOut = inputs.dateOut.value;
     const peopleCount = Number(inputs.peopleCount.value);
     console.log(firstName, lastName, dateIn, dateOut, peopleCount);
+    
     // TODO! validate date in is before date out
-    if (dateIn.getTime() >= dateOut.getTime()) {
+    if (new Date(dateIn).getTime() >= new Date(dateOut).getTime()) {
       console.log('Check in is after check out!');
       return;
     }
 
     // clear fields in the end
-    inputs.firstName.value = '';
-    inputs.lastName.value = '';
-    inputs.dateIn.value = '';
-    inputs.dateOut.value = '';
-    inputs.peopleCount.value = '';
+    // inputs.firstName.value = '';
+    // inputs.lastName.value = '';
+    // inputs.dateIn.value = '';
+    // inputs.dateOut.value = '';
+    // inputs.peopleCount.value = '';
+
+    // option2 to clear all fields (selecting the whole form this way, as it does not have ID)
+    nextBtn.parentElement.reset();
+
+    // disable the next button at the end
+    nextBtn.disabled = true;
+
+    // prepare data for attachment by using F createPreview
+    const result = createPreview(
+      firstName,
+      lastName,
+      dateIn,
+      dateOut,
+      peopleCount
+    );
+
+    // attachData to
+    infoList.appendChild(result);
+  }
+
+  function createPreview(firstName, lastName, dateIn, dateOut, peopleCount) {
+    // Use element creation function to prepare format
+    const element = e('li');
+    element.className = 'reservation-content';
+    const article = e('article');
+
+    article.appendChild(e('h3', `Name: ${firstName} ${lastName}`));
+    article.appendChild(e('p', `From date: ${dateIn}`));
+    article.appendChild(e('p', `To date: ${dateOut}`));
+    article.appendChild(e('p', `For ${peopleCount} people`));
+
+    element.appendChild(article);
+
+    // create btns & add classes
+    const editBtn = e('button', 'Edit');
+    editBtn.className = 'edit-btn';
+    const continueBtn = e('button', 'Continue');
+    continueBtn.className = 'continue-btn';
+
+    // attach to li directly
+    element.appendChild(editBtn);
+    element.appendChild(continueBtn);
+
+    return element;
+  }
+
+  //   factory element creation function
+  function e(type, content) {
+    const element = document.createElement(type);
+
+    if (content) {
+      element.textContent = content;
+    }
+
+    return element;
   }
 }
