@@ -21,6 +21,7 @@ function solve() {
 
   const infoList = document.querySelector('.info-list');
   const confirmList = document.querySelector('.confirm-list');
+  const output = document.getElementById('verification');
 
   function onNextClick(event) {
     event.preventDefault();
@@ -142,7 +143,7 @@ function solve() {
     confirmList.appendChild(result);
 
     // clean
-    infoList.replaceChildren();
+    infoList.textContent = '';
   }
 
   function onEditClick(firstName, lastName, dateIn, dateOut, peopleCount) {
@@ -154,7 +155,7 @@ function solve() {
     inputs.peopleCount.value = peopleCount;
 
     // delete element with infoList without params
-    infoList.replaceChildren();
+    infoList.textContent = '';
 
     // next btn re-enable
     nextBtn.disabled = false;
@@ -179,18 +180,31 @@ function solve() {
     const confirmBtn = e('button', 'Confirm');
 
     confirmBtn.className = 'confirm-btn';
-    confirmBtn.addEventListener('click', () =>
-      onEditClick(firstName, lastName, dateIn, dateOut, peopleCount)
-    );
+    confirmBtn.addEventListener('click', onFinishClick.bind(null, true));
+
     const cancelBtn = e('button', 'Cancel');
     cancelBtn.className = 'cancel-btn';
-    // add cancel event list
+    cancelBtn.addEventListener('click', onFinishClick.bind(null, false));
 
     // attach to li directly
     element.appendChild(confirmBtn);
     element.appendChild(cancelBtn);
 
     return element;
+  }
+
+  function onFinishClick(confirmed) {
+    const className = confirmed
+      ? 'reservation-confirmed'
+      : 'reservation-cancelled';
+    const text = confirmed ? 'Confirmed.' : 'Cancelled.';
+
+    output.className = className;
+    output.textContent = text;
+
+    confirmList.textContent = '';
+
+    nextBtn.disabled = false;
   }
 
   //   factory element creation function
