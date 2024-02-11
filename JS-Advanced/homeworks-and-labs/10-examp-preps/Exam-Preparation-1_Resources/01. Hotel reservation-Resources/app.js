@@ -20,6 +20,7 @@ function solve() {
   nextBtn.addEventListener('click', onNextClick);
 
   const infoList = document.querySelector('.info-list');
+  const confirmList = document.querySelector('.confirm-list');
 
   function onNextClick(event) {
     event.preventDefault();
@@ -75,8 +76,7 @@ function solve() {
     infoList.appendChild(result);
   }
 
-  function createPreview(firstName, lastName, dateIn, dateOut, peopleCount) {
-    // Use element creation function to prepare format
+  function createInfo(firstName, lastName, dateIn, dateOut, peopleCount) {
     const element = e('li');
     element.className = 'reservation-content';
     const article = e('article');
@@ -88,6 +88,18 @@ function solve() {
 
     element.appendChild(article);
 
+    return element;
+  }
+
+  function createPreview(firstName, lastName, dateIn, dateOut, peopleCount) {
+    const element = createInfo(
+      firstName,
+      lastName,
+      dateIn,
+      dateOut,
+      peopleCount
+    );
+
     // create btns & add classes
     const editBtn = e('button', 'Edit');
 
@@ -97,12 +109,40 @@ function solve() {
     );
     const continueBtn = e('button', 'Continue');
     continueBtn.className = 'continue-btn';
+    const infoList = document.querySelector('.info-list');
+    continueBtn.addEventListener(
+      'click',
+      onContinueClick.bind(
+        null,
+        firstName,
+        lastName,
+        dateIn,
+        dateOut,
+        peopleCount
+      )
+    );
+    // todo add continue event list
 
     // attach to li directly
     element.appendChild(editBtn);
     element.appendChild(continueBtn);
 
     return element;
+  }
+
+  function onContinueClick(firstName, lastName, dateIn, dateOut, peopleCount) {
+    const result = createConfirmation(
+      firstName,
+      lastName,
+      dateIn,
+      dateOut,
+      peopleCount
+    );
+
+    confirmList.appendChild(result);
+
+    // clean
+    infoList.replaceChildren();
   }
 
   function onEditClick(firstName, lastName, dateIn, dateOut, peopleCount) {
@@ -118,6 +158,39 @@ function solve() {
 
     // next btn re-enable
     nextBtn.disabled = false;
+  }
+
+  function createConfirmation(
+    firstName,
+    lastName,
+    dateIn,
+    dateOut,
+    peopleCount
+  ) {
+    const element = createInfo(
+      firstName,
+      lastName,
+      dateIn,
+      dateOut,
+      peopleCount
+    );
+
+    // create btns & add classes
+    const confirmBtn = e('button', 'Confirm');
+
+    confirmBtn.className = 'confirm-btn';
+    confirmBtn.addEventListener('click', () =>
+      onEditClick(firstName, lastName, dateIn, dateOut, peopleCount)
+    );
+    const cancelBtn = e('button', 'Cancel');
+    cancelBtn.className = 'cancel-btn';
+    // add cancel event list
+
+    // attach to li directly
+    element.appendChild(confirmBtn);
+    element.appendChild(cancelBtn);
+
+    return element;
   }
 
   //   factory element creation function
