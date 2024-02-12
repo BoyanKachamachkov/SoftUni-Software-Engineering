@@ -12,7 +12,6 @@ class WineSelection {
       throw new Error('Not enough space in the cellar.');
     }
 
-    this.space--;
     let res = {
       wineName,
       wineType,
@@ -56,6 +55,7 @@ class WineSelection {
   }
 
   cellarRevision(wineType) {
+    // if we have parameter
     if (wineType) {
       let currentTarget = this.wines.find(x => x.wineType === wineType);
 
@@ -67,8 +67,9 @@ class WineSelection {
       return `${currentTarget.wineName} > ${currentTarget.wineType} - ${currentTarget.paid ? 'Has Paid' : 'Not Paid'}.`;
     }
 
-    let buff = `You have space for ${this.space} bottles more.\n`;
-    buff += `You paid ${this.bill} for the wine.\n`;
+    // if we dont have param
+    let buff = `You have space for ${this.space - this.wines.length} bottles more.\n`;
+    buff += `You paid ${this.bill}$ for the wine.\n`;
     this.wines.sort((a, b) => a.wineName.localeCompare(b.wineName)).forEach(x =>
       buff += `${x.wineName} > ${x.wineType} - ${x.paid ? 'Has Paid' : 'Not Paid'}.\n`);
 
@@ -80,7 +81,6 @@ class WineSelection {
 
 
 // const selection = new WineSelection(2);
-// console.log(selection.reserveABottle('Sauvignon Blanc Marlborough', 'White', 50));
 // console.log(selection.reserveABottle('Sauvignon Blanc Marlborough', 'White', 50));
 // console.log(selection.reserveABottle('Cabernet Sauvignon Napa Valley', 'Red', 120));
 // console.log(selection.reserveABottle('Bodegas Godelia Mencía', 'Rose', 144));
