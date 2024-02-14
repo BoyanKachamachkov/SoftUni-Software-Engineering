@@ -59,7 +59,7 @@ function solve() {
     );
 
 
-    // assign the newly created LI tree to info-list (reservation field)
+    // assign the newly created LI tree to info-list (reservation info)
     infoList.appendChild(result);
   }
 
@@ -77,15 +77,30 @@ function solve() {
 
     const editBtn = e('button', 'Edit');
     editBtn.className = 'edit-btn';
+    editBtn.addEventListener('click', () => onEditClick(firstName, lastName, dateIn, dateOut, peopleCount));
+
+
     const continueBtn = e('button', 'Continue');
     continueBtn.className = 'continue-btn';
 
-    article.appendChild(editBtn);
-    article.appendChild(continueBtn);
+    element.appendChild(editBtn);
+    element.appendChild(continueBtn);
 
     // our new tree of li element is fully created
     return element;
 
+  }
+
+  function onEditClick(firstName, lastName, dateIn, dateOut, peopleCount) {
+
+    inputs.firstName.value = firstName;
+    inputs.lastName.value = lastName;
+    inputs.dateIn.value = dateIn;
+    inputs.dateOut.value = dateOut;
+    inputs.peopleCount.value = peopleCount;
+
+    infoList.replaceChildren();
+    nextBtn.disabled = false;
   }
 
   // factory element creator f
