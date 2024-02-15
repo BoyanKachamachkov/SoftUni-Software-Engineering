@@ -1,4 +1,4 @@
-const movieTheater = {
+export const movieTheater = {
   ageRestrictions(movieRating) {
     switch (movieRating) {
       case "G":
