@@ -1,5 +1,5 @@
 import { movieTheater } from "./03. Movie Theater.js";
-import { assert, expect } from 'chai';
+import { expect } from 'chai';
 
 describe('Suit tests', () => {
   it('test ageRestrictions', () => {
@@ -17,5 +17,18 @@ describe('Suit tests', () => {
     expect(() => movieTheater.moneySpent('1', ['Nachos'], ['Water'])).to.throw('Invalid input');
     expect(() => movieTheater.moneySpent(1, 'Nachos', ['Water'])).to.throw('Invalid input');
     expect(() => movieTheater.moneySpent(1, ['Nachos'], '2')).to.throw('Invalid input');
+  });
+
+
+  // A function that accepts array and number.
+  it('test reservation funcionality', () => {
+    expect(() => movieTheater.reservation('1', 1)).to.throw('Invalid input');
+    expect(() => movieTheater.reservation([2], '1')).to.throw('Invalid input');
+
+    expect(movieTheater.reservation([
+      { rowNumber: 1, freeSeats: 2 },
+      { rowNumber: 2, freeSeats: 2 },
+    ], 1)).to.equal(2);
+
   });
 });
