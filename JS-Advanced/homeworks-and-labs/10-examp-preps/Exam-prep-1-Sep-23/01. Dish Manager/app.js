@@ -50,9 +50,42 @@ function solve() {
 
     inProgressRef.appendChild(liEl);
 
+    inProgressCountRef.textContent++;
+
+    // reset form
+    document.querySelector('form').reset();
+
+    editBtn.addEventListener('click', (event) => {
+      event.preventDefault();
 
 
+      firstNameRef.value = firstName;
+      lastNameRef.value = lastName;
+      ageRef.value = age;
+      genderRef.value = gender;
+      dishDescRef.value = dishDesc;
 
+      inProgressCountRef.textContent--;
+      // clean the li el
+      liEl.remove();
+    });
+
+    completeBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      editBtn.remove();
+      completeBtn.remove();
+      finishedRef.appendChild(liEl);
+      inProgressCountRef.textContent--;
+
+    });
+
+
+    clearBtnRef.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      finishedRef.textContent = '';
+    });
 
 
   });
