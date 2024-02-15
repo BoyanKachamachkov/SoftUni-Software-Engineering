@@ -13,6 +13,7 @@ function solve() {
   };
 
   const infoList = document.querySelector('.info-list');
+  const confirmList = document.querySelector('.confirm-list');
 
 
   const nextBtn = document.getElementById('next-btn');
@@ -64,6 +65,44 @@ function solve() {
   }
 
   function createPreview(firstName, lastName, dateIn, dateOut, peopleCount) {
+    const element = createInfo(firstName, lastName, dateIn, dateOut, peopleCount);
+
+    const editBtn = e('button', 'Edit');
+    editBtn.className = 'edit-btn';
+    editBtn.addEventListener('click', () => onEditClick(firstName, lastName, dateIn, dateOut, peopleCount));
+
+
+    const continueBtn = e('button', 'Continue');
+    continueBtn.className = 'continue-btn';
+    continueBtn.addEventListener('click', () => onContinueClick(firstName, lastName, dateIn, dateOut, peopleCount));
+    // TODO add event listener for continue
+
+    element.appendChild(editBtn);
+    element.appendChild(continueBtn);
+
+    // our new tree of li element is fully created
+    return element;
+
+  }
+
+  function onContinueClick(firstName, lastName, dateIn, dateOut, peopleCount) {
+    const result = createConfirmation(firstName, lastName, dateIn, dateOut, peopleCount);
+  }
+
+  function onEditClick(firstName, lastName, dateIn, dateOut, peopleCount) {
+
+    inputs.firstName.value = firstName;
+    inputs.lastName.value = lastName;
+    inputs.dateIn.value = dateIn;
+    inputs.dateOut.value = dateOut;
+    inputs.peopleCount.value = peopleCount;
+
+    // does not work in judge
+    infoList.replaceChildren();
+    nextBtn.disabled = false;
+  }
+
+  function createInfo(firstName, lastName, dateIn, dateOut, peopleCount) {
     const element = e('li');
     element.className = 'reservation-content';
 
@@ -75,33 +114,28 @@ function solve() {
 
     element.appendChild(article);
 
-    const editBtn = e('button', 'Edit');
-    editBtn.className = 'edit-btn';
-    editBtn.addEventListener('click', () => onEditClick(firstName, lastName, dateIn, dateOut, peopleCount));
+    return element;
+  }
+
+  function createConfirmation(firstName, lastName, dateIn, dateOut, peopleCount) {
+    const element = createInfo(firstName, lastName, dateIn, dateOut, peopleCount);
 
 
-    const continueBtn = e('button', 'Continue');
-    continueBtn.className = 'continue-btn';
+    const confirmBtn = e('button', 'Confirm');
+    confirmBtn.className = 'confirm-btn';
+    // confirmBtn.addEventListener('click', () => onEditClick(firstName, lastName, dateIn, dateOut, peopleCount));
 
-    element.appendChild(editBtn);
-    element.appendChild(continueBtn);
+
+    const cancelBtn = e('button', 'Cancel');
+    cancelBtn.className = 'cancel-btn';
+    // TODO cancel event listener
+
+    element.appendChild(confirmBtn);
+    element.appendChild(cancelBtn);
 
     // our new tree of li element is fully created
     return element;
-
-  }
-
-  function onEditClick(firstName, lastName, dateIn, dateOut, peopleCount) {
-
-    inputs.firstName.value = firstName;
-    inputs.lastName.value = lastName;
-    inputs.dateIn.value = dateIn;
-    inputs.dateOut.value = dateOut;
-    inputs.peopleCount.value = peopleCount;
-
-    infoList.replaceChildren();
-    nextBtn.disabled = false;
-  }
+  };
 
   // factory element creator f
   function e(type, content) {
