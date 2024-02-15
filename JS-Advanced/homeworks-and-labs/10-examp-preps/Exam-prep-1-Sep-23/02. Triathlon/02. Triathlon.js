@@ -37,7 +37,15 @@ class Triathlon {
     }
   }
 
-  rewarding(participant) { }
+  rewarding(participant) {
+
+    let completed = this.lisftOfFinalists.some(finalist => finalist.name === participant);
+    if (!completed) {
+      return `${participant} is not in the current finalists list`;
+    } else {
+      return `${participant} was rewarded with a trophy for his performance`;
+    }
+  }
 
   showRecord(criteria) { }
 
@@ -51,18 +59,19 @@ class Triathlon {
 // console.log(contest.addParticipant("Peter", "male"));
 
 
+// const contest = new Triathlon("Dynamos");
+// console.log(contest.addParticipant("Peter", "male"));
+// console.log(contest.addParticipant("Sasha", "female"));
+// console.log(contest.addParticipant("George", "male"));
+// console.log(contest.completeness("Peter", 100));
+// console.log(contest.completeness("Sasha", 70));
+// console.log(contest.completeness("George", 20));
+
+
 const contest = new Triathlon("Dynamos");
 console.log(contest.addParticipant("Peter", "male"));
 console.log(contest.addParticipant("Sasha", "female"));
-console.log(contest.addParticipant("George", "male"));
 console.log(contest.completeness("Peter", 100));
 console.log(contest.completeness("Sasha", 70));
-console.log(contest.completeness("George", 20));
-
-
-// A new participant has been added - Peter
-// A new participant has been added - Sasha
-// A new participant has been added - George
-// Congratulations, Peter finished the whole competition
-// Sasha could only complete 2 of the disciplines
-// Uncaught Error: George is not well prepared and cannot finish any discipline
+console.log(contest.rewarding("Peter"));
+console.log(contest.rewarding("Sasha"));
