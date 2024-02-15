@@ -2,7 +2,7 @@ class Triathlon {
   constructor(name) {
     this.name = name;
     this.participants = {};
-    this.lisftOfFinalists = [];
+    this.finalists = [];
 
   };
   addParticipant(participant, gender) {
@@ -28,7 +28,7 @@ class Triathlon {
 
     } else {
       let participantGender = this.participants[participant];
-      this.lisftOfFinalists.push({
+      this.finalists.push({
         name: participant,
         gender: participantGender,
       });
@@ -39,7 +39,7 @@ class Triathlon {
 
   rewarding(participant) {
 
-    let completed = this.lisftOfFinalists.some(finalist => finalist.name === participant);
+    let completed = this.finalists.some(finalist => finalist.name === participant);
     if (!completed) {
       return `${participant} is not in the current finalists list`;
     } else {
@@ -47,31 +47,46 @@ class Triathlon {
     }
   }
 
-  showRecord(criteria) { }
+  showRecord(criteria) {
+
+    if (this.finalists.length == 0) {
+      return `There are no finalists in this competition`;
+    }
+
+    if (criteria === "male" || criteria === "female") {
+      let finalistsByGender = this.finalists.filter(
+        (finalist) => finalist.gender === criteria
+      );
+      if (finalistsByGender.length === 0) {
+        return `There are no ${gender} finalists`;
+      } else {
+        return `${finalistsByGender[0].name} is the first ${criteria} that finished the ${this.name} triathlon`;
+      }
+
+    } else if (criteria === "all") {
+      let sortedFinalists = this.finalists.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+      let result = [`List of all ${this.name} finalists:`];
+      sortedFinalists.forEach((finalist) => {
+        result.push(`${finalist.name}`);
+      });
+
+      return result.join("\n");
+    }
 
 
+  }
 }
 
-
 // const contest = new Triathlon("Dynamos");
-// console.log(contest.addParticipant("Peter", "male"));
-// console.log(contest.addParticipant("Sasha", "female"));
-// console.log(contest.addParticipant("Peter", "male"));
-
-
-// const contest = new Triathlon("Dynamos");
-// console.log(contest.addParticipant("Peter", "male"));
-// console.log(contest.addParticipant("Sasha", "female"));
-// console.log(contest.addParticipant("George", "male"));
-// console.log(contest.completeness("Peter", 100));
-// console.log(contest.completeness("Sasha", 70));
-// console.log(contest.completeness("George", 20));
-
+// console.log(contest.showRecord("all"));
 
 const contest = new Triathlon("Dynamos");
 console.log(contest.addParticipant("Peter", "male"));
 console.log(contest.addParticipant("Sasha", "female"));
 console.log(contest.completeness("Peter", 100));
-console.log(contest.completeness("Sasha", 70));
+console.log(contest.completeness("Sasha", 90));
 console.log(contest.rewarding("Peter"));
 console.log(contest.rewarding("Sasha"));
+console.log(contest.showRecord("male"));
