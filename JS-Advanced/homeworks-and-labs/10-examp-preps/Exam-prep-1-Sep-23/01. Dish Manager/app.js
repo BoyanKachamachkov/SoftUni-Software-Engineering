@@ -10,16 +10,62 @@ function solve() {
   const dishDescRef = document.getElementById('task');
   const submitBtnRef = document.getElementById('form-btn');
 
-  submitBtnRef.addEventListener('click', (e) => {
-    e.preventDefault();
+  const inProgressRef = document.getElementById('in-progress');
+  const inProgressCountRef = document.getElementById('progress-count');
+
+  const finishedRef = document.getElementById('finished');
+  const clearBtnRef = document.getElementById('clear-btn');
+
+  submitBtnRef.addEventListener('click', (event) => {
+
+    event.preventDefault();
 
     const firstName = firstNameRef.value;
     const lastName = lastNameRef.value;
     const age = ageRef.value;
     const gender = genderRef.value;
     const dishDesc = dishDescRef.value;
+
+    if (!firstName || !lastName || !age || !gender || !dishDesc) {
+      return;
+    }
+
+    const liEl = e('li');
+    liEl.className = 'each-line';
+
+    const articleEl = e('article');
+    articleEl.appendChild(e('h4', `${firstName} ${lastName}`));
+    articleEl.appendChild(e('p', `${gender}, ${age}`));
+    articleEl.appendChild(e('p', `Dish description: ${dishDesc}`));
+    liEl.appendChild(articleEl);
+
+    const editBtn = e('button', 'Edit');
+    editBtn.className = 'edit-btn';
+
+    const completeBtn = e('button', 'Mark as complete');
+    completeBtn.className = 'complete-btn';
+
+    liEl.appendChild(editBtn);
+    liEl.appendChild(completeBtn);
+
+    inProgressRef.appendChild(liEl);
+
+
+
+
+
+
   });
 
+  function e(type, content) {
+    const element = document.createElement(type);
+
+    if (content) {
+      element.textContent = content;
+
+    }
+    return element;
+  }
 
 
 }
