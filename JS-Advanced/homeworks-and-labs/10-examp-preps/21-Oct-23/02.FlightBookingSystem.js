@@ -48,6 +48,23 @@ class FlightBookingSystem {
     }
 
   }
+
+  cancelBooking(passengerName, flightNumber) {
+
+    let currentBooking = this.bookings.find(booking => booking.flightNumber === flightNumber && booking.passengerName === passengerName);
+
+    if (!currentBooking) {
+      throw new Error(`Booking for passenger ${passengerName} on flight ${flightNumber} not found.`);
+
+
+    } else {
+
+
+      this.bookingsCount--;
+
+      return `Booking for passenger ${passengerName} on flight ${flightNumber} is cancelled.`;
+    }
+  }
 }
 
 
@@ -56,4 +73,4 @@ console.log(system.addFlight("AA101", "Los Angeles", "09:00 AM", 250));
 console.log(system.addFlight("BB202", "New York", "10:30 AM", 180));
 console.log(system.bookFlight("Alice", "AA101"));
 console.log(system.bookFlight("Bob", "BB202"));
-console.log(system.bookFlight("Charlie", "CC303"));
+console.log(system.cancelBooking("Alice", "AA101"));
