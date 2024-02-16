@@ -17,13 +17,39 @@ describe('Test suits', () => {
   });
 
 
-  // it('canAffordProduct functionality', () => {
+  // number (productp price) , number (acc balance)
+  it('canAffordProduct functionality', () => {
 
-  // });
+    expect(() => onlineStore.canAffordProduct('1', 1)).to.throw('Invalid input.');
+    expect(() => onlineStore.canAffordProduct(1, '1')).to.throw('Invalid input.');
+    expect(onlineStore.canAffordProduct(1, 1)).to.equal('Product purchased. Your remaining balance is $0.');
+    expect(onlineStore.canAffordProduct(2, 1)).to.equal('You don\'t have sufficient funds to buy this product.');
 
 
 
-  // it('etRecommendedProducts functionality', () => {
+  });
 
-  // });
+
+  // array of objects (all products) and a STRING (category)
+  it('getRecommendedProducts functionality', () => {
+
+    expect(() => onlineStore.getRecommendedProducts('1', 'Beer')).to.throw('Invalid input.');
+    expect(() => onlineStore.getRecommendedProducts([{ name: 'Beer', category: 'Alcohol' }], 1)).to.throw('Invalid input.');
+
+    expect(onlineStore.getRecommendedProducts([
+      { name: 'Beer', category: 'Alcohol' },
+      { name: 'Whiskey', category: 'Alcohol' },
+    ]
+      , 'Alcohol')).to.equal(
+        `Recommended products in the Alcohol category: Beer, Whiskey`);
+
+    expect(onlineStore.getRecommendedProducts([
+      { name: 'Beer', category: 'Alcohol' },
+      { name: 'Whiskey', category: 'Alcohol' },
+    ]
+      , 'Photography')).to.equal(
+        `Sorry, we currently have no recommended products in the Photography category.`);
+
+
+  });
 });
