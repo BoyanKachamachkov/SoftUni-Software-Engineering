@@ -30,5 +30,5 @@ describe('Suit tests', () => {
       { rowNumber: 2, freeSeats: 2 },
     ], 1)).to.equal(2);
 
-  });
+  }); 
 });
