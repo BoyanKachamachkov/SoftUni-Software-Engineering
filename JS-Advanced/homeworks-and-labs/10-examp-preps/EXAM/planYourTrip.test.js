@@ -59,26 +59,9 @@ describe('Suit tests', () => {
     expect(() => planYourTrip.estimateExpenses(0, 0)).to.throw("Invalid Information!");
     expect(() => planYourTrip.estimateExpenses('1', '1')).to.throw("Invalid Information!");
     expect(() => planYourTrip.estimateExpenses('-1', '-1')).to.throw("Invalid Information!");
-    expect(() => planYourTrip.estimateExpenses(-1, -1)).to.throw("Invalid Information!");
+    expect(() => planYourTrip.estimateExpenses(-1, -1)).to.throw("Invalid Information!"); 78;
 
 
   });
 
 });
-
-/* estimateExpenses(distanceInKilometers, fuelCostPerLiter) {
-    let totalCost = (distanceInKilometers * fuelCostPerLiter).toFixed(2);
-
-    if (
-      typeof distanceInKilometers !== "number" ||
-      distanceInKilometers <= 0 ||
-      typeof fuelCostPerLiter !== "number" ||
-      fuelCostPerLiter <= 0
-    ) {
-      throw new Error("Invalid Information!");
-    } else if (totalCost <= 500) {
-      return `The trip is budget-friendly, estimated cost is $${totalCost}.`;
-    } else {
-      return `The estimated cost for the trip is $${totalCost}, plan accordingly.`;
-    }
-  }, */
