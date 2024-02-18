@@ -1,4 +1,4 @@
-<a href="https://softuni.bg/trainings/courses" rel="Courses"><img src="https://softuni.bg/content/images/svg-logos/software-university-logo.svg?sanitize=true" alt="Software University Logo" height="100"></a>
+<a href="https://softuni.bg/curriculum" rel="Courses"><img src="https://softuni.bg/content/images/svg-logos/software-university-logo.svg?sanitize=true" alt="Software University Logo"></a>
 <h2> My Courses & Certificates </h2>
 
 <table>
