@@ -46,11 +46,17 @@
 
         .then(res => res.json())
         .then(data => {
+          saveToken(data.accessToken);
           console.log(data);
         })
         .catch(err => {
           console.error(err);
         });
+
+      function saveToken(token) {
+
+        localStorage.setItem('auth_token', token);
+      }
 
 
 
