@@ -24,16 +24,19 @@ function displayCommits(data) {
 }
 
 function onError(err) {
-    console.error(err);
+    const li = document.createElement('li');
+    li.textContent = `Error: 404 (Not Found)`;
+
+    list.appendChild(li);
 }
 
 // •	In case of success, for each entry add a list item (<li>) in the unordered list (<ul>) with id "commits" with text in the following format:
 // "<commit.author.name>: <commit.message>" 
 
-function createListCommitItem(entry) {
+function createListCommitItem({ commit }) {
 
     const item = document.createElement('li');
-    item.textContent = `${entry.commit.author.name}: ${entry.commit.message}`;
+    item.textContent = `${commit.author.name}: ${commit.message}`;
 
     return item;
 
