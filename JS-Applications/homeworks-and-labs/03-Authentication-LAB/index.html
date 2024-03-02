@@ -82,7 +82,7 @@
 
       function saveToken(token) {
 
-        // session storage = persist during refreshes
+        // session storage = persist during refreshes (if you close the tab, it deletes)
         // local storage = persist through restarts etc.
         localStorage.setItem('auth_token', token);
       }
