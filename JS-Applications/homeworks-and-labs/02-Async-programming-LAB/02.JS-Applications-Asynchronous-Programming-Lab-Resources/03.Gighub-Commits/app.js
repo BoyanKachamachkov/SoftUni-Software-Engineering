@@ -19,10 +19,22 @@ function onHeaders(response) {
 }
 
 function displayCommits(data) {
+    list.replaceChildren(...data.map(createListCommitItem));
 
-    console.log(data);
 }
 
 function onError(err) {
     console.error(err);
+}
+
+// •	In case of success, for each entry add a list item (<li>) in the unordered list (<ul>) with id "commits" with text in the following format:
+// "<commit.author.name>: <commit.message>" 
+
+function createListCommitItem(entry) {
+
+    const item = document.createElement('li');
+    item.textContent = `${entry.commit.author.name}: ${entry.commit.message}`;
+
+    return item;
+
 }
