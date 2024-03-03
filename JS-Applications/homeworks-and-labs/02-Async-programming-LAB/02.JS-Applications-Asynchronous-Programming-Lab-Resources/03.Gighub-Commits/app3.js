@@ -1,6 +1,5 @@
 const list = document.getElementById('commits');
 
-
 async function loadCommits() {
   const username = document.getElementById('username').value;
   const repo = document.getElementById('repo').value;
@@ -14,6 +13,8 @@ async function loadCommits() {
 
     const data = await response.json();
 
+    list.replaceChildren(...data.map(createLiElement));
+
   } catch (error) {
     const newLi = document.createElement('li');
     newLi.textContent = error;
@@ -21,10 +22,7 @@ async function loadCommits() {
   }
 
 }
-
-
 function createLiElement({ commit }) {
-
   const li = document.createElement('li');
   li.textContent = `${commit.author.name}: ${commit.message}`;
 
