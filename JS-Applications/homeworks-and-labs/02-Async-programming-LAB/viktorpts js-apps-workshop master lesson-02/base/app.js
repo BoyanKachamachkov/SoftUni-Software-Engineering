@@ -8,7 +8,7 @@ async function start() {
   main.replaceChildren(...Object.values(recipes).map(createCard));
 }
 
-function createCard({ name, img }) {
+function createCard({ _id, name, img }) {
 
   const element = document.createElement('article');
   element.className = 'preview';
@@ -20,10 +20,17 @@ function createCard({ name, img }) {
       <img src="${img}">
     </div>`;
 
+  element.addEventListener('click', () => showDetails(_id, element));
+
   return element;
 
 }
 
+async function showDetails(id, node) {
+  const details = await getDetails(id);
+  console.log(details);
+
+}
 async function getRecipes() {
   const url = 'http://localhost:3030/jsonstore/cookbook/recipes';
 
