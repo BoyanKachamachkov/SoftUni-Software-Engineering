@@ -13,14 +13,20 @@ async function loadCommits() {
     }
 
     const data = await response.json();
-    // to do
 
   } catch (error) {
-    /* •	In case of an error, add a single list item (<li>) with text in the following format:
-    "Error: <error.status> (Not Found)"
-     */
-    
-
+    const newLi = document.createElement('li');
+    newLi.textContent = error;
+    list.replaceChildren(newLi);
   }
 
+}
+
+
+function createLiElement({ commit }) {
+
+  const li = document.createElement('li');
+  li.textContent = `${commit.author.name}: ${commit.message}`;
+
+  return li;
 }
