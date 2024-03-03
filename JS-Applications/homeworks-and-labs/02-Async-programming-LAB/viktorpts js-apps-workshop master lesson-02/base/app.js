@@ -26,9 +26,27 @@ function createCard({ _id, name, img }) {
 
 }
 
-async function showDetails(id, node) {
+async function showDetails(id, element) {
   const details = await getDetails(id);
-  console.log(details);
+
+  element.innerHTML = `
+  <h2>Title</h2>
+  <div class="band">
+      <div class="thumb">
+          <img src="${details.img}">
+      </div>
+      <div class="ingredients">
+          <h3>Ingredients:</h3>
+          <ul>
+            ${details.ingredients.map(i => `<li>${i}</li>`).join('\n')}
+          </ul>
+      </div>
+  </div>
+  <div class="description">
+      <h3>Preparation:</h3>
+      ${details.steps.map(s => `<p>${s}</p>`).join('\n')}
+  </div>
+`;
 
 }
 async function getRecipes() {
