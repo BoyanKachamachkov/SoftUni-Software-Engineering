@@ -11,6 +11,7 @@ function getInfo() {
         .then(stopInfo => {
             stopName.textContent = stopInfo.name;
 
+            Array.from(busesUl.querySelectorAll('li')).forEach(li => li.remove());
             Object.keys(stopInfo.buses).forEach(bus => {
 
                 let li = document.createElement('li');
@@ -19,7 +20,10 @@ function getInfo() {
             });
         })
         .catch(err => {
-            throw err;
+
+            stopName.textContent = 'Error';
+            Array.from(busesUl.querySelectorAll('li')).forEach(li => li.remove());
+
         });
 
 }
