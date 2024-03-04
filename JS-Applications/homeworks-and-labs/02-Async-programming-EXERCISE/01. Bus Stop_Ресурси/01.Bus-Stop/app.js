@@ -1,27 +1,25 @@
-async function getInfo() {
-    const id = document.getElementById('stopId').value;
+function getInfo() {
+
+    const stopId = document.getElementById('stopId').value;
     const stopName = document.getElementById('stopName');
-    const url = `http://localhost:3030/jsonstore/bus/businfo/${id} `;
+    const busesUl = document.getElementById('buses');
 
+    const url = `http://localhost:3030/jsonstore/bus/businfo/${stopId}`;
 
-    try {
-        const response = await fetch(url);
-        const data = await response.json();
-        debugger;
+    fetch(url)
+        .then(res => res.json())
+        .then(stopInfo => {
+            stopName.textContent = stopInfo.name;
 
-        data.buses.forEach((bus) => {
-            const li = document.createElement('li');
-            li.textContent = `Bus ${bus} arrives in ${bus[bus]} minutes`;
-            stopName.append(li);
-            stopName.textContent = data.name;
+            Object.keys(stopInfo.buses).forEach(bus => {
 
+                let li = document.createElement('li');
+                li.textContent = `Bus ${bus} arrives in ${stopInfo.buses[bus]} minutes`;
+                busesUl.appendChild(li);
+            });
+        })
+        .catch(err => {
+            throw err;
         });
-
-
-    } catch (error) {
-
-        throw error;
-    }
-
 
 }
