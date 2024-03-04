@@ -23,7 +23,7 @@ function getInfo() {
 
             stopName.textContent = 'Error';
             Array.from(busesUl.querySelectorAll('li')).forEach(li => li.remove());
-
+            throw new Error('Error');
         });
 
 }
