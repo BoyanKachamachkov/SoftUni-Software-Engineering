@@ -22,23 +22,40 @@ function attachEvents() {
             .then(locations => {
                 let locationName = locationInput.value;
                 let location = locations.find(x => x.name === locationName);
-                console.log(location);
 
                 return fetch(`http://localhost:3030/jsonstore/forecaster/today/${location.code}`)
                     .then(body => body.json())
-                    .then(currentWeatherReport => ({ code, currentWeatherReport }));
+                    .then(currentWeatherReport => ({ code: location.code, currentWeatherReport }));
             })
             .then(({ code, currentWeatherReport }) => {
                 let htmlReport = createCurrentWeatherElement(currentWeatherReport);
                 let currentForecastContainer = document.querySelector('#current');
                 currentForecastContainer.appendChild(htmlReport);
 
-                return fetch(`http://localhost:3030/jsonstore/forecaster/today/${code}`);
+                return fetch(`http://localhost:3030/jsonstore/forecaster/upcoming/${code}`);
             })
             .then(body => body.json())
             .then(upcomingWeatherReport => {
+                console.log(upcomingWeatherReport);
 
             });
+
+        function createUpcomingWeatherElement(weatherReport) {
+            let forecastInfoDiv = document.createElement('div');
+            forecastInfoDiv.classList.add('forecast-info');
+
+            let upcomingSpan = document.createElement('span');
+            upcomingSpan.classList.add('upcoming');
+
+            let symbolSpan = document.createElement('span');
+            symbolSpan.classList.add('symbol');
+            symbolSpan.textContent = conditions[weatherReport.forecast.condition]();
+
+
+
+        };
+
+        function createDayReport() { }
 
         function createCurrentWeatherElement(weatherReport) {
             let forecastsDiv = document.createElement('div');
