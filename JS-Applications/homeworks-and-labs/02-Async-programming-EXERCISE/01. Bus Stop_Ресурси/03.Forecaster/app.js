@@ -53,10 +53,10 @@ function attachEvents() {
             let day3html = createDayReport(weatherReport.forecast[2]);
 
 
-            forecastsDiv.appendChild(day1html);
-            forecastsDiv.appendChild(day2html);
-            forecastsDiv.appendChild(day3html);
-            return forecastsDiv;
+            forecastInfoDiv.appendChild(day1html);
+            forecastInfoDiv.appendChild(day2html);
+            forecastInfoDiv.appendChild(day3html);
+            return forecastInfoDiv;
 
         };
 
