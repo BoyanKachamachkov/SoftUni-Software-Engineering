@@ -24,13 +24,20 @@ function attachEvents() {
                 let location = locations.find(x => x.name === locationName);
                 console.log(location);
 
-                return fetch(`http://localhost:3030/jsonstore/forecaster/today/${location.code}`);
+                return fetch(`http://localhost:3030/jsonstore/forecaster/today/${location.code}`)
+                    .then(body => body.json())
+                    .then(currentWeatherReport => ({ code, currentWeatherReport }));
             })
-            .then(body => body.json())
-            .then(currentWeatherReport => {
+            .then(({ code, currentWeatherReport }) => {
                 let htmlReport = createCurrentWeatherElement(currentWeatherReport);
                 let currentForecastContainer = document.querySelector('#current');
                 currentForecastContainer.appendChild(htmlReport);
+
+                return fetch(`http://localhost:3030/jsonstore/forecaster/today/${code}`);
+            })
+            .then(body => body.json())
+            .then(upcomingWeatherReport => {
+
             });
 
         function createCurrentWeatherElement(weatherReport) {
