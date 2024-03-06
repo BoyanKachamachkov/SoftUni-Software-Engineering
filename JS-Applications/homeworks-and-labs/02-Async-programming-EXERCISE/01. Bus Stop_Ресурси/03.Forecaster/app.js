@@ -14,6 +14,8 @@ function attachEvents() {
 
 
     function getWeatherHandler() {
+        let forecastContainer = document.getElementById('forecast');
+        forecastContainer.style.display = 'block';
 
         fetch(`http://localhost:3030/jsonstore/forecaster/locations`)
             .then(body => body.json())
@@ -26,18 +28,42 @@ function attachEvents() {
             })
             .then(body => body.json())
             .then(currentWeatherReport => {
-                console.log(currentWeatherReport);
+                let htmlReport = createCurrentWeatherElement(currentWeatherReport);
+                let currentForecastContainer = document.querySelector('#current');
+                currentForecastContainer.appendChild(htmlReport);
             });
 
-        function createCurrentWeatherElement(forecast) {
+        function createCurrentWeatherElement(weatherReport) {
             let forecastsDiv = document.createElement('div');
             forecastsDiv.classList.add('forecasts');
 
             let conditionSymbolSpan = document.createElement('span');
             conditionSymbolSpan.classList.add('condition', 'symbol');
-            conditionSymbolSpan.textContent = conditions[forecast.condition];
+            conditionSymbolSpan.textContent = conditions[weatherReport.forecast.condition]();
 
             let conditionSpan = document.createElement('span');
+            conditionSpan.classList.add('condition');
+
+            let nameSpan = document.createElement('span');
+            nameSpan.classList.add('forecast-data');
+            nameSpan.textContent = weatherReport.name;
+
+            let tempSpan = document.createElement('span');
+            tempSpan.classList.add('forecast-data');
+            tempSpan.textContent = `${weatherReport.forecast.low}/${weatherReport.forecast.high}°`;
+
+            let weatherSpan = document.createElement('span');
+            weatherSpan.classList.add('forecast-data');
+            weatherSpan.textContent = weatherReport.forecast.condition;
+
+            conditionSpan.appendChild(nameSpan);
+            conditionSpan.appendChild(tempSpan);
+            conditionSpan.appendChild(weatherSpan);
+
+            forecastsDiv.appendChild(conditionSymbolSpan);
+            forecastsDiv.appendChild(conditionSpan);
+
+            return forecastsDiv;
         }
 
 
