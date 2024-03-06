@@ -17,6 +17,17 @@ function attachEvents() {
         let forecastContainer = document.getElementById('forecast');
         forecastContainer.style.display = 'block';
 
+        let currentForecastContainer = document.querySelector('#current');
+        Array.from(currentForecastContainer.querySelectorAll('div')).forEach((el, i) => {
+            i !== 0 ? el.remove() : el;
+        });
+
+        let upcomingForecastContainer = document.querySelector('#upcoming');
+        Array.from(upcomingForecastContainer.querySelectorAll('div')).forEach((el, i) => {
+            i !== 0 ? el.remove() : el;
+        });
+
+
         fetch(`http://localhost:3030/jsonstore/forecaster/locations`)
             .then(body => body.json())
             .then(locations => {
@@ -29,7 +40,6 @@ function attachEvents() {
             })
             .then(({ code, currentWeatherReport }) => {
                 let htmlReport = createCurrentWeatherElement(currentWeatherReport);
-                let currentForecastContainer = document.querySelector('#current');
                 currentForecastContainer.appendChild(htmlReport);
 
                 return fetch(`http://localhost:3030/jsonstore/forecaster/upcoming/${code}`);
@@ -39,9 +49,15 @@ function attachEvents() {
                 console.log(upcomingWeatherReport);
 
                 let upcomingForecast = createUpcomingWeatherElement(upcomingWeatherReport);
-                let upcomingForecastContainer = document.querySelector('#upcoming');
                 upcomingForecastContainer.appendChild(upcomingForecast);
 
+            })
+            .catch(err => {
+                let errorDiv = document.createElement('div');
+                errorDiv.classList.add('label');
+                errorDiv.textContent = 'Error';
+
+                currentForecastContainer.appendChild(errorDiv);
             });
 
         function createUpcomingWeatherElement(weatherReport) {
