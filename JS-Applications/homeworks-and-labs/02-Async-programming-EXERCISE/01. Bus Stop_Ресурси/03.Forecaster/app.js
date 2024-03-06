@@ -38,24 +38,52 @@ function attachEvents() {
             .then(upcomingWeatherReport => {
                 console.log(upcomingWeatherReport);
 
+                let upcomingForecast = createUpcomingWeatherElement(upcomingWeatherReport);
+                let upcomingForecastContainer = document.querySelector('#upcoming');
+                upcomingForecastContainer.appendChild(upcomingForecast);
+
             });
 
         function createUpcomingWeatherElement(weatherReport) {
             let forecastInfoDiv = document.createElement('div');
             forecastInfoDiv.classList.add('forecast-info');
 
+            let day1html = createDayReport(weatherReport.forecast[0]);
+            let day2html = createDayReport(weatherReport.forecast[1]);
+            let day3html = createDayReport(weatherReport.forecast[2]);
+
+
+            forecastsDiv.appendChild(day1html);
+            forecastsDiv.appendChild(day2html);
+            forecastsDiv.appendChild(day3html);
+            return forecastsDiv;
+
+        };
+
+        function createDayReport(forecast) {
+
             let upcomingSpan = document.createElement('span');
             upcomingSpan.classList.add('upcoming');
 
             let symbolSpan = document.createElement('span');
             symbolSpan.classList.add('symbol');
-            symbolSpan.textContent = conditions[weatherReport.forecast.condition]();
+            symbolSpan.textContent = conditions[forecast.condition]();
+
+            let tempSpan = document.createElement('span');
+            tempSpan.classList.add('forecast-data');
+            tempSpan.textContent = `${forecast.low}/${forecast.high}°`;
+
+            let weatherSpan = document.createElement('span');
+            weatherSpan.classList.add('forecast-data');
+            weatherSpan.textContent = forecast.condition;
 
 
+            upcomingSpan.appendChild(symbolSpan);
+            upcomingSpan.appendChild(tempSpan);
+            upcomingSpan.appendChild(weatherSpan);
 
-        };
-
-        function createDayReport() { }
+            return upcomingSpan;
+        }
 
         function createCurrentWeatherElement(weatherReport) {
             let forecastsDiv = document.createElement('div');
