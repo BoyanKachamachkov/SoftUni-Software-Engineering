@@ -5,6 +5,9 @@ function lockedProfile() {
         console.log(profiles);
         let mainSection = document.getElementById('main');
 
+        let templateProfile = document.querySelector('.profile');
+        templateProfile.remove();
+
         Object.keys(profiles).forEach((key, i) => {
             let profile = profiles[key];
             let htmlProfile = createHtmlProfile(i + 1, profile.username, profile.email, profile.age);
@@ -110,8 +113,24 @@ function lockedProfile() {
 
 
 
-    function showHiddenInfoHandler() {
+    function showHiddenInfoHandler(e) {
+        let profile = e.target.parentElement;
+        let showMoreButton = e.target;
+        let hiddenFieldsDiv = e.target.previousElementSibling;
+        let radioButton = profile.querySelector('input[type="radio"]:checked');
 
+        if (radioButton.value !== 'unlock') {
+            return;
+        }
+
+
+        showMoreButton.textContent = showMoreButton.textContent === 'Show More'
+            ? 'Hide it'
+            : 'Show More';
+
+        hiddenFieldsDiv.style.display = hiddenFieldsDiv.style.display === 'block'
+            ? 'none'
+            : 'block';
     }
 
 
