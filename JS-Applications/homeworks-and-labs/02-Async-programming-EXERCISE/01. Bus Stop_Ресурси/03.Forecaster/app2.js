@@ -13,8 +13,23 @@ function attachEvents() {
     forecastRef.style.display = 'block';
     const locationResponse = await fetch(baseLocationsURL);
     const locationData = await locationResponse.json();
-    console.log(locationData);
+
+    const currentLocationData = locationData.find(x => x.name === userInput);
+    fillTodayData(currentLocationData.code);
   }
+
+  async function fillTodayData(code) {
+    const response = await fetch(`http://localhost:3030/jsonstore/forecaster/today/${code}`);
+    const data = await response.json();
+    debugger;
+
+  }
+
+  function createTodayForecast(data) {
+
+  }
+
+
 
 }
 
