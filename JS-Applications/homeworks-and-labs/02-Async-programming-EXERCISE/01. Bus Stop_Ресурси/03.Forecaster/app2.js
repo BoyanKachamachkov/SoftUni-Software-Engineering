@@ -6,9 +6,14 @@ function attachEvents() {
   const currentRef = document.getElementById('current');
   const upcomingRef = document.getElementById('upcoming');
   const baseLocationsURL = 'http://localhost:3030/jsonstore/forecaster/locations';
+  const userInputRef = document.getElementById('location');
 
-  function getWeather(e) {
+  async function getWeather(e) {
+    const userInput = userInputRef.value;
     forecastRef.style.display = 'block';
+    const locationResponse = await fetch(baseLocationsURL);
+    const locationData = await locationResponse.json();
+    console.log(locationData);
   }
 
 }
