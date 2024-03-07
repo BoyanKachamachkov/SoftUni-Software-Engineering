@@ -29,22 +29,44 @@ function attachEvents() {
   async function fillTodayData(code) {
     const response = await fetch(`http://localhost:3030/jsonstore/forecaster/today/${code}`);
     const data = await response.json();
-    debugger;
+
+    const todayInfo = createTodayForecast(data);
+    currentRef.appendChild(todayInfo);
 
   }
 
   function createTodayForecast(data) {
-    const container = document.createElement('div');
-    container.classList.add = 'forecasts ';
+    const forecastsDiv = document.createElement('div');
+    forecastsDiv.classList.add = 'forecasts';
 
-    const conditionSpan = document.createElement('span');
-    conditionSpan.classList.add = 'condition symbol';
-    conditionSpan.textContent = conditions[data.condition]();
+    const condSymbolSpan = document.createElement('span');
+    condSymbolSpan.classList.add('condition');
+    condSymbolSpan.classList.add('symbol');
+    condSymbolSpan.textContent = conditions[data.forecast.condition]();
 
-    container.appendChild(conditionSpan);
+    forecastsDiv.appendChild(condSymbolSpan);
 
-    const spanContainer = document.createElement('span');
-    spanContainer.classList.add('condition');
+    const condSpan = document.createElement('span');
+    condSpan.classList.add('condition');
+
+    const citySpan = document.createElement('span');
+    citySpan.classList.add('forecast-data');
+    citySpan.textContent = data.name;
+
+    const degreeSpan = document.createElement('span');
+    degreeSpan.classList.add('forecast-data');
+    degreeSpan.textContent = `${data.forecast.low}°/${data.forecast.high}°`;
+
+    const cityCondSpan = document.createElement('span');
+    cityCondSpan.classList.add('forecast-data');
+    cityCondSpan.textContent = data.forecast.condition;
+
+    condSpan.appendChild(citySpan);
+    condSpan.appendChild(degreeSpan);
+    condSpan.appendChild(cityCondSpan);
+
+    forecastsDiv.appendChild(condSpan);
+    return forecastsDiv;
   }
 
 
