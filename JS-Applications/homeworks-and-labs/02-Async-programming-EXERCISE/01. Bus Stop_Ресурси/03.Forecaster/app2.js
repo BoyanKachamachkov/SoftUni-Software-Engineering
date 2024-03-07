@@ -8,6 +8,14 @@ function attachEvents() {
   const baseLocationsURL = 'http://localhost:3030/jsonstore/forecaster/locations';
   const userInputRef = document.getElementById('location');
 
+  let conditions = {
+    Sunny: () => '☀',
+    'Partly sunny': () => '⛅',
+    Overcast: () => '☁',
+    Rain: () => '☂',
+    Degrees: () => '°'
+  };
+
   async function getWeather(e) {
     const userInput = userInputRef.value;
     forecastRef.style.display = 'block';
@@ -26,9 +34,18 @@ function attachEvents() {
   }
 
   function createTodayForecast(data) {
+    const container = document.createElement('div');
+    container.classList.add = 'forecasts ';
 
+    const conditionSpan = document.createElement('span');
+    conditionSpan.classList.add = 'condition symbol';
+    conditionSpan.textContent = conditions[data.condition]();
+
+    container.appendChild(conditionSpan);
+
+    const spanContainer = document.createElement('span');
+    spanContainer.classList.add('condition');
   }
-
 
 
 }
