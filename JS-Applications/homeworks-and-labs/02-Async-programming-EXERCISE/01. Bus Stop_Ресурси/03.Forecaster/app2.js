@@ -23,7 +23,9 @@ function attachEvents() {
     const locationData = await locationResponse.json();
 
     const currentLocationData = locationData.find(x => x.name === userInput);
-    fillTodayData(currentLocationData.code);
+
+    await fillTodayData(currentLocationData.code);
+    await fillUpcomingData(currentLocationData.code);
   }
 
   async function fillTodayData(code) {
@@ -69,7 +71,45 @@ function attachEvents() {
     return forecastsDiv;
   }
 
+  async function fillUpcomingData(code) {
+    const response = await fetch(`http://localhost:3030/jsonstore/forecaster/upcoming/${code}`);
+    const data = await response.json();
 
+    console.log(data);
+
+    const upcomingInfo = createUpcomingForecast(data);
+    upcomingRef.appendChild(upcomingInfo);
+  }
+
+
+  function createUpcomingForecast(data) {
+
+    const forecastsInfoDiv = document.createElement('div');
+    forecastsInfoDiv.classList.add('forecast-info');
+
+    const upcomingSpan = document.createElement('span');
+    upcomingSpan.classList.add('upcoming');
+
+    const symbolSpan = document.createElement('span');
+    symbolSpan.classList.add('symbol');
+    symbolSpan.textContent = conditions[data.forecast.condition]();
+
+    const degreeSpan = document.createElement('span');
+    degreeSpan.classList.add('forecast-data');
+    degreeSpan.textContent = `${data.forecast.low}°/${data.forecast.high}°`;
+
+    const cityCondSpan = document.createElement('span');
+    cityCondSpan.classList.add('forecast-data');
+    cityCondSpan.textContent = data.forecast.condition;
+
+    upcomingSpan.appendChild(symbolSpan);
+    upcomingSpan.appendChild(degreeSpan);
+    upcomingSpan.appendChild(cityCondSpan);
+
+    forecastsInfoDiv.appendChild(upcomingSpan);
+    return forecastsInfoDiv;
+
+  }
 }
 
 attachEvents();
