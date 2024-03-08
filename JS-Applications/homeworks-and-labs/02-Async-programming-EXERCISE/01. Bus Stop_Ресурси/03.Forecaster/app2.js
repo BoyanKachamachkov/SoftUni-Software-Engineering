@@ -9,11 +9,11 @@ function attachEvents() {
   const userInputRef = document.getElementById('location');
 
   let conditions = {
-    Sunny: () => '☀',
-    'Partly sunny': () => '⛅',
-    Overcast: () => '☁',
-    Rain: () => '☂',
-    Degrees: () => '°'
+    Sunny: '☀',
+    'Partly sunny': '⛅',
+    Overcast: '☁',
+    Rain: '☂',
+    Degrees: '°'
   };
 
   async function getWeather(e) {
@@ -37,19 +37,27 @@ function attachEvents() {
 
   }
 
-  function createTodayForecast(data) {
-    const forecastsDiv = document.createElement('div');
-    forecastsDiv.classList.add = 'forecasts';
+  async function fillUpcomingData(code) {
+    const response = await fetch(`http://localhost:3030/jsonstore/forecaster/upcoming/${code}`);
+    const data = await response.json();
 
-    const condSymbolSpan = document.createElement('span');
-    condSymbolSpan.classList.add('condition');
-    condSymbolSpan.classList.add('symbol');
-    condSymbolSpan.textContent = conditions[data.forecast.condition]();
+    createUpcomingForecast(data);
 
-    forecastsDiv.appendChild(condSymbolSpan);
+  }
+
+  function createUpcomingForecast(data) {
+    const container = document.createElement('div');
+    container.classList.add('forecast-info');
+
+    // const upcoming1 = generateSpan('upcoming', data);
+    // const upcoming2 =
+    // const upcoming3 =
+  }
+
+  function generateSpan(classes, data) {
 
     const condSpan = document.createElement('span');
-    condSpan.classList.add('condition');
+    condSpan.classList.add(classes);
 
     const citySpan = document.createElement('span');
     citySpan.classList.add('forecast-data');
@@ -67,49 +75,30 @@ function attachEvents() {
     condSpan.appendChild(degreeSpan);
     condSpan.appendChild(cityCondSpan);
 
-    forecastsDiv.appendChild(condSpan);
+    return condSpan;
+
+
+  }
+
+  function createTodayForecast(data) {
+    const forecastsDiv = document.createElement('div');
+    forecastsDiv.classList.add = 'forecasts';
+
+    const condSymbolSpan = document.createElement('span');
+    condSymbolSpan.classList.add('condition');
+    condSymbolSpan.classList.add('symbol');
+    condSymbolSpan.textContent = conditions[data.forecast.condition];
+
+    forecastsDiv.appendChild(condSymbolSpan);
+
+    const spanContainer = generateSpan('condition', data);
+
+    forecastsDiv.appendChild(spanContainer);
     return forecastsDiv;
   }
 
-  async function fillUpcomingData(code) {
-    const response = await fetch(`http://localhost:3030/jsonstore/forecaster/upcoming/${code}`);
-    const data = await response.json();
-
-    console.log(data);
-
-    const upcomingInfo = createUpcomingForecast(data);
-    upcomingRef.appendChild(upcomingInfo);
-  }
 
 
-  function createUpcomingForecast(data) {
-
-    const forecastsInfoDiv = document.createElement('div');
-    forecastsInfoDiv.classList.add('forecast-info');
-
-    const upcomingSpan = document.createElement('span');
-    upcomingSpan.classList.add('upcoming');
-
-    const symbolSpan = document.createElement('span');
-    symbolSpan.classList.add('symbol');
-    symbolSpan.textContent = conditions[data.forecast.condition]();
-
-    const degreeSpan = document.createElement('span');
-    degreeSpan.classList.add('forecast-data');
-    degreeSpan.textContent = `${data.forecast.low}°/${data.forecast.high}°`;
-
-    const cityCondSpan = document.createElement('span');
-    cityCondSpan.classList.add('forecast-data');
-    cityCondSpan.textContent = data.forecast.condition;
-
-    upcomingSpan.appendChild(symbolSpan);
-    upcomingSpan.appendChild(degreeSpan);
-    upcomingSpan.appendChild(cityCondSpan);
-
-    forecastsInfoDiv.appendChild(upcomingSpan);
-    return forecastsInfoDiv;
-
-  }
 }
 
 attachEvents();
