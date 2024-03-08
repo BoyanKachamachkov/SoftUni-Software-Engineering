@@ -54,9 +54,9 @@ function attachEvents() {
     const container = document.createElement('div');
     container.classList.add('forecast-info');
 
-    const upcoming1 = generateSpan('upcoming', data.name, data.forecast[0]);
-    const upcoming2 = generateSpan('upcoming', data.name, data.forecast[1]);
-    const upcoming3 = generateSpan('upcoming', data.name, data.forecast[2]);
+    const upcoming1 = generateSpan('upcoming', 'symbol', data.name, data.forecast[0]);
+    const upcoming2 = generateSpan('upcoming', 'symbol', data.name, data.forecast[1]);
+    const upcoming3 = generateSpan('upcoming', 'symbol', data.name, data.forecast[2]);
 
     container.appendChild(upcoming1);
     container.appendChild(upcoming2);
@@ -64,14 +64,14 @@ function attachEvents() {
     return container;
   }
 
-  function generateSpan(classes, name, data) {
+  function generateSpan(classContainer, classSpan, name, data) {
 
     const condSpan = document.createElement('span');
-    condSpan.classList.add(classes);
+    condSpan.classList.add(classContainer);
 
     const citySpan = document.createElement('span');
-    citySpan.classList.add('forecast-data');
-    citySpan.textContent = name;
+    citySpan.classList.add(classSpan);
+    classSpan === 'symbol' ? citySpan.textContent = conditions[data.condition] : citySpan.textContent = name;
 
     const degreeSpan = document.createElement('span');
     degreeSpan.classList.add('forecast-data');
@@ -99,7 +99,7 @@ function attachEvents() {
 
     forecastsDiv.appendChild(condSymbolSpan);
 
-    const spanContainer = generateSpan('condition', data.name, data.forecast);
+    const spanContainer = generateSpan('condition', 'forecast-data', data.name, data.forecast);
 
     forecastsDiv.appendChild(spanContainer);
     return forecastsDiv;
