@@ -35,13 +35,16 @@ function attachEvents() {
     const todayInfo = createTodayForecast(data);
     currentRef.appendChild(todayInfo);
 
+    const upcomingInfo = createUpcomingForecast(data);
+    upcomingRef.appendChild(upcomingInfo);
+
   }
 
   async function fillUpcomingData(code) {
     const response = await fetch(`http://localhost:3030/jsonstore/forecaster/upcoming/${code}`);
     const data = await response.json();
 
-    createUpcomingForecast(data);
+    return createUpcomingForecast(data);
 
   }
 
@@ -49,27 +52,32 @@ function attachEvents() {
     const container = document.createElement('div');
     container.classList.add('forecast-info');
 
-    // const upcoming1 = generateSpan('upcoming', data);
-    // const upcoming2 =
-    // const upcoming3 =
+    const upcoming1 = generateSpan('upcoming', data.name, data.forecast[0]);
+    const upcoming2 = generateSpan('upcoming', data.name, data.forecast[1]);
+    const upcoming3 = generateSpan('upcoming', data.name, data.forecast[2]);
+
+    container.appendChild(upcoming1);
+    container.appendChild(upcoming2);
+    container.appendChild(upcoming3);
+    return container;
   }
 
-  function generateSpan(classes, data) {
+  function generateSpan(classes, name, data) {
 
     const condSpan = document.createElement('span');
     condSpan.classList.add(classes);
 
     const citySpan = document.createElement('span');
     citySpan.classList.add('forecast-data');
-    citySpan.textContent = data.name;
+    citySpan.textContent = name;
 
     const degreeSpan = document.createElement('span');
     degreeSpan.classList.add('forecast-data');
-    degreeSpan.textContent = `${data.forecast.low}°/${data.forecast.high}°`;
+    degreeSpan.textContent = `${data.low}°/${data.high}°`;
 
     const cityCondSpan = document.createElement('span');
     cityCondSpan.classList.add('forecast-data');
-    cityCondSpan.textContent = data.forecast.condition;
+    cityCondSpan.textContent = data.condition;
 
     condSpan.appendChild(citySpan);
     condSpan.appendChild(degreeSpan);
@@ -91,7 +99,7 @@ function attachEvents() {
 
     forecastsDiv.appendChild(condSymbolSpan);
 
-    const spanContainer = generateSpan('condition', data);
+    const spanContainer = generateSpan('condition', data.name, data.forecast);
 
     forecastsDiv.appendChild(spanContainer);
     return forecastsDiv;
