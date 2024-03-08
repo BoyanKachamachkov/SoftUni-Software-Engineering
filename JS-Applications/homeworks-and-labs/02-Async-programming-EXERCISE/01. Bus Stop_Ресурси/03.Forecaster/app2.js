@@ -17,15 +17,21 @@ function attachEvents() {
   };
 
   async function getWeather(e) {
-    const userInput = userInputRef.value;
-    forecastRef.style.display = 'block';
-    const locationResponse = await fetch(baseLocationsURL);
-    const locationData = await locationResponse.json();
 
-    const currentLocationData = locationData.find(x => x.name === userInput);
+    try {
+      const userInput = userInputRef.value;
+      forecastRef.style.display = 'block';
+      const locationResponse = await fetch(baseLocationsURL);
+      const locationData = await locationResponse.json();
 
-    await fillTodayData(currentLocationData.code);
-    await fillUpcomingData(currentLocationData.code);
+      const currentLocationData = locationData.find(x => x.name === userInput);
+
+      await fillTodayData(currentLocationData.code);
+      await fillUpcomingData(currentLocationData.code);
+    } catch (error) {
+
+      forecastRef.textContent = "Error";
+    }
   }
 
   async function fillTodayData(code) {
@@ -34,18 +40,14 @@ function attachEvents() {
 
     const todayInfo = createTodayForecast(data);
     currentRef.appendChild(todayInfo);
-
-    const upcomingInfo = createUpcomingForecast(data);
-    upcomingRef.appendChild(upcomingInfo);
-
   }
 
   async function fillUpcomingData(code) {
     const response = await fetch(`http://localhost:3030/jsonstore/forecaster/upcoming/${code}`);
     const data = await response.json();
 
-    return createUpcomingForecast(data);
-
+    const upcomingInfo = createUpcomingForecast(data);
+    upcomingRef.appendChild(upcomingInfo);
   }
 
   function createUpcomingForecast(data) {
@@ -84,8 +86,6 @@ function attachEvents() {
     condSpan.appendChild(cityCondSpan);
 
     return condSpan;
-
-
   }
 
   function createTodayForecast(data) {
@@ -104,9 +104,6 @@ function attachEvents() {
     forecastsDiv.appendChild(spanContainer);
     return forecastsDiv;
   }
-
-
-
 }
 
 attachEvents();
