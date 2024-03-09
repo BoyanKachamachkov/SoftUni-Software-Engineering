@@ -29,14 +29,17 @@ function attachEvents() {
 
     async function viewPost(ev) {
         const currentPostId = selectRef.selectedOptions[0].value;
-        const responseWithSinglePost = await fetch(endpoints.allPosts + '/' + currentPostId);
+        const responseWithSinglePost = await fetch(endpoints.allPosts);
+
         const dataSinglePost = await responseWithSinglePost.json();
+        const currentPost = Object.values(dataSinglePost).find(x => x.id === currentPostId);
+
         const responseComments = await fetch(endpoints.allComments);
         const dataComments = await responseComments.json();
 
         const filteredComments = Object.values(dataComments).filter(x => x.postId === currentPostId);
-        postTitleRef.textContent = dataSinglePost.title;
-        postBodyRef.textContent = dataSinglePost.body;
+        postTitleRef.textContent = currentPost.title;
+        postBodyRef.textContent = currentPost.body;
 
         postCommentsRef.innerHTML = '';
         filteredComments.forEach(x => {
