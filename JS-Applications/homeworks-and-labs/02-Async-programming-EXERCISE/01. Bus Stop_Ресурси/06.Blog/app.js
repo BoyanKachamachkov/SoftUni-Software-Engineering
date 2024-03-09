@@ -26,7 +26,12 @@ function attachEvents() {
 
     }
 
-    async function viewPost(ev) { }
+    async function viewPost(ev) {
+        const currentPostId = selectRef.selectedOptions[0].value;
+        const responseWithSinglePost = await fetch(endpoints.allPosts + '/' + currentPostId);
+        const dataSinglePost = await responseWithSinglePost.json();
+        debugger;
+    }
 }
 
 attachEvents();
