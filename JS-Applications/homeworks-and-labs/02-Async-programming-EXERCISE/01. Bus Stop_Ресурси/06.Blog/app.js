@@ -3,15 +3,26 @@ function attachEvents() {
     // Comments - http://localhost:3030/jsonstore/blog/comments
     document.getElementById('btnLoadPosts').addEventListener('click', loadPosts);
     document.getElementById('btnViewPost').addEventListener('click', viewPost);
+    const selectRef = document.getElementById('posts');
 
 
-    const postsURL = 'http://localhost:3030/jsonstore/blog/posts';
-    const commentsURL = 'Comments - http://localhost:3030/jsonstore/blog/comments';
+    const endpoints = {
+        allPosts: 'http://localhost:3030/jsonstore/blog/posts',
+
+    };
 
     async function loadPosts(ev) {
-        const res = await fetch(postsURL);
-        const postsData = await res.json();
-        console.log(postsData);
+        const response = await fetch(endpoints.allPosts);
+        const data = await response.json();
+        selectRef.innerHTML = '';
+        Object.values(data).forEach(post => {
+            selectRef.innerHTML += createOptionElement(post);
+        });
+    }
+
+    function createOptionElement(data) {
+
+        return `<option value=${data.id}>${data.title}</option>`;
 
     }
 
