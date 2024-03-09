@@ -1,14 +1,15 @@
 function attachEvents() {
-    // Posts - http://localhost:3030/jsonstore/blog/posts
-    // Comments - http://localhost:3030/jsonstore/blog/comments
     document.getElementById('btnLoadPosts').addEventListener('click', loadPosts);
     document.getElementById('btnViewPost').addEventListener('click', viewPost);
     const selectRef = document.getElementById('posts');
+    const postTitleRef = document.getElementById('post-title');
+    const postBodyRef = document.getElementById('post-body');
+    const postCommentsRef = document.getElementById('post-comments');
 
 
     const endpoints = {
         allPosts: 'http://localhost:3030/jsonstore/blog/posts',
-
+        allComments: 'http://localhost:3030/jsonstore/blog/comments'
     };
 
     async function loadPosts(ev) {
@@ -30,7 +31,20 @@ function attachEvents() {
         const currentPostId = selectRef.selectedOptions[0].value;
         const responseWithSinglePost = await fetch(endpoints.allPosts + '/' + currentPostId);
         const dataSinglePost = await responseWithSinglePost.json();
-        debugger;
+        const responseComments = await fetch(endpoints.allComments);
+        const dataComments = await responseComments.json();
+
+        const filteredComments = Object.values(dataComments).filter(x => x.postId === currentPostId);
+        postTitleRef.textContent = dataSinglePost.title;
+        postBodyRef.textContent = dataSinglePost.body;
+
+        postCommentsRef.innerHTML = '';
+        filteredComments.forEach(x => {
+            const li = document.createElement('li');
+            li.id = x.id;
+            li.textContent = x.text;
+            postCommentsRef.appendChild(li);
+        });
     }
 }
 
