@@ -1,37 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
-	</head>
-	<body>
-		<form>
-			<label>
-				Email
-				<input type="text" name="email" />
-			</label>
-			<label>
-				Password
-				<input type="password" name="password" />
-			</label>
 
-			<input type="submit" value="login" />
-		</form>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
 
-		<script>
-			const form = document.querySelector('form');
-			form.addEventListener('click', (event) => {
-				event.preventDefault();
-				const formData = new FormData(form);
-				const { username, password } = Object.fromEntries(
-					formData.entries()
-				);
-				console.log(email, password);
+<body>
+	<form>
+		<label>
+			Email
+			<input type="text" name="email" />
+		</label>
+		<label>
+			Password
+			<input type="password" name="password" />
+		</label>
 
-				const url = 'http://localhost:3030/users/login/';
-                
-			});
-		</script>
-	</body>
+		<input type="submit" value="login" />
+	</form>
+
+	<script>
+		let token;
+		const form = document.querySelector('form');
+		form.addEventListener('click', async (event) => {
+			event.preventDefault();
+			const formData = new FormData(form);
+			const { email, password } = Object.fromEntries(
+				formData.entries()
+			);
+
+			const url = 'http://localhost:3030/users/login/';
+
+			try {
+				const req = await fetch(url, {
+					method: 'POST',
+					headers: { 'Content-type': 'application/json' },
+					body: JSON.stringify({ email, password }),
+				});
+
+				if(!req.ok){
+					const err = await req.json();
+					throw new Error(err.message)
+				}
+
+				const data = await req.json()
+				token = data.accessToken;
+				
+
+			} catch (err) {
+				alert(err.message);
+			}
+		});
+	</script>
+</body>
+
 </html>
