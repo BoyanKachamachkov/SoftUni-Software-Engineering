@@ -1,66 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Document</title>
 
-		<style>
-			label {
-				display: block;
-			}
-		</style>
-	</head>
-	<body>
-		<form>
-			<label>
-				<span>Person</span>
-				<input type="text" name="person" />
-			</label>
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
 
-			<label>
-				<span>Phone</span>
-				<input type="text" name="phone" />
-			</label>
+	<style>
+		label {
+			display: block;
+		}
+	</style>
+</head>
 
-			<input type="submit" value="Send Request" />
+<body>
+	<form>
+		<label>
+			<span>Person</span>
+			<input type="text" name="person" />
+		</label>
 
-			<script>
-				const form = document.querySelector('form');
+		<label>
+			<span>Phone</span>
+			<input type="text" name="phone" />
+		</label>
 
-				form.addEventListener('submit', async (event) => {
-					event.preventDefault();
+		<input type="submit" value="Send Request" />
 
-					const formData = new FormData(form);
+		<script>
+			const form = document.querySelector('form');
 
-					const { person, phone } = Object.fromEntries(
-						formData.entries()
-					);
-					console.log(person, phone);
+			form.addEventListener('submit', async (event) => {
+				event.preventDefault();
 
-					console.log(person, phone);
+				const formData = new FormData(form);
 
-					const url = 'http://localhost:3030/jsonstore/phonebook';
+				const { person, phone } = Object.fromEntries(
+					formData.entries()
+				);
+				console.log(person, phone);
 
-					try {
-						const request = await fetch(url, {
-							method: 'post',
-							headers: { 'Content-Type': 'application/json' },
-							body: JSON.stringify({ person, phone }),
-						});
+				console.log(person, phone);
 
-						if (request.ok != true) {
-							const err = await request.json();
-							throw new Error(err.message);
-						}
+				const url = 'http://localhost:3030/jsonstore/phonebook';
 
-						const response = await request.json();
-						console.log(response);
-					} catch (error) {
-						alert(`Error: ${error.msg}`);
+				try {
+					const request = await fetch(url, {
+						method: 'post',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ person, phone })
+					});
+
+					if (request.ok != true) {
+						const err = await request.json();
+						throw new Error(err.message);
 					}
-				});
-			</script>
-		</form>
-	</body>
+
+					const response = await request.json();
+					console.log(response);
+				} catch (error) {
+					alert(`Error: ${error.msg}`);
+				}
+			});
+		</script>
+	</form>
+</body>
+
 </html>
