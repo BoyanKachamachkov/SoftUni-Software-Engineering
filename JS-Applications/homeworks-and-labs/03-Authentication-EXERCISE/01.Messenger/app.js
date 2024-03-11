@@ -3,7 +3,7 @@ function attachEvents() {
     document.getElementById('submit').addEventListener('click', onSubmit)
     const url = 'http://localhost:3030/jsonstore/messenger'
 
-    function onSubmit(e) {
+    async function onSubmit(e) {
         let nameRef = document.querySelector("input[name='author']")
         let textRef = document.querySelector("input[name='content']")
 
@@ -18,12 +18,23 @@ function attachEvents() {
             body: JSON.stringify({ author: name, content: text })
         }
 
-
-        debugger
+        await fetch(url, data)
+        nameRef.value = ''
+        textRef.value = ''
     }
 
-    function onLoadMsg(e) {
+    async function onLoadMsg(e) {
+        let textAreaRef = document.getElementById('messages')
+        textAreaRef.value = ''
 
+        let response = await fetch(url)
+        let data = await response.json()
+
+        Object.values(data).forEach(rec => {
+            textAreaRef.value += `${rec.author}: ${rec.content}\n`
+        })
+
+        textAreaRef.value = textAreaRef.value.trim()
     }
 
 }
