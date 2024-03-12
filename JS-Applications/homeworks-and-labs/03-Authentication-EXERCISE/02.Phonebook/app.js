@@ -59,6 +59,7 @@ function attachEvents() {
             method: 'DELETE'
 
         });
+        // refresh the list
         onLoadAllRecords();
 
     }
