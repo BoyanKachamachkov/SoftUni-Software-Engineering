@@ -1,5 +1,10 @@
 document.querySelector('form').addEventListener('submit', onSubmit);
+document.querySelector("a[id='logout']").style.display = 'none';
+document.querySelector("a[id='register']").classList.add('active')
 const url = 'http://localhost:3030/users/register';
+
+
+
 async function onSubmit(e) {
     e.preventDefault();
     let formData = new FormData(e.target);
