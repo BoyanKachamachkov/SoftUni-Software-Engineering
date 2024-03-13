@@ -5,5 +5,9 @@ function onSubmit(e) {
     const formData = new FormData(e.target);
     const email = formData.get('email');
     const password = formData.get('password');
-    debugger;
+
+    if(!email || !password){
+        return; //todo load err msg
+    }
+    debugger
 }
