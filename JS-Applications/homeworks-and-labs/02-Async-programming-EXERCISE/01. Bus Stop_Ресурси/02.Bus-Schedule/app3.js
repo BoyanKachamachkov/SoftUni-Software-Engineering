@@ -14,20 +14,34 @@ function solve() {
     const stop = {
         currentStop: '',
         next: 'depot'
-    }
-
-
-
+    };
     async function depart() {
 
-        const response = await fetch(baseURL + stop.next)
-        const data = await response.json()
-        debugger
+        try {
+            const response = await fetch(baseURL + stop.next);
+            const data = await response.json();
 
+            stop.currentStop = data.name;
+            stop.next = data.next;
+
+            infoRefSpan.textContent = `Next stop ${stop.currentStop}`;
+
+            arrBtn.disabled = false;
+            depBtn.disabled = true;
+
+        } catch (error) {
+            infoRefSpan.textContent = 'Error';
+            depBtn.disabled = true;
+            arrBtn.disabled = true;
+        }
 
     }
-    function arrive() { }
+    function arrive() {
 
+        infoRefSpan.textContent = `Arriving at ${stop.currentStop}`;
+        arrBtn.disabled = true;
+        depBtn.disabled = false;
+    }
 
     return {
         depart,
@@ -35,4 +49,7 @@ function solve() {
     };
 
 }
+
+
+
 let result = solve();
