@@ -11,22 +11,29 @@ async function getInfo() {
     const stopId = stopIdRef.value;
     const baseURL = 'http://localhost:3030/jsonstore/bus/businfo/';
     const stopNameRef = document.getElementById('stopName');
-    const ulRef = document.getElementById('buses')
+    const ulRef = document.getElementById('buses');
 
     try {
         const response = await fetch(baseURL + stopId);
         const data = await response.json();
         stopNameRef.textContent = data.name;
 
-        console.log(data)
+        Array.from(ulRef.querySelectorAll('li')).forEach(li => li.remove());
 
+        Object.keys(data.buses).forEach(bus => {
+            let li = document.createElement('li');
+            li.textContent = `Bus ${bus} arrives in ${data.buses[bus]} minutes`;
+            ulRef.appendChild(li);
 
+        });
 
     } catch (error) {
+        stopNameRef.textContent = 'Error';
+        Array.from(ulRef.querySelectorAll('li')).forEach(li => li.remove());
+        throw new Error;
 
     }
 
 
 
-    debugger;
 }
