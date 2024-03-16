@@ -7,7 +7,7 @@ function solve() {
 
         if (stopInfoSpan.getAttribute('data-next-stop-id') !== null) {
             nextStopId = stopInfoSpan.getAttribute('data-next-stop-id');
-        }
+        }a
 
         fetch(`http://localhost:3030/jsonstore/bus/schedule/${nextStopId}`)
             .then(body => body.json())

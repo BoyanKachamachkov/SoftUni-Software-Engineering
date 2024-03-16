@@ -33,7 +33,4 @@ async function getInfo() {
         throw new Error;
 
     }
-
-
-
 }
