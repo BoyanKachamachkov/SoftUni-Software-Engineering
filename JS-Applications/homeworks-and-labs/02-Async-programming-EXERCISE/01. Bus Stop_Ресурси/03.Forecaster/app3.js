@@ -13,7 +13,7 @@ function attachEvents() {
         Overcast: '☁',
         Rain: '☂',
         Degrees: '°'
-      };
+    };
 
     async function getWeather() {
         try {
@@ -44,17 +44,22 @@ function attachEvents() {
         // currForRef.appendChild(todayInfo);
     }
 
-    function createForecastDivToday(data){
+    function createForecastDivToday(data) {
 
-        const forecastsDiv = document.createElement('div')
-        forecastsDiv.classList.add('forecasts')
+        const forecastsDiv = document.createElement('div');
+        forecastsDiv.classList.add('forecasts');
 
-        const span = document.createElement('span')
-        span.classList.add('condition')
-        span.classList.add('symbol')
+        const condSymbolSpan = document.createElement('span');
+        condSymbolSpan.classList.add('condition');
+        condSymbolSpan.classList.add('symbol');
+        condSymbolSpan.textContent = conditions[data.forecast.condition];
 
-        const spanData = document.createElement('span')
-        spanData.classList.add('condition')
+        forecastsDiv.appendChild(condSymbolSpan);
+
+        // 2nd span with another F
+
+        // const spanContainer = generateSpan('condition', 'forecast-data', data.name, data.forecast)
+        debugger;
 
 
 
@@ -67,6 +72,18 @@ function attachEvents() {
         const url = `http://localhost:3030/jsonstore/forecaster/upcoming/${code}`;
         const response = await fetch(url);
         const data = await response.json();
+    }
+
+
+    function generateSpan(classContainer, classSpan, name, data) {
+
+        const fatherSpan = document.createElement('span');
+        fatherSpan.classList.add(classContainer);
+
+        const nameOrSymbolSpan = document.createElement('span');
+        nameOrSymbolSpan.classList.add(classSpan);
+        // check when each?
+        classSpan === 'symbol' ? nameOrSymbolSpan.textContent = conditions[data.condition] : nameOrSymbolSpan.textContent = name;
     }
 
 }
