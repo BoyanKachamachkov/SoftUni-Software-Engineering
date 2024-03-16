@@ -7,29 +7,34 @@ function solve() {
     // Next stop {stopName}
     // Arriving at {stopName}
     const baseURL = 'http://localhost:3030/jsonstore/bus/schedule/';
-    const infoRef = document.getElementById('info')
+    const infoRef = document.querySelector('#info span');
+    const departBtn = document.getElementById('depart');
+    const arriveBtn = document.getElementById('arrive');
+
+    const stop = {
+        currentStop: '',
+        next: 'depot'
+    }
 
     async function depart() {
 
         try {
-            const response = await fetch(baseURL + 'depot');
+            const response = await fetch(baseURL + );
             const data = await response.json();
-            infoRef.textContent = `Next stop ${data.name}`
+            infoRef.textContent = `Next stop ${data.name}`;
 
-
-            debugger;
-
-
-
+            departBtn.disabled = true;
+            arriveBtn.disabled = false;
+            debugger
         } catch (error) {
 
         }
-
-
-
     }
 
-    function arrive() { }
+    function arrive() {
+
+        infoRef.textContent = `Arriving at ${data.name}`
+     }
 
     return {
         depart,
