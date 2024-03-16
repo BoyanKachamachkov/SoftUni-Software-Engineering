@@ -1,29 +1,19 @@
-function getInfo() {
+async function getInfo() {
+    // take value from stopid
+    // get to  http://localhost:3030/jsonstore/bus/businfo/:busId
 
-    const stopId = document.getElementById('stopId').value;
-    const stopName = document.getElementById('stopName');
-    const busesUl = document.getElementById('buses');
+    // place name inside div stopname
+    //      list each item as "Bus {busId} arrives in {time} minutes"
+    // display Error as stopName 
+    // clear list before each req
+    // Note: The service will respond with valid data to IDs 1287, 1308, 1327 and 2334.
 
-    const url = `http://localhost:3030/jsonstore/bus/businfo/${stopId}`;
+    const stopIdRef = document.getElementById('stopId');
+    const stopId = stopIdRef.value;
+    const baseURL = 'http://localhost:3030/jsonstore/bus/businfo/';
 
-    fetch(url)
-        .then(res => res.json())
-        .then(stopInfo => {
-            stopName.textContent = stopInfo.name;
+    const response = await fetch(baseURL + stopId);
+    const data = await response.json();
 
-            Array.from(busesUl.querySelectorAll('li')).forEach(li => li.remove());
-            Object.keys(stopInfo.buses).forEach(bus => {
-
-                let li = document.createElement('li');
-                li.textContent = `Bus ${bus} arrives in ${stopInfo.buses[bus]} minutes`;
-                busesUl.appendChild(li);
-            });
-        })
-        .catch(err => {
-
-            stopName.textContent = 'Error';
-            Array.from(busesUl.querySelectorAll('li')).forEach(li => li.remove());
-            throw new Error('Error');
-        });
-
+    debugger;
 }
