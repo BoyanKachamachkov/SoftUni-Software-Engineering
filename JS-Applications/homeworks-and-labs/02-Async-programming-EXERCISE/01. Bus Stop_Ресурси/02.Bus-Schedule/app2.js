@@ -14,33 +14,37 @@ function solve() {
     const stop = {
         currentStop: '',
         next: 'depot'
-    }
+    };
 
     async function depart() {
 
         try {
-            const response = await fetch(baseURL + );
+            const response = await fetch(baseURL + stop.next);
             const data = await response.json();
-            infoRef.textContent = `Next stop ${data.name}`;
+
+            stop.currentStop = data.name;
+            stop.next = data.next;
+            infoRef.textContent = `Next stop ${stop.currentStop}`;
 
             departBtn.disabled = true;
             arriveBtn.disabled = false;
-            debugger
-        } catch (error) {
 
+        } catch (error) {
+            infoRef.textContent = 'Error';
+            departBtn.disabled = true;
+            arriveBtn.disabled = true;
         }
     }
 
     function arrive() {
-
-        infoRef.textContent = `Arriving at ${data.name}`
-     }
-
+        infoRef.textContent = `Arriving at ${stop.currentStop}`;
+        departBtn.disabled = false;
+        arriveBtn.disabled = true;
+    }
     return {
         depart,
         arrive
     };
-
 }
 
 let result = solve();
