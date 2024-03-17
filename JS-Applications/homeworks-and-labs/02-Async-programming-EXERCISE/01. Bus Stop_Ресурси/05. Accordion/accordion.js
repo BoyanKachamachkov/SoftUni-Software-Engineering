@@ -4,10 +4,7 @@ async function solution() {
     // 2. create divs with titles //togle buttons
     // 3. on click fetch details data
     // 4. update html with data
-
     // http://localhost:3030/jsonstore/advanced/articles/details/:id  
-
-
     try {
         const url = 'http://localhost:3030/jsonstore/advanced/articles/list';
         let response = await fetch(url);
@@ -24,7 +21,7 @@ async function solution() {
                 `
             <div class="head">
                 <span>${articleInfo.title}</span>
-                <button class="button" id="${articleInfo._id}" onclick="moreOnclick(e)">More</button>
+                <button class="button" id="${articleInfo._id}" onclick="moreClick(event)">More</button>
             </div>
             <div class="extra"></div>
             `;
@@ -34,27 +31,35 @@ async function solution() {
     } catch (error) {
         console.log(error);
     }
+}
+async function moreClick(e) {
+    try {
+        let currentTarget = e.currentTarget;
+        let url = `http://localhost:3030/jsonstore/advanced/articles/details/${currentTarget.id}`;
+        let parent = currentTarget.parentNode.parentNode;
+        let extraDiv = parent.querySelector('div.extra');
 
-    async function moreOnclick(e) {
-        try {
-            let currentTarget = e.currentTarget;
-            let url = `http://localhost:3030/jsonstore/advanced/articles/details/${currentTarget.id}`;
-            let parent = currentTarget.parentNode.parentNode;
-            let extraDiv = parent.querySelector('div.extra');
-
-            let response = await fetch(url);
-            if (!response.ok) {
-                throw new Error('Error obtainig article ID details');
-            }
-
-            let data = await response.json();
-            debugger;
-        } catch (error) {
-
+        let response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Error obtainig article ID details');
         }
 
-    }
+        let data = await response.json();
+        console.log(data);
 
+        extraDiv.innerHTML = `<p>${data.content}</p>`;
+
+        if (currentTarget.textContent == 'More') {
+            currentTarget.textContent = 'Less';
+            extraDiv.style.display = 'block';
+        } else {
+            currentTarget.textContent = 'More';
+            extraDiv.style.display = 'none';
+        }
+    } catch (error) {
+        console.log(error);
+
+    }
 }
 
 solution();
