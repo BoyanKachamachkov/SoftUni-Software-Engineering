@@ -38,6 +38,7 @@ async function moreClick(e) {
         let url = `http://localhost:3030/jsonstore/advanced/articles/details/${currentTarget.id}`;
         let parent = currentTarget.parentNode.parentNode;
         let extraDiv = parent.querySelector('div.extra');
+        debugger
 
         let response = await fetch(url);
         if (!response.ok) {
