@@ -56,7 +56,29 @@ function attachEvents() {
     }
 
     function spanGenerator(classContainer, classSpan, name, data) {
-        
+        // create 4 spans, 1 is parent
+
+        const parentSpan = document.createElement('span');
+        parentSpan.classList.add(classContainer);
+
+        const nameOrSymbolSpan = document.createElement('span');
+        nameOrSymbolSpan.classList.add(classSpan);
+
+        classSpan === 'symbol' ? nameOrSymbolSpan.textContent = conditions[data.condition] : nameOrSymbolSpan.textContent = name;
+
+        const degreeSpan = document.createElement('span');
+        degreeSpan.classList.add('forecast-data');
+        degreeSpan.textContent = `${data.low}°/${data.high}°`;
+
+        const conditionSpan = document.createElement('span');
+        conditionSpan.classList.add('forecast-data');
+        conditionSpan.textContent = data.condition;
+
+        parentSpan.appendChild(nameOrSymbolSpan);
+        parentSpan.appendChild(degreeSpan);
+        parentSpan.appendChild(conditionSpan);
+
+        return parentSpan;
 
     }
 
