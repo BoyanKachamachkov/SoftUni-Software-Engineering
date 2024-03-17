@@ -1,10 +1,14 @@
 function attachEvents() {
     const btnLoadPosts = document.getElementById('btnLoadPosts');
+    const btnViewPost = document.getElementById('btnViewPost');
     const postsSelect = document.querySelector('select#posts');
+    const postTitle = document.getElementById('post-title');
+    const postContent - document.getElementById('post-body');
 
 
     // add events
     btnLoadPosts.addEventListener('click', handleLoadPosts);
+    btnViewPost.addEventListener('click', handleViewPost);
     let commonData;
 
     function handleLoadPosts() {
@@ -26,12 +30,17 @@ function attachEvents() {
                 option.value = id;
                 option.textContent = postInfo.title;
                 option.dataset.body = postInfo.body;
-
                 postsSelect.appendChild(option);
-
             }
 
         }
+    }
+
+    function handleViewPost() {
+        // get postID
+        let selectedPostId = document.getElementById('posts').value;
+
+
     }
 
 }
