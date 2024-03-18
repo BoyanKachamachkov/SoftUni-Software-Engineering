@@ -14,10 +14,28 @@ function attachEvents() {
     async function onLoad() {
 
         const response = await fetch(url);
+        const data = await response.json();
+
+        Object.values(data).forEach(rec => {
+            createAndAppendLi(rec);
+        });
+
 
     }
 
+    function createAndAppendLi(rec) {
+        let li = document.createElement('li');
+        li.textContent = `${rec.person}: ${rec.phone}`;
 
+        let btn = document.createElement('button');
+        btn.textContent = 'Delete';
+        btn.dataset.id = rec._id;
+        btn.addEventListener('click', onDeleteClick);
+        debugger;
+    }
+
+
+    async function onDeleteClick() { }
 }
 
 attachEvents();
