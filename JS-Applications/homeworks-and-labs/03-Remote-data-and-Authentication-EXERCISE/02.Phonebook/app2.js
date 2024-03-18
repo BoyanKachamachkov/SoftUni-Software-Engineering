@@ -1,6 +1,4 @@
 function attachEvents() {
-
-    /* When the [Load] button is clicked, a GET request should be made to the server to get all phonebook entries. Each  received entry should be in a li inside the ul with id="phonebook" in the following format with text "<person>: <phone> " and a [Delete] button attached.  */
     // select load btn
     // get for all entries
     // attach each entry inside the ul as li
@@ -11,7 +9,46 @@ function attachEvents() {
     const ulRef = document.getElementById('phonebook');
 
     document.getElementById('btnLoad').addEventListener('click', onLoad);
+    document.getElementById('btnCreate').addEventListener('click', onCreate);
 
+    async function onCreate() {
+        // get inputRefs
+        // get inputVals
+        // check if valid?
+        // reload phonebook
+        // create obj to send to server in JSON format
+        // {
+        //     "person": "<person>",
+        //     "phone": "<phone>"
+        //   }
+        // clear inputs
+
+        const personRef = document.getElementById('person');
+        const phoneRef = document.getElementById('phone');
+        const person = personRef.value;
+        const phone = phoneRef.value;
+
+        if (!person || !phone) {
+            return;
+        }
+
+        const newContact = {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({
+                person: person,
+                phone: phone,
+            })
+        };
+
+        await fetch(url, newContact);
+        phoneRef.value = '';
+        personRef.value = '';
+
+        // reload
+        onLoad();
+
+    }
     async function onLoad() {
 
         const response = await fetch(url);
