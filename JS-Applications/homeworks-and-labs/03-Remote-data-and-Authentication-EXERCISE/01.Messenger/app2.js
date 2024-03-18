@@ -1,11 +1,7 @@
 function attachEvents() {
-    /* 
-If you click over [Refresh] button you should get all messages with GET request and display them into the textarea. Use the following message format:
-"{author}: {message}"
- */
-
     const url = ' http://localhost:3030/jsonstore/messenger';
     document.getElementById('submit').addEventListener('click', onSend);
+    document.getElementById('refresh').addEventListener('click', onRefresh);
 
 
     async function onSend(e) {
@@ -33,7 +29,22 @@ If you click over [Refresh] button you should get all messages with GET request 
 
     }
 
+    async function onRefresh(e) {
+        // select textarea
+        // collect all msgs with GET
+        // display in textarea
+        // use format "{author}: {message}" (trim ends)
+
+        const msgsRef = document.getElementById('messages');
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        Object.values(data).forEach(entry => {
+            msgsRef.value += `${entry.author}: ${entry.content}\n`;
+        });
+        msgsRef.value = msgsRef.value.trim();
+    }
+
 }
-
-
 attachEvents();
