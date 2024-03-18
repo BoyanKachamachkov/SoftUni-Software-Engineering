@@ -1,10 +1,5 @@
 function attachEvents() {
-    /* The url for the requests - http://localhost:3030/jsonstore/messenger
-When [Send] button is clicked you should create a new object and send a post request to the given url. Use the following message structure:
-{
-  author: authorName,
-  content: msgText,
-}
+    /* 
 If you click over [Refresh] button you should get all messages with GET request and display them into the textarea. Use the following message format:
 "{author}: {message}"
  */
@@ -14,15 +9,28 @@ If you click over [Refresh] button you should get all messages with GET request 
 
 
     async function onSend(e) {
-        // create new obj
+        // select input refs
+        // create vals from inputs
+        // craete obj to send with POST
+        // send obj
+        // clear inputs
 
         const nameRef = document.querySelector("input[name='author']");
         const textRef = document.querySelector("input[name='content']");
 
-        const name = nameRef.value
+        const name = nameRef.value;
+        const text = textRef.value;
 
+        const obj = {
+            method: 'POST',
+            headers: { 'Content-type': 'application/json' },
+            body: JSON.stringify({ author: name, content: text })
+        };
 
-        debugger
+        await fetch(url, obj);
+        nameRef.value = '';
+        textRef.value = '';
+
     }
 
 }
