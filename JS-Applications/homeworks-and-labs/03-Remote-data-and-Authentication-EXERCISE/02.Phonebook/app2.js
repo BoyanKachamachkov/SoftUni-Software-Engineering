@@ -8,6 +8,7 @@ function attachEvents() {
     // attach delete button to each entry
 
     const url = 'http://localhost:3030/jsonstore/phonebook';
+    const ulRef = document.getElementById('phonebook');
 
     document.getElementById('btnLoad').addEventListener('click', onLoad);
 
@@ -15,6 +16,9 @@ function attachEvents() {
 
         const response = await fetch(url);
         const data = await response.json();
+
+        // clear
+        ulRef.innerHTML = '';
 
         Object.values(data).forEach(rec => {
             createAndAppendLi(rec);
@@ -31,11 +35,23 @@ function attachEvents() {
         btn.textContent = 'Delete';
         btn.dataset.id = rec._id;
         btn.addEventListener('click', onDeleteClick);
-        debugger;
+
+        li.appendChild(btn);
+        ulRef.appendChild(li);
     }
 
 
-    async function onDeleteClick() { }
+    async function onDeleteClick(e) {
+        // delete to http://localhost:3030/jsonstore/phonebook/:key> 
+        let id = e.target.dataset.id;
+
+        await fetch(url + '/' + id, {
+            method: 'DELETE'
+        });
+
+        onLoad();
+
+    }
 }
 
 attachEvents();
