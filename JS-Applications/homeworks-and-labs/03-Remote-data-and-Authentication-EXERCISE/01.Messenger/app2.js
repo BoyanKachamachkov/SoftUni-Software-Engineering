@@ -4,47 +4,42 @@ function attachEvents() {
     document.getElementById('refresh').addEventListener('click', onRefresh);
 
 
-    async function onSend(e) {
+    async function onSend() {
         // select input refs
         // create vals from inputs
         // craete obj to send with POST
         // send obj
         // clear inputs
-
         const nameRef = document.querySelector("input[name='author']");
         const textRef = document.querySelector("input[name='content']");
-
         const name = nameRef.value;
         const text = textRef.value;
 
-        const obj = {
+        const postObject = {
             method: 'POST',
             headers: { 'Content-type': 'application/json' },
             body: JSON.stringify({ author: name, content: text })
         };
-
-        await fetch(url, obj);
+        await fetch(url, postObject);
         nameRef.value = '';
         textRef.value = '';
-
     }
 
-    async function onRefresh(e) {
+
+    async function onRefresh() {
         // select textarea
         // collect all msgs with GET
         // display in textarea
         // use format "{author}: {message}" (trim ends)
-
-        const msgsRef = document.getElementById('messages');
+        const textAreaRef = document.getElementById('messages');
 
         const response = await fetch(url);
         const data = await response.json();
 
-        Object.values(data).forEach(entry => {
-            msgsRef.value += `${entry.author}: ${entry.content}\n`;
+        Object.values(data).forEach(message => {
+            textAreaRef.value += `${message.author}: ${message.content}\n`;
         });
-        msgsRef.value = msgsRef.value.trim();
+        textAreaRef.value = textAreaRef.value.trim();
     }
-
 }
 attachEvents();
