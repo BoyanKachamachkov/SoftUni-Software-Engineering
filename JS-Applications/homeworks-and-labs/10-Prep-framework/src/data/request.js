@@ -34,7 +34,7 @@ async function request(method, url, data) {
         } else {
             return response.json();
         }
-        
+
 
 
     } catch (error) {
@@ -43,3 +43,8 @@ async function request(method, url, data) {
         throw error;
     }
 }
+
+export const get = (url) => request('get', url);
+export const post = (url, data) => request('post', url, data);
+export const put = (url, data) => request('put', url, data);
+export const del = (url) => request('delete', url);

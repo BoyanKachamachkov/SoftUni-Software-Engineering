@@ -1,7 +1,7 @@
 Create project framework
 [x] App.js with router in it
 [x] Rendering and other lib utils
-[ ] Requester module
+[x] Requester module
 [x] LocalStorage and other utilities
 [ ] User API module
 

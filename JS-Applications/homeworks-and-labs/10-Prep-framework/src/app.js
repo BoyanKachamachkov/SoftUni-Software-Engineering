@@ -1,6 +1,10 @@
-import { page } from './lib.js'
+import { page } from './lib.js';
 import { showExample } from './views/exampleView.js';
+import * as api from './data/request.js';
 
-page('/', showExample)
+page('/', showExample);
 
-page.start()
+page.start();
+
+
+window.api = api
