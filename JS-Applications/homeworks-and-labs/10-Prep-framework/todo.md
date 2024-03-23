@@ -2,7 +2,7 @@ Create project framework
 [x] App.js with router in it
 [x] Rendering and other lib utils
 [ ] Requester module
-[ ] LocalStorage and other utilities
+[x] LocalStorage and other utilities
 [ ] User API module
 
 Implement exam solution

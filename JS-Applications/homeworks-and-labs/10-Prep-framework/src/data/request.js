@@ -1,3 +1,7 @@
+import { clearUserData, getUserData } from "../util.js";
+
+const host = 'http:/localhost:3030';
+
 async function request(method, url, data) {
     const options = {
         method,
@@ -9,4 +13,33 @@ async function request(method, url, data) {
         options.body = JSON.stringify(data);
     }
     // TODO add authorization
+    const userData = getUserData();
+    if (userData) {
+        options.headers['X-Authorization'] = userData.accessToken;
+    }
+
+    try {
+        const response = await fetch(host + url, options);
+
+        if (!response.ok) {
+            if (response.status == 403) {
+                clearUserData();
+            }
+            const err = await response.json();
+            throw new Error(err.message);
+        }
+
+        if (response.status == 204) {
+            return response;
+        } else {
+            return response.json();
+        }
+        
+
+
+    } catch (error) {
+        // TODO Add custom error handling and visualization based on exam requirements
+        alert(error.message);
+        throw error;
+    }
 }
