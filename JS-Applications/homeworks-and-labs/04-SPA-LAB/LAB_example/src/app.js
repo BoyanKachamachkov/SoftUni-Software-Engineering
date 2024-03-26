@@ -1,8 +1,16 @@
+import registerPage from './registerPage.js';
+
+let pages = {
+    'register': registerPage,
+};
+
+
 let headerElement = document.querySelector('.header .nav').addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.tagName == 'A') {
-        console.log(e.target.getAttribute('data-link'));
-    } else {
-        console.log('not A');
+        let dataLink = e.target.getAttribute('data-link');
+        let currentView = pages[dataLink] || {};
+
+        currentView.showPage()
     }
 });
