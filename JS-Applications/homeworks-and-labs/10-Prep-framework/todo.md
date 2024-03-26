@@ -1,6 +1,6 @@
-[] Create project framework
+Create project framework
+[x] Rendering and other lib utils
 [] App.js with router initi
-[] Rendering and other lib utils
 [] Requester module
 [] LocalStorage and other utilities
 [] User API module
