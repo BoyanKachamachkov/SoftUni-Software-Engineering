@@ -1,8 +1,10 @@
-function solve(string) {
-    let length = string.length;
-
-    console.log(length);
-    console.log(string);
+function echo(input){
+    console.log(input.length)
+    console.log(input)
 }
 
-solve('Hello, JavaScript!');
+echo('Hello, JavaScript!')
+echo('strings are easy')
+
+/* 18
+Hello, JavaScript! */
