@@ -31,3 +31,12 @@ let calculateExp = function (a, b) {
 
 let resultExp = calculateExp(3, 5);
 console.log(resultExp);
+
+
+// default input param
+function solve(input = 'pesho', age) {
+    console.log(arguments)
+    console.log(input, age);
+}
+solve('Gosho', 20);
+
