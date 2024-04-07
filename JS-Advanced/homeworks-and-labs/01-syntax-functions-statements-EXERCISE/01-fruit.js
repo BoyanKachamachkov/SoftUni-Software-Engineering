@@ -1,11 +1,6 @@
-function fruit(fruit, weight, price) {
-	weight /= 1000;
-
-	let money = weight * price;
-	console.log(
-		`I need $${money.toFixed(2)} to buy ${weight.toFixed(2)} kilograms ${fruit}.`
-	);
+function fruitCalc(type, grams, priceKg) {
+    let cost = (grams * priceKg / 1000).toFixed(2);
+    console.log(`I need $${cost} to buy ${(grams / 1000).toFixed(2)} kilograms ${type}.`);
 }
 
-fruit('orange', 2500, 1.8);
-fruit('apple', 1563, 2.35);
+fruitCalc('orange', 2500, 1.80);
