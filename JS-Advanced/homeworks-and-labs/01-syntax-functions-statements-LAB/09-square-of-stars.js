@@ -1,4 +1,4 @@
-function solve(num) {
+function stars(num) {
     let star = '* ';
 
     for (let i = 0; i < num; i++) {
@@ -6,7 +6,7 @@ function solve(num) {
     }
 }
 
-// solve(1);
-// solve(2);
-solve(5);
-// solve(7);
+
+stars(1);
+stars(2);
+stars(5);
