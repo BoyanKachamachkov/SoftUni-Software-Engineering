@@ -1,11 +1,12 @@
 function solve(n, m) {
-    n = Number(n);
-    m = Number(m);
-    let sum = 0;
-    for (let i = n; i <= m; i++) {
-        sum += i;
+    let res = 0;
+    let num1 = Number(n);
+    let num2 = Number(m);
+
+    for (let i = num1; i <= num2; i++) {
+        res += i;
     }
-    console.log(sum);
+    return res;
 }
 
 solve('1', '5');
