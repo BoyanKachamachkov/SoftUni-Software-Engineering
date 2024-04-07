@@ -1,32 +1,27 @@
-function solve(num1, num2, str) {
-    let result = 0;
-    switch (str) {
+function solve(num1, num2, operator) {
+    let res = '';
+    switch (operator) {
         case '+':
-            result = num1 + num2;
+            res = num1 + num2;
             break;
-
         case '-':
-            result = num1 - num2;
+            res = num1 - num2;
             break;
-
         case '*':
-            result = num1 * num2;
+            res = num1 * num2;
             break;
-
         case '/':
-            result = num1 / num2;
+            res = num1 / num2;
             break;
-
         case '%':
-            result = num1 % num2;
+            res = num1 % num2;
             break;
-
         case '**':
-            result = num1 ** num2;
+            res = num1 ** num2;
             break;
-    }
 
-    console.log(result);
+    }
+    console.log(res);
 }
 
 solve(5, 6, '+');
