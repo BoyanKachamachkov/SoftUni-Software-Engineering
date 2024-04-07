@@ -1,18 +1,17 @@
-function timeToWalk(stepsCount, footPrintMeters, speedKmh) {
-	let distanceMeters = stepsCount * footPrintMeters;
-	let speedMetersPerSec = speedKmh / 3.6;
-	let restSeconds = Math.floor(distanceMeters / 500) * 60;
-	let timeInSeconds = distanceMeters / speedMetersPerSec + restSeconds;
+function solve(steps, footprint, speed) {
 
-	let timeHr = Math.floor(timeInSeconds / 3600);
-	let timeMin = Math.floor(timeInSeconds / 60);
-	let timeSec = Math.round(timeInSeconds % 60);
+	let distance = steps * footprint;
+	let speedMetersSec = speed / 3.6;
+	let timeSec = distance / speedMetersSec;
+	let breaksSecs = Math.floor(distance / 500) * 60;
+	let totalTimeSec = timeSec + breaksSecs;
 
-	console.log(
-		`${timeHr < 10 ? '0' : ''}${timeHr}:${
-			timeMin < 10 ? '0' : ''
-		}${timeMin}:${timeSec}`
-	);
+	let hr = Math.floor(totalTimeSec / 3600);
+	let min = Math.floor(totalTimeSec / 60);
+	let sec = Math.round(totalTimeSec % 60);
+
+	console.log(`${hr < 10 ? '0' : ''}${hr}:${min < 10 ? '0' : ''}${min}:${sec}`);
 }
 
-timeToWalk(4000, 0.6, 5);
+
+solve(4000, 0.60, 5); //00:32:48;
