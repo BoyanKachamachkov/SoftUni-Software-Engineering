@@ -1,20 +1,16 @@
 function sameNums(num) {
-	const numString = num.toString();
 
-	let firstChar = numString[0];
-	let sum = Number(numString[0]);
-
-	let areSame = true;
-	for (let i = 1; i < numString.length; i++) {
-		if (firstChar == numString[i]) {
-			sum += Number(numString[i]);
-		} else {
-			sum += Number(numString[i]);
-			areSame = false;
+	let isSame = true;
+	let sum = 0;
+	let numStr = num.toString();
+	for (let i = 0; i < numStr.length; i++) {
+		if (numStr[i] != numStr[0]) {
+			isSame = false;
 		}
+		sum += Number(numStr[i]);
 	}
-	console.log(areSame);
-	console.log(sum);
+	console.log(isSame);
+	console.log(sum)
 }
 sameNums(2222222);
 sameNums(1234);
