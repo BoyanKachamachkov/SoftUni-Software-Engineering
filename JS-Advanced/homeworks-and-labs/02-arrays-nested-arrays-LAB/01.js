@@ -1,12 +1,15 @@
-function solve(arr) {
+function solve(n, k) {
+    let sequence = [1];
 
-    let res = [];
-    for (let i = 0; i <= arr.length; i++) {
-        if (i % 2 == 0) {
-            res.push(arr[i]);
+    for (let i = 1; i < n; i++) {
+
+        let sum = 0;
+        for (let j = 1; j <= k && i - j >= 0; j++) {
+            sum += sequence[i - j];
         }
+        sequence.push(sum);
     }
-    console.log(res.join(' '));
-
+    return sequence;
 }
-solve(['20', '30', '40', '50', '60']);
+
+console.log(solve(6,3)) 
