@@ -4,7 +4,6 @@ function solve(matrix) {
     let biggest = Number.MIN_SAFE_INTEGER;
 
     for (const arr of matrix) {
-
         for (const element of arr) {
             if (element > biggest) {
                 biggest = element;
