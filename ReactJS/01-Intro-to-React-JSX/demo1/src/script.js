@@ -7,4 +7,6 @@ const rootDomElement = document.getElementById('root');
 // Create REACT ROOT EL
 const root = ReactDOM.createRoot(rootDomElement);
 
-const reactHeading = React.createElement('h1', {}, 'Test');
+const reactHeading = React.createElement('h1', {}, 'Hello from JSX!');
+
+root.render(reactHeading);
