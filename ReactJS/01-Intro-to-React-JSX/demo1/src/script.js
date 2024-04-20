@@ -8,5 +8,20 @@ const rootDomElement = document.getElementById('root');
 const root = ReactDOM.createRoot(rootDomElement);
 
 const reactHeading = React.createElement('h1', {}, 'Hello from JSX!');
+const reactSecondHeading = React.createElement('h2', {}, 'The best syntax ever!');
+const Header = React.createElement(
+    'header',
+    { className: 'site-header' },
+    reactHeading,
+    reactSecondHeading);
 
-root.render(reactHeading);
+
+const headerJSX = (
+    <header>
+        <h1>Hello from JSX!</h1>
+        <h2>The best syntax ever!</h2>
+        <h3>nice test!</h3>
+        <p>It's kinda amazing how this works!</p>
+    </header>
+);
+root.render(headerJSX);
