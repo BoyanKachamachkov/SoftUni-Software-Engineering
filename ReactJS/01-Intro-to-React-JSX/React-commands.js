@@ -13,5 +13,6 @@
 
 // SETUP VITE project
 // npm create vite . (use current folder)
+// npm create vite my-app (it will create new folder)
 // npm i
 // npm run dev
