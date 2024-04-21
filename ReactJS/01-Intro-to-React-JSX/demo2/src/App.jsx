@@ -1,15 +1,14 @@
-
 import './App.css';
+import Body from './components/Body';
+import Header from './components/Header';
+
 
 function App() {
 
     return (
         <>
-            <div>
-                <h1>React Demo 2</h1>
-
-            </div>
-            <h1>Vite + React</h1>
+            <Header />
+            <Body />
 
         </>
     );
