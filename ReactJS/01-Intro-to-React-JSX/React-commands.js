@@ -9,3 +9,9 @@
 // "build": "npx babel --watch src --out-dir build --presets react-app/prod"
  
 // npm run build
+
+
+// SETUP VITE project
+// npm create vite . (use current folder)
+// npm i
+// npm run dev
