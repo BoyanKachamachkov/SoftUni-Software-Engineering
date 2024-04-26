@@ -1,6 +1,8 @@
 import './App.css';
 import MovieList from './components/MovieList';
+import BookList from './components/BookList';
 import movies from './assets/movies';
+import books from './assets/books';
 
 function App() {
 
@@ -11,7 +13,8 @@ function App() {
             </h1>
 
             {/* Подаваме масива от филми на movielist */}
-            <MovieList headingText="Movie List" movies={movies}/>
+            <MovieList headingText="Movie List" movies={movies} />
+            <BookList bookHeading="Book List" books={books} />
         </div>
 
 
