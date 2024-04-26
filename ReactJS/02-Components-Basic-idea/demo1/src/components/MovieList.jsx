@@ -1,13 +1,16 @@
 export default function MovieList(props) {
+    
+    console.log(props);
     return (
         <div className="movie-list">
 
             <h1>{props.headingText}</h1>
 
             <ul>
-                <li>fmovie</li>
-                <li>smovie</li>
-                <li>tmovie</li>
+                <li>{props.movies[0].title}</li>
+                <li>{props.movies[1].title}</li>
+                <li>{props.movies[2].title}</li>
+                <li>{props.movies[3].title}</li>
             </ul>
 
 

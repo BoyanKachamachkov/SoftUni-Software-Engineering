@@ -1,5 +1,6 @@
 import './App.css';
 import MovieList from './components/MovieList';
+import movies from './assets/movies';
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
                 My first DYNAMIC react app!
             </h1>
 
-            <MovieList headingText="Movie List" />
+            <MovieList headingText="Movie List" movies={movies}/>
         </div>
 
 
