@@ -11,7 +11,7 @@
 | <a href="https://softuni.bg/trainings/4218/programming-fundamentals-september-2023"> Programming Fundamentals with JS </a> | <a href="https://softuni.bg/certificates/details/194310/93226b55"> Link</a> |
 | **JS Advanced Module** |
 | <a href="https://softuni.bg/trainings/4372/js-advanced-january-2024"> JS Advanced </a>  | <a href="https://softuni.bg/certificates/details/203212/93fc9b03"> Link</a> |
-| <a href="https://softuni.bg/trainings/4373/js-applications-february-2024"> JS Applications </a>  | <a href="#"> Link</a> |
+| <a href="https://softuni.bg/trainings/4373/js-applications-february-2024"> JS Applications </a>  | <a href="https://softuni.bg/certificates/details/209493/04d81013"> Link</a> |
 | **JS Web Module** |
 | <a href="https://softuni.bg/trainings/4533/js-back-end-may-2024"> JS Back-End </a>  | <a href="#"> Link</a> |
 | <a href="https://softuni.bg/trainings/4529/reactjs-june-2024"> ReactJS </a>  | <a href="#"> Link</a> |
