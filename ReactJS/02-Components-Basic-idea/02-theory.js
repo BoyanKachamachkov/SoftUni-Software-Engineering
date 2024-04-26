@@ -1,0 +1,1 @@
+// app component GIVES the movieList component the movies.
