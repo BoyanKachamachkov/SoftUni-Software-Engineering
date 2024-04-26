@@ -10,6 +10,7 @@ function App() {
                 My first DYNAMIC react app!
             </h1>
 
+            {/* Подаваме масива от филми на movielist */}
             <MovieList headingText="Movie List" movies={movies}/>
         </div>
 
