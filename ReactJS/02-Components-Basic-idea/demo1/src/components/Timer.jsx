@@ -18,4 +18,4 @@ export default function Timer(props) {
             <p>{time}</p>
         </div>
     );
-}
+}2
