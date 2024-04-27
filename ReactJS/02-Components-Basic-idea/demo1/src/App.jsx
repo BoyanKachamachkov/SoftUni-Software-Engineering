@@ -4,6 +4,7 @@ import BookList from './components/BookList';
 import movies from './assets/movies';
 import books from './assets/books';
 import Timer from './components/Timer';
+import Counter from './components/Button';
 
 function App() {
 
@@ -12,6 +13,8 @@ function App() {
             <h1>
                 My first DYNAMIC react app!
             </h1>
+
+            <Counter />
 
             <Timer time={5} />
             <Timer time={6} />
