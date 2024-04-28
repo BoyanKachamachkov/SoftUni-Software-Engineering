@@ -7,8 +7,8 @@
 - [x]   Create timer with useState Hook and make it dynamic
   - [x]   Pass different startTime value from props and use it in the hook as initial value
   - [x]    Add 3 timers with different start times
-- []   Create Counter with 3 buttons (inc. | dec. | clear all) via useState
-- []   Create buttons and attach Event handler functions to them
-- []       - Add conditional rendering (count less than 0) with if
-- []       - Add conditional rendering with switch statement
-- []       - Add conditional rendering using ternary operator
+- [x]   Create Counter with 3 buttons (inc. | dec. | clear all) via useState
+  - [x]   Create buttons and attach Event handler functions to them
+  - []       - Add conditional rendering (count less than 0) with if
+  - []       - Add conditional rendering with switch statement
+  - []       - Add conditional rendering using ternary operator
