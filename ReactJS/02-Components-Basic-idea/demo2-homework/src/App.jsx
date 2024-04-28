@@ -1,7 +1,8 @@
 import './App.css';
 import movies from '../public/movies';
-import MovieList from './assets/MovieList';
-import MovieList2 from './assets/MovieList2';
+import MovieList from './Components/MovieList';
+import MovieList2 from './Components/MovieList2';
+import Timer from './Components/Timer';
 
 function App() {
 
@@ -9,6 +10,8 @@ function App() {
         <>
 
             <h1>02-React-Components-homework!</h1>
+
+            <Timer />
 
             <MovieList
                 movies={movies}
