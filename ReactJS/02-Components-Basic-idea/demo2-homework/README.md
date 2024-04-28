@@ -9,6 +9,6 @@
   - [x]    Add 3 timers with different start times
 - [x]   Create Counter with 3 buttons (inc. | dec. | clear all) via useState
   - [x]   Create buttons and attach Event handler functions to them
-  - []       - Add conditional rendering (count less than 0) with if
+  - [x]       - Add conditional rendering (count less than 0) with if
   - []       - Add conditional rendering with switch statement
   - []       - Add conditional rendering using ternary operator
