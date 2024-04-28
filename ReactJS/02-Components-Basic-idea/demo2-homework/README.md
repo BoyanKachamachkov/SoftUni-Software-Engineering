@@ -10,5 +10,6 @@
 - [x]   Create Counter with 3 buttons (inc. | dec. | clear all) via useState
   - [x]   Create buttons and attach Event handler functions to them
   - [x]       - Add conditional rendering (count less than 0) with if
-  - []       - Add conditional rendering with switch statement
-  - []       - Add conditional rendering using ternary operator
+  - [x]       - Add conditional rendering with switch statement
+  - [x]       - Add conditional rendering using ternary operator
+  - [x]       - Add conditional rendering using Boolean
