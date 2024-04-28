@@ -11,7 +11,10 @@ function App() {
 
             <h1>02-React-Components-homework!</h1>
 
-            <Timer />
+            <Timer startTime={0} />
+            <Timer startTime={5} />
+            <Timer startTime={6} />
+            <Timer startTime={7} />
 
             <MovieList
                 movies={movies}

@@ -2,7 +2,10 @@ import { useState } from "react";
 
 export default function Timer(props) {
 
-    const [time, setTime] = useState(0);
+    const [time, setTime] = useState(props.startTime);
+
+    // start time can be just 0, not mandatory to use props
+    // const [time, setTime] = useState(0);
 
     // do not use, just example purposes before useEffect Hook introduced!
     setTimeout(() => {

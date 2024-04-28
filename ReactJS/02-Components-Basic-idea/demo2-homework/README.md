@@ -4,7 +4,9 @@
 - [x]   Make List.jsx file + props from the example file and visualize all the  objects via props il UL/LI fashion
 - [x]   Separate and list.jsx with item.jsx and connect them to get the same result
 - [x]   Exercise props
-- []   Create timer with useState Hook and make it dynamic
+- [x]   Create timer with useState Hook and make it dynamic
+  - [x]   Pass different startTime value from props and use it in the hook as initial value
+  - [x]    Add 3 timers with different start times
 - []   Create Counter with 3 buttons (inc. | dec. | clear all) via useState
 - []   Create buttons and attach Event handler functions to them
 - []       - Add conditional rendering (count less than 0) with if
