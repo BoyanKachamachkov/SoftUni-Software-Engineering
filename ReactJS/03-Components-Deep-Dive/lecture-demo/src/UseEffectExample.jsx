@@ -5,6 +5,11 @@ export default function UseEffectExample(props) {
 
     const [count, setCount] = useState(0);
 
+    // mount only execution
+    useEffect(() => {
+        console.log('I am mounted');
+    }, []);
+
     useEffect(() => {
         // the code that we want to run
         console.log('Count is', count);
