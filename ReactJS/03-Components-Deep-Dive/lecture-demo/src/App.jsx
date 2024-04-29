@@ -13,6 +13,9 @@ function App() {
     // initially key of last num is 4, at the end its 0
     // meaning = using the INDEX works half the times, but its not good because it makes REACT re-render all LI elements, (it changes the keys at each button click)
 
+    // they will come from the database with unique keys
+    // only parents elements require key!! 
+
     return (
         <div>
             <ul>
