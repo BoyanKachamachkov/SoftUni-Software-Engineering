@@ -1,5 +1,6 @@
 import './App.css';
 import { useState } from 'react';
+import UseEffectExample from './UseEffectExample';
 
 function App() {
 
@@ -17,15 +18,17 @@ function App() {
     // only parents elements require key!! 
 
     return (
-        <div>
-            <ul>
-                {numbers.map((number, index) =>
-                    <li data-key={index} key={index}
-                    >{number * 2}</li>)}
-            </ul>
+        // <div>
+        //     <ul>
+        //         {numbers.map((number, index) =>
+        //             <li data-key={index} key={index}
+        //             >{number * 2}</li>)}
+        //     </ul>
 
-            <button onClick={onClick}>Remove item on top</button>
-        </div>
+        //     <button onClick={onClick}>Remove item on top</button>
+        // </div>
+
+        <UseEffectExample />
     );
 }
 
