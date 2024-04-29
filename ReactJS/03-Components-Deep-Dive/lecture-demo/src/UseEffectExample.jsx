@@ -10,6 +10,9 @@ export default function UseEffectExample(props) {
         console.log('Count is', count);
 
         // optional: return function
+        return () => {
+            console.log('I am being cleaned up!');
+        };
     }, [count]); //dependency array
 
 
