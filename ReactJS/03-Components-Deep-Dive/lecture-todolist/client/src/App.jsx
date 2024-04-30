@@ -1,35 +1,120 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 
 function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <div>
+
+            <Header />
+
+            <main className="main">
+
+                <section className="todo-list-container">
+                    <h1>Todo List</h1>
+
+                    <div className="add-btn-container">
+                        <button className="btn">+ Add new Todo</button>
+                    </div>
+
+                    <div className="table-wrapper">
+
+                        <div className="loading-container">
+                            <div className="loading-spinner">
+                                <span className="loading-spinner-text">Loading</span>
+                            </div>
+                        </div>
+
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th className="table-header-task">Task</th>
+                                    <th className="table-header-status">Status</th>
+                                    <th className="table-header-action">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr className="todo is-completed">
+                                    <td>Give dog a bath</td>
+                                    <td>Complete</td>
+                                    <td className="todo-action">
+                                        <button className="btn todo-btn">Change status</button>
+                                    </td>
+                                </tr>
+
+                                <tr className="todo is-completed">
+                                    <td>Do laundry</td>
+                                    <td>Complete</td>
+                                    <td className="todo-action">
+                                        <button className="btn todo-btn">Change status</button>
+                                    </td>
+                                </tr>
+
+                                <tr className="todo">
+                                    <td>Vacuum floor</td>
+                                    <td>Incomplete</td>
+                                    <td className="todo-action">
+                                        <button className="btn todo-btn">Change status</button>
+                                    </td>
+                                </tr>
+
+                                <tr className="todo is-completed">
+                                    <td>Feed cat</td>
+                                    <td>Complete</td>
+                                    <td className="todo-action">
+                                        <button className="btn todo-btn">Change status</button>
+                                    </td>
+                                </tr>
+
+                                <tr className="todo">
+                                    <td>Change light bulbs</td>
+                                    <td>Incomplete</td>
+                                    <td className="todo-action">
+                                        <button className="btn todo-btn">Change status</button>
+                                    </td>
+                                </tr>
+
+                                <tr className="todo is-completed">
+                                    <td>Feed cat</td>
+                                    <td>Complete</td>
+                                    <td className="todo-action">
+                                        <button className="btn todo-btn">Change status</button>
+                                    </td>
+                                </tr>
+
+                                <tr className="todo">
+                                    <td>Change light bulbs</td>
+                                    <td>Incomplete</td>
+                                    <td className="todo-action">
+                                        <button className="btn todo-btn">Change status</button>
+                                    </td>
+                                </tr>
+
+                                <tr className="todo is-completed">
+                                    <td>Go to Store</td>
+                                    <td>Completed</td>
+                                    <td className="todo-action">
+                                        <button className="btn todo-btn">Change status</button>
+                                    </td>
+                                </tr>
+
+                                <tr className="todo">
+                                    <td>Fill gas tank</td>
+                                    <td>Incomplete</td>
+                                    <td className="todo-action">
+                                        <button className="btn todo-btn">Change status</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </main>
+
+            <Footer />
+        </div>
+    );
 }
 
-export default App
+export default App;
