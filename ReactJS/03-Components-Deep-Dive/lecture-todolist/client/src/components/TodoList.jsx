@@ -1,6 +1,17 @@
+import { useEffect, useState } from "react";
 import TodoItem from "./Todo";
 
 export default function TodoList(props) {
+
+    useEffect(() => {
+        fetch(`http://localhost:3030/jsonstore/todos`)
+            .then(response => response.json())
+            .then(data => {
+                const todos = Object.values(data);
+                console.log(todos);
+            })
+            .catch(err => console.log(err));
+    }, []);
 
     return (
         <section className="todo-list-container">
