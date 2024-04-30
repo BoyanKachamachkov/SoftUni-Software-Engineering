@@ -1,17 +1,28 @@
+import { useState } from 'react';
 import './App.css';
+import React from 'react';
 
 
 function App() {
-    let numbers = [1, 2, 3, 4, 5];
-    let doubled = numbers.map(n => n * 2);
 
-    console.log(doubled);
+    const [nums, setNumbers] = useState([1, 2, 3, 4, 5]);
+
+    const onClick = () => {
+        setNumbers(oldState => oldState.slice(1));
+    };
+
 
     return (
 
-        <ul>
-            {doubled}
-        </ul>
+        <div>
+            <ul>
+                {nums.map((num, idx) => <li data-key={idx} key={idx}>{num * 2}</li>)}
+            </ul>
+
+            <button onClick={onClick}>Remove</button>
+
+        </div>
+
     );
 }
 
