@@ -5,20 +5,17 @@ import * as userService from "../services/userService";
 
 const UserListTable = () => {
 
-    const [users, setUsers] = useState([])
+    const [users, setUsers] = useState([]);
 
-    console.log(users)
+    console.log(users);
 
     useEffect(() => {
         userService.getAll()
-            .then(result => setUsers(result))
-    }, [])
+            .then(result => setUsers(result));
+    }, []);
 
     return (
         <div className="table-wrapper">
-
-
-
             <table className="table">
                 <thead>
                     <tr>
@@ -77,8 +74,24 @@ const UserListTable = () => {
                 <tbody>
                     {/* <!-- Table row component --> */}
 
+                    {users.map(user => (
+                        <UserListItem
+                            // destructure user is alternative to not type them all 1-by-1
+                            // {...user}
+                            key={user._id}
+                            createdAt={user.createdAt}
+                            email={user.email}
+                            firstName={user.firstName}
+                            lastName={user.lastName}
+                            phoneNumber={user.phoneNumber}
+                            imageUrl={user.imageUrl}
+                        />
 
-                    <UserListItem />
+                    ))}
+
+
+
+
                 </tbody>
             </table>
         </div>
