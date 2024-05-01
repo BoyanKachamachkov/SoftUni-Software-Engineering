@@ -1,14 +1,19 @@
-
+import Footer from './components/Footer';
+import Header from './components/Header';
+import './styles.css';
 
 function App() {
 
-  return (
-    <>
-    
-    <h1>React</h1>
-      
-    </>
-  )
+    return (
+        <>
+
+            <Header />
+
+
+            <Footer />
+
+        </>
+    );
 }
 
-export default App
+export default App;
