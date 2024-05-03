@@ -7,9 +7,8 @@ import CreateUserModal from "./CreateUserModal";
 const UserListTable = () => {
 
     const [users, setUsers] = useState([]);
-
-    // control button add new user
     const [showCreate, setShowCreate] = useState(false);
+    const [showInfo, setShowInfo] = useState(false);
 
     console.log(users);
 
@@ -45,6 +44,10 @@ const UserListTable = () => {
         setShowCreate(false);
     };
 
+    const userInfoClickHandler = (userId) => {
+        console.log(userId);
+    };
+
     return (
 
         <div className="table-wrapper">
@@ -52,12 +55,13 @@ const UserListTable = () => {
             {/* Show or don't show modal, based on showCreate state */}
             {showCreate && (
                 <CreateUserModal
-                    hideModal={hideCreateUserModal}
-                    onUserCreate={userCreateHandler}
+                    onClose={hideCreateUserModal}
+                    onCreate={userCreateHandler}
 
 
                 />)}
 
+            {showInfo && <UserInfoModa onClose={() => setShowInfo(false)} />}
 
 
             <table className="table">
@@ -123,12 +127,14 @@ const UserListTable = () => {
                             // destructure user is alternative to not type them all 1-by-1
                             // {...user}
                             key={user._id}
+                            _id={user._id}
                             createdAt={user.createdAt}
                             email={user.email}
                             firstName={user.firstName}
                             lastName={user.lastName}
                             phoneNumber={user.phoneNumber}
                             imageUrl={user.imageUrl}
+                            onInfoClick={userInfoClickHandler}
                         />
 
                     ))}
