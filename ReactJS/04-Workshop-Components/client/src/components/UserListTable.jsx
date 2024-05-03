@@ -15,7 +15,8 @@ const UserListTable = () => {
 
     useEffect(() => {
         userService.getAll()
-            .then(result => setUsers(result));
+            .then(result => setUsers(result))
+            .catch(err => console.log(err));
     }, []);
 
     const createUserClickHandler = () => {
@@ -27,12 +28,32 @@ const UserListTable = () => {
         setShowCreate(false);
     };
 
+    const userCreateHandler = (e) => {
+        e.preventDefault();
+
+        // close modal on user creation
+        setShowCreate(false);
+
+
+        const data = Object.fromEntries(new FormData(e.currentTarget));
+        console.log(data);
+
+    };
+
     return (
 
         <div className="table-wrapper">
 
             {/* Show or don't show modal, based on showCreate state */}
-            {showCreate && <CreateUserModal hideModal={hideCreateUserModal} />}
+            {showCreate && (
+                <CreateUserModal
+                    hideModal={hideCreateUserModal}
+                    onUserCreate={userCreateHandler}
+
+
+                />)}
+
+
 
             <table className="table">
                 <thead>
