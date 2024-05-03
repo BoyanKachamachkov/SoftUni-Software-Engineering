@@ -28,16 +28,13 @@ const UserListTable = () => {
         setShowCreate(false);
     };
 
-    const userCreateHandler = (e) => {
+    const userCreateHandler = async (e) => {
         e.preventDefault();
 
-        // close modal on user creation
-        setShowCreate(false);
-
-
         const data = Object.fromEntries(new FormData(e.currentTarget));
-        console.log(data);
-
+        const result = await userService.create(data);
+        
+        setShowCreate(false);
     };
 
     return (
