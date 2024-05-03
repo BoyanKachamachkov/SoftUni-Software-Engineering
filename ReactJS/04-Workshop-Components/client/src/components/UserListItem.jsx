@@ -11,6 +11,7 @@ const UserListItem = ({
 }) => {
 
     return (
+        // 1;28 sme do klipa
         <tr>
             <td>
                 <img src={imageUrl}
