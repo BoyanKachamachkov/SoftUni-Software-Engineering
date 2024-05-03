@@ -8,6 +8,9 @@ const UserListTable = () => {
 
     const [users, setUsers] = useState([]);
 
+    // control button add new user
+    const [showCreate, setShowCreate] = useState(false);
+
     console.log(users);
 
     useEffect(() => {
@@ -16,11 +19,16 @@ const UserListTable = () => {
     }, []);
 
     const createUserClickHandler = () => {
-        console.log('test ');
+        setShowCreate(true)
     };
 
     return (
+
         <div className="table-wrapper">
+
+            {/* Show or don't show modal, based on showCreate state */}
+            {showCreate && <CreateUserModal />}
+
             <table className="table">
                 <thead>
                     <tr>
@@ -95,10 +103,11 @@ const UserListTable = () => {
                     ))}
                 </tbody>
             </table>
+
+            {/* onClick function that changes the state */}
             <button className="btn-add btn" onClick={createUserClickHandler}>Add new user</button>
 
 
-            <CreateUserModal />
         </div>
     );
 };
