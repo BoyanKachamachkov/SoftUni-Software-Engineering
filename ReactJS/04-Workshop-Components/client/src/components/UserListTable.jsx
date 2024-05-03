@@ -29,11 +29,19 @@ const UserListTable = () => {
     };
 
     const userCreateHandler = async (e) => {
+        // stop reloading
         e.preventDefault();
 
+        // get data from form
         const data = Object.fromEntries(new FormData(e.currentTarget));
-        const result = await userService.create(data);
-        
+
+        // create new user at the server
+        const newUser = await userService.create(data);
+
+        // add newly created user to the local state
+        setUsers(state => [...state, newUser]);
+
+        // close the modal (since we did the job)
         setShowCreate(false);
     };
 
