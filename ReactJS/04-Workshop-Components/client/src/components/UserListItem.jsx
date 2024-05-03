@@ -12,7 +12,7 @@ const UserListItem = ({
 
 }) => {
 
-    const infoClickHandler = () => {
+    const infoClickHandler = (userId) => {
         onInfoClick(userId);
     };
 
