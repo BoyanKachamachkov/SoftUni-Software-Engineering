@@ -47,3 +47,5 @@ const UserInfoModal = ({
     );
 };
 
+
+export default UserInfoModal;

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import UserListItem from "./UserListItem";
 import * as userService from "../services/userService";
 import CreateUserModal from "./CreateUserModal";
+import UserInfoModal from "./UserInfoModal";
 
 
 const UserListTable = () => {
@@ -44,9 +45,10 @@ const UserListTable = () => {
     setShowCreate(false);
   };
 
-  const userInfoClickHandler = (userId) => {
+  const userInfoClickHandler = async (userId) => {
 
-    console.log(userId);
+    const userDetails = await userService.getOne(userId);
+    console.log(userDetails);
   };
 
   return (
