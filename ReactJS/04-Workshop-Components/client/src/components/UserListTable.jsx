@@ -14,7 +14,6 @@ const UserListTable = () => {
     const [selectedUser, setSelectedUser] = useState(null);
     const [showDelete, setShowDelete] = useState(false);
 
-    console.log(users);
 
     useEffect(() => {
         userService.getAll()
@@ -56,12 +55,13 @@ const UserListTable = () => {
     };
 
     const deleteUserClickHandler = (userId) => {
-        console.log(userId)
+        setShowDelete(true);
+        setSelectedUser(userId);
 
-    }
+    };
 
     const deleteUserHandler = async () => {
-        console.log('delete user');
+        console.log('Preparing to delete user ID:', selectedUser);
 
     };
 

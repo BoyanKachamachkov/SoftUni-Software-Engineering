@@ -22,7 +22,7 @@ const userDeleteModal = ({
                     </header>
                     <div className="actions">
                         <div id="form-actions">
-                            <button id="action-save" className="btn" type="submit">Delete</button>
+                            <button id="action-save" className="btn" type="submit" onClick={onDelete}>Delete</button>
                             <button id="action-cancel" className="btn" type="button" onClick={onClose}>
                                 Cancel
                             </button>
