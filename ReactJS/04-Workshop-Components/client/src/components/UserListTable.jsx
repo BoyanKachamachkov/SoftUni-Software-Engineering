@@ -58,11 +58,9 @@ const UserListTable = () => {
         <CreateUserModal
           onClose={hideCreateUserModal}
           onCreate={userCreateHandler}
-
-
         />)}
 
-      {showInfo && <UserInfoModa onClose={() => setShowInfo(false)} />}
+      {showInfo && <UserInfoModal onClose={() => setShowInfo(false)} />}
 
 
       <table className="table">
