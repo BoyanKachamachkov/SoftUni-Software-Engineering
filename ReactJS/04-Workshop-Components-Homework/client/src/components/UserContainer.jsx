@@ -9,6 +9,9 @@ const UserContainer = () => {
             <Search />
 
             <UserListTable />
+
+            <button class="btn-add btn">Add new user</button>
+
         </section>
 
     );
