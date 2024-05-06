@@ -8,7 +8,7 @@ const UserListTable = () => {
 
     const [users, setUsers] = useState([]);
 
-    console.log(users)
+    console.log(users);
 
 
     useEffect(() => {
@@ -79,7 +79,14 @@ const UserListTable = () => {
                 </thead>
                 <tbody>
 
-                    <UserListRow />
+                    {/* <UserListRow /> */}
+
+                    {users.map(user => (
+                        <UserListRow
+                            {...user}
+                            key={user._id}
+                        />
+                    ))}
 
                 </tbody>
             </table>
