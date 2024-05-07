@@ -1,3 +1,4 @@
+import CreateUserModal from "./CreateUserModal";
 import UserListRow from "./UserListRow";
 import * as userService from './services/userServices';
 
@@ -8,8 +9,11 @@ const UserListTable = () => {
 
     const [users, setUsers] = useState([]);
 
-    console.log(users);
 
+    const createUserClickHandler = () => {
+        console.log('clicked');
+
+    };
 
     useEffect(() => {
 
@@ -22,6 +26,9 @@ const UserListTable = () => {
     return (
 
         <div className="table-wrapper">
+
+            <CreateUserModal />
+
             <table className="table">
                 <thead>
                     <tr>
@@ -90,6 +97,9 @@ const UserListTable = () => {
 
                 </tbody>
             </table>
+            <button className="btn-add btn" onClick={createUserClickHandler}>Add new user</button>
+
+
         </div>
     );
 
