@@ -8,12 +8,8 @@ import { useEffect, useState } from "react";
 const UserListTable = () => {
 
     const [users, setUsers] = useState([]);
+    const [showCreateModal, setCreateModal] = useState(false); //отначало не показваме
 
-
-    const createUserClickHandler = () => {
-        console.log('clicked');
-
-    };
 
     useEffect(() => {
 
@@ -23,11 +19,24 @@ const UserListTable = () => {
     }, []);
 
 
+    const createUserClickHandler = () => {
+        // не ме интересува дали е показано или не, започни да го показваш
+        setCreateModal(true);
+
+    };
+
+
+    const hideCreateUserModal = () => {
+        setCreateModal(false);
+    };
+
+
+
     return (
 
         <div className="table-wrapper">
 
-            <CreateUserModal />
+            {showCreateModal && <CreateUserModal hideModal={hideCreateUserModal} />}
 
             <table className="table">
                 <thead>
