@@ -14,7 +14,9 @@ const UserListTable = () => {
     useEffect(() => {
 
         userService.getAll()
-            .then(result => setUsers(result));
+            .then(result => setUsers(result))
+            // handle errors here (we can show something to the user)
+            .catch(err => console.log(err));
 
     }, []);
 
@@ -30,15 +32,18 @@ const UserListTable = () => {
         setCreateModal(false);
     };
 
-    const userCreateHandler = (e) => {
+    const userCreateHandler = async (e) => {
         e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData);
+
+        const result = await userService.create(data);
 
         // hide modal, no longer needed
         setCreateModal(false);
 
-        const formData = new FormData(e.currentTarget)
-        const data = Object.fromEntries(formData)
-        console.log(data)
+        // update users state by adding new user
+        setUsers(users => [...users, result])
 
     };
 
