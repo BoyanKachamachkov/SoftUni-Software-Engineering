@@ -30,13 +30,31 @@ const UserListTable = () => {
         setCreateModal(false);
     };
 
+    const userCreateHandler = (e) => {
+        e.preventDefault();
+
+        // hide modal, no longer needed
+        setCreateModal(false);
+
+        const formData = new FormData(e.currentTarget)
+        const data = Object.fromEntries(formData)
+        console.log(data)
+
+    };
+
 
 
     return (
 
         <div className="table-wrapper">
 
-            {showCreateModal && <CreateUserModal hideModal={hideCreateUserModal} />}
+            {showCreateModal && (
+                <CreateUserModal
+                    onClose={hideCreateUserModal}
+                    onCreate={userCreateHandler}
+
+                />
+            )}
 
             <table className="table">
                 <thead>
