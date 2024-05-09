@@ -60,7 +60,16 @@ const UserListTable = () => {
     };
 
     const deleteUserHandler = async () => {
-        console.log('delete user');
+
+        // delete user at server
+        await userService.remove(selectedUser);
+
+        // Remove from state
+        setUsers(state => state.filter(user => user._id !== selectedUser));
+
+        setShowDelete(false);
+
+
     };
 
     const deleteUserClickHandler = (userId) => {
@@ -90,7 +99,7 @@ const UserListTable = () => {
 
             {showDelete && <UserDeleteModal
                 onClose={() => setShowDelete(false)}
-                onDeleteClick={deleteUserHandler}
+                onDelete={deleteUserHandler}
 
             />}
 
