@@ -3,6 +3,7 @@ import UserListRow from "./UserListRow";
 import * as userService from '../services/userServices';
 
 import { useEffect, useState } from "react";
+import UserInfoModal from "./UserInfoModal";
 
 
 const UserListTable = () => {
@@ -10,6 +11,7 @@ const UserListTable = () => {
     const [users, setUsers] = useState([]);
     const [showCreateModal, setCreateModal] = useState(false); //отначало не показваме
     const [showInfoModal, setShowInfoModal] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(null);
 
 
     useEffect(() => {
@@ -49,9 +51,10 @@ const UserListTable = () => {
 
     };
 
-    const userInfoClickHandler = (userId) => {
+    const userInfoClickHandler = async (userId) => {
 
-        console.log(userId);
+        setSelectedUser(userId);
+        setShowInfoModal(true);
     };
 
 
@@ -73,6 +76,7 @@ const UserListTable = () => {
 
             {showInfoModal && <UserInfoModal
                 onClose={() => setShowInfoModal(false)}
+                userId={selectedUser}
             />}
 
 

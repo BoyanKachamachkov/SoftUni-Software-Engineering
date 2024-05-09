@@ -13,6 +13,7 @@ const UserListRow = ({
 }) => {
 
     const infoClickHandler = () => {
+        // връщаме информация за кой е натиснатия узър към парент компонента
         onInfoClick(_id)
     }
 
