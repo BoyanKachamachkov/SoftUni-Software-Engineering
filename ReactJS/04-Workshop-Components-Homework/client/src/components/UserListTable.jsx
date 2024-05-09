@@ -64,7 +64,8 @@ const UserListTable = () => {
     };
 
     const deleteUserClickHandler = (userId) => {
-        console.log(userId);
+        setSelectedUser(userId);
+        setShowDelete(true);
 
     };
 
