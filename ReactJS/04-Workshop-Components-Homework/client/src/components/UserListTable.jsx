@@ -1,6 +1,7 @@
 import CreateUserModal from "./CreateUserModal";
 import UserListRow from "./UserListRow";
 import * as userService from '../services/userServices';
+import UserDeleteModal from "./UserDeleteModal";
 
 import { useEffect, useState } from "react";
 import UserInfoModal from "./UserInfoModal";
@@ -12,6 +13,7 @@ const UserListTable = () => {
     const [showCreateModal, setCreateModal] = useState(false); //отначало не показваме
     const [showInfoModal, setShowInfoModal] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [showDelete, setShowDelete] = useState(false);
 
 
     useEffect(() => {
@@ -57,8 +59,14 @@ const UserListTable = () => {
         setShowInfoModal(true);
     };
 
+    const deleteUserHandler = async () => {
+        console.log('delete user');
+    };
 
+    const deleteUserClickHandler = (userId) => {
+        console.log(userId);
 
+    };
 
 
     return (
@@ -77,6 +85,12 @@ const UserListTable = () => {
             {showInfoModal && <UserInfoModal
                 onClose={() => setShowInfoModal(false)}
                 userId={selectedUser}
+            />}
+
+            {showDelete && <UserDeleteModal
+                onClose={() => setShowDelete(false)}
+                onDeleteClick={deleteUserHandler}
+
             />}
 
 
@@ -144,6 +158,7 @@ const UserListTable = () => {
                             {...user}
                             key={user._id}
                             onInfoClick={userInfoClickHandler}
+                            onDeleteClick={deleteUserClickHandler}
                         />
                     ))}
 
