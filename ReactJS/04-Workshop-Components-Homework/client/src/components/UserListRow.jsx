@@ -9,10 +9,14 @@ const UserListRow = ({
     phoneNumber,
     createdAt,
     imageUrl,
-    hideUserInfoModal
+    onInfoClick
 }) => {
 
-    
+    const infoClickHandler = () => {
+        onInfoClick(_id)
+    }
+
+
 
     return (
 

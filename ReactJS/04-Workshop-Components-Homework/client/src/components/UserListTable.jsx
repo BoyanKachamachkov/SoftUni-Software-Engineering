@@ -49,6 +49,11 @@ const UserListTable = () => {
 
     };
 
+    const userInfoClickHandler = (userId) => {
+
+        console.log(userId);
+    };
+
 
 
 
@@ -134,7 +139,7 @@ const UserListTable = () => {
                         <UserListRow
                             {...user}
                             key={user._id}
-                            hideUserInfoModal={hideUserInfoModal}
+                            onInfoClick={userInfoClickHandler}
                         />
                     ))}
 
