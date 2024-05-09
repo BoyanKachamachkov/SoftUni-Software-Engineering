@@ -1,6 +1,6 @@
 import CreateUserModal from "./CreateUserModal";
 import UserListRow from "./UserListRow";
-import * as userService from './services/userServices';
+import * as userService from '../services/userServices';
 
 import { useEffect, useState } from "react";
 
@@ -9,6 +9,7 @@ const UserListTable = () => {
 
     const [users, setUsers] = useState([]);
     const [showCreateModal, setCreateModal] = useState(false); //отначало не показваме
+    const [showInfoModal, setShowInfoModal] = useState(false);
 
 
     useEffect(() => {
@@ -34,6 +35,7 @@ const UserListTable = () => {
 
     const userCreateHandler = async (e) => {
         e.preventDefault();
+
         const formData = new FormData(e.currentTarget);
         const data = Object.fromEntries(formData);
 
@@ -43,9 +45,11 @@ const UserListTable = () => {
         setCreateModal(false);
 
         // update users state by adding new user
-        setUsers(users => [...users, result])
+        setUsers(users => [...users, result]);
 
     };
+
+
 
 
 
@@ -60,6 +64,12 @@ const UserListTable = () => {
 
                 />
             )}
+
+
+            {showInfoModal && <UserInfoModal
+                onClose={() => setShowInfoModal(false)}
+            />}
+
 
             <table className="table">
                 <thead>
@@ -124,6 +134,7 @@ const UserListTable = () => {
                         <UserListRow
                             {...user}
                             key={user._id}
+                            hideUserInfoModal={hideUserInfoModal}
                         />
                     ))}
 
