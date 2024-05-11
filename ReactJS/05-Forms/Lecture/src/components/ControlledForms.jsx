@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function ControlledForm() {
 
-    const [usernameValue, setUsernameValue] = useState('');
+    const [usernameValue, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [age, setAge] = useState('');
 
@@ -14,7 +14,13 @@ export default function ControlledForm() {
     // 5. Achieve controlled form inputs!
 
     const usernameChangeHandler = (e) => {
-        setUsernameValue(e.target.value);
+        setUsername(e.target.value);
+    };
+
+    const resetHandler = () => {
+        setUsername('');
+        setPassword('');
+        setAge('');
     };
 
     return (
@@ -26,6 +32,7 @@ export default function ControlledForm() {
                 <div>
                     <label htmlFor="username">Username:</label>
                     <input
+                        placeholder="Choose username"
                         onChange={usernameChangeHandler}
                         value={usernameValue}
                         type="text" name="username" id="username" />
@@ -34,6 +41,7 @@ export default function ControlledForm() {
                 <div>
                     <label htmlFor="password">Password:</label>
                     <input
+                        placeholder="Choose password"
                         onChange={e => setPassword(e.target.value)}
                         value={password}
                         type="password" name="password" id="password" />
@@ -42,6 +50,7 @@ export default function ControlledForm() {
                 <div>
                     <label htmlFor="age">Age:</label>
                     <input
+                        placeholder="Select your age"
                         onChange={e => setAge(e.target.value)}
                         value={age}
                         type="numer" name="age" id="age" />
@@ -50,7 +59,7 @@ export default function ControlledForm() {
                 <div>
                     {/* By def. BTN submits form when inside form */}
                     <button>Register</button>
-                    <button type="button">Reset</button>
+                    <button type="button" onClick={resetHandler}>Reset</button>
                 </div>
             </form>
         </>
