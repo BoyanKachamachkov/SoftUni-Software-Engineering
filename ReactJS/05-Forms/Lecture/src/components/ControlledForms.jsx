@@ -7,6 +7,12 @@ export default function ControlledForm() {
     const [password, setPassword] = useState('');
     const [age, setAge] = useState('');
 
+    // 1. create states for each input field
+    // 2. set initial values that are diff. than undefined or null
+    // 3. add onChange handlers on each input
+    // 4. add values to each input (connect with respective state)
+    // 5. Achieve controlled form inputs!
+
     const usernameChangeHandler = (e) => {
         setUsernameValue(e.target.value);
     };
