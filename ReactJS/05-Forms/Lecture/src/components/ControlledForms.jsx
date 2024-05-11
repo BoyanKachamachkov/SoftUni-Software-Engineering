@@ -3,7 +3,7 @@ import { useState } from "react";
 
 export default function ControlledForm() {
 
-    const [usernameValue, setUsername] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [age, setAge] = useState('');
 
@@ -23,18 +23,29 @@ export default function ControlledForm() {
         setAge('');
     };
 
+    const submitHandler = (e) => {
+        // prevent reload since its submit event, or attach onClick on the register button, thus there would be no need to prevent reload.
+        e.preventDefault();
+        console.log(username);
+        console.log(password);
+        console.log(age);
+
+        // reset form after sending it to Mars! :)
+        resetHandler();
+    };
+
     return (
         <>
             <h1>Controlled form</h1>
 
-            <form >
+            <form onSubmit={submitHandler}>
 
                 <div>
                     <label htmlFor="username">Username:</label>
                     <input
                         placeholder="Choose username"
                         onChange={usernameChangeHandler}
-                        value={usernameValue}
+                        value={username}
                         type="text" name="username" id="username" />
                 </div>
 
@@ -58,7 +69,7 @@ export default function ControlledForm() {
 
                 <div>
                     {/* By def. BTN submits form when inside form */}
-                    <button>Register</button>
+                    <button >Register</button>
                     <button type="button" onClick={resetHandler}>Reset</button>
                 </div>
             </form>
