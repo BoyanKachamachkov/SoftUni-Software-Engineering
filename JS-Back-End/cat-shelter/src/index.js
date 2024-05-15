@@ -11,7 +11,7 @@ http.createServer((req, res) => { //handler, best if in separate file
 
     const route = routes[req.url];
 
-    if (req.url == '/' || req.url == '/index.html') {
+    if (typeof route == 'function') {
         homeHandler(req, res);
     } else {
         res.writeHead(404, [
