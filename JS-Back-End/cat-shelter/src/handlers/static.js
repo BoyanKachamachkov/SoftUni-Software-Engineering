@@ -3,27 +3,26 @@ const { readFile } = require("../util");
 function staticFileHandler(req, res) {
 
     if (req.url.endsWith('.css')) {
+
         // handle stylesheet
-        const data = readFile(req.url);
-        res.writeHead(200, [
-            'Content-type', 'text/css'
-        ]);
-        res.write(data);
-        res.end();
-
+        sendFile(req.url, 'text/css', res);
         return true;
-    } else if (req.url.endsWith('.ico')) {
-        // handle favicon
-        const data = readFile(req.url);
-        res.writeHead(200, [
-            'Content-type', 'image/svg+xml'
-        ]);
-        res.write(data);
-        res.end();
 
+    } else if (req.url.endsWith('.ico')) {
+
+        // handle favicon
+        sendFile(req.url, 'image/svg+xml', res);
         return true;
     }
     return false;
+}
+
+async function sendFile(path, contentType, res) {
+    const data = await readFile(path);
+    res.writeHead(200, [
+        'Content-type', contentType
+    ]);
+    data.pipe(res);
 }
 
 module.exports = {
