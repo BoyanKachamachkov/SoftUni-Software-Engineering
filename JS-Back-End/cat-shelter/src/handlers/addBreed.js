@@ -10,6 +10,19 @@ async function addBreedHandler(req, res) {
     res.end();
 }
 
+async function postBreedHandler(req, res) {
+    let data = '';
+    req.on('data', (chunk) => data += chunk.toString());
+    req.on('end', () => {
+        // do something with data
+        console.log(new URLSearchParams(data))
+    });
+
+    res.statusCode = 204;
+    res.end();
+}
+
 module.exports = {
-    addBreedHandler
+    addBreedHandler,
+    postBreedHandler
 };

@@ -1,5 +1,6 @@
+const { getCats } = require("../model");
 const { layout, readTemplate } = require("../util");
-const cats = require('../../data/cats.json');
+
 
 
 function catFragment(cat) {
@@ -22,6 +23,7 @@ async function homeHandler(req, res) {
         'Content-Type', 'text/html'
     ]);
 
+    const cats = await getCats();
     const html = template.replace('%%catContent%%', cats.map(catFragment).join('\n'));
     res.write(await layout(html, true));
     res.end();

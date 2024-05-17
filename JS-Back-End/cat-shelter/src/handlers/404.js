@@ -2,12 +2,12 @@
 
 function errorHandler(req, res) {
     res.writeHead(404, [
-        'Content-Type', 'text/plaint'
+        'Content-Type', 'text/plain'
     ]);
-    res.write('404 NOT FOUND!');
+    res.write('<h1>404 NOT FOUND!</h1>');
     res.end();
 }
 
 module.exports = {
     errorHandler
-}
+};
