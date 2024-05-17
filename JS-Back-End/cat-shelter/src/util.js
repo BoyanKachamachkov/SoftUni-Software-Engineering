@@ -1,12 +1,18 @@
-const fs = require('fs');
+const fs = require('fs/promises');
 const path = require('path');
 
-function readFile(filePath) {
+async function readFile(filePath) {
+    const fileHandle = await fs.open(path.join('./', filePath), 'r');
+    return fileHandle.createReadStream();
+}
 
-    const data = fs.readFileSync(path.join('./', filePath));
+async function readTemplate(template) {
+    const data = await fs.readFile(path.join('./views/', template + '.html'));
     return data.toString();
+
 }
 
 module.exports = {
-    readFile
+    readFile,
+    readTemplate
 };
