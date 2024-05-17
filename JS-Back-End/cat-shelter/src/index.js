@@ -1,11 +1,14 @@
 const http = require('http');
+
 const { homeHandler } = require('./handlers/home');
 const { errorHandler } = require('./handlers/404');
 const { staticFileHander } = require('./handlers/static');
+const { addBreedHandler } = require('./handlers/addBreed');
 
 const routes = {
     '/': homeHandler,
     '/index.html': homeHandler,
+    '/cats/add-breed': addBreedHandler
 };
 
 http.createServer((req, res) => {
