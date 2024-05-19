@@ -1,0 +1,23 @@
+h1 {
+    color: #090;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+.lorem {
+    background-color: #090;
+}
+
+#main-title{
+    font-weight: 500;
+}
+
+ul li {
+    list-style-type: circle;
+}
+
+div{
+    background-color: lightblue;
+}
