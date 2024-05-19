@@ -7,13 +7,13 @@ const routes = {
     '/index.html': homeHandler,
 };
 
-http.createServer((req, res) => {
+http.createServer( (req, res) => {
     const route = routes[req.url];
 
     if (typeof route == 'function') {
         route(req, res);
         return;
-    } else if (staticFileHandler(req, res)) {
+    } else if (  staticFileHandler(req, res)) {
         return;
     }
     res.writeHead(404, [
