@@ -2,12 +2,14 @@ const http = require('http');
 const { homeHandler } = require('../handlers/home');
 const { staticFileHandler } = require('../handlers/static');
 const { addBreedHandler, postBreedHandler } = require('../handlers/addBreed');
+const { addCatHandler } = require('../handlers/addCat');
 
 const routes = {
     'GET': {
         '/': homeHandler,
         '/index.html': homeHandler,
-        '/cats/add-breed': addBreedHandler
+        '/cats/add-breed': addBreedHandler,
+        '/cats/add-cat': addCatHandler
     },
     'POST': {
         '/cats/add-breed': postBreedHandler

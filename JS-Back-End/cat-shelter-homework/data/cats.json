@@ -31,5 +31,9 @@
             "description": "Dominant and aggressive to other cats. Will probably eat you in your sleep. Very cute tho."
         }
     ],
-    "breeds":[]
+    "breeds": [
+        "Bombay Cat",
+        "Orange Tabby",
+        "Village Cat"
+    ]
 }
