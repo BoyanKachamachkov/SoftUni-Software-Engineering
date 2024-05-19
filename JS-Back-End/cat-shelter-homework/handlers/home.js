@@ -1,4 +1,4 @@
-const { readTemplate } = require("../src/util");
+const { layout, readTemplate } = require("../src/util");
 const cats = require('../data/cats.json');
 
 
@@ -27,7 +27,7 @@ async function homeHandler(req, res) {
     res.writeHead(200, [
         'Content-type', 'text/html'
     ]);
-    res.write(html);
+    res.write(await layout(html, true)); //pass true, as index should have searchBar
     res.end();
 
 }
