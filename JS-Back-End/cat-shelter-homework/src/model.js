@@ -11,7 +11,7 @@ async function readData() {
 }
 
 async function writeData(data) {
-    await fs.writeFile(fileName, JSON.stringify(data));
+    await fs.writeFile(fileName, JSON.stringify(data), null, 2);
 }
 
 async function getCats() {
@@ -19,12 +19,28 @@ async function getCats() {
     return data.cats;
 }
 
-async function getBreeds(){
-    const data = await readData()
+async function getBreeds() {
+    const data = await readData();
     return data.breeds;
+}
+
+async function addBreed(breed) {
+    const data = await readData();
+    data.breeds.push(breed);
+
+    await writeData(data);
+}
+
+async function addCat(cat) {
+    const data = await readData();
+    data.cats.push(cat);
+
+    await writeData(data);
 }
 
 module.exports = {
     getCats,
-    getBreeds
-}
+    getBreeds,
+    addBreed,
+    addCat
+};

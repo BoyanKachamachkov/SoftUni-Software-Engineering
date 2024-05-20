@@ -3,7 +3,7 @@ const { readTemplate, layout } = require('../src/util');
 
 function breedFragment(breed) {
     return `
-    <option value=${breed}>${breed}</option>`;
+    <option value="${breed}">${breed}</option>`;
 }
 
 async function addCatHandler(req, res) {
