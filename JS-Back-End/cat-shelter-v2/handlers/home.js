@@ -1,15 +1,15 @@
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-const cats = require('../data/cats.json');
+const cats = require('../data/cats');
 
 module.exports = (req, res) => {
     const pathname = url.parse(req.url).pathname;
 
     if (pathname === '/' && req.method === 'GET') {
         // show home
-        const filePath = path.normalize(
-            path.join(__filename, '../views/home/index.html')
+        let filePath = path.normalize(
+            path.join(__dirname, '../views/home/index.html')
         );
 
         fs.readFile(filePath, (err, data) => {
