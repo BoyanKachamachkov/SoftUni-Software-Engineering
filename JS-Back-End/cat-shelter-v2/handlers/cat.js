@@ -4,6 +4,7 @@ const path = require('path');
 const qs = require('querystring');
 const breeds = require('../data/breeds');
 const cats = require('../data/cats');
+const formidable = require('formidable');
 
 module.exports = (req, res) => {
 
@@ -31,7 +32,9 @@ module.exports = (req, res) => {
             res.writeHead(200, [
                 'Content-Type', 'text/html'
             ]);
-            res.write(data); //use the html via data
+            let catBreedPlaceholder = breeds.map((breed) => `<option value=${breed}">${breed}</option>`);
+            let modifiedData = data.toString().replace('{{catBreeds}}', catBreedPlaceholder);
+            res.write(modifiedData); //use the html via data
             res.end();
         });
 
@@ -96,6 +99,18 @@ module.exports = (req, res) => {
 
 
     } else if (pathname === '/cats/add-cat' && req.method === 'POST') {
+
+        let form = new formidable.IncomingForm();
+
+        form.parse(req, (err, fields, files) => {
+            // todo
+            if (err) {
+                throw err;
+            }
+
+            let oldPath = files.upload.path;
+            let newPath = path.normalize(path.join())
+        });
 
 
     } else {
