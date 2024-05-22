@@ -1,4 +1,5 @@
 const express = require('express'); //import express
+const path = require('path');
 
 const app = express(); // raise express instance of a server
 app.listen(5005, () => {
@@ -42,4 +43,20 @@ app.get('/cats/:catName/:breed', (req, res) => {
     console.log(req.params);
     const currentCatName = req.params.catName; //extract variable from params
     res.send(`This a page for ${currentCatName}. He/She is of ${req.params.breed} breed!`);
+});
+
+// ROUTER RESPONSES examples
+app.get('/cats/download', (req, res) => {
+
+    // from current DIR , go to images folder and find cat.jpeg and connect their path into something that works!
+    const imagePath = path.join(__dirname, 'images', 'cat.jpeg');
+    // const imagePath = path.resolve('.', 'images', 'cats.jpeg');
+
+    // res.download(imagePath); // server returns the file to client to be saved
+
+    res.sendFile(imagePath) // visualize pic on client
+
+    // res.attachment(imagePath) does not put res.end() automatically
+    // res.json()
+    // res.redirect('/cats')
 });
