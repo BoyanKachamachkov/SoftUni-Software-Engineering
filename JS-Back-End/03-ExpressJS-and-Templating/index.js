@@ -7,7 +7,7 @@ app.listen(5005, () => {
 // method + path couple ---> handler
 app.get('/', (req, res) => {
     res.header({
-        'content-type': 'text/plain'
+        'content-type': 'text/html'
     });
 
     res.status(200).send('<h1>Hey</h1>');
@@ -30,7 +30,16 @@ app.get(/.*dogs/, (req, res) => {
     res.status(301).send('Regexp example');
 });
 
-// wildcard PATH *
-app.all('*', (req, res) => {
-    res.status(404).send('Page not found - Error 404');
+// // wildcard PATH *
+// app.all('*', (req, res) => {
+//     res.status(404).send('Page not found - Error 404');
+// });
+
+
+// Extracting params
+// this page will answer to anything that has cats/tommy or any random name
+app.get('/cats/:catName/:breed', (req, res) => {
+    console.log(req.params);
+    const currentCatName = req.params.catName; //extract variable from params
+    res.send(`This a page for ${currentCatName}. He/She is of ${req.params.breed} breed!`);
 });
