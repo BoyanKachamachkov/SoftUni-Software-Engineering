@@ -18,7 +18,18 @@ app.get('/cats', (req, res) => {
     res.send('cat has been');
 });
 
-app.post('/cats', (req, res) => {
+app.post('/cats', (req, res, next) => {
+
+    // MIDDLEWARE added , do some logic
+    console.log('creating new cat');
+
+    if (Math.random() < 0.5) {
+        return res.send('You don\'t have luck!');
+
+    };
+    next(); //always function next at the end to pass req,res to handler
+
+}, (req, res) => {
     res.send('created a cat');
 });
 
@@ -54,7 +65,7 @@ app.get('/cats/download', (req, res) => {
 
     // res.download(imagePath); // server returns the file to client to be saved
 
-    res.sendFile(imagePath) // visualize pic on client
+    res.sendFile(imagePath); // visualize pic on client
 
     // res.attachment(imagePath) does not put res.end() automatically
     // res.json()
