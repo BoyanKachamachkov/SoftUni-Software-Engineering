@@ -2,6 +2,19 @@ const express = require('express'); //import express
 const path = require('path');
 const handlebars = require('express-handlebars');
 
+const cats = [
+    {
+        name: 'Navcho',
+        age: 8,
+        breed: 'persian'
+    },
+    {
+        name: 'Sisa',
+        age: 5,
+        breed: 'angora'
+    }
+];
+
 const app = express(); // raise express instance of a server
 
 app.engine('hbs', handlebars.engine({
@@ -27,12 +40,14 @@ app.use(express.static('public'));
 // method + path couple ---> handler
 app.get('/', (req, res) => {
 
-    res.render('home');
+    res.render('home', { name: 'Hubavka 10' }); // кой темплейт рендерираме и с какви данни?
 });
 
 
 app.get('/cats', (req, res) => {
-    res.send('cat has been');
+    // business logic goes here, not in template, for example filtere
+    const filteredCats = cats.filter(c => c.breed === 'angora');
+    res.render('cats', { cats: filteredCats });
 });
 
 app.post('/cats', (req, res, next) => {
