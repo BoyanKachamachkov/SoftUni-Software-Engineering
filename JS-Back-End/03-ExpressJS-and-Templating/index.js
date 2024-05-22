@@ -1,7 +1,16 @@
 const express = require('express'); //import express
 const path = require('path');
+const handlebars = require('express-handlebars');
 
 const app = express(); // raise express instance of a server
+
+app.engine('hbs', handlebars.engine({
+    extname: 'hbs'
+})); //attach engine
+
+app.set('view engine', 'hbs'); // make our app use specific engine
+
+
 app.listen(5005, () => {
     console.log('listening on 5005');
 });
@@ -18,23 +27,7 @@ app.use(express.static('public'));
 // method + path couple ---> handler
 app.get('/', (req, res) => {
 
-    res.send(`
-    <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/site.css">
-</head>
-
-<body>
-    <h1>Hello</h1>
-</body>
-
-</html>
-    `);
+    res.render('home');
 });
 
 
