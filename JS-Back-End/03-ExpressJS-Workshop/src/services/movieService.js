@@ -16,6 +16,14 @@ exports.getAll = () => {
     // return Array.from(movies)
 };
 
+exports.getOne = (movieId) => {
+    // movieId comes as string from params, need to use ==, to make coercion
+    const movie = movies.find(movie => movie._id == movieId);
+
+    return movie;
+
+};
+
 exports.create = (movieData) => {
     movieData._id = movies[movies.length - 1]._id + 1;
     movies.push(movieData);
