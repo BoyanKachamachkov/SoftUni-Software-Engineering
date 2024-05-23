@@ -1,4 +1,5 @@
 const movies = [{
+    _id: 1,
     title: 'Harry Potter',
     genre: 'Fantasy',
     director: 'David Yates',
@@ -11,11 +12,11 @@ const movies = [{
 exports.getAll = () => {
     return movies.slice(); // return shallow copy, good practice; new reference
     // return [...movies]
-    
+
     // return Array.from(movies)
 };
 
 exports.create = (movieData) => {
+    movieData._id = movies[movies.length - 1]._id + 1;
     movies.push(movieData);
-    console.log(movieData);
 };
