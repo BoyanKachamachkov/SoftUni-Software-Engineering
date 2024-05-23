@@ -6,12 +6,14 @@ router.get('/create', (req, res) => {
 });
 
 router.post('/create', (req, res) => {
-
     // parse form via configExpress file
     const newMovie = req.body;
+
+    // utilize service function to store movie
     movieService.create(newMovie);
 
-    res.send('Movie should be created!');
+    res.redirect('/');
+
 });
 
 module.exports = router;
