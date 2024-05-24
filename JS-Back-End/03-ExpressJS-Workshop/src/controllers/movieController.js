@@ -20,6 +20,8 @@ router.get('/movies/:movieId', (req, res) => {
     const movieId = req.params.movieId;
     const movie = movieService.getOne(movieId);
 
+    // this is not good practice, use handlebars helpers
+    movie.rating = new Array(Number(movie.rating)).fill(true);
     res.render('details', { movie });
 });
 
