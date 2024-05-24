@@ -1,9 +1,9 @@
 const movies = [{
     _id: 1,
-    title: 'Harry Potter',
-    genre: 'Fantasy',
-    director: 'David Yates',
-    date: '2003',
+    title: 'Jungle Cruise',
+    genre: 'Adventure',
+    director: 'Spilberg',
+    year: '2003',
     imageUrl: '/img/jungle-cruise.jpeg',
     rating: '5',
     description: "The story begins when 11-year-old orphan Harry discovers that his parents were wizards and he starts his education in magic at Hogwart's School of Witchcraft and Wizardry. There he makes two close friends, Ron and Hermione, who share his adventures.\r\n"
@@ -14,6 +14,25 @@ exports.getAll = () => {
     // return [...movies]
 
     // return Array.from(movies)
+};
+
+exports.search = (title, genre, year) => {
+    let result = movies.slice();
+
+    if (title) {
+        result = result.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
+    }
+
+    if (genre) {
+        result = result.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+    }
+
+    if (year) {
+        result = result.filter(movie => movie.year === year);
+    }
+
+    return result;
+
 };
 
 exports.getOne = (movieId) => {
