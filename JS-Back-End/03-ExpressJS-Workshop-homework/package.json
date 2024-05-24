@@ -1,7 +1,7 @@
 {
   "name": "03-expressjs-workshop-homework",
   "version": "1.0.0",
-  "description": "",
+  "description": "Basic website with ExpressJS and Handlebars",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/index.js"
@@ -13,6 +13,7 @@
     "nodemon": "^3.1.0"
   },
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "express-handlebars": "^7.1.2"
   }
 }
