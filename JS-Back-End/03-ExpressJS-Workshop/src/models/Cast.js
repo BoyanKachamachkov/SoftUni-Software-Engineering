@@ -22,6 +22,7 @@ const castSchema = new mongoose.Schema({
     castImage: {
         type: String,
         required: true,
+        // match: /^https?:\/\//
         validate: {
             validator(value) {
                 return /^https?:\/\//.test(value);
@@ -32,6 +33,6 @@ const castSchema = new mongoose.Schema({
 
 });
 
-const Cast = mongoose.model('Cast', castSchema)
+const Cast = mongoose.model('Cast', castSchema);
 
 module.exports = Cast;
