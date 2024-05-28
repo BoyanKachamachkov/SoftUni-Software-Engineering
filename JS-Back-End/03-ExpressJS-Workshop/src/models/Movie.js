@@ -35,7 +35,7 @@ const movieSchema = new mongoose.Schema({
         required: true,
         // http or https?
         // I want it to start with http and 's' can be 0 or 1 time.
-        match: /^https?/
+        match: /^https?:\/\//
     },
 
 });

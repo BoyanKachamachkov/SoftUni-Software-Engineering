@@ -1,13 +1,10 @@
 const Movie = require('../models/Movie');
 
-exports.getAll = () => {
-    return movies.slice();
-    // return [...movies];
-    // return Array.from(movies); ??
-};
+exports.getAll = () => Movie.find(); //returns promise at service level will resolve at controller
 
-exports.search = (title, genre, year) => {
-    let result = movies.slice();
+exports.search = async (title, genre, year) => {
+    // TODO Filter result in mongoDB
+    let result = await Movie.find().lean();
 
     if (title) {
         result = result.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
@@ -24,14 +21,6 @@ exports.search = (title, genre, year) => {
     return result;
 };
 
-exports.getOne = (movieId) => {
-    const movie = movies.find(movie => movie._id == movieId);
+exports.getOne = (movieId) => Movie.findById(movieId);
 
-    return movie;
-};
-
-exports.create = async (movieData) => {
-    const result = await Movie.create(movieData); //use DB
-    return result;
-
-};
+exports.create = (movieData) => Movie.create(movieData); //returns promise at service level
