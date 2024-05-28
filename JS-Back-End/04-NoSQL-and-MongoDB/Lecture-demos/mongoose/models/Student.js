@@ -9,26 +9,26 @@ const mongoose = require('mongoose');
 
 // 1. use Schema class to create new instance of Schema for the specific model
 // defines the type of data
-// const studentSchema = new mongoose.Schema({
-//     name: String,
-//     age: Number,
-// });
+const studentSchema = new mongoose.Schema({
+    name: String,
+    age: Number,
+});
 
 // Validation at SCHEMA LEVEL
-const studentSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        minLength: [3, 'Minimum name 3'],
-        maxLength: [5, 'Maximum name 5']
-    },
-    age: {
-        type: Number,
-        required: true,
-        min: [12, 'Age must be between 12-120'],  // could be val or arr of [val,msg]
-        max: 120,
-    },
-});
+// const studentSchema = new mongoose.Schema({
+//     name: {
+//         type: String,
+//         required: true,
+//         minLength: [3, 'Minimum name 3'],
+//         maxLength: [5, 'Maximum name 5']
+//     },
+//     age: {
+//         type: Number,
+//         required: true,
+//         min: [12, 'Age must be between 12-120'],  // could be val or arr of [val,msg]
+//         max: 120,
+//     },
+// });
 
 // SCHEMA MODELS METHODs (custom)
 studentSchema.methods.logInfo = function () {
