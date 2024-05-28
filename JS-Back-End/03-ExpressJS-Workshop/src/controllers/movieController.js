@@ -5,14 +5,21 @@ router.get('/create', (req, res) => {
     res.render('create');
 });
 
-router.post('/create', (req, res) => {
+router.post('/create', async (req, res) => {
     // parse form via configExpress file
     const newMovie = req.body;
 
-    // utilize service function to store movie
-    movieService.create(newMovie);
+    try {
 
-    res.redirect('/');
+        await movieService.create(newMovie);
+
+        res.redirect('/create');
+
+    } catch (err) {
+        console.log(err.message);
+        res.redirect('/create')
+    }
+
 
 });
 
