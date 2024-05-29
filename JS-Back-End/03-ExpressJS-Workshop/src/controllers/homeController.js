@@ -5,7 +5,6 @@ router.get('/', async (req, res) => {
     // query that returns document
     // handlebars can't work with docs, so use .lean() method to transform it to object
     const movies = await movieService.getAll().lean();
-    console.log(typeof movies)
 
     res.render('home', { movies });
 });
