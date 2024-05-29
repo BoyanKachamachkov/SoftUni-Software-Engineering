@@ -3,23 +3,23 @@ const Cast = require('../models/Cast');
 
 exports.getAll = () => Movie.find(); //returns promise at service level will resolve at controller
 
-exports.search = async (title, genre, year) => {
+exports.search = (title, genre, year) => {
     // TODO Filter result in mongoDB
-    let result = await Movie.find().lean();
+    let query = {};
 
     if (title) {
-        result = result.filter(movie => movie.title.toLowerCase().includes(title.toLowerCase()));
+        query.title = new RegExp(title, 'i');
     }
 
     if (genre) {
-        result = result.filter(movie => movie.genre.toLowerCase() === genre.toLowerCase());
+        query.genre = genre.toLowerCase();
     }
 
     if (year) {
-        result = result.filter(movie => movie.year === year);
+        query.year = year;
     }
 
-    return result;
+    return Movie.find(query);
 };
 
 exports.getOne = (movieId) => Movie.findById(movieId).populate('casts');
