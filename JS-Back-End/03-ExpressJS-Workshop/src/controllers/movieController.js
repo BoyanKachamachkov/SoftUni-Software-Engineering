@@ -28,18 +28,22 @@ router.post('/create', async (req, res) => {
 router.get('/movies/:movieId', async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieService.getOne(movieId).lean();
+    console.log(movie)
+    // const casts = await castService.getByIds(movie.casts).lean()
+
 
     // this is not good practice, use handlebars helpers
     movie.rating = new Array(Number(movie.rating)).fill(true);
-    res.render('details', { movie });
+    res.render('details', { movie, casts: [] });
 });
 
 router.get('/movies/:movieId/attach', async (req, res) => {
     const movie = await movieService.getOne(req.params.movieId).lean();
+    console.log(movie)
     const casts = await castService.getAll().lean();
 
     // TODO remove already added casts
-    res.render('movie/attach', { ...movie, casts });
+    res.render('movie/attach', { ...movie, casts});
 });
 
 router.post('/movies/:movieId/attach', async (req, res) => {

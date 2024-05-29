@@ -37,7 +37,7 @@ const movieSchema = new mongoose.Schema({
         // I want it to start with http and 's' can be 0 or 1 time.
         match: /^https?:\/\//
     },
-    // Relations
+    // Relations (масив от ид-та, ако не сложим масив, ще е само едно ИД)
     casts: [{
         type: mongoose.Types.ObjectId,
         ref: 'Cast'
