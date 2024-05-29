@@ -1,20 +1,24 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
+
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.get('/', (req, res) => {
 
-    const loginInfo = req.header('Cookie')
-    console.log(loginInfo);
+    const user = req.cookies['user'];
 
-    if (loginInfo) {
-        res.send(`Hello ${loginInfo.split('=').at(1)}`);
+    if (user) {
+        res.send(`Hello ${user}`);
     } else {
         res.send('Please login!');
     }
 });
+
+
 
 // SET cookie
 app.get('/login', (req, res) => {
@@ -32,11 +36,15 @@ app.get('/login', (req, res) => {
 });
 
 app.post('/login', (req, res) => {
-    console.log(req.body);
-
-    res.header('Set-Cookie', `loginInfo=${req.body.username}`);
+    res.cookie('user', req.body.username);
 
     res.end();
+
+});
+
+app.get('/logout', (req, res) => {
+    res.clearCookie('user')
+    res.end()
 });
 
 app.listen(5010, () => console.log(`Server is listening on http:;//localhost:5010...`));
