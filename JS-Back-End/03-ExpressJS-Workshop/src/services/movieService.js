@@ -24,3 +24,16 @@ exports.search = async (title, genre, year) => {
 exports.getOne = (movieId) => Movie.findById(movieId);
 
 exports.create = (movieData) => Movie.create(movieData); //returns promise at service level
+
+exports.attach = async (movieId, castId) => {
+    await this.getOne(movieId);
+
+    // TODO: validate if castID exsists
+    // TODO: validate if cast is already added
+    movie.casts.push(castId);
+
+    return movie.save();
+
+    // alternative way with 1 query
+    // return Movie.findByIdAndUpdate(movieId, { $push: { casts: castId } });
+};
