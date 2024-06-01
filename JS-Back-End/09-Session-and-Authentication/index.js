@@ -1,10 +1,14 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bcrpyt = require('bcrypt');
+const jsonwebtoken = require('jsonwebtoken');
 
 const app = express();
 
-const db = {};
+const db = {
+    'bo': '$2b$12$R4TI67P7TiwrMuiQiX5Mm.HDZCI/pGC1eyq3d9SJLJKLJ5QPGFkPC'
+};
+const secret = 'qweqweqweqweqweqweqwe';
 
 
 app.use(express.urlencoded({ extended: false }));
@@ -12,13 +16,15 @@ app.use(cookieParser());
 
 app.get('/', (req, res) => {
 
-    const user = req.cookies['user'];
+    const token = req.cookies['authJWT'];
 
-    if (user) {
-        res.send(`Hello ${user}`);
-    } else {
-        res.send('Please login!');
+    if (!token) {
+        return res.send('please login');
     }
+
+    // if token with name authJWT comes check if valid
+    const decodedToken = jsonwebtoken.verify(token, secret)
+    console.log(decodedToken)
 });
 
 
@@ -55,7 +61,7 @@ app.get('/register', (req, res) => {
 
 app.post('/register', async (req, res) => {
     const hash = await bcrpyt.hash(req.body.password, 12);
-
+    console.log(hash);
     db[req.body.username] = hash; //connect given username with given hash and save into DB (obj)
 
     res.redirect('/login');
@@ -66,7 +72,7 @@ app.post('/login', async (req, res) => {
 
     // check if hash  against given username exsists in db?
     const hash = db[req.body.username];
-    console.log(hash)
+    console.log(hash);
 
     if (!hash) {
         return res.status(401).end();
@@ -74,11 +80,21 @@ app.post('/login', async (req, res) => {
 
     // check if pw is valid?
     const isValid = await bcrpyt.compare(req.body.password, hash);
-    console.log(isValid)
+    console.log(isValid);
 
     if (!isValid) {
         return res.status(401).send('Unauthorized!');
     }
+
+    // After authentication, let's give our user a certificate or TOKEN
+    const payload = {
+        username: req.body.username
+    };
+
+    const token = jsonwebtoken.sign(payload, secret, { expiresIn: '2h' });
+    console.log(token);
+
+    res.cookie('authJWT', token);
 
     res.send('Logged in successfully');
 
