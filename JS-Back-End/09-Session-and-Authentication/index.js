@@ -1,5 +1,6 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 
 const app = express();
 
@@ -35,16 +36,24 @@ app.get('/login', (req, res) => {
 `);
 });
 
-app.post('/login', (req, res) => {
-    res.cookie('user', req.body.username);
+app.post('/login', async (req, res) => {
+    // 1. hash pw
+    const salt = await bcrypt.genSalt(10);
 
+    // 2. salted hash
+    const saltedHash = await bcrypt.hash(req.body.password, salt);
+
+    console.log(salt);
+    console.log(saltedHash);
+
+    res.cookie('user', req.body.username);
     res.end();
 
 });
 
 app.get('/logout', (req, res) => {
-    res.clearCookie('user')
-    res.end()
+    res.clearCookie('user');
+    res.end();
 });
 
 app.listen(5010, () => console.log(`Server is listening on http:;//localhost:5010...`));
