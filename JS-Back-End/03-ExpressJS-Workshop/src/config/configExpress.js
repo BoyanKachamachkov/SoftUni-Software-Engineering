@@ -1,4 +1,5 @@
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 
 function configExpress(app) {
@@ -8,6 +9,8 @@ function configExpress(app) {
 
     // вграден middleware - ако имаме в бодито на рикуеста данни някакви от клиента, вземи ги и ги парсни като обект
     app.use(express.urlencoded({ extended: false }));
+
+    app.use(cookieParser);
 
     return app;
 }
