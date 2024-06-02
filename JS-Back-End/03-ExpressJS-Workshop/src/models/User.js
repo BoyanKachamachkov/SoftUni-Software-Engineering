@@ -1,5 +1,5 @@
-const { Schema, model } = require('mongoose');
-const bcrypt = require('bcrypt')
+const { Schema, model, MongooseError } = require('mongoose');
+const bcrypt = require('bcrypt');
 
 
 const userSchema = new Schema({
@@ -21,6 +21,15 @@ userSchema.pre('save', async function () {
     this.password = hash;
 });
 
+
+userSchema.virtual('rePassword')
+    .set(function (value) {
+        if (value !== this.password) {
+            throw new MongooseError('Password mismatch!');
+        }
+    });
+
+    
 const User = model('User', userSchema);
 
 module.exports = User;
