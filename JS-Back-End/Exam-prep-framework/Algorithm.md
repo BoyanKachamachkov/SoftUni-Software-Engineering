@@ -12,3 +12,8 @@
 4. Install & config handlebars
    1. install handlebars
    2. config handlebars with express
+   3. add views folder with resources
+   4. add main layout
+   5. add partials dir
+5. Install & config database
+   1. install mongoose
