@@ -24,6 +24,11 @@
    1. install mongoose
    2. setup db connection
    3. add user model
-6. Authentication
+6. Register
    1. fix navigation links
    2. add register page (controller, view, route)
+   3. fix register form
+   4. add auth service
+   5. install bcrypt
+   6. hash password
+   7. check confirm password
