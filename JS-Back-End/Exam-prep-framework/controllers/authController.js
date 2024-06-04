@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const authService = require('../services/authService');
+const { getErrorMessage } = require('./util/errorUtils');
 
 
 router.get('/register', (req, res) => {
@@ -7,10 +8,16 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/register', async (req, res) => {
-    const userData = req.body;
-    await authService.register(userData);
 
-    res.redirect('/auth/login');
+    try {
+        const userData = req.body;
+        await authService.register(userData);
+
+        res.redirect('/auth/login');
+    } catch (err) {
+        res.render('auth/register', { error: getErrorMessage(err) });
+    }
+
 });
 
 router.get('/login', (req, res) => {
@@ -19,10 +26,16 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
     const loginData = req.body;
-    const token = await authService.login(loginData)
+    const token = await authService.login(loginData);
 
-    res.cookie('auth', token)
-    res.redirect('/')
+    res.cookie('auth', token);
+    res.redirect('/');
+});
+
+router.get('/logout', (req, res) => {
+    res.clearCookie('auth');
+
+    res.redirect('/');
 });
 
 

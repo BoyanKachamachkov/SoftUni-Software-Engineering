@@ -35,12 +35,26 @@
 7. Login
    1. install jsonwebtoken
    2. install cookie-parser
-   3. Optionally: convert to promise based
-   4. add login page
-   5. fix login form
-   6. add login post action
-   7. add auth service login method
+   3. add cookie-parser middleware
+   4. Optionally: convert to promise based
+   5. add login page
+   6. fix login form
+   7. add login post action
+   8. add auth service login method
       1. validate user
       2. validate password
       3. generate token
-   8. return cookie to client
+   9. return cookie to client
+8. Logout
+9. Authentication & Authorization
+   1.  add auth middleware
+   2.  check token if guest
+   3.  verify token
+   4.  attach user to request object and res.locals
+   5.  use middleware in express
+   6.  add isAuth route guard
+10. Error handling
+    1.  add notifications
+    2.  add error handling
+11. Last fixes
+    1.  dynamic navigation
