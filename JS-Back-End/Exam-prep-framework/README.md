@@ -32,3 +32,15 @@
    5. install bcrypt
    6. hash password
    7. check confirm password
+7. Login
+   1. install jsonwebtoken
+   2. install cookie-parser
+   3. Optionally: convert to promise based
+   4. add login page
+   5. fix login form
+   6. add login post action
+   7. add auth service login method
+      1. validate user
+      2. validate password
+      3. generate token
+   8. return cookie to client
