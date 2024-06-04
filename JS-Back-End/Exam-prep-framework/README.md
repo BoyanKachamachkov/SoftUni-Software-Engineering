@@ -55,6 +55,8 @@
    6.  add isAuth route guard
 10. Error handling
     1.  add notifications
-    2.  add error handling
+    2.  add getErrorMessage util
+    3.  add register error handling
+    4.  add login error handling
 11. Last fixes
     1.  dynamic navigation
