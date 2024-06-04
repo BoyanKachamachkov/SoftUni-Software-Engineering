@@ -26,4 +26,4 @@
    3. add user model
 6. Authentication
    1. fix navigation links
-   2. add register page
+   2. add register page (controller, view, route)
