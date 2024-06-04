@@ -15,9 +15,15 @@
    1. install handlebars
    2. config handlebars with express
    3. add views folder with resources
-   4. add main layout
-   5. add partials dir
+   4. add home view
+   5. add home controller
+   6. add home controller to routes
+   7. add main layout
+   8. add partials dir
 5. Database
    1. install mongoose
    2. setup db connection
    3. add user model
+6. Authentication
+   1. fix navigation links
+   2. add register page
