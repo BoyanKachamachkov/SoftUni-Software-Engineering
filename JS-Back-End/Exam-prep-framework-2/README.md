@@ -26,8 +26,8 @@
    3. [x] add user model
 6. Register
    1. [x] fix navigation links
-   2. add register page (controller, view, route)
-   3. fix register form
+   2. [x] add register page (controller, view, route)
+   3. [x] fix register form
    4. add auth service
    5. install bcrypt
    6. hash password
