@@ -13,7 +13,8 @@ exports.authMiddleware = (req, res, next) => {
         const decodedToken = jwt.verify(token, SECRET);
 
         req.user = decodedToken;
-        res.locals.isAuthenticated = true;
+        res.locals.isAuthenticated = true; //global variable for express
+        //  for the specific life of the req of the given user
         res.locals.user = decodedToken; //for handlebars global usage
 
         next();
