@@ -21,9 +21,9 @@
    7. [x] add main layout
    8. [x] add partials dir
 5. Database
-   1. install mongoose
-   2. setup db connection
-   3. add user model
+   1. [x] install mongoose
+   2. [x] setup db connection
+   3. [x] add user model
 6. Register
    1. fix navigation links
    2. add register page (controller, view, route)
