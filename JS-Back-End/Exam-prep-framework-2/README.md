@@ -16,10 +16,10 @@
    2. [x] config handlebars with express
    3. [x] add views folder with resources
    4. [x] add home view
-   5. add home controller
-   6. add home controller to routes
-   7. add main layout
-   8. add partials dir
+   5. [x] add home controller
+   6. [x] add home controller to routes
+   7. [x] add main layout
+   8. [x] add partials dir
 5. Database
    1. install mongoose
    2. setup db connection
