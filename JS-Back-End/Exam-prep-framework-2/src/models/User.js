@@ -17,12 +17,12 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', async function () {
-    this.password = bcrypt.hash(this.password, 12);
+    this.password = await bcrypt.hash(this.password, 12);
 });
 
 userSchema.virtual('rePassword')
     .set(function(value) {
-        if(!value !== this.password){
+        if(value !== this.password){
             throw new Error('Passwords do not match!')
         }
     })
