@@ -28,23 +28,23 @@
    1. [x] fix navigation links
    2. [x] add register page (controller, view, route)
    3. [x] fix register form
-   4. add auth service
-   5. install bcrypt
-   6. hash password
-   7. check confirm password
+   4. [x] add auth service
+   5. [x] install bcrypt
+   6. [x] hash password
+   7. [x] check confirm password
 7. Login
-   1. install jsonwebtoken
-   2. install cookie-parser
-   3. add cookie-parser middleware
-   4. Optionally: convert to promise based
-   5. add login page
-   6. fix login form
-   7. add login post action
-   8. add auth service login method
-      1. validate user
-      2. validate password
-      3. generate token
-   9. return cookie to client
+   1. [x] install jsonwebtoken
+   2. [x] install cookie-parser
+   3. [x] add cookie-parser middleware
+   4. [x] Optionally: convert to promise based
+   5. [x] add login page
+   6. [x] fix login form
+   7. [x] add login post action
+   8. [x] add auth service login method
+      1. [x] validate user
+      2. vvalidate password
+      3. [x] generate token
+   9. [x] return cookie to client
 8. Logout
 9.  Authentication & Authorization
    1.  add auth middleware
