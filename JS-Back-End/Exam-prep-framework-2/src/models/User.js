@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
+        unique: true,
     },
     password: {
         type: String,
@@ -20,12 +21,13 @@ userSchema.pre('save', async function () {
     this.password = await bcrypt.hash(this.password, 12);
 });
 
-userSchema.virtual('rePassword')
-    .set(function(value) {
-        if(value !== this.password){
-            throw new Error('Passwords do not match!')
-        }
-    })
+// checking in AUTH service as alternative
+// userSchema.virtual('rePassword')
+//     .set(function(value) {
+//         if(value !== this.password){
+//             throw new Error('Passwords do not match!')
+//         }
+//     })
 
 const User = mongoose.model('User', userSchema);
 

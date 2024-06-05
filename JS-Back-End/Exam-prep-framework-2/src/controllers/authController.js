@@ -25,8 +25,13 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req,res) =>{
     // get login Data
+    const loginData = req.body;
 
-    // 
+    // token
+    const token = await authService.login(loginData)
+
+    res.cookie('auth', token)
+    res.redirect('/')
 })
 
 
