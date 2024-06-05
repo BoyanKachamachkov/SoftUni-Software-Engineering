@@ -5,12 +5,12 @@
    1. [x] install nodemon
    2. [x] config start script
 3. Express
-   1. install express
-   2. start initial express server
-   3. add static 
-   4. consume static folder
-   5. add body parser urlencoded
-   6. add routes module
+   1. [x] install express
+   2. [x] start initial express server
+   3. [x] add static 
+   4. [x] consume static folder
+   5. [x] add body parser urlencoded
+   6. [x] add routes module
 4. Handlebars
    1. install handlebars
    2. config handlebars with express
