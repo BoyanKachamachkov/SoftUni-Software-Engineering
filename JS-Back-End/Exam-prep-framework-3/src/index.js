@@ -1,6 +1,7 @@
 const express = require('express');
 const routes = require('./routes');
 const handlebars = require('express-handlebars');
+const mongoose = require('mongoose')
 
 const app = express();
 
@@ -13,6 +14,9 @@ app.engine('hbs', handlebars.engine({
 }))
 app.set('view engine', 'hbs')
 app.set('views', 'src/views')
+
+// TODO: change name
+mongoose.connect('mongodb://localhost:27017/course-books2')
 
 
 
