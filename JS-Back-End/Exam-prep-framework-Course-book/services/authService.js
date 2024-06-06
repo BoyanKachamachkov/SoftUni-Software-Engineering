@@ -5,7 +5,7 @@ const { SECRET } = require('../config');
 
 exports.register = async (userData) => {
     if (userData.password !== userData.rePassword) {
-        throw new Erorr('Passwords missmatch');
+        throw new Error('Passwords missmatch');
     }
 
     // check if usr already exists
