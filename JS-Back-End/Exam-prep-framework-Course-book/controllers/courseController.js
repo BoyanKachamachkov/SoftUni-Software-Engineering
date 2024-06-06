@@ -13,7 +13,7 @@ router.post('/create', isAuth, async (req, res) => {
     try {
         await courseService.create(req.user._id, courseData);
 
-        res.redirect('/courses')
+        res.redirect('/courses');
 
     } catch (err) {
         res.render('courses/create', { ...courseData, error: getErrorMessage(err) });

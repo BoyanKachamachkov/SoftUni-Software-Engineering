@@ -2,7 +2,7 @@ const jwt = require('../lib/jsonwebtoken');
 const { SECRET } = require('../config');
 
 
-exports.authMiddleware = (req, res, next) => {
+exports.authMiddleware = async (req, res, next) => {
     const token = req.cookies['auth'];
 
     if (!token) {
@@ -10,12 +10,12 @@ exports.authMiddleware = (req, res, next) => {
     }
 
     try {
-        const decodedToken = jwt.verify(token, SECRET);
+        const decodedToken = await jwt.verify(token, SECRET);
 
         req.user = decodedToken;
         res.locals.isAuthenticated = true; //global variable for express
         //  for the specific life of the req of the given user
-        res.locals.user = decodedToken; //for handlebars global usage
+        // res.locals.user = decodedToken; //for handlebars global usage
 
         next();
     } catch (err) {

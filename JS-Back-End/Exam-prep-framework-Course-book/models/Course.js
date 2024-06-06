@@ -10,7 +10,7 @@ const courseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    certficate: {
+    certificate: {
         type: String,
         required: true,
     },
@@ -35,7 +35,6 @@ const courseSchema = new mongoose.Schema({
         ref: 'User'
     }
 });
-
 
 const Course = mongoose.model('Course', courseSchema);
 

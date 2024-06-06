@@ -4,8 +4,9 @@ const User = require('../models/User');
 exports.create = async (userId, courseData) => {
     const createdCourse = await Course.create({
         owner: userId,
-        ...courseData
+        ...courseData,
     });
+
 
     // go to user model, find user by id
     // in his arr of created courses add the newly created course ID
