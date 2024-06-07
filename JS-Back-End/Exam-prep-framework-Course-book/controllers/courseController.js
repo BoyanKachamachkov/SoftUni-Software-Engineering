@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { isAuth } = require('../middlewares/authMiddleware');
+const { isCourseOwner } = require('../middlewares/courseMiddleware');
 const courseService = require('../services/courseService');
 const { getErrorMessage } = require('../util/errorUtils');
 
@@ -55,14 +56,11 @@ router.get('/:courseId/delete', isCourseOwner, async (req, res) => {
     res.redirect('/courses');
 });
 
-async function isCourseOwner(req, res, next) {
-    const course = await courseService.getOne(req.params.courseId);
+router.get('/:courseId/edit', isCourseOwner, async (req, res) => {
+    res.render('courses/edit', { ...req.course });
 
-    if (course.owner != req.user?._id) {
-        return res.redirect(`/courses/${req.params.courseId}/details`);
-    }
+});
 
-    next();
-}
+
 
 module.exports = router;
