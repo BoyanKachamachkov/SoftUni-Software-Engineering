@@ -15,8 +15,9 @@ router.get('/', async (req, res) => {
 
 router.get('/:courseId/details', async (req, res) => {
     const course = await courseService.getOneDetailed(req.params.courseId).lean();
+
     const signedUpUsers = course.signUpList.map(usr => usr.username).join(', ');
-    const isOwner = course.owner._id == req.user?._id;
+    const isOwner = course.owner && course.owner._id == req.user?._id;
     const isSigned = course.signUpList.some(user => user._id == req.user?._id);
 
     res.render('courses/details', { ...course, signedUpUsers, isOwner, isSigned });
@@ -46,5 +47,22 @@ router.post('/create', isAuth, async (req, res) => {
 
     }
 });
+
+
+router.get('/:courseId/delete', isCourseOwner, async (req, res) => {
+    await courseService.delete(req.params.courseId);
+
+    res.redirect('/courses');
+});
+
+async function isCourseOwner(req, res, next) {
+    const course = await courseService.getOne(req.params.courseId);
+
+    if (course.owner != req.user?._id) {
+        return res.redirect(`/courses/${req.params.courseId}/details`);
+    }
+
+    next();
+}
 
 module.exports = router;
