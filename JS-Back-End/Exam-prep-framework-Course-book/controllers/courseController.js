@@ -14,10 +14,18 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:courseId/details', async (req, res) => {
-
     const course = await courseService.getOneDetailed(req.params.courseId).lean();
+    const signedUpUsers = course.signUpList.map(usr => usr.username).join(', ');
+    const isOwner = course.owner._id == req.user?._id;
+    const isSigned = course.signUpList.some(user => user._id == req.user?._id);
 
-    res.render('courses/details', { ...course });
+    res.render('courses/details', { ...course, signedUpUsers, isOwner, isSigned });
+});
+
+router.get('/:courseId/sign-up', async (req, res) => {
+    await courseService.signUp(req.params.courseId, req.user._id);
+
+    res.redirect(`/courses/${req.params.courseId}/details`);
 });
 
 
