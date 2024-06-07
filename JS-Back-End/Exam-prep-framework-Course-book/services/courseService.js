@@ -26,3 +26,6 @@ exports.create = async (userId, courseData) => {
 };
 
 exports.delete = (courseId) => Course.findByIdAndDelete(courseId);
+
+// by default findByIdAndUpdate updates without validators, pass it!
+exports.edit = (courseId, courseData) => Course.findByIdAndUpdate(courseId, courseData, { runValidators: true }); 
