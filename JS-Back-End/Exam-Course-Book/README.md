@@ -6,6 +6,7 @@
    2. add static MW
    3. add body parser MW
    4. add routes modular router
+   5. Add home controller example test route
 3. Handlebars
    1. config. with express
    2. add views resources
