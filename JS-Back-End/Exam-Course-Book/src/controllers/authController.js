@@ -20,12 +20,19 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
-router.post('/login', (req, res) => {
-    const loginData = req.body
+router.post('/login', async (req, res) => {
+    const loginData = req.body;
 
-    console.log(loginData)
+    const token = await authService.login(loginData);
 
-    res.end();
+    res.cookie('auth', token);
+    res.redirect('/');
+});
+
+
+router.get('/logout', (req, res) => {
+    res.clearCookie('auth');
+    res.redirect('/');
 });
 
 module.exports = router;
