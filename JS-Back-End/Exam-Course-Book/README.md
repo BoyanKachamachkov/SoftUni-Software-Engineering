@@ -35,3 +35,12 @@
       3. generate token
    6. return cookie to client
 7. Logout
+8. Authorization & authentication
+   1. add Auth middleware
+   2. check token if guest
+   3. verify token
+   4. add user to req.user object and res.locals (handlebars global usage)
+   5. use authMW in index.js before routes
+   6. add isAuth route guard
+9.  Add course model
+10. Update User model with relations
