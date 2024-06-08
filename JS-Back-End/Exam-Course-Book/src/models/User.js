@@ -14,7 +14,15 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         requried: true,
-    }
+    },
+    createdCourses: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Course'
+    }],
+    signedUpCourses: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Course'
+    }]
 });
 
 userSchema.pre('save', async function () {
