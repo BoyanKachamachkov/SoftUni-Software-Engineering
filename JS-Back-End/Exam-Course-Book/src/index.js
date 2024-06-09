@@ -23,4 +23,4 @@ app.engine('hbs', handlebars.engine({
     app.use(routes);
 mongoose.connect('mongodb://localhost:27017/course-book2');
 
-app.listen(3000, () => console.log('Server is listening on port:3000...'));
+app.listen(3002, () => console.log('Server is listening on port:3002...'));

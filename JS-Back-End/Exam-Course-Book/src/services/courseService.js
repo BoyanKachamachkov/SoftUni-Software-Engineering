@@ -13,3 +13,9 @@ exports.create = async (userId, courseData) => {
 
     return createdCourse;
 };
+
+exports.getAll = () => Course.find();
+
+exports.getOne = (courseId) => Course.findById(courseId)
+
+exports.getOneDetailed = (courseId) => this.getOne(courseId).populate('owner')

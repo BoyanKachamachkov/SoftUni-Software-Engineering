@@ -21,8 +21,22 @@ router.post('/create', isAuth, async (req, res) => {
     }
 });
 
+router.get('/courses', async (req, res) => {
+
+    // масив от документи го изглаждаме до масив от обекти
+    const courses = await courseService.getAll().lean();
+
+    res.render('catalog', { courses });
+});
 
 
+router.get('/courses/:courseId/details', async (req, res) => {
+
+    // The req.params property is an object containing properties mapped to the named route “parameters”. For example, if you have the route /student/:id, then the “id” property is available as req.params.id. This object defaults to {}. 
+    const course = await courseService.getOneDetailed(req.params.courseId).lean();
+
+    res.render('details', { ...course });
+});
 
 
 module.exports = router;
