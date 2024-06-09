@@ -2,14 +2,13 @@ const Course = require('../models/Course');
 const User = require('../models/User');
 
 exports.create = async (userId, courseData) => {
-
-    // we must be sure we have owner, so await SUCCESSFUL creation
+    // create new course with the ID of the user
     const createdCourse = await Course.create({
         owner: userId,
         ...courseData
     });
 
-    // we have a course! Update craeted courses for given user with ID of the course.
+    // at this point our new course has a unique ID which we can use for the double relation
     await User.findByIdAndUpdate(userId, { $push: { createdCourses: createdCourse._id } });
 
     return createdCourse;
