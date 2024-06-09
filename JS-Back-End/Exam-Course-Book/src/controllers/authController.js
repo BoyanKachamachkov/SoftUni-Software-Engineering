@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const authService = require('../services/authService');
 const { getErrorMessage } = require('../utils/errorUtils');
-const { isGuest } = require('../middlewares/authMiddleware');
+const { isGuest, isAuth } = require('../middlewares/authMiddleware');
 
 
 router.get('/register', (req, res) => {
@@ -41,8 +41,8 @@ router.post('/login', isGuest, async (req, res) => {
 
 });
 
-
-router.get('/logout', (req, res) => {
+// you must be authenticated to logout!
+router.get('/logout', isAuth, (req, res) => {
     res.clearCookie('auth');
     res.redirect('/');
 });
