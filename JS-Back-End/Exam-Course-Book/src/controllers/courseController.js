@@ -12,9 +12,10 @@ router.post('/create', isAuth, async (req, res) => {
     const courseData = req.body;
 
     try {
-        await courseService.create(courseData);
+        // pass id to make relation
+        await courseService.create(req.user._id, courseData);
 
-        res.redirect('/courses')
+        res.redirect('/courses');
     } catch (err) {
         res.render('/create', { ...courseData, error: getErrorMessage(err) });
     }
