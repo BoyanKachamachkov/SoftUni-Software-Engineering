@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const authService = require('../services/authService');
 const { getErrorMessage } = require('../utils/errorUtils');
+const { isGuest } = require('../middlewares/authMiddleware');
 
 
 router.get('/register', (req, res) => {
@@ -21,12 +22,12 @@ router.post('/register', async (req, res) => {
 
 });
 
-
-router.get('/login', (req, res) => {
+// you must be guest to use logins
+router.get('/login', isGuest, (req, res) => {
     res.render('login');
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', isGuest, async (req, res) => {
     const loginData = req.body;
 
     try {
