@@ -30,12 +30,24 @@ router.get('/courses', async (req, res) => {
 });
 
 
-router.get('/courses/:courseId/details', async (req, res) => {
+router.get('/courses/details/:courseId', async (req, res) => {
 
     // The req.params property is an object containing properties mapped to the named route “parameters”. For example, if you have the route /student/:id, then the “id” property is available as req.params.id. This object defaults to {}. 
     const course = await courseService.getOneDetailed(req.params.courseId).lean();
 
-    res.render('details', { ...course });
+    const signedUpUsers = course.signUpList.map(user => user.username).join(', ');
+
+    res.render('details', { ...course, signedUpUsers });
+});
+
+router.get('/courses/sign-up/:courseId', async (req, res) => {
+
+
+    // use params for course ID variable , use req.user for user ID
+    await courseService.signUp(req.params.courseId, req.user._id);
+
+    res.redirect(`/courses/details/${req.params.courseId}`);
+
 });
 
 
