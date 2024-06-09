@@ -13,7 +13,7 @@ exports.authMiddleware = async (req, res, next) => {
 
         req.user = decodedToken; //req.user.username will hold usr etc.
         res.locals.isAuthenticated = true; //handlebars global use
-        res.locals.user = decodedToken;
+        // res.locals.user = decodedToken; needed if we needed to present the username in the nav for example
 
         next();
 
@@ -25,6 +25,7 @@ exports.authMiddleware = async (req, res, next) => {
 };
 
 exports.isAuth = (req, res, next) => {
+    // if auth MW did not put req.user to you, you're GUEST!
     if (!req.user) {
         return res.redirect('/login');
     }

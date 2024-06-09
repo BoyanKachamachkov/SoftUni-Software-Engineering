@@ -42,5 +42,12 @@
    4. add user to req.user object and res.locals (handlebars global usage)
    5. use authMW in index.js before routes
    6. add isAuth route guard
-9.  Add course model
-10. Update User model with relations
+9. Error handling
+   1.  add notifications
+   2.  add try/catch to login/register post methods
+   3.  add getErrorMessage util
+   4.  update login/register forms to keep data on errors
+10. Last minute fixes to framework
+   1.  dynamic navigation (guest vs. user)
+11. Add course model
+12. Update User model with relations

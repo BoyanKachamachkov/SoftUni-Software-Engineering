@@ -5,15 +5,16 @@ const bcrypt = require('bcrypt');
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true,
+        required: [true, 'Username is required'],
     },
     email: {
         type: String,
-        required: true,
+        required: [true, 'Email is required'],
     },
     password: {
         type: String,
-        requried: true,
+        requried: [true, 'Password is required'],
+        minLength: [4, 'Password must be at least 4 characters long.'],
     },
     createdCourses: [{
         type: mongoose.Types.ObjectId,

@@ -15,9 +15,10 @@ app.engine('hbs', handlebars.engine({
     extname: 'hbs'
     }));
     
+    
     app.set('view engine', 'hbs');
     app.set('views', 'src/views');
-    
+
     app.use(authMiddleware); //must be before routes
     app.use(routes);
 mongoose.connect('mongodb://localhost:27017/course-book2');
