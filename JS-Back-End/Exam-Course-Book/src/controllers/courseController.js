@@ -46,6 +46,22 @@ router.get('/courses/sign-up/:courseId', async (req, res) => {
 
 });
 
+router.get('/courses/delete/:courseId', isCourseOwner, async (req, res) => {
+    await courseService.delete(req.params.courseId);
+
+    res.redirect('/courses');
+});
+
+async function isCourseOwner(req, res, next) {
+    const course = await courseService.getOne(req.params.courseId);
+
+    if (course.owner != req.user?._id) {
+        return res.redirect(`/courses/details/${req.params.courseId}`);
+    }
+
+    next();
+}
+
 
 module.exports = router;
 

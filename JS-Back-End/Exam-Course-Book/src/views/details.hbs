@@ -22,12 +22,12 @@
         {{#if isAuthenticated}}
             {{#if isOwner}}
             <a href="#">Edit</a>
-            <a href="#">Delete</a>
+            <a href="/courses/delete/{{_id}}">Delete</a>
             {{else if isSigned}}
             <p class="sign-up">You've already signed up for this course!</p>
             {{else}}
             <a href="/courses/sign-up/{{_id}}">Sign up</a>
             {{/if}}
         {{/if}}
-    </div>
+    </div> 
 </div>
