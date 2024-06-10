@@ -22,6 +22,8 @@ exports.getOneDetailed = (courseId) => this.getOne(courseId).populate('owner').p
 
 exports.delete = (courseId) => Course.findByIdAndDelete(courseId);
 
+exports.edit = (courseId, courseData) => Course.findByIdAndUpdate(courseId, courseData, { runValidators: true });
+
 exports.signUp = async (courseId, userId) => {
     await Course.findByIdAndUpdate(courseId, { $push: { signUpList: userId } });
     await User.findByIdAndUpdate(userId, { $push: { signedUpCourses: courseId } });

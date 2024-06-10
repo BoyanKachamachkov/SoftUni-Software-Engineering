@@ -53,14 +53,32 @@ router.get('/courses/delete/:courseId', isCourseOwner, async (req, res) => {
 });
 
 async function isCourseOwner(req, res, next) {
-    const course = await courseService.getOne(req.params.courseId);
+    const course = await courseService.getOne(req.params.courseId).lean();
 
     if (course.owner != req.user?._id) {
         return res.redirect(`/courses/details/${req.params.courseId}`);
     }
-
+    req.course = course; //attach course to request object to be used in other F
     next();
 }
+
+router.get('/courses/edit/:courseId', isCourseOwner, async (req, res) => {
+    res.render('edit', { ...req.course });
+});
+
+router.post('/courses/edit/:courseId', isCourseOwner, async (req, res) => {
+    const courseData = req.body;
+
+    try {
+        await courseService.edit(req.params.courseId, courseData);
+
+        res.redirect(`/courses/details/${req.params.courseId}`);
+
+    } catch (err) {
+        res.render('edit', { error: getErrorMessage(err), ...courseData });
+
+    }
+});
 
 
 module.exports = router;

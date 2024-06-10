@@ -21,7 +21,7 @@
         <!-- Only for registered user and creator of the course-->
         {{#if isAuthenticated}}
             {{#if isOwner}}
-            <a href="#">Edit</a>
+            <a href="/courses/edit/{{_id}}">Edit</a>
             <a href="/courses/delete/{{_id}}">Delete</a>
             {{else if isSigned}}
             <p class="sign-up">You've already signed up for this course!</p>
