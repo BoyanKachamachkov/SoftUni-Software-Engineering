@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const courseScehma = new mongoose.Schema({
+const courseSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
@@ -41,9 +41,18 @@ const courseScehma = new mongoose.Schema({
     owner: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
+    },
+    createdAt: {
+        type: Date
     }
 });
 
-const Course = mongoose.model('Course', courseScehma);
+courseSchema.pre('save', function () {
+    if (!this.createdAt) {
+        this.createdAt = Date.now();
+    }
+});
+
+const Course = mongoose.model('Course', courseSchema);
 
 module.exports = Course;

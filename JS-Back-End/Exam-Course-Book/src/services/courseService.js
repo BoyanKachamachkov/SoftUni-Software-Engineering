@@ -24,6 +24,8 @@ exports.delete = (courseId) => Course.findByIdAndDelete(courseId);
 
 exports.edit = (courseId, courseData) => Course.findByIdAndUpdate(courseId, courseData, { runValidators: true });
 
+exports.getLatest = () => Course.find().sort({ createdAt: -1 }).limit(3);
+
 exports.signUp = async (courseId, userId) => {
     await Course.findByIdAndUpdate(courseId, { $push: { signUpList: userId } });
     await User.findByIdAndUpdate(userId, { $push: { signedUpCourses: courseId } });
