@@ -3,6 +3,7 @@ const handlebars = require('express-handlebars');
 const routes = require('./routes');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
+const { authMiddleware } = require('./middlewares/authMiddleware');
 
 const app = express();
 
@@ -10,6 +11,8 @@ app.use(express.static('./static'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('static'));
 app.use(cookieParser());
+
+app.use(authMiddleware);
 app.use(routes);
 
 app.engine('hbs', handlebars.engine({
