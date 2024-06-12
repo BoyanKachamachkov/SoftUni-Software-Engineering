@@ -1,6 +1,7 @@
 const express = require('express');
 const handlebars = require('express-handlebars');
 const routes = require('./routes');
+const mongoose = require('mongoose');
 
 const app = express();
 
@@ -15,6 +16,6 @@ app.engine('hbs', handlebars.engine({
 
 app.set('view engine', 'hbs');
 
-
+mongoose.connect('mongodb://localhost:27017/earth-treasure-vault');
 
 app.listen(3000, () => console.log('Server is listening on port 3000...'));
