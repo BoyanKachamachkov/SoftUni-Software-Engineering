@@ -1,11 +1,13 @@
 const express = require('express');
-const handlebars = require('express-handlebars')
+const handlebars = require('express-handlebars');
+const routes = require('./routes');
 
 const app = express();
 
 app.use(express.static('./static'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('static'));
+app.use(routes);
 
 app.engine('hbs', handlebars.engine({
     extname: 'hbs'
@@ -13,8 +15,6 @@ app.engine('hbs', handlebars.engine({
 
 app.set('view engine', 'hbs');
 
-app.get('/', (req,res) => {
-    res.render('home')
-})
+
 
 app.listen(3000, () => console.log('Server is listening on port 3000...'));
