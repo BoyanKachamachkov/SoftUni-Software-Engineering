@@ -10,13 +10,14 @@ router.post('/register', async (req, res) => {
     const regData = req.body;
 
     try {
-        await authService.register(regData);
+        const token = await authService.register(regData);
 
-        // TODO: logged-in and redirected to home!
-        res.end();
+        res.cookie('auth', token);
+        res.redirect('/');
+
 
     } catch (error) {
-        console.log(error);
+        res.render('auth/register', { ...regData, error });
     }
 });
 

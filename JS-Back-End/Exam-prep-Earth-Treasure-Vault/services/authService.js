@@ -14,7 +14,10 @@ exports.register = async (regData) => {
         throw new error('User with that email already exists!');
     }
 
-    return User.create(regData);
+    const createdUser = await User.create(regData);
+
+    const token = await generateToken(createdUser);
+    return token;
 };
 
 
@@ -33,7 +36,13 @@ exports.login = async (loginData) => {
         throw new Error('Email or password is invalid.');
     }
 
-    // generate token
+    const token = await generateToken(user);
+
+    return token;
+
+};
+
+async function generateToken(user) {
     const payload = {
         _id: user._id,
         email: user.email,
@@ -41,4 +50,4 @@ exports.login = async (loginData) => {
     const token = jwt.sign(payload, SECRET, { expiresIn: '2h' });
 
     return token;
-};
+}
