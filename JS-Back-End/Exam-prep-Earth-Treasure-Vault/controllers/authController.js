@@ -34,10 +34,15 @@ router.post('/login', async (req, res) => {
         res.cookie('auth', token);
         res.redirect('/');
     } catch (error) {
-        console.log(error)
+        console.log(error);
         res.render('auth/login', { ...loginData, error });
     }
 
+});
+
+router.get('/logout', (req, res) => {
+    res.clearCookie('auth');
+    res.redirect('/');
 });
 
 module.exports = router;
