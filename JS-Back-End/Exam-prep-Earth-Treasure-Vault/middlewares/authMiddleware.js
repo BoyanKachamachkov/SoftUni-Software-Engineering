@@ -19,7 +19,13 @@ exports.authMiddleware = async (req, res, next) => {
 
     } catch (error) {
         res.clearCookie('auth');
-        res.redirect;
+        res.redirect('/auth/login');
     }
 };
 
+exports.isAuth = async (req, res, next) => {
+    if (!req.user) {
+        return res.redirect('/auth/login');
+    }
+    next();
+};
