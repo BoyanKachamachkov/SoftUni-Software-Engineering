@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { getErrorMessage } = require('../lib/getErrorMessage');
 const { isAuth, isGuest } = require('../middlewares/authMiddleware');
 const authService = require('../services/authService');
 
@@ -17,8 +18,8 @@ router.post('/register', isGuest, async (req, res) => {
         res.redirect('/');
 
 
-    } catch (error) {
-        res.render('auth/register', { ...regData, error });
+    } catch (err) {
+        res.render('auth/register', { ...regData, error: getErrorMessage(err) });
     }
 });
 

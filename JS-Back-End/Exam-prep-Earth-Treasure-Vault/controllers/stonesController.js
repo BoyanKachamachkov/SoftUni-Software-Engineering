@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { getErrorMessage } = require('../lib/getErrorMessage');
 const stonesService = require('../services/stonesService');
 
 
@@ -16,7 +17,7 @@ router.post('/create', async (req, res) => {
 
 
     } catch (err) {
-        res.render('/create', { ...stonesData, err });
+        res.render('/create', { ...stonesData, error: getErrorMessage(err) });
     }
 });
 
