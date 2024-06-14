@@ -58,6 +58,24 @@ router.get('/delete/:gemstoneId', isGemstoneOwner, async (req, res) => {
     res.redirect('/stones/dashboard');
 });
 
+router.get('/edit/:gemstoneId', isGemstoneOwner, async (req, res) => {
+    res.render('stones/edit', { ...req.gemstone });
+});
+
+router.post('/edit/:gemstoneId', isGemstoneOwner, async (req, res) => {
+
+    const gemstoneData = req.body;
+
+    try {
+
+        await stonesService.edit(req.params.gemstoneId, gemstoneData);
+        res.redirect(`/stones/details/${req.params.gemstoneId}`);
+    } catch (err) {
+        res.render('stones/edit', { error: getErrorMessage(err), ...gemstoneData });
+
+    }
+});
+
 async function isGemstoneOwner(req, res, next) {
     const gemstone = await stonesService.getOne(req.params.gemstoneId).lean();
 

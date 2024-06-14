@@ -24,3 +24,5 @@ exports.like = async (gemstoneId, userId) => {
 };
 
 exports.delete = (gemstoneId) => Stones.findByIdAndDelete(gemstoneId);
+
+exports.edit = (gemstoneId, gemstoneData) => Stones.findByIdAndUpdate(gemstoneId, gemstoneData, { runValidators: true }); 
