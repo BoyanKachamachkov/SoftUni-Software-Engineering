@@ -21,4 +21,6 @@ exports.getLatest = () => Stones.find().sort({ createdAt: -1 }).limit(3);
 exports.like = async (gemstoneId, userId) => {
     await Stones.findByIdAndUpdate(gemstoneId, { $push: { likedList: userId } });
     await User.findByIdAndUpdate(userId, { $push: { likes: gemstoneId } });
-}; 
+};
+
+exports.delete = (gemstoneId) => Stones.findByIdAndDelete(gemstoneId);

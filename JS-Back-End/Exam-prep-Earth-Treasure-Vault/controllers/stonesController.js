@@ -52,4 +52,10 @@ router.get('/like/:gemstoneId', async (req, res) => {
     res.redirect(`/stones/details/${req.params.gemstoneId}`);
 });
 
+router.get('/delete/:gemstoneId', async (req, res) => {
+    await stonesService.delete(req.params.gemstoneId);
+
+    res.redirect('/stones/dashboard')
+});
+
 module.exports = router;
