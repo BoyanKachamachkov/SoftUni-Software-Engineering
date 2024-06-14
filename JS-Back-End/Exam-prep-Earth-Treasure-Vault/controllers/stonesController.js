@@ -33,9 +33,6 @@ router.get('/dashboard', async (req, res) => {
 });
 
 
-router.get('/search', (req, res) => {
-    res.render('stones/search');
-});
 
 
 router.get('/details/:gemstoneId', async (req, res) => {
@@ -46,6 +43,13 @@ router.get('/details/:gemstoneId', async (req, res) => {
     const isLiked = gemstone.likedList.some(user => user._id == req.user?._id);
 
     res.render('stones/details', { ...gemstone, isOwner, isLiked });
+});
+
+router.get('/like/:gemstoneId', async (req, res) => {
+
+    await stonesService.like(req.params.gemstoneId, req.user._id);
+
+    res.redirect(`/stones/details/${req.params.gemstoneId}`);
 });
 
 module.exports = router;
