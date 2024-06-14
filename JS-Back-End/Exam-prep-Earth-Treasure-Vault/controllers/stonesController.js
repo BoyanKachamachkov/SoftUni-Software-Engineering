@@ -52,10 +52,21 @@ router.get('/like/:gemstoneId', async (req, res) => {
     res.redirect(`/stones/details/${req.params.gemstoneId}`);
 });
 
-router.get('/delete/:gemstoneId', async (req, res) => {
+router.get('/delete/:gemstoneId', isGemstoneOwner, async (req, res) => {
     await stonesService.delete(req.params.gemstoneId);
 
-    res.redirect('/stones/dashboard')
+    res.redirect('/stones/dashboard');
 });
+
+async function isGemstoneOwner(req, res, next) {
+    const gemstone = await stonesService.getOne(req.params.gemstoneId).lean();
+
+    if (gemstone.owner != req.user?._id) {
+        return res.redirect(`/`);
+    }
+
+    req.gemstone = gemstone;
+    next();
+}
 
 module.exports = router;
