@@ -38,4 +38,13 @@ router.get('/search', (req, res) => {
 });
 
 
+router.get('/details/:gemstoneId', async (req, res) => {
+
+    const gemstone = await stonesService.getOne(req.params.gemstoneId).lean();
+
+    console.log(gemstone);
+
+    res.render('stones/details', { ...gemstone });
+});
+
 module.exports = router;

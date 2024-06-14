@@ -12,3 +12,5 @@ exports.create = async (userId, stonesData) => {
 };
 
 exports.getAll = () => Stones.find();
+
+exports.getOne = (gemstoneId) => Stones.findById(gemstoneId)
