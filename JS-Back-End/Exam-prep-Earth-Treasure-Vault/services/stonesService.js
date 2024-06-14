@@ -13,4 +13,6 @@ exports.create = async (userId, stonesData) => {
 
 exports.getAll = () => Stones.find();
 
-exports.getOne = (gemstoneId) => Stones.findById(gemstoneId)
+exports.getOne = (gemstoneId) => Stones.findById(gemstoneId);
+
+exports.getLatest = () => Stones.find().sort({ createdAt: -1 }).limit(3);

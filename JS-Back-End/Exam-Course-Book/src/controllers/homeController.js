@@ -5,7 +5,6 @@ const userService = require('../services/userService');
 
 router.get('/', async (req, res) => {
     const latestCourses = await courseService.getLatest().lean();
-    console.log(latestCourses);
     res.render('home', { latestCourses });
 });
 

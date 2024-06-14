@@ -38,6 +38,15 @@ const stonesSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
+    createdAt: {
+        type: Date
+    }
+});
+
+stonesSchema.pre('save', function () {
+    if (!this.createdAt) {
+        this.createdAt = Date.now();
+    }
 });
 
 const Stones = mongoose.model('Stones', stonesSchema);

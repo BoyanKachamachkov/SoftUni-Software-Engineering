@@ -1,15 +1,18 @@
 const { isAuth } = require('../middlewares/authMiddleware');
+const stonesService = require('../services/stonesService');
 
 const router = require('express').Router();
 
 
-router.get('/', (req, res) => {
-    res.render('home');
+router.get('/', async (req, res) => {
+
+    const latestStones = await stonesService.getLatest().lean();
+    console.log(latestStones)
+    res.render('home', { latestStones });
+
 });
 
-router.get('/authorize-test', isAuth, (req, res) => {
-    res.send('You are auth')
-});
+
 
 
 module.exports = router;
