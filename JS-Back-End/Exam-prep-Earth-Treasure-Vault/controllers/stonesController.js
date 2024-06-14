@@ -42,9 +42,9 @@ router.get('/details/:gemstoneId', async (req, res) => {
 
     const gemstone = await stonesService.getOne(req.params.gemstoneId).lean();
 
-    console.log(gemstone);
+    const isOwner = gemstone.owner._id == req.user?._id;
 
-    res.render('stones/details', { ...gemstone });
+    res.render('stones/details', { ...gemstone, isOwner });
 });
 
 module.exports = router;
