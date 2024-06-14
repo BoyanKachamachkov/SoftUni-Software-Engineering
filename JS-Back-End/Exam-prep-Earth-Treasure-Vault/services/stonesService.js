@@ -1,6 +1,4 @@
 const Stones = require('../models/Stones');
 
 
-exports.create = (stonesData) => {
-    
-}
+exports.create = async (stonesData) => await Stones.create(stonesData);

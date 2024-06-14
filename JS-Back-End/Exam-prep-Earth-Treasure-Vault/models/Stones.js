@@ -39,3 +39,7 @@ const stonesSchema = new mongoose.Schema({
         ref: 'User'
     },
 });
+
+const Stones = mongoose.model('Stones', stonesSchema);
+
+module.exports = Stones;

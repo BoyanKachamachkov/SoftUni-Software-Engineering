@@ -1,28 +1,37 @@
 const router = require('express').Router();
 const { getErrorMessage } = require('../lib/getErrorMessage');
 const stonesService = require('../services/stonesService');
+const { isAuth } = require('../middlewares/authMiddleware');
 
 
-router.get('/create', (req, res) => {
+router.get('/create', isAuth, (req, res) => {
     res.render('stones/create');
 });
 
 
-router.post('/create', async (req, res) => {
+router.post('/create', isAuth, async (req, res) => {
 
     const stonesData = req.body;
 
     try {
         await stonesService.create(stonesData);
 
+        res.redirect('/stones/dashboard');
+
 
     } catch (err) {
-        res.render('/create', { ...stonesData, error: getErrorMessage(err) });
+        res.render('stones/create', { ...stonesData, error: getErrorMessage(err) });
     }
 });
 
+router.get('/dashboard', (req, res) => {
+    res.render('stones/dashboard');
+});
 
 
+router.get('/search', (req, res) => {
+    res.render('stones/search');
+});
 
 
 module.exports = router;
