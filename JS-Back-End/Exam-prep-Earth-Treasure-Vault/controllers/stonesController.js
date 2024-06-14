@@ -15,7 +15,7 @@ router.post('/create', isAuth, async (req, res) => {
     const stonesData = req.body;
 
     try {
-        await stonesService.create(stonesData);
+        await stonesService.create(req.user._id, stonesData);
 
         res.redirect('/stones/dashboard');
 

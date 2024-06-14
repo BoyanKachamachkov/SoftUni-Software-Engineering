@@ -9,7 +9,11 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    likes: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Stones'
+    }]
 });
 
 userSchema.pre('save', async function () {

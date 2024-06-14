@@ -1,6 +1,14 @@
 const Stones = require('../models/Stones');
 
 
-exports.create = async (stonesData) => await Stones.create(stonesData);
+exports.create = async (userId, stonesData) => {
+    // create new stone with the ID of the user
+    const createdStone = await Stones.create({
+        owner: userId,
+        ...stonesData
+    });
+
+    return createdStone;
+};
 
 exports.getAll = () => Stones.find();
