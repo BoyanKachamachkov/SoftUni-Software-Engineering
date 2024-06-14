@@ -43,8 +43,9 @@ router.get('/details/:gemstoneId', async (req, res) => {
     const gemstone = await stonesService.getOne(req.params.gemstoneId).lean();
 
     const isOwner = gemstone.owner._id == req.user?._id;
+    const isLiked = gemstone.likedList.some(user => user._id == req.user?._id);
 
-    res.render('stones/details', { ...gemstone, isOwner });
+    res.render('stones/details', { ...gemstone, isOwner, isLiked });
 });
 
 module.exports = router;
