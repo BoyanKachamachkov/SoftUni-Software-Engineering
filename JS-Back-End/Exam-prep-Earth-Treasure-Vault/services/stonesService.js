@@ -25,4 +25,14 @@ exports.like = async (gemstoneId, userId) => {
 
 exports.delete = (gemstoneId) => Stones.findByIdAndDelete(gemstoneId);
 
-exports.edit = (gemstoneId, gemstoneData) => Stones.findByIdAndUpdate(gemstoneId, gemstoneData, { runValidators: true }); 
+exports.edit = (gemstoneId, gemstoneData) => Stones.findByIdAndUpdate(gemstoneId, gemstoneData, { runValidators: true });
+
+exports.search = async (gemstoneTitle) => {
+    const match = new RegExp(gemstoneTitle, 'i');
+
+    if (!match) {
+        return await Stones.find().lean();
+    }
+
+    return await Stones.find({ name: match }).lean();
+};
