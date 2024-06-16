@@ -28,11 +28,11 @@ exports.delete = (gemstoneId) => Stones.findByIdAndDelete(gemstoneId);
 exports.edit = (gemstoneId, gemstoneData) => Stones.findByIdAndUpdate(gemstoneId, gemstoneData, { runValidators: true });
 
 exports.search = async (gemstoneTitle) => {
-    const match = new RegExp(gemstoneTitle, 'i');
+    let result = await Stones.find().lean();
 
-    if (!match) {
-        return await Stones.find().lean();
+    if (gemstoneTitle) {
+        result = result.filter(stone => stone.name.toLowerCase().includes(gemstoneTitle.toLowerCase()));
     }
 
-    return await Stones.find({ name: match }).lean();
+    return result;
 };
