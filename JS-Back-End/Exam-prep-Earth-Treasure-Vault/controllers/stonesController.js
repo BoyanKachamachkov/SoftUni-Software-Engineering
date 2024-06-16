@@ -87,8 +87,21 @@ async function isGemstoneOwner(req, res, next) {
     next();
 }
 
-router.get('/search', (req,res) => {
-    res.render('stones/search')
-})
+router.get('/search', async (req, res) => {
+
+    const stones = await stonesService.getAll().lean();
+
+    res.render('stones/search', { stones });
+});
+
+router.post('/search', async (req, res) => {
+    // const searchData = req.body;
+    // console.log(searchData);
+
+    // const stones = await stonesService.getAll().lean();
+    // console.log(stones);
+
+    // res.render('stones/search', { stones });
+});
 
 module.exports = router;
