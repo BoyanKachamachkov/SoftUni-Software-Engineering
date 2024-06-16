@@ -5,7 +5,8 @@ const stonesSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        minLength: [2, 'Name should be at least 2 characters long.']
+        minLength: [2, 'Name should be at least 2 characters long.'],
+        lowercase: true,
 
     },
     category: {

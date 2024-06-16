@@ -95,13 +95,12 @@ router.get('/search', async (req, res) => {
 });
 
 router.post('/search', async (req, res) => {
-    // const searchData = req.body;
-    // console.log(searchData);
+    const searchedStone = req.body;
 
-    // const stones = await stonesService.getAll().lean();
-    // console.log(stones);
+    const stones = Stones.findOne({ name: searchedStone }).lean();
 
-    // res.render('stones/search', { stones });
+    res.render('stones/search', { stones });
+
 });
 
 module.exports = router;
