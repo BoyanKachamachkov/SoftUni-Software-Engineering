@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const { SECRET } = require('../config');
 const jwt = require('../lib/jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 exports.register = async (regData) => {
     if (regData.password !== regData.rePassword) {
@@ -9,11 +10,12 @@ exports.register = async (regData) => {
 
     const user = await User.findOne({ email: regData.email });
     if (user) {
-        throw new Error('Email is already registered.');
+        throw new Error('User with that email already exists!');
     }
 
     const createdUser = await User.create(regData);
-    const token = await generateToken(createdUser);
+    const token = generateToken(createdUser);
+    console.log(token)
     return token;
 };
 
@@ -26,7 +28,6 @@ async function generateToken(user) {
         email: user.email
     };
 
-    const token = jwt.sign(payload, SECRET, { expiresIn: '2h' });
-
-    return token;
+    const token = await jwt.sign(payload, SECRET, { expiresIn: '2h' });
+    return token;   
 }
