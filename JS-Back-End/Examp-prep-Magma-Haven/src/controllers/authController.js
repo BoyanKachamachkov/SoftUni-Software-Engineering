@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { getErrorMessage } = require('../lib/getErrorMessage');
 const authService = require('../services/authService');
 
 router.get('/register', (req, res) => {
@@ -10,11 +11,12 @@ router.post('/register', async (req, res) => {
 
     try {
 
-        const user = await authService.register(regData);
-        res.render('home');
-        // logged and redirected to home page
-    } catch (error) {
+        const token = await authService.register(regData);
 
+        res.cookie('auth', token);
+        res.redirect('/');
+    } catch (err) {
+        res.render('auth/register', { ...regData, error: getErrorMessage(err) });
     }
 });
 

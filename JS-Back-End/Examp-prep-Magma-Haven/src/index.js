@@ -2,11 +2,13 @@ const express = require('express');
 const routes = require('../src/routes');
 const handlebars = require('express-handlebars');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 app.use(express.static('src/public'));
 app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.engine('hbs', handlebars.engine({
     extname: 'hbs'
