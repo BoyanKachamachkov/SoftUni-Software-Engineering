@@ -2,7 +2,6 @@ const router = require('express').Router();
 const { getErrorMessage } = require('../lib/getErrorMessage');
 const stonesService = require('../services/stonesService');
 const { isAuth } = require('../middlewares/authMiddleware');
-const Stones = require('../models/Stones');
 
 
 router.get('/create', isAuth, (req, res) => {
