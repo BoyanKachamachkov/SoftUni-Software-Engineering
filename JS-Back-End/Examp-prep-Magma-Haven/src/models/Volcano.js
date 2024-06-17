@@ -1,4 +1,4 @@
-const mongoose = required('mongoose');
+const mongoose = require('mongoose');
 
 const volcanoSchema = new mongoose.Schema({
     name: {
@@ -38,3 +38,7 @@ const volcanoSchema = new mongoose.Schema({
         ref: 'User'
     }
 });
+
+const Volcano = mongoose.model('Volcano', volcanoSchema);
+
+module.exports = Volcano;
