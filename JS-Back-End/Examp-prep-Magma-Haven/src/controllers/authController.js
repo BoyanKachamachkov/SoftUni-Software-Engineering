@@ -25,7 +25,19 @@ router.get('/login', (req, res) => {
     res.render('auth/login');
 });
 
+router.post('/login', async (req, res) => {
+    const loginData = req.body;
 
+    try {
+        const token = await authService.login(loginData);
+
+        res.cookie('auth', token);
+        res.redirect('/');
+    } catch (err) {
+        res.render('auth/login', { ...loginData, error: getErrorMessage(err) });
+
+    }
+});
 
 
 
