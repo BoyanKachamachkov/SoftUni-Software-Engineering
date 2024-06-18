@@ -44,11 +44,22 @@ router.get('/catalog/vote/:volcanoId', async (req, res) => {
     res.redirect(`/volcanoes/catalog/${req.params.volcanoId}`);
 });
 
-router.get('/catalog/delete/:volcanoId', async (req, res) => {
+router.get('/catalog/delete/:volcanoId', isCourseOwner, async (req, res) => {
     await volcanoesService.delete(req.params.volcanoId);
 
-    res.redirect('/volcanoes/catalog')
+    res.redirect('/volcanoes/catalog');
 });
+
+async function isCourseOwner(req, res, next) {
+    const volcano = await volcanoesService.getOne(req.params.volcanoId).lean();
+
+    if (volcano.owner != req.user?._id) {
+        return res.redirect(`/volcanoes/catalog/${req.params.volcanoId}`);
+    }
+
+    req.volcano = volcano;
+    next();
+}
 
 
 module.exports = router;
