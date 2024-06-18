@@ -18,3 +18,5 @@ exports.getOne = (volcanoId) => Volcano.findById(volcanoId);
 exports.vote = async (volcanoId, userId) => {
     await Volcano.findByIdAndUpdate(volcanoId, { $push: { voteList: userId } });
 };
+
+exports.delete = (volcanoId) => Volcano.findByIdAndDelete(volcanoId);

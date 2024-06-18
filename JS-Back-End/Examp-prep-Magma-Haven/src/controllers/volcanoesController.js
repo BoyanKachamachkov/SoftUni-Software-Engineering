@@ -44,5 +44,11 @@ router.get('/catalog/vote/:volcanoId', async (req, res) => {
     res.redirect(`/volcanoes/catalog/${req.params.volcanoId}`);
 });
 
+router.get('/catalog/delete/:volcanoId', async (req, res) => {
+    await volcanoesService.delete(req.params.volcanoId);
+
+    res.redirect('/volcanoes/catalog')
+});
+
 
 module.exports = router;
