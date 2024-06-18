@@ -50,6 +50,12 @@ router.get('/catalog/delete/:volcanoId', isCourseOwner, async (req, res) => {
     res.redirect('/volcanoes/catalog');
 });
 
+router.get('/catalog/edit/:volcanoId', async (req, res) => {
+    const volcano = await volcanoesService.getOne(req.params.volcanoId).lean();
+
+    res.render('volcanoes/edit', { ...volcano });
+});
+
 async function isCourseOwner(req, res, next) {
     const volcano = await volcanoesService.getOne(req.params.volcanoId).lean();
 
