@@ -11,3 +11,5 @@ exports.create = async (userId, newVolcano) => {
 };
 
 exports.getAll = () => Volcano.find();
+
+exports.getOne = (volcanoId) => Volcano.findById(volcanoId);

@@ -27,5 +27,12 @@ router.get('/catalog', async (req, res) => {
     res.render('volcanoes/catalog', { volcanoes });
 });
 
+router.get('/catalog/:volcanoId', async (req, res) => {
+
+    const volcano = await volcanoesService.getOne(req.params.volcanoId).lean();
+
+    res.render('volcanoes/details', { ...volcano });
+});
+
 
 module.exports = router;
