@@ -9,3 +9,5 @@ exports.create = async (userId, newVolcano) => {
 
     return createdVolcano;
 };
+
+exports.getAll = () => Volcano.find();

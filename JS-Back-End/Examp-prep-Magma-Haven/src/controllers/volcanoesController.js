@@ -1,13 +1,14 @@
 const router = require('express').Router();
 const { getErrorMessage } = require('../lib/getErrorMessage');
 const volcanoesService = require('../services/volcanoesService');
+const { isAuth } = require('../middlewares/authMiddleware');
 
 
-router.get('/create', (req, res) => {
+router.get('/create', isAuth, (req, res) => {
     res.render('volcanoes/create');
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create', isAuth, async (req, res) => {
     const newVolcano = req.body;
 
     try {
@@ -19,8 +20,11 @@ router.post('/create', async (req, res) => {
     }
 });
 
-router.get('/catalog', (req, res) => {
-    res.render('volcanoes/catalog');
+router.get('/catalog', async (req, res) => {
+
+    const volcanoes = await volcanoesService.getAll().lean();
+
+    res.render('volcanoes/catalog', { volcanoes });
 });
 
 
