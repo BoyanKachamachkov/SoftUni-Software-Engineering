@@ -50,10 +50,22 @@ router.get('/catalog/delete/:volcanoId', isCourseOwner, async (req, res) => {
     res.redirect('/volcanoes/catalog');
 });
 
-router.get('/catalog/edit/:volcanoId', async (req, res) => {
+router.get('/catalog/edit/:volcanoId', isCourseOwner, async (req, res) => {
     const volcano = await volcanoesService.getOne(req.params.volcanoId).lean();
 
     res.render('volcanoes/edit', { ...volcano });
+});
+
+router.post('/catalog/edit/:volcanoId', isCourseOwner, async (req, res) => {
+    const editData = req.body;
+
+    try {
+        await volcanoesService.edit(req.params.volcanoId, editData);
+
+        res.redirect(`/volcanoes/catalog/${req.params.volcanoId}`);
+    } catch (err) {
+        res.render('volcanoes/edit', { error: getErrorMessage(err), ...editData });
+    }
 });
 
 async function isCourseOwner(req, res, next) {

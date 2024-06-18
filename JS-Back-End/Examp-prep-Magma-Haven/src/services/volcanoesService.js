@@ -20,3 +20,5 @@ exports.vote = async (volcanoId, userId) => {
 };
 
 exports.delete = (volcanoId) => Volcano.findByIdAndDelete(volcanoId);
+
+exports.edit = (volcanoId, volcanoData) => Volcano.findByIdAndUpdate(volcanoId, volcanoData, { runValidators: true });
