@@ -31,7 +31,17 @@ router.get('/catalog/:volcanoId', async (req, res) => {
 
     const volcano = await volcanoesService.getOne(req.params.volcanoId).lean();
 
-    res.render('volcanoes/details', { ...volcano });
+    const isOwner = volcano.owner._id == req.user?._id;
+    const hasVoted = volcano.voteList.some(user => user._id == req.user?._id);
+
+    res.render('volcanoes/details', { ...volcano, isOwner, hasVoted });
+});
+
+router.get('/catalog/vote/:volcanoId', async (req, res) => {
+
+    await volcanoesService.vote(req.params.volcanoId, req.user._id);
+
+    res.redirect(`/volcanoes/catalog/${req.params.volcanoId}`);
 });
 
 
