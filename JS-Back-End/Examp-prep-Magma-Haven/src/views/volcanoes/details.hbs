@@ -11,24 +11,23 @@
             <p id="type">Volcano Type: {{typeVolcano}}</p>
             <p id="elevation"><span>Elevation: {{elevation}}</span></p>
             <p id="last-eruption">Year of Last Eruption: {{lastErruption}}</p>
-            <p id="votes">Vote's Count: 2</p>
+            <p id="votes">Vote's Count: {{votesCount}}</p>
             <p id="description">{{description}}</p>
         </div>
-        {{#if isAuthenticated}}
         <div class="product-btn">
-            {{#if isOwner}}
+            {{#if isAuthenticated}}
+                {{#if isOwner}}
             <div class="author">
                 <a href="#" class="btn-edit">Edit</a>
                 <a href="#" class="btn-delete">Delete</a>
             </div>
-            {{/if}}
 
-            <!-- Logged in user who has not yet vote for this volcano-->
-            <a href="/volcanoes/catalog/vote/{{_id}}" class="btn-vote">Vote</a>
-
-            <!-- Logged in user who has already vote for this volcano-->
+                {{else if hasVoted}}
             <p class="vote-message">You've already voted for this volcano!</p>
+                {{else}}
+            <a href="/volcanoes/catalog/vote/{{_id}}" class="btn-vote">Vote</a>
+                {{/if}}
+            {{/if}}
         </div>
-        {{/if}}
     </div>
 </section>

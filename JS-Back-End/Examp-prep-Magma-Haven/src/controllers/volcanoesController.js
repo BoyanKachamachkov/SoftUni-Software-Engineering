@@ -33,8 +33,8 @@ router.get('/catalog/:volcanoId', async (req, res) => {
 
     const isOwner = volcano.owner._id == req.user?._id;
     const hasVoted = volcano.voteList.some(user => user._id == req.user?._id);
-
-    res.render('volcanoes/details', { ...volcano, isOwner, hasVoted });
+    const votesCount = volcano.voteList.length;
+    res.render('volcanoes/details', { ...volcano, isOwner, hasVoted, votesCount });
 });
 
 router.get('/catalog/vote/:volcanoId', async (req, res) => {
