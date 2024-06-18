@@ -68,6 +68,10 @@ router.post('/catalog/edit/:volcanoId', isCourseOwner, async (req, res) => {
     }
 });
 
+router.get('/search', (req, res) => {
+    res.render('volcanoes/search');
+});
+
 async function isCourseOwner(req, res, next) {
     const volcano = await volcanoesService.getOne(req.params.volcanoId).lean();
 
