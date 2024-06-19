@@ -34,3 +34,28 @@ form{
     border-radius: 0.4em;
     box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.2);
 }
+
+.nav{
+    display: flex;
+    margin-bottom: 2em;
+}
+
+.nav li{
+    flex: 1 1 auto;
+    display: block;
+    list-style: none outside;
+}
+
+.nav a{
+    color: inherit;
+    background-color: #435359;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    padding: 1em 2em;
+    margin-bottom: 2em;
+}
+
+.nav li.current a {
+    background-color: #1AB188;
+}
