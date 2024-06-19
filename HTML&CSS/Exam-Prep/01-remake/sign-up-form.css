@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: 14px/1.5 "Kode Mono", sans-serif;
+}
+
+body,
+input,
+textarea,
+button {
+    font: inherit;
+}
+
+body{
+    padding: 2em;
+    background-color: #C1BDBA;
+}
+
+form{
+    /* taken from figma */
+    max-width: 750px; 
+    margin: 0 auto;
+    background-color: #24333C;
+    color: #fff;
+
+    /* padding taken from figma pixels divided by 14 to get em */
+    padding: 3.6em;
+    border-radius: 0.4em;
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.2);
+}
