@@ -41,13 +41,7 @@ h6 {
     font-size: 1em;
 }
 
-/* Sections */
 
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 /* Components */
 
@@ -64,4 +58,36 @@ h6 {
     display: block;
     padding: 0.5em 1em;
     text-decoration: none;
+}
+
+/* Sections */
+
+.section .wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section .wrapper.wide {
+    min-width: 1800px;
+}
+
+.site-header .wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.section-catalog {
+    background-color: #60ACC1;
+}
+
+.site-footer {
+    background-color: #2D333C;
+    color: #fff;
+    text-align: center;
+}
+
+.site-footer .wrapper {
+    padding: 1em 0;
 }
