@@ -6,6 +6,12 @@
     box-sizing: border-box;
 }
 
+img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 html {
     font: 14px/1.5 "PT Sans", sans-serif;
 }
@@ -60,6 +66,19 @@ h6 {
     text-decoration: none;
 }
 
+.flex-columns{
+    display: flex;
+    justify-content: center;
+}
+
+.flex-columns.c2 > *{
+    flex: 0 0 40%;
+}
+
+.flex-columns.c3 > * {
+    flex: 0 0 30%;
+}
+
 /* Sections */
 
 .section .wrapper {
@@ -80,6 +99,11 @@ h6 {
 
 .section-catalog {
     background-color: #60ACC1;
+}
+
+.section-about,
+.section-catalog header{
+    text-align: center;
 }
 
 .site-footer {
