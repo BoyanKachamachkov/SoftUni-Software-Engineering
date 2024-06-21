@@ -108,19 +108,31 @@ h6 {
 }
 
 .section-catalog .wrapper {
-    padding: 1em 2em 0em;
+    padding: 1em 0 2em 0;
 }
 
 .section-catalog header{
-    padding-bottom: 1em;
+    padding-bottom: 1.5em;
 }
 
 .section-catalog header h3 {
-    font-size: 1.2em;
+    font-size: 1.5em;
+}
+
+.section-catalog .flex-columns.c2 article{
+    display: flex;
+}
+.section-catalog .flex-columns.c2 article h4{
+    font-size: 1em;
+    text-align: center;
 }
 
 .section-catalog .flex-columns.c3{
-    gap: 2em;
+    gap: 3em;
+}
+
+.section-catalog  .flex-columns.c3 img{
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.4);
 }
 
 .site-footer {
