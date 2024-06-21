@@ -64,6 +64,8 @@ h6 {
     display: block;
     padding: 0.5em 1em;
     text-decoration: none;
+    color: #000;
+    font-weight: bold;
 }
 
 .flex-columns {
@@ -87,14 +89,20 @@ h6 {
     margin: 0 auto;
 }
 
-.section .wrapper.wide {
-    min-width: 1800px;
+.section .wrapper.narrow {
+    max-width: 1000px;
 }
 
 .site-header .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 2em;
+}
+
+
+.section-banner .wrapper{
+    padding: 6em 0 4em 0;
 }
 
 
@@ -106,6 +114,16 @@ h6 {
 .section-banner,
 .section-catalog header {
     text-align: center;
+}
+
+.site-header .site-title a{
+    display: block;
+    width: 7em;
+    height: 4em;
+    background: url('images/logo.png') center no-repeat;
+    background-size: contain;
+    text-indent: -100vw;
+    overflow: hidden;
 }
 
 .section-catalog .wrapper {
@@ -168,7 +186,7 @@ h6 {
 }
 
 .section-furniture .wrapper {
-    padding: 2em;
+    padding: 3em;
 }
 
 .section-furniture .flex-columns.c3 {
@@ -182,12 +200,35 @@ h6 {
 }
 
 .section-furniture .flex-columns.c3> * {
+    flex: 1 1 30%;
    text-align: center;
 }
 
 .section-furniture .flex-columns.c3 h4 {
     font-size: 1.2em;
 }
+
+
+.section-about .wrapper{
+    padding: 2em 2em;
+    opacity: 0.7;
+}
+.section-about .wrapper header{
+    padding-bottom: 2em;
+}
+
+.section-about .wrapper header h3{
+    font-style: 1.2em;
+}
+.section-about .wrapper header p{
+    font-style: italic;
+}
+.section-about .wrapper p{
+    max-width: 100ch;
+    margin: 0 auto;
+}
+
+
 
 .site-footer {
     background-color: #2D333C;
