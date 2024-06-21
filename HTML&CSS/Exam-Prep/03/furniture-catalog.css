@@ -13,7 +13,7 @@ img {
 }
 
 html {
-    font: 14px/1.5 "PT Sans", sans-serif;
+    font: 16px/1.5 "PT Sans", sans-serif;
 }
 
 body,
@@ -83,6 +83,13 @@ h6 {
 
 /* Sections */
 
+body{
+    background-image: url('images/background.jpg');
+    background-position: center top -18em;
+    background-size: 1920px auto;
+    background-repeat: no-repeat;
+}
+
 .section .wrapper {
     /* max-width: 700px; */
     max-width: 1100px;
@@ -104,7 +111,18 @@ h6 {
 .section-banner .wrapper{
     padding: 6em 0 4em 0;
 }
+.section-banner .wrapper h2{
+    padding-bottom: 1rem;
+}
 
+.section-banner .wrapper .button{
+    display: inline-block;
+    background-color: #fff;
+    border-radius: 0.3em;
+    color: #666;
+    margin-top: 2em;
+    padding: 0.5em 1em;
+}
 
 .section-catalog {
     background-color: #60ACC1;
@@ -183,6 +201,10 @@ h6 {
 
 .section-catalog .flex-columns.c3 img {
     box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.4);
+}
+
+.section-furniture{
+    background-color: #fff;
 }
 
 .section-furniture .wrapper {
