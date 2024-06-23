@@ -84,6 +84,11 @@ router.post('/edit/:recipeId', isRecipeOwner, async (req, res) => {
     }
 });
 
+// router.get('/search', async (req, res) => {
+//     const recipes = await recipesService.search(req.query.search);
+//     res.render('recipes/search', { recipes });
+// });
+
 
 async function isRecipeOwner(req, res, next) {
     const recipe = await recipesService.getOne(req.params.recipeId).lean();
@@ -94,5 +99,7 @@ async function isRecipeOwner(req, res, next) {
 
     next();
 }
+
+
 
 module.exports = router;

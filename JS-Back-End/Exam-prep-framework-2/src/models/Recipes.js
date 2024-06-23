@@ -5,22 +5,29 @@ const recipesSchema = new mongoose.Schema({
     title: {
         type: String,
         required: true,
-    },
-    ingredients: {
-        type: String,
-        required: true,
-    },
-    instructions: {
-        type: String,
-        required: true,
+        minLength: 2,
     },
     description: {
         type: String,
         required: true,
+        minLength: 10,
+        maxLength: 100,
+    },
+    ingredients: {
+        type: String,
+        required: true,
+        minLength: 10,
+        maxLength: 200,
+    },
+    instructions: {
+        type: String,
+        required: true,
+        minLength: 10,
     },
     image: {
         type: String,
         required: true,
+        match: /^https?:\/\//
     },
     recommendList: [{
         type: mongoose.Types.ObjectId,

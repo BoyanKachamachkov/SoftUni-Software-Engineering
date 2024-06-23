@@ -25,3 +25,14 @@ exports.delete = (recipeId) => Recipes.findByIdAndDelete(recipeId);
 exports.edit = (recipedId, recipeData) => Recipes.findByIdAndUpdate(recipedId, recipeData, { runValidators: true });
 
 exports.getLatest = () => Recipes.find().sort({ createdAt: -1 }).limit(3);
+
+
+// exports.search = async (recipeTitle) => {
+//     let result = await Recipes.find().lean();
+
+//     if (recipeTitle) {
+//         result = result.filter(recipe => recipe.name.toLowerCase().includes(recipeTitle.toLowerCase()));
+//     }
+
+//     return result;
+// };
