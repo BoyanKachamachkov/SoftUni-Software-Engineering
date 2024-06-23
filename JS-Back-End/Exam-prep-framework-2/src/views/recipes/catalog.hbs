@@ -1,17 +1,18 @@
 <h2>Recipe Catalog</h2>
 <section class="recipes">
 
+    {{#if recipes}}
     <article class="recipe">
         {{#each recipes}}
         <img src="{{image}}" alt="#">
         <h3>{{title}}</h3>
         <p>{{description}}</p>
-        <a href="#">Read More</a>
+        <a href="/catalog/{{_id}}">Read More</a>
         {{/each}}
     </article>
 
 
-    {{#if error}}
+    {{else}}
     <p class="no-post">There are no recipes found yet!</p>
     {{/if}}
 </section>

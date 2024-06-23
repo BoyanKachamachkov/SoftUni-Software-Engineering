@@ -12,3 +12,10 @@ exports.create = async (userId, recipesData) => {
 
 
 exports.getAll = () => Recipes.find();
+
+exports.getOne = (recipeId) => Recipes.findById(recipeId);
+
+
+exports.recommend = async (recipeId, userId) => {
+    await Recipes.findByIdAndUpdate(recipeId, { $push: { recommendList: userId } });
+};
