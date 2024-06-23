@@ -3,74 +3,51 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Page</title>
-    <link rel="stylesheet" href="./css/styles.css">
+    <title>Create Recipe - Home Cooking Recipes</title>
+    <link rel="stylesheet" href="./styles/styles.css">
 </head>
 
 <body>
-
-    <!-- In case of error, you should display div with class "errorContainer" -->
-    <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-
-    <!-- <div>
-            <div class="errorContainer">
-                <p>Error</p>
-            </div>
-        </div> -->
-
-    <div class="navigation">
+    <header>
         <nav>
-            <img src="./images/logo.png">
             <ul>
-                <!-- Guest users and Logged users -->
                 <li><a href="#">Home</a></li>
-                <li><a href="#">All Courses</a></li>
-                <!--For guest users-->
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Add Recipe</a></li>
                 <li><a href="#">Login</a></li>
                 <li><a href="#">Register</a></li>
-                <!--For loggin users-->
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Create Course Offers</a></li>
                 <li><a href="#">Logout</a></li>
-
             </ul>
         </nav>
-    </div>
-
-
+    </header>
     <main>
-        <section id="create-container">
-            <div class="create-container-info">
-                <h1>Create Course</h1>
-                <form>
-                    <label>Title:</label>
-                    <input name="" type="text" id="title">
+        <section class="form-container">
+            <h2>Create Recipe</h2>
+            <form action="#">
+                <label for="title">Recipe Title:</label>
+                <input type="text" id="title" name="">
 
-                    <label>Type:</label>
-                    <input name="" type="text" id="type">
+                <label for="description">Description:</label>
+                <textarea id="description" name=""></textarea>
 
-                    <label>Certificate:</label>
-                    <input name="" type="text" id="certificate">
+                <label for="ingredients">Ingredients:</label>
+                <textarea id="ingredients" name=""></textarea>
 
-                    <label>Image:</label>
-                    <input name="" type="text" id="image" placeholder="http://...">
+                <label for="instructions">Instructions:</label>
+                <textarea id="instructions" name=""></textarea>
 
-                    <label>Description:</label>
-                    <textarea id="content" name=""></textarea>
+                <label for="image">Image URL:</label>
+                <input type="url" id="image" name="">
 
-                    <label>Price:</label>
-                    <input name="" type="number" id="price">
-
-                    <input type="submit" id="btn" value="Create">
-                </form>
-            </div>
+                <button type="submit">Create Recipe</button>
+            </form>
         </section>
     </main>
-
-    <footer>Back-End 2023</footer>
-
+    <footer>
+        <p>&copy; 2024 Home Cooking Recipes. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>

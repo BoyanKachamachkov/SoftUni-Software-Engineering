@@ -22,8 +22,7 @@ app.use(cookieParser());
 app.use(authMiddleware);
 app.use(routes);
 
-// TODO: change DB name based on project
-mongoose.connect('mongodb://localhost:27017/course-books');
+mongoose.connect('mongodb://localhost:27017/home-recipes');
 
 mongoose.connection.on('connected', () => console.log('mongoDB is connected'));
 mongoose.connection.on('disconnected', () => console.log('mongoDB is disconnected'));

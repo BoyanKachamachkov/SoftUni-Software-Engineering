@@ -8,14 +8,15 @@ exports.register = async (userData) => {
         throw new Error('Passwords do not match!');
     }
 
-    // check if usr exists
     const user = await User.findOne({ email: userData.email });
     if (user) {
         throw new Error('User with this email already exists!');
     }
 
-    // happy path (will handle promise in controller)
-    return User.create(userData);
+    const createdUser = await User.create(userData);
+
+    const token = await generateToken(createdUser)
+    return token;
 };
 
 exports.login = async ({ email, password }) => {
@@ -45,3 +46,13 @@ exports.login = async ({ email, password }) => {
 
     return token;
 };
+
+async function generateToken(user) {
+    const payload = {
+        _id: user._id,
+        email: user.email,
+    };
+    const token = jwt.sign(payload, SECRET, { expiresIn: '2h' });
+
+    return token;
+}

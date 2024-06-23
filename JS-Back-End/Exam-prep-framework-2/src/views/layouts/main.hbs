@@ -3,48 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
-    <link rel="stylesheet" href="/css/styles.css">
+    <title>Home Cooking Recipes</title>
+    <link rel="stylesheet" href="/styles/styles.css">
 </head>
 
 <body>
-
-    <!-- In case of error, you should display div with class "errorContainer" -->
-    <!-- You can choose to display the first error or all of them (error message/s in your opinion) -->
-    {{#if error}}
-    <div>
-        <div class="errorContainer">
-            <p>{{error}}</p>
-        </div>
-    </div>
-    {{/if}}
-
-    <div class="navigation">
+    <header>
         <nav>
-            <img src="/images/logo.png">
             <ul>
-                <!-- Guest users and Logged users -->
-                <li><a href="#">All Courses</a></li>
-                <li><a href="/">Home</a></li>
-                {{#if isAuthenticated}}
-                <li><a href="#">Profile</a></li>
-                <li><a href="/create">Create Course Offers</a></li>
-                <li><a href="/auth/logout">Logout</a></li>
-                {{else}}
-                <li><a href="/auth/register">Register</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Search</a></li>
+                <li><a href="#">Add Recipe</a></li>
                 <li><a href="/auth/login">Login</a></li>
-                {{/if}}
+                <li><a href="/auth/register">Register</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
             </ul>
         </nav>
-    </div>
-
+    </header>
     <main>
+
+
+        {{#if error}}
+        <div class="error-container">
+            <p>{{error}}</p>
+        </div>
+        {{/if}}
+        
         {{{body}}}
     </main>
-
-    <footer>Back-End 2023</footer>
+    <footer>
+        <p>&copy; 2024 Home Cooking Recipes. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>

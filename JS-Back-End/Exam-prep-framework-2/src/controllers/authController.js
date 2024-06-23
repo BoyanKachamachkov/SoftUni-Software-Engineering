@@ -15,19 +15,18 @@ router.get('/login', (req, res) => {
 
 router.post('/register', async (req, res) => {
 
+    const userData = req.body;
+    console.log(req.body);
 
     try {
-        // get user data
-        const userData = req.body;
 
-        // utilize service to create user
-        await authService.register(userData);
-
-        // redirect
-        res.redirect('/auth/login');
+        const token = await authService.register(userData);
+        
+        res.cookie('auth', token);
+        res.redirect('/');
 
     } catch (err) {
-        res.render('auth/register', { error: getErrorMessage(err) });
+        res.render('auth/register', { error: getErrorMessage(err), ...userData });
     }
 });
 
