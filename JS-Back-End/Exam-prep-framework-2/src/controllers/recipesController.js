@@ -13,7 +13,6 @@ router.get('/', async (req, res) => {
 
 
 router.get('/create', isAuth, (req, res) => {
-    console.log(req.user._id);
 
     res.render('recipes/create');
 });
@@ -21,7 +20,6 @@ router.get('/create', isAuth, (req, res) => {
 router.post('/create', isAuth, async (req, res) => {
 
     const newRecipe = req.body;
-    console.log(newRecipe);
 
     try {
 
@@ -40,7 +38,6 @@ router.post('/create', isAuth, async (req, res) => {
 router.get('/:recipeId', async (req, res) => {
 
     const recipe = await recipesService.getOne(req.params.recipeId).lean();
-    console.log(recipe.owner._id);
     const isOwner = recipe.owner._id == req.user?._id;
     const hasRecommended = recipe.recommendList.some(user => user._id == req.user?._id);
     const recommendationsCount = recipe.recommendList.length;
@@ -52,10 +49,26 @@ router.get('/:recipeId', async (req, res) => {
 
 router.get('/recommend/:recipeId', async (req, res) => {
 
+    const recipe = await recipesService.getOne(req.params.recipeId).lean();
+
+    if (recipe.owner == req.user?._id) {
+        return res.redirect(`/catalog/${req.params.recipeId}`);
+    }
+
     await recipesService.recommend(req.params.recipeId, req.user._id);
 
     res.redirect(`/catalog/${req.params.recipeId}`);
 });
 
+
+async function isRecipeOwner(req, res, next) {
+    const recipe = await recipesService.getOne(req.params.recipeId).lean();
+
+    if (recipe.owner != req.user?._id) {
+        return res.redirect(`/catalog/${req.params.recipeId}`);
+    }
+
+    next();
+}
 
 module.exports = router;
