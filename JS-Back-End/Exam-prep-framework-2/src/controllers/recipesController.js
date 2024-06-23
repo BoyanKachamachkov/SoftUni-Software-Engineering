@@ -66,6 +66,24 @@ router.get('/delete/:recipeId', isRecipeOwner, async (req, res) => {
     res.redirect('/catalog');
 });
 
+router.get('/edit/:recipeId', isRecipeOwner, async (req, res) => {
+    const recipe = await recipesService.getOne(req.params.recipeId).lean();
+
+    res.render('recipes/edit', { ...recipe });
+});
+
+router.post('/edit/:recipeId', isRecipeOwner, async (req, res) => {
+    const editData = req.body;
+
+    try {
+        await recipesService.edit(req.params.recipeId, editData);
+
+        res.redirect(`/catalog/${req.params.recipeId}`);
+    } catch (err) {
+        res.render('recipes/edit', { error: getErrorMessage(err), ...editData });
+    }
+});
+
 
 async function isRecipeOwner(req, res, next) {
     const recipe = await recipesService.getOne(req.params.recipeId).lean();
