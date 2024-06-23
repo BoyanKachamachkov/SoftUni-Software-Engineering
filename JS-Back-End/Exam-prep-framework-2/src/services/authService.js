@@ -4,6 +4,8 @@ const jwt = require('../lib/jsonwebtoken');
 const { SECRET } = require('../config');
 
 exports.register = async (userData) => {
+
+    console.log(userData);
     if (userData.password !== userData.rePassword) {
         throw new Error('Passwords do not match!');
     }
@@ -15,7 +17,7 @@ exports.register = async (userData) => {
 
     const createdUser = await User.create(userData);
 
-    const token = await generateToken(createdUser)
+    const token = generateToken(createdUser);
     return token;
 };
 
@@ -52,7 +54,7 @@ async function generateToken(user) {
         _id: user._id,
         email: user.email,
     };
-    const token = jwt.sign(payload, SECRET, { expiresIn: '2h' });
+    const token = await jwt.sign(payload, SECRET, { expiresIn: '2h' });
 
     return token;
 }
