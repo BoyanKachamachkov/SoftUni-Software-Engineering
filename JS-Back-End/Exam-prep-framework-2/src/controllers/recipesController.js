@@ -60,6 +60,12 @@ router.get('/recommend/:recipeId', async (req, res) => {
     res.redirect(`/catalog/${req.params.recipeId}`);
 });
 
+router.get('/delete/:recipeId', isRecipeOwner, async (req, res) => {
+    await recipesService.delete(req.params.recipeId);
+
+    res.redirect('/catalog');
+});
+
 
 async function isRecipeOwner(req, res, next) {
     const recipe = await recipesService.getOne(req.params.recipeId).lean();

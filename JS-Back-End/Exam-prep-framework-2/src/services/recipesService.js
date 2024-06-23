@@ -19,3 +19,5 @@ exports.getOne = (recipeId) => Recipes.findById(recipeId);
 exports.recommend = async (recipeId, userId) => {
     await Recipes.findByIdAndUpdate(recipeId, { $push: { recommendList: userId } });
 };
+
+exports.delete = (recipeId) => Recipes.findByIdAndDelete(recipeId);
