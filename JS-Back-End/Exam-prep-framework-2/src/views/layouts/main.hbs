@@ -12,13 +12,18 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Recipes</a></li>
-                <li><a href="#">Search</a></li>
-                <li><a href="#">Add Recipe</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/catalog">Recipes</a></li>
+                <li><a href="/catalog/search">Search</a></li>
+
+                {{#unless isAuthenticated}}
                 <li><a href="/auth/login">Login</a></li>
                 <li><a href="/auth/register">Register</a></li>
+
+                {{else}}
+                <li><a href="/catalog/create">Add Recipe</a></li>
                 <li><a href="/auth/logout">Logout</a></li>
+                {{/unless}}
             </ul>
         </nav>
     </header>
@@ -30,7 +35,7 @@
             <p>{{error}}</p>
         </div>
         {{/if}}
-        
+
         {{{body}}}
     </main>
     <footer>
