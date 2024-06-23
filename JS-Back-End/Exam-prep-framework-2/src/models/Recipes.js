@@ -31,3 +31,8 @@ const recipesSchema = new mongoose.Schema({
         ref: 'User'
     }
 });
+
+const Recipes = mongoose.model('Recipes', recipesSchema);
+
+
+module.exports = Recipes;

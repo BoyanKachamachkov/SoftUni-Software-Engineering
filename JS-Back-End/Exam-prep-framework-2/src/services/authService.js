@@ -43,7 +43,7 @@ async function generateToken(user) {
         _id: user._id,
         email: user.email,
     };
-    const token = await jwt.sign(payload, SECRET, { expiresIn: '2h' });
+    const token = jwt.sign(payload, SECRET, { expiresIn: '2h' });
 
     return token;
 }

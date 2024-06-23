@@ -40,6 +40,7 @@ router.post('/login', isGuest, async (req, res) => {
         res.cookie('auth', token);
         res.redirect('/');
 
+
     } catch (err) {
         res.render('auth/login', { error: getErrorMessage(err), ...loginData });
     }

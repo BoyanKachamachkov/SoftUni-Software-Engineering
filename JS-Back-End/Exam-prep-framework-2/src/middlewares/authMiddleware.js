@@ -1,21 +1,17 @@
 const jwt = require('../lib/jsonwebtoken');
 const { SECRET } = require('../config');
 
-exports.authMiddleware = (req, res, next) => {
-    // check for token?
+exports.authMiddleware = async (req, res, next) => {
     const token = req.cookies['auth'];
 
     if (!token) {
-        // guest
         return next();
     }
 
     try {
-        const decodedToken = jwt.verify(token, SECRET);
+        const decodedToken = await jwt.verify(token, SECRET);
 
         req.user = decodedToken;
-
-        // for HB global usage
         res.locals.isAuthenticated = true;
         res.locals.user = decodedToken;
 
