@@ -29,6 +29,13 @@ const recipesSchema = new mongoose.Schema({
     owner: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
+    },
+    createdAt: Date,
+});
+
+recipesSchema.pre('save', function () {
+    if (!this.createdAt) {
+        this.createdAt = Date.now();
     }
 });
 

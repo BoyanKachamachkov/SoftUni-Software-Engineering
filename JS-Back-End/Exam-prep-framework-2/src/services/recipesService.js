@@ -24,3 +24,4 @@ exports.delete = (recipeId) => Recipes.findByIdAndDelete(recipeId);
 
 exports.edit = (recipedId, recipeData) => Recipes.findByIdAndUpdate(recipedId, recipeData, { runValidators: true });
 
+exports.getLatest = () => Recipes.find().sort({ createdAt: -1 }).limit(3);

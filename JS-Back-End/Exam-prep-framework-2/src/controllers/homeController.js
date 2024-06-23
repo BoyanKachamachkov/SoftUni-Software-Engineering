@@ -1,8 +1,14 @@
 const router = require('express').Router();
 const { isAuth } = require('../middlewares/authMiddleware');
+const recipesService = require('../services/recipesService');
 
-router.get('/', (req, res) => {
-    res.render('home');
+
+
+router.get('/', async (req, res) => {
+
+    const latestRecipes = await recipesService.getLatest().lean();
+    res.render('home', { latestRecipes });
+
 });
 
 

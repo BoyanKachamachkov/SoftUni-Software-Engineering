@@ -1,15 +1,15 @@
 <h2>Recipe Catalog</h2>
 <section class="recipes">
-
     {{#if recipes}}
+
+    {{#each recipes}}
     <article class="recipe">
-        {{#each recipes}}
         <img src="{{image}}" alt="#">
         <h3>{{title}}</h3>
         <p>{{description}}</p>
         <a href="/catalog/{{_id}}">Read More</a>
-        {{/each}}
     </article>
+    {{/each}}
 
 
     {{else}}
