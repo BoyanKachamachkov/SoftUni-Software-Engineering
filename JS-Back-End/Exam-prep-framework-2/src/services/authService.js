@@ -5,7 +5,6 @@ const { SECRET } = require('../config');
 
 exports.register = async (userData) => {
 
-    console.log(userData);
     if (userData.password !== userData.rePassword) {
         throw new Error('Passwords do not match!');
     }
@@ -23,13 +22,11 @@ exports.register = async (userData) => {
 
 exports.login = async (loginData) => {
     const user = await User.findOne({ email: loginData.email });
-    console.log(user);
 
     if (!user) {
         throw new Error('Email or password are invalid.');
     }
 
-    console.log(user);
 
     const isValid = await bcrypt.compare(loginData.password, user.password);
 
