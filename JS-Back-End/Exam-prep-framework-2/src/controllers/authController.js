@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { isGuest } = require('../middlewares/authMiddleware');
+const { isGuest, isAuth } = require('../middlewares/authMiddleware');
 const authService = require('../services/authService');
 const { getErrorMessage } = require('../util/errorUtils');
 
@@ -25,29 +25,28 @@ router.post('/register', isGuest, async (req, res) => {
 });
 
 
-router.get('/login', (req, res) => {
+router.get('/login', isGuest, (req, res) => {
     res.render('auth/login');
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', isGuest, async (req, res) => {
+
+    const loginData = req.body;
 
     try {
-        // get login Data
-        const loginData = req.body;
 
-        // token
         const token = await authService.login(loginData);
 
         res.cookie('auth', token);
         res.redirect('/');
 
     } catch (err) {
-        res.render('/auth/login', { error: getErrorMessage(err) });
+        res.render('auth/login', { error: getErrorMessage(err), ...loginData });
     }
 
 });
 
-router.get('/logout', (req, res) => {
+router.get('/logout', isAuth, (req, res) => {
     res.clearCookie('auth');
     res.redirect('/');
 });

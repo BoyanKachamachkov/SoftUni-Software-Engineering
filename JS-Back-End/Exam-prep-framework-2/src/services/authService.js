@@ -21,31 +21,23 @@ exports.register = async (userData) => {
     return token;
 };
 
-exports.login = async ({ email, password }) => {
-    // get user from db
-    const user = await User.findOne({ email: email });
+exports.login = async (loginData) => {
+    const user = await User.findOne({ email: loginData.email });
+    console.log(user);
 
-    // check user
     if (!user) {
         throw new Error('Email or password are invalid.');
     }
 
-    // check pw
-    const isValid = await bcrypt.compare(password, user.password);
+    console.log(user);
+
+    const isValid = await bcrypt.compare(loginData.password, user.password);
 
     if (!isValid) {
         throw new Error('Email or password are invalid.');
     }
 
-    // generate token
-    const payload = {
-        _id: user._id,
-        username: user.username,
-        email: user.email,
-
-    };
-    const token = await jwt.sign(payload, SECRET, { expiresIn: '2h' });
-
+    const token = await generateToken(user);
     return token;
 };
 
