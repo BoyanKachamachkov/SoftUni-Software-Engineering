@@ -1,8 +1,8 @@
 
-import Footer from "./Components/Footer";
-import Container from "./Components/Container";
-import Header from "./Components/Header";
-import Copyright from "./Components/Copyright";
+import Footer from "./components/Footer";
+import Container from "./components/Container";
+import Header from "./components/Header";
+import Copyright from "./components/Copyright";
 function App() {
 
     return (
