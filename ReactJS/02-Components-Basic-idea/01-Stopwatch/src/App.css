@@ -23,27 +23,31 @@ body,button{
 }
 
 .stopwatch {
-    background-color: ;
+    opacity: 0.75;
     padding: 3em;
     align-items: center;
     text-align: center;
 }
 
 .wrapper{
-    border: 1px solid black;
+    border: 0.5em solid black;
     display: inline-block;
     padding: 2em;
+    border-radius: 0.1em;
 }
 
 .controls{
     display: flex;
     justify-content: space-between;
     padding-top: 2em;
-    gap: 2em;
 }
 
 button{
     border-radius: 0.2em;
     font-size: 1.5em;
     padding: 0.5em;
+}
+
+.time{
+    font-size: 2em;
 }
