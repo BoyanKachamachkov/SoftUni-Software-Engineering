@@ -19,6 +19,7 @@ const HeaderElement = (
         <h2>This is heading 2 JSX</h2>
         <p>Random paragraph for test</p>
         <p>one more random P</p>
+        <p>random</p>
     </header>
 );
 

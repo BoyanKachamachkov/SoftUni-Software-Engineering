@@ -27,4 +27,7 @@
         --watch src --out-dir build --presets react-app/prod
         ``` 
 
-4. 
+#### Steps to launch the App
+* npm i
+* npx babel --watch src --out-dir build --presets react-app/prod
+* start live server on index.html

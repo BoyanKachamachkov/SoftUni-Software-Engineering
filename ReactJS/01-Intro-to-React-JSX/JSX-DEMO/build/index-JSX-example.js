@@ -38,6 +38,11 @@ var HeaderElement = React.createElement(
         'p',
         null,
         'one more random P'
+    ),
+    React.createElement(
+        'p',
+        null,
+        'random'
     )
 );
 
