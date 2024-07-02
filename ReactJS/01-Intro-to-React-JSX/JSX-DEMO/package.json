@@ -1,0 +1,16 @@
+{
+  "name": "jsx-demo",
+  "version": "1.0.0",
+  "description": "(Using Live server for 1/2)",
+  "main": "index.js",
+  "scripts": {
+    "watch": "--watch src --out-dir build --presets react-app/prod"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2"
+  }
+}
