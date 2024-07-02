@@ -1,10 +1,15 @@
-import React from "react";
+// import React from "react";
+
+import MainHeading from "./MainHeading";
+import ParagraphExpression from "./ParagraphExpression";
+
 
 export default function Header() {
     // return React.createElement('header', {}, 'Header test');
     return (
         <header>
-            <h3>Test</h3>
+            <MainHeading />
+            <ParagraphExpression />
         </header>
     );
 }
