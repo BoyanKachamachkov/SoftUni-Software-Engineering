@@ -1,27 +1,26 @@
-import Button from "./components/Button";
-import Display from "./components/Display";
-import Title from "./components/Title";
+import { useState } from 'react';
 import './App.css';
-import { useState, useEffect } from "react";
 
 
 function App() {
-	const [time, setTime] = useState(0);
-	const [running, setRunning] = useState(false);
+	const [count, setCount] = useState(0);
 
+
+	function reset() {
+		setCount(0);
+	}
 
 	return (
+		<>
+			<h1>Counter app</h1>
 
-		<section className="main">
-			<Title />
+			<span>Current count: {count}</span>
 
-			<Display time={time} />
+			<button onClick={() => setCount(count => count + 1)}>Increment</button>
+			<button onClick={() => setCount(count => count - 1)}>Decrement</button>
+			<button onClick={reset}>Reset</button>
 
-			<Button text='Start' onClick={() => setRunning(true)} />
-			<Button text='Stop' />
-			<Button text='Reset' />
-
-		</section>
+		</>
 	);
 }
 
