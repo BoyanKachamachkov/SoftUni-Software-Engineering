@@ -1,8 +1,12 @@
-const Display = () => {
+import Span from "./Span";
+
+const Display = ({time}) => {
 
     return (
         <div>
-            <p>this is the display of the app</p>
+            <Span time={time}/>
+            <Span time={time}/>
+            <Span time={time}/>
         </div>
     );
 };
