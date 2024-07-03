@@ -1,0 +1,24 @@
+/* kombinirame selectori */
+
+
+p.highlighted {
+    /* paragraph s class X */
+    color: lightblue;
+    font-size: 14px;
+}
+
+div#special {
+    /* div s ID X */
+
+    background-color: orange;
+    box-shadow: 0 0.2em 0.3em 0 rgb(0, 0, 0, 0.1);
+}
+
+a[href^="http"] {
+    border-bottom: 1px solid orange;
+    color: orange;
+}
+
+p.fancy.highlighted {
+    background-color: black;
+}
