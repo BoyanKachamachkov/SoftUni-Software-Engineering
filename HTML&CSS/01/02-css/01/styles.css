@@ -1,31 +1,31 @@
-h1{
+h1 {
     color: aqua;
 }
 
-p{
-    font-size: 20px;тук
+p {
+    font-size: 20px;
 }
 
-.highlight{
+.highlight {
     background-color: lightblue;
 }
 
-#main-title{
+#main-title {
     color: brown;
 }
 
-#special-paragraph{
+#special-paragraph {
     color: red;
 }
 
-ul{
+ul {
     background-color: green;
 }
 
-li{
+li {
     background-color: orange;
 }
 
-div{
+div {
     background-color: coral;
 }

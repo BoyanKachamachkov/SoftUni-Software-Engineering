@@ -1,0 +1,23 @@
+/* descendant combinator */
+/* празно място (наследници) */
+div p {
+    /* параграф наследник на див */
+    color: blue;
+}
+
+ul>li {
+    /* li direktni deca na UL */
+
+    list-style-type: circle;
+}
+
+p+p {
+    /* brat/sestra */
+    /* ochakwame neshto sled neshto */
+    background: #eee;
+}
+
+p~span {
+    /* ochakwame na edno nivo da budat prosto P i Span nqkude */
+    font-weight: bold;
+}
