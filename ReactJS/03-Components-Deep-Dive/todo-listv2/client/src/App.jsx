@@ -1,5 +1,6 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import TodoList from "./components/TodoList";
 
 function App() {
 
@@ -7,6 +8,10 @@ function App() {
         <>
             <Header />
 
+            <main class="main">
+                <TodoList />
+
+            </main>
 
             <Footer />
 
