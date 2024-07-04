@@ -14,7 +14,7 @@ const TodoItem = ({
     return (
 
         // <tr className="todo is-completed" >
-        <tr className={`todo${isCompleted ? ' is completed' : ''}`}>
+        <tr className={`todo${isCompleted ? ' is-completed' : ''}`}>
             <td>{text}</td>
             <td>{isCompleted ? 'Completed' : 'Incomplete'}</td>
             <td className="todo-action">

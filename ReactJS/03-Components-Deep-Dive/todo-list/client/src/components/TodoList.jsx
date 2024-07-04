@@ -17,6 +17,7 @@ export default function TodoList() {
 
         console.log(todoId);
 
+        setTodos(oldTodos => oldTodos.map(todo => todo._id === todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo));
     };
 
 
