@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 import TodoItem from "./TodoItem";
+import LoadingSpinner from "../../../../todo-list/client/src/components/LoadingSpinner";
 
 const TodoList = function () {
-
     const [todos, setTodos] = useState([]);
+    const [spinner, setSpinner] = useState(true);
+
 
     useEffect(() => {
         fetch('http://localhost:3030/jsonstore/todos')
             .then(res => res.json())
             .then(data => {
                 setTodos(Object.values(data));
+                setSpinner(false);
             })
             .catch(err => console.log(err));
     }, []);
@@ -31,17 +34,9 @@ const TodoList = function () {
             <div className="add-btn-container">
                 <button className="btn">+ Add new Todo</button>
             </div>
+            {spinner ? <LoadingSpinner /> : ''}
 
             <div className="table-wrapper">
-
-                {/* <!-- Loading spinner - show the load spinner when fetching the data from the server--> */}
-                {/* <div className="loading-container">
-                    <div className="loading-spinner">
-                        <span className="loading-spinner-text">Loading</span>
-                    </div>
-                </div> */}
-
-                {/* <!-- Todo list table --> */}
                 <table className="table">
                     <thead>
                         <tr>
@@ -51,6 +46,7 @@ const TodoList = function () {
                         </tr>
                     </thead>
                     <tbody>
+
 
                         {todos.map(todo => (
                             <TodoItem
