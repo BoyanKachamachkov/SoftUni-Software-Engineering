@@ -8,7 +8,7 @@ function App() {
         <>
             <Header />
 
-            <main class="main">
+            <main className="main">
                 <TodoList />
 
             </main>

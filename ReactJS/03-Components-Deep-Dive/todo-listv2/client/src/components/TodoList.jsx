@@ -1,4 +1,27 @@
+import { useState, useEffect } from "react";
+import TodoItem from "./TodoItem";
+
 const TodoList = function () {
+
+    const [todos, setTodos] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:3030/jsonstore/todos')
+            .then(res => res.json())
+            .then(data => {
+                setTodos(Object.values(data));
+            })
+            .catch(err => console.log(err));
+    }, []);
+
+    console.log(todos);
+
+    const onStatusChangeHandler = (todoId) => {
+
+        console.log(todoId);
+        setTodos(state => state.map(todo => todo._id === todoId ? { ...todo, isCompleted: !todo.isCompleted } : todo));
+
+    };
 
 
     return (
@@ -29,86 +52,15 @@ const TodoList = function () {
                     </thead>
                     <tbody>
 
-                        {/* <!-- Todo item --> */}
-                        <tr className="todo is-completed">
-                            <td>Give dog a bath</td>
-                            <td>Complete</td>
-                            <td className="todo-action">
-                                <button className="btn todo-btn">Change status</button>
-                            </td>
-                        </tr>
-
-                        {/* <!-- Todo item --> */}
-                        <tr className="todo is-completed">
-                            <td>Do laundry</td>
-                            <td>Complete</td>
-                            <td className="todo-action">
-                                <button className="btn todo-btn">Change status</button>
-                            </td>
-                        </tr>
-
-                        {/* <!-- Todo item --> */}
-                        <tr className="todo">
-                            <td>Vacuum floor</td>
-                            <td>Incomplete</td>
-                            <td className="todo-action">
-                                <button className="btn todo-btn">Change status</button>
-                            </td>
-                        </tr>
-
-                        {/* <!-- Todo item --> */}
-                        <tr className="todo is-completed">
-                            <td>Feed cat</td>
-                            <td>Complete</td>
-                            <td className="todo-action">
-                                <button className="btn todo-btn">Change status</button>
-                            </td>
-                        </tr>
-
-                        {/* <!-- Todo item --> */}
-                        <tr className="todo">
-                            <td>Change light bulbs</td>
-                            <td>Incomplete</td>
-                            <td className="todo-action">
-                                <button className="btn todo-btn">Change status</button>
-                            </td>
-                        </tr>
-
-                        {/* <!-- Todo item --> */}
-                        <tr className="todo is-completed">
-                            <td>Feed cat</td>
-                            <td>Complete</td>
-                            <td className="todo-action">
-                                <button className="btn todo-btn">Change status</button>
-                            </td>
-                        </tr>
-
-                        {/* <!-- Todo item --> */}
-                        <tr className="todo">
-                            <td>Change light bulbs</td>
-                            <td>Incomplete</td>
-                            <td className="todo-action">
-                                <button className="btn todo-btn">Change status</button>
-                            </td>
-                        </tr>
-
-                        {/* <!-- Todo item --> */}
-                        <tr className="todo is-completed">
-                            <td>Go to Store</td>
-                            <td>Completed</td>
-                            <td className="todo-action">
-                                <button className="btn todo-btn">Change status</button>
-                            </td>
-                        </tr>
-
-                        {/* <!-- Todo item --> */}
-                        <tr className="todo">
-                            <td>Fill gas tank</td>
-                            <td>Incomplete</td>
-                            <td className="todo-action">
-                                <button className="btn todo-btn">Change status</button>
-                            </td>
-                        </tr>
+                        {todos.map(todo => (
+                            <TodoItem
+                                key={todo._id}
+                                text={todo.text}
+                                _id={todo._id}
+                                isCompleted={todo.isCompleted}
+                                onStatusChangeHandler={onStatusChangeHandler}
+                            />
+                        ))}
                     </tbody>
                 </table>
             </div>
