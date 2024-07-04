@@ -13,8 +13,14 @@ export default function TodoList() {
             .catch(err => console.log(err));
     }, []);
 
+    const changeStatusHandler = (todoId) => {
 
-    console.log(todos)
+        console.log(todoId);
+
+    };
+
+
+    console.log(todos[0]);
 
     return (
         <section className="todo-list-container">
@@ -45,7 +51,13 @@ export default function TodoList() {
                     <tbody>
 
                         {todos.map(todo => (
-                            <TodoItem key={todo._id}/>
+                            <TodoItem key={todo._id}
+                                _id={todo._id}
+                                text={todo.text}
+                                isCompleted={todo.isCompleted}
+                                changeStatusHandler={changeStatusHandler}
+
+                            />
                         ))}
 
                     </tbody>
