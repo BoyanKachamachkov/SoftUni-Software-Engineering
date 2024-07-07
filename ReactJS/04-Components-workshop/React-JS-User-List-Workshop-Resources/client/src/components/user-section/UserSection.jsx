@@ -4,6 +4,7 @@ import UserList from "./user-list/UserList";
 import Pagination from "../pagination/Pagination";
 import UserAdd from "./user-add/UserAdd";
 import UserDetails from "./user-details/UserDetails";
+import UserDelete from "./user-delete/UserDelete";
 
 const baseUrl = 'http://localhost:3030/jsonstore';
 
@@ -12,6 +13,7 @@ export default function UserSection() {
     const [users, setUsers] = useState([]);
     const [showAddUser, setShowAddUser] = useState(false);
     const [showUserById, setShowUserById] = useState(null);
+    const [showUserDeleteById, setShowUserDeleteById] = useState(null);
 
     useEffect(() => {
         (async function getUsers() {
@@ -71,6 +73,23 @@ export default function UserSection() {
         setShowUserById(id);
     };
 
+    const userDeleteClickHandler = (id) => {
+        setShowUserDeleteById(id);
+
+    };
+
+    const userDeleteHandler = async (id) => {
+        // delete request to server
+        const response = await fetch(`${baseUrl}/users/${id}`, {
+            method: 'DELETE'
+        });
+        // delete from local state
+        setUsers(oldUsers => oldUsers.filter(u => u._id !== id));
+
+        // close modal
+        setShowUserDeleteById(null);
+    };
+
     return (
 
         <section className="card users-container">
@@ -80,6 +99,7 @@ export default function UserSection() {
             <UserList
                 users={users}
                 onUserDetailsClick={userDetailsClickHandler}
+                onUserDeleteClick={userDeleteClickHandler}
             />
 
             {showAddUser && (
@@ -96,6 +116,15 @@ export default function UserSection() {
                     onClose={() => setShowUserById(null)}
                 />
 
+            )}
+
+            {showUserDeleteById && (
+
+                <UserDelete
+                    onClose={() => setShowUserDeleteById(null)}
+                    onUserDelete={() => userDeleteHandler(showUserDeleteById)}
+
+                />
             )}
 
             <button className="btn-add btn" onClick={addUserClickHadler}>Add new user</button>

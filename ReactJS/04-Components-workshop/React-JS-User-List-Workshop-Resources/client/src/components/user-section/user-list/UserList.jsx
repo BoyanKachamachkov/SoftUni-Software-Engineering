@@ -2,7 +2,8 @@ import UserListItem from "./user-list-item/UserListItem";
 
 export default function UserList({
     users,
-    onUserDetailsClick
+    onUserDetailsClick,
+    onUserDeleteClick
 }) {
 
 
@@ -142,6 +143,7 @@ export default function UserList({
                             key={user._id}
                             {...user}
                             onUserDetailsClick={onUserDetailsClick}
+                            onUserDeleteClick={onUserDeleteClick}
                         />
                     )}
                 </tbody>
