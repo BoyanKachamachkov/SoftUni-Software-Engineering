@@ -35,6 +35,33 @@ export default function UserSection() {
         setShowAddUser(false);
     };
 
+    const addUserSaveHandler = async (e) => {
+        e.preventDefault();
+
+        // get data
+        const formData = new FormData(e.currentTarget);
+        const userData = Object.fromEntries(formData);
+
+        // make post
+        const response = await fetch(`${baseUrl}/users`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application-json',
+            },
+            body: JSON.stringify(userData)
+        });
+
+        const createdUser = await response.json();
+        console.log(createdUser);
+
+        // update local state
+        setUsers(oldUsers => [createdUser, ...oldUsers]);
+
+        // close modal
+        setShowAddUser(false);
+
+    };
+
     return (
 
         <section className="card users-container">
@@ -43,9 +70,12 @@ export default function UserSection() {
 
             <UserList users={users} />
 
-            {showAddUser && <UserAdd
-                onClose={addUserCloseHandler}
-            />}
+            {showAddUser && (
+                <UserAdd
+                    onClose={addUserCloseHandler}
+                    onSave={addUserSaveHandler}
+                />
+            )}
 
             <button className="btn-add btn" onClick={addUserClickHadler}>Add new user</button>
 
