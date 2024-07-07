@@ -4,19 +4,19 @@ import TodoList from "./components/TodoList";
 
 function App() {
 
-    return (
-        <>
-            <Header />
+	return (
+		<>
+			<Header />
 
-            <main className="main">
-                <TodoList />
+			<main className="main">
+				<TodoList />
 
-            </main>
+			</main>
 
-            <Footer />
+			<Footer />
 
-        </>
-    );
+		</>
+	);
 }
 
 export default App;
