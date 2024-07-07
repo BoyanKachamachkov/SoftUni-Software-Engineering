@@ -1,7 +1,7 @@
 import Search from "../search/Search";
-import Table from "../table/Table";
+import UserList from "./user-list/UserList";
 
-export default function UserList() {
+export default function UserSection() {
 
 
     return (
@@ -10,7 +10,7 @@ export default function UserList() {
 
             <Search />
 
-            <Table />
+            <UserList />
         </section >
     );
 }
