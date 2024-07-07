@@ -11,11 +11,11 @@ export default function UserSection() {
     useEffect(() => {
         (async function getUsers() {
             try {
-                fetch(baseUrl + '/users')
-                    .then(res => res.json())
-                    .then(data => {
-                        setUsers(Object.values(data));
-                    });
+                const response = await fetch(`${baseUrl}/users`);
+                const result = await response.json();
+                const users = Object.values(result);
+
+                setUsers(users);
             } catch (err) {
                 alert(err.message);
             }
@@ -31,7 +31,7 @@ export default function UserSection() {
 
             <Search />
 
-            <UserList />
+            <UserList users={users} />
         </section >
     );
 }
