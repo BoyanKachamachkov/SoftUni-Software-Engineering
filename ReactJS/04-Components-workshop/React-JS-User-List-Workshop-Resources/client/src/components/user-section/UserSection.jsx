@@ -2,12 +2,15 @@ import { useState, useEffect } from "react";
 import Search from "../search/Search";
 import UserList from "./user-list/UserList";
 import Pagination from "../pagination/Pagination";
+import UserAdd from "./user-add/UserAdd";
 
 const baseUrl = 'http://localhost:3030/jsonstore';
 
 
 export default function UserSection() {
     const [users, setUsers] = useState([]);
+
+    const [showAddUser, setShowAddUser] = useState(false);
 
     useEffect(() => {
         (async function getUsers() {
@@ -24,7 +27,13 @@ export default function UserSection() {
         })();
     }, []);
 
-    console.log(users);
+    const addUserClickHadler = () => {
+        setShowAddUser(true);
+    };
+
+    const addUserCloseHandler = () => {
+        setShowAddUser(false);
+    };
 
     return (
 
@@ -34,8 +43,11 @@ export default function UserSection() {
 
             <UserList users={users} />
 
+            {showAddUser && <UserAdd
+                onClose={addUserCloseHandler}
+            />}
 
-            <button className="btn-add btn">Add new user</button>
+            <button className="btn-add btn" onClick={addUserClickHadler}>Add new user</button>
 
             <Pagination />
         </section >
