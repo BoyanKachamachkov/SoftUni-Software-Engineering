@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Search from "../search/Search";
 import UserList from "./user-list/UserList";
+import Pagination from "../pagination/Pagination";
 
 const baseUrl = 'http://localhost:3030/jsonstore';
 
@@ -32,6 +33,11 @@ export default function UserSection() {
             <Search />
 
             <UserList users={users} />
+
+
+            <button className="btn-add btn">Add new user</button>
+
+            <Pagination />
         </section >
     );
 }
