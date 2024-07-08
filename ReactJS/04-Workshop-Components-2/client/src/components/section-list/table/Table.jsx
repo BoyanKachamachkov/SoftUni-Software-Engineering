@@ -1,7 +1,9 @@
 import Search from "../../search/Search";
 import TableRow from "./table-row/TableRow";
 
-export default function Table() {
+export default function Table({
+    users
+}) {
 
 
     return (
@@ -70,7 +72,15 @@ export default function Table() {
                 <tbody>
                     {/* <!-- Table row component --> */}
 
-                    <TableRow />
+                    {users.map(user => (
+                        <TableRow
+                            key={user._id}
+                            {...user}
+
+
+                        />
+                    ))}
+
                 </tbody>
             </table>
         </div>

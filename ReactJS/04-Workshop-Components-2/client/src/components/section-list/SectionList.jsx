@@ -26,7 +26,7 @@ export default function SectionList() {
     return (
         <section className="card users-container">
 
-            <Table />
+            <Table  users={users}/>
 
 
             <Button />
