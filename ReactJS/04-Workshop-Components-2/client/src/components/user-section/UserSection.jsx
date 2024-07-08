@@ -29,6 +29,33 @@ export default function UserSection() {
         setShowCreateUserModal(true);
     };
 
+    const createUserHandler = async (e) => {
+        e.preventDefault();
+
+
+        // get data from form
+        const formData = new FormData(e.currentTarget);
+        const userData = Object.fromEntries(formData);
+
+        // make post
+        const response = await fetch(`${baseUrl}/users`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'Application-json'
+            },
+            body: JSON.stringify(userData)
+        });
+
+        const createdUser = await response.json();
+        console.log(createdUser);
+
+        // update local state
+        setUsers(oldUsers => [...oldUsers, createdUser]);
+
+        // close modal
+        setShowCreateUserModal(false);
+    };
+
     return (
         <section className="card users-container">
 
@@ -37,6 +64,7 @@ export default function UserSection() {
             {showCreateUserModal && (
                 <UserAdd
                     onClose={() => setShowCreateUserModal(false)}
+                    onSave={createUserHandler}
 
                 />
             )}
