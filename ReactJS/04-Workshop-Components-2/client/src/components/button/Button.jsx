@@ -1,8 +1,14 @@
-export default function Button() {
+export default function Button({
+    onClick,
+}) {
 
+
+    const addUserHandler = () => {
+        onClick()
+    }
 
     return (
-        <button className="btn-add btn">Add new user</button>
+        <button className="btn-add btn" onClick={addUserHandler}>Add new user</button>
 
     );
 

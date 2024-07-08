@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import Button from "../button/Button";
 import Pagination from "../pagination/Pagination";
 import Table from "./table/Table";
+import CreateUser from "../create-user/CreateUser";
 
 const baseUrl = 'http://localhost:3030/jsonstore';
 
 export default function SectionList() {
 
+    const [showCreateUserModal, setShowCreateUserModal] = useState(false);
     const [users, setUsers] = useState([]);
 
 
@@ -17,19 +19,33 @@ export default function SectionList() {
             const users = await response.json();
             console.log(Object.values(users));
 
-            setUsers(Object.values(users))
+            setUsers(Object.values(users));
 
         })();
 
     }, []);
 
+    const onCreateUserClick = () => {
+        setShowCreateUserModal(true);
+    };
+
     return (
         <section className="card users-container">
 
-            <Table  users={users}/>
+            <Table users={users} />
+
+            {showCreateUserModal && (
+                <CreateUser
+                    onClose={() => setShowCreateUserModal(false)}
+
+                />
+            )}
 
 
-            <Button />
+            <Button
+                onClick={onCreateUserClick}
+                onClose={() => setShowCreateUserModal(false)}
+            />
             <Pagination />
         </section>
 
