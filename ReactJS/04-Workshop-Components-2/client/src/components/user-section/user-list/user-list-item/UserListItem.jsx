@@ -1,4 +1,4 @@
-export default function TableRow({
+export default function UserListItem({
     firstName,
     lastName,
     email,

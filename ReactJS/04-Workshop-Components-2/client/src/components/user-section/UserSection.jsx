@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import Button from "../button/Button";
 import Pagination from "../pagination/Pagination";
-import Table from "./table/Table";
-import CreateUser from "../create-user/CreateUser";
+import UserList from "./user-list/UserList";
+import UserAdd from "./user-add/UserAdd";
 
 const baseUrl = 'http://localhost:3030/jsonstore';
 
-export default function SectionList() {
+export default function UserSection() {
 
     const [showCreateUserModal, setShowCreateUserModal] = useState(false);
     const [users, setUsers] = useState([]);
@@ -32,10 +32,10 @@ export default function SectionList() {
     return (
         <section className="card users-container">
 
-            <Table users={users} />
+            <UserList users={users} />
 
             {showCreateUserModal && (
-                <CreateUser
+                <UserAdd
                     onClose={() => setShowCreateUserModal(false)}
 
                 />

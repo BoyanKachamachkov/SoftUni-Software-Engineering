@@ -1,7 +1,7 @@
 import Search from "../../search/Search";
-import TableRow from "./table-row/TableRow";
+import UserListItem from "./user-list-item/UserListItem";
 
-export default function Table({
+export default function UserList({
     users
 }) {
 
@@ -73,7 +73,7 @@ export default function Table({
                     {/* <!-- Table row component --> */}
 
                     {users.map(user => (
-                        <TableRow
+                        <UserListItem
                             key={user._id}
                             {...user}
 

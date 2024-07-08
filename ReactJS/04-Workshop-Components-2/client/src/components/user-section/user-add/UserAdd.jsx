@@ -1,5 +1,6 @@
-export default function CreateUser({
-    onClose
+export default function UserAdd({
+    onClose,
+    onSave
 }) {
 
 
@@ -20,7 +21,7 @@ export default function CreateUser({
                             </svg>
                         </button>
                     </header>
-                    <form>
+                    <form onSubmit={onSave}>
                         <div className="form-row">
                             <div className="form-group">
                                 <label htmlFor="firstName">First name</label>

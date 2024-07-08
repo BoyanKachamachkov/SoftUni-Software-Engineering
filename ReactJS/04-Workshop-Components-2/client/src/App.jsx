@@ -1,6 +1,6 @@
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import SectionList from "./components/section-list/SectionList";
+import UserSection from "./components/user-section/UserSection";
 
 function App() {
 
@@ -10,7 +10,7 @@ function App() {
 
             <main className="main">
 
-                <SectionList />
+                <UserSection />
 
 
             </main>
