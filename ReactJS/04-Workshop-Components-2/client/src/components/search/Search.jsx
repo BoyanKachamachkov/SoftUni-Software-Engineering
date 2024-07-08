@@ -27,11 +27,11 @@ export default function Search() {
             <div className="filter">
                 <span>Search Criteria:</span>
                 <select name="criteria" className="criteria">
-                    <option value="">Not selected</option>
-                    <option value="">First Name</option>
-                    <option value="">Last Name</option>
-                    <option value="">Email</option>
-                    <option value="">Phone</option>
+                    <option placeholder="#">Not selected</option>
+                    <option placeholder="#">First Name</option>
+                    <option placeholder="#">Last Name</option>
+                    <option placeholder="#">Email</option>
+                    <option placeholder="#">Phone</option>
                 </select>
             </div>
         </form>

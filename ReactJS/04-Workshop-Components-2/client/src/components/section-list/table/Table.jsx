@@ -1,3 +1,4 @@
+import Search from "../../search/Search";
 import TableRow from "./table-row/TableRow";
 
 export default function Table() {
@@ -8,6 +9,8 @@ export default function Table() {
         <div className="table-wrapper">
 
             {/* overlays are here */}
+
+            <Search />
 
             <table className="table">
                 <thead>
