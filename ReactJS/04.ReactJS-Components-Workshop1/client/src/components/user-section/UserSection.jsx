@@ -15,6 +15,9 @@ export default function UserSection() {
     const [showUserDeleteById, setShowUserDeleteById] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
+    const [search, setSearch] = useState('');
+
+
     useEffect(() => {
         (async function getUsers() {
             try {
@@ -32,11 +35,11 @@ export default function UserSection() {
 
     const addUserClickHandler = () => {
         setShowAddUser(true);
-    }
+    };
 
     const addUserCloseHandler = () => {
         setShowAddUser(false);
-    }
+    };
 
     const addUserSaveHandler = async (e) => {
         // prevent refresh
@@ -65,15 +68,15 @@ export default function UserSection() {
 
         // close modal
         setShowAddUser(false);
-    }
+    };
 
     const userDetailsClickHandler = (userId) => {
         setShowUserDetailsById(userId);
-    }
+    };
 
     const userDeleteClickHandler = (userId) => {
         setShowUserDeleteById(userId);
-    }
+    };
 
     const userDeleteHandler = async (userId) => {
         // Delete request to server
@@ -82,18 +85,22 @@ export default function UserSection() {
         });
 
         // delete from local state
-        setUsers(oldUsers => oldUsers.filter(user => user._id !== userId))
+        setUsers(oldUsers => oldUsers.filter(user => user._id !== userId));
 
         // close modal
         setShowUserDeleteById(null);
-    }
+    };
+
+    const handleUserSearch = (e) => {
+        setSearch(e.target.value);
+    };
 
     return (
         <section className="card users-container">
-            <Search />
+            <Search onUserSearchInput={handleUserSearch} />
 
             <UserList
-                users={users}
+                users={users.filter(user => search === '' ? user : user.firstName.includes(search))}
                 isLoading={isLoading}
                 onUserDetailsClick={userDetailsClickHandler}
                 onUserDeleteClick={userDeleteClickHandler}
