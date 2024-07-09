@@ -1,16 +1,12 @@
 import { useState } from "react";
 
 export default function Search({
-    onUserSearchInput
+    onUserSearchInput,
+    setSelect
+
 }) {
 
-    const [value, setValue] = useState('');
 
-    const handleSelect = (e) => {
-        e.preventDefault()
-        setValue(e.target.value);
-        console.log(e.target.value)
-    };
 
     const options = [
         {
@@ -66,7 +62,7 @@ export default function Search({
 
             <div className="filter">
                 <span>Search Criteria:</span>
-                <select name="criteria" className="criteria" onChange={handleSelect}>
+                <select name="criteria" className="criteria" onChange={(e) => setSelect(e.target.value)}>
                     {options.map((option) => (
                         <option key={option.id} value={option.value}>{option.label}</option>
                     ))}

@@ -15,7 +15,9 @@ export default function UserSection() {
     const [showUserDeleteById, setShowUserDeleteById] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const [search, setSearch] = useState('');
+    const [searchSequence, setSearchSequence] = useState('');
+
+
 
 
     useEffect(() => {
@@ -92,19 +94,27 @@ export default function UserSection() {
     };
 
     const handleUserSearch = (e) => {
-        setSearch(e.target.value);
+        setSearchSequence(e.target.value);
     };
+
+    const [select, setSelect] = useState('');
+    console.log(select)
 
     return (
         <section className="card users-container">
-            <Search onUserSearchInput={handleUserSearch} />
+            <Search
+                onUserSearchInput={handleUserSearch}
+                setSelect={setSelect}
+
+            />
 
             <UserList
-                users={users.filter(user => search === '' ? user :
-                    user.firstName.includes(search) ||
-                    user.lastName.includes(search) ||
-                    user.email.includes(search) ||
-                    user.phoneNumber.includes(search))}
+                // users={users.filter(user => searchSequence === '' ? user :
+                //     user.firstName.includes(searchSequence)
+                // )}
+
+                users={users}
+
                 isLoading={isLoading}
                 onUserDetailsClick={userDetailsClickHandler}
                 onUserDeleteClick={userDeleteClickHandler}
@@ -136,4 +146,5 @@ export default function UserSection() {
             <Pagination />
         </section >
     );
+
 }
