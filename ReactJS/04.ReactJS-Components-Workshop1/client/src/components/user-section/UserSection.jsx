@@ -100,7 +100,11 @@ export default function UserSection() {
             <Search onUserSearchInput={handleUserSearch} />
 
             <UserList
-                users={users.filter(user => search === '' ? user : user.firstName.includes(search))}
+                users={users.filter(user => search === '' ? user :
+                    user.firstName.includes(search) ||
+                    user.lastName.includes(search) ||
+                    user.email.includes(search) ||
+                    user.phoneNumber.includes(search))}
                 isLoading={isLoading}
                 onUserDetailsClick={userDetailsClickHandler}
                 onUserDeleteClick={userDeleteClickHandler}
