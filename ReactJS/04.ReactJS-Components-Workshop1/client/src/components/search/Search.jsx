@@ -1,6 +1,45 @@
+import { useState } from "react";
+
 export default function Search({
     onUserSearchInput
 }) {
+
+    const [value, setValue] = useState('');
+
+    const handleSelect = (e) => {
+        e.preventDefault()
+        setValue(e.target.value);
+        console.log(e.target.value)
+    };
+
+    const options = [
+        {
+            id: 1,
+            label: "Not selected",
+            value: "all",
+        },
+        {
+            id: 2,
+            label: "First Name",
+            value: "firstName",
+        },
+        {
+            id: 3,
+            label: "Last Name",
+            value: "lastName",
+        },
+        {
+            id: 4,
+            label: "Email",
+            value: "email",
+        },
+        {
+            id: 5,
+            label: "Phone",
+            value: "phoneNumber",
+        },
+    ];
+
     return (
         <form className="search-form" onChange={onUserSearchInput} >
             <h2>
@@ -27,12 +66,10 @@ export default function Search({
 
             <div className="filter">
                 <span>Search Criteria:</span>
-                <select name="criteria" className="criteria">
-                    <option value="">Not selected</option>
-                    <option value="">First Name</option>
-                    <option value="">Last Name</option>
-                    <option value="">Email</option>
-                    <option value="">Phone</option>
+                <select name="criteria" className="criteria" onChange={handleSelect}>
+                    {options.map((option) => (
+                        <option key={option.id} value={option.value}>{option.label}</option>
+                    ))}
                 </select>
             </div>
         </form>
