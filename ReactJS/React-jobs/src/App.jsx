@@ -11,7 +11,6 @@ const App = () => {
 
       <HomeCards />
 
-      {/* <!-- Developers and Employers --> */}
 
 
       {/* <!-- Browse Jobs --> */}
