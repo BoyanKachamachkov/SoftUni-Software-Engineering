@@ -1,0 +1,9 @@
+.gallery-container {
+  border: 1px solid black;
+}
+
+img {
+  padding: 0.2em;
+  max-width: 150px;
+  max-height: 150px;
+}
