@@ -1,33 +1,22 @@
-import { useFetch } from './hooks/useFetch';
-
-import Button from 'react-bootstrap/Button';
-import ArticleCard from './components/ArticleCard';
 import NavBar from './components/NavBar';
-import SpinnerComponent from './components/SpinnerComponent';
-import styles from './App.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import ArticleList from './components/ArticleList';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Article from './components/Article';
 
 
 function App() {
-
-    const {
-        data: articles,
-        isFetching,
-        refetch } = useFetch('http://localhost:3030/jsonstore/advanced/articles/list', []);
 
     return (
         <>
             <NavBar />
 
-            {isFetching > 0
-                ? <SpinnerComponent />
-                : (<div className={styles['article-list']}>
-                    {articles.map(article => <ArticleCard key={article._id} {...article} />)}
-                </div>
-                )
-            }
-            <Button variant="primary" onClick={() => refetch()}>Refresh</Button>{' '}
 
+            <Routes>
+                <Route path='/' element={<Navigate to='/articles' />} />
+                <Route path='/articles' element={<ArticleList />} />
+                <Route path='/articles/:articleId/details' element={<Article />} />
+            </Routes>
         </ >
     );
 }
