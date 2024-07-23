@@ -2,9 +2,11 @@ import Form from 'react-bootstrap/Form';
 import { useForm } from '../hooks/useForm';
 import FormGroup from 'react-bootstrap/esm/FormGroup';
 import Button from 'react-bootstrap/Button';
+import { useNavigate } from 'react-router-dom';
 
 
 function ArticleCreate() {
+    const navigate = useNavigate();
 
     const initialFormValues = {
         title: '',
@@ -12,8 +14,17 @@ function ArticleCreate() {
     };
 
     const formSubmitHandler = (values) => {
-        console.log('Form submitted');
-        console.log(values);
+        (async () => {
+            const response = await fetch('http://localhost:3030/jsonstore/advanced/articles/details', {
+                method: 'POST',
+                headers: { 'Content-type': 'application/json' },
+                body: JSON.stringify(values)
+            });
+
+            const result = await response.json();
+            navigate(`/articles/${result._id}/details`);
+
+        })();
     };
 
     const { values, changeHandler, submitHandler } = useForm(initialFormValues, formSubmitHandler);

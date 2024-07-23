@@ -9,7 +9,7 @@ const ArticleList = () => {
     const {
         data: articles,
         isFetching,
-        refetch } = useFetch('http://localhost:3030/jsonstore/advanced/articles/list', []);
+        refetch } = useFetch('http://localhost:3030/jsonstore/advanced/articles/details', []);
 
 
     return (
@@ -17,7 +17,7 @@ const ArticleList = () => {
             {isFetching > 0
                 ? <SpinnerComponent />
                 : (<div className={styles['article-list']}>
-                    {articles.map(article => <ArticleCard key={article._id} {...article} />)}
+                    {Object.values(articles).map(article => <ArticleCard key={article._id} {...article} />)}
                 </div>
                 )
             }
