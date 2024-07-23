@@ -12,3 +12,12 @@
 html {
     box-sizing: border-box;
 }
+
+
+/* short-hand for simpler tasks */
+
+/* * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} */
