@@ -12,19 +12,26 @@ export function useFetch(url, initialData) {
 
     const [data, setData] = useState([initialData]);
     const [isFetching, setIsFetching] = useState(true);
-
+    const [toggleRefetch, setToggleRefetch] = useState(false);
     useEffect(() => {
         (async () => {
+            setIsFetching(true);
+
             const response = await fetch(url);
             const result = await response.json();
 
             setData(result);
             setIsFetching(false);
         })();
-    }, []);
+    }, [url, toggleRefetch]);
+
+    const refetch = () => {
+        setToggleRefetch(state => !state);
+    };
 
     return {
         data,
-        isFetching
+        isFetching,
+        refetch
     };
 }

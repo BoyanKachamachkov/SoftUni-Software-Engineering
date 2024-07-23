@@ -1,14 +1,19 @@
 import { useFetch } from './hooks/useFetch';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 import ArticleCard from './components/ArticleCard';
 import NavBar from './components/NavBar';
-import styles from './App.module.css';
 import SpinnerComponent from './components/SpinnerComponent';
+import styles from './App.module.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
 
-    const { data: articles, isFetching } = useFetch('http://localhost:3030/jsonstore/advanced/articles/list', []);
+    const {
+        data: articles,
+        isFetching,
+        refetch } = useFetch('http://localhost:3030/jsonstore/advanced/articles/list', []);
 
     return (
         <>
@@ -21,6 +26,7 @@ function App() {
                 </div>
                 )
             }
+            <Button variant="primary" onClick={() => refetch()}>Refresh</Button>{' '}
 
         </ >
     );
