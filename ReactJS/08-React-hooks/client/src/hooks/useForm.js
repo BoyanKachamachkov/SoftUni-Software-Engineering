@@ -1,8 +1,14 @@
 import { useState } from "react";
 
-export function useForm(initialValues) {
+export function useForm(initialValues, submitCallback) {
 
     const [values, setValues] = useState(initialValues);
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        submitCallback(values);
+    };
 
     const changeHandler = (e) => {
         setValues(prevState => ({
@@ -13,6 +19,7 @@ export function useForm(initialValues) {
 
     return {
         values,
-        changeHandler
+        changeHandler,
+        submitHandler
     };
 }

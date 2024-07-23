@@ -1,16 +1,26 @@
 import Form from 'react-bootstrap/Form';
 import { useForm } from '../hooks/useForm';
+import FormGroup from 'react-bootstrap/esm/FormGroup';
+import Button from 'react-bootstrap/Button';
+
 
 function ArticleCreate() {
 
-    const { values, changeHandler } = useForm({
+    const initialFormValues = {
         title: '',
         content: '',
-    });
+    };
+
+    const formSubmitHandler = (values) => {
+        console.log('Form submitted');
+        console.log(values);
+    };
+
+    const { values, changeHandler, submitHandler } = useForm(initialFormValues, formSubmitHandler);
 
     return (
         <div>
-            <Form style={{ width: '500px', margin: 'auto' }}>
+            <Form style={{ width: '500px', margin: 'auto' }} onSubmit={submitHandler}>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Title</Form.Label>
                     <Form.Control
@@ -33,6 +43,10 @@ function ArticleCreate() {
 
                     />
                 </Form.Group>
+
+                <FormGroup>
+                    <Button type="submit" variant="success">Submit</Button>{' '}
+                </FormGroup>
             </Form>
         </div>
     );
