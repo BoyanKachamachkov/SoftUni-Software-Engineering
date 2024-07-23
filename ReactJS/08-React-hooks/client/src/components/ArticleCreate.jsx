@@ -4,10 +4,16 @@ import FormGroup from 'react-bootstrap/esm/FormGroup';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
+import UserContext from '../contexts/UserContext';
+
+// 4. Import in any component
+import { useContext } from 'react';
 
 function ArticleCreate() {
     const navigate = useNavigate();
 
+    // 5. connect to context X
+    const { user } = useContext(UserContext);
     const initialFormValues = {
         title: '',
         content: '',
@@ -18,7 +24,7 @@ function ArticleCreate() {
             const response = await fetch('http://localhost:3030/jsonstore/advanced/articles/details', {
                 method: 'POST',
                 headers: { 'Content-type': 'application/json' },
-                body: JSON.stringify(values)
+                body: JSON.stringify({...values, author: user.username})
             });
 
             const result = await response.json();
