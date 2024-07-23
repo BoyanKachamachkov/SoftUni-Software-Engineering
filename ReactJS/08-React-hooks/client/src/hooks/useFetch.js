@@ -13,16 +13,21 @@ export function useFetch(url, initialData) {
     const [data, setData] = useState([initialData]);
     const [isFetching, setIsFetching] = useState(true);
     const [toggleRefetch, setToggleRefetch] = useState(false);
+
     useEffect(() => {
+        // 1 аборт контролер отговаря за 1 конкретна заявка и го връзваме със сигнала
+        const abourtController = new AbortController();
         (async () => {
             setIsFetching(true);
 
-            const response = await fetch(url);
+            const response = await fetch(url, { signal: abourtController.signal});
             const result = await response.json();
 
             setData(result);
             setIsFetching(false);
         })();
+
+        return () => abourtController.abort();
     }, [url, toggleRefetch]);
 
     const refetch = () => {
