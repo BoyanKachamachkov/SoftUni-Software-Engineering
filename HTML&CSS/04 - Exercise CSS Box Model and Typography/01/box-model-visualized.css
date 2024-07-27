@@ -7,27 +7,47 @@
 
 .box-model {
     max-width: 600px;
-    margin: 4em  auto;
+    margin: 4em auto;
 }
 
 .box-model div {
     border: 1px dashed #333;
-    padding: 2em;
+    padding: 0.5em 2em 2em 2em;
+}
+
+
+.box-model div:before {
+    display: block;
+    padding-bottom: 0.5em;
+    margin-left: -1.5em;
 }
 
 .margin {
     background: #FF966F;
 }
 
+.margin::before {
+    content: 'margin';
+}
+
 .border {
     background: #FFE8C6;
+}
+
+.border::before {
+    content: 'border';
 }
 
 .padding {
     background: #85EB85;
 }
 
-.content {
+.padding::before {
+    content: 'padding';
+}
+
+.box-model .content {
     text-align: center;
     background: #A3D2E2;
+    padding: 1em;
 }
