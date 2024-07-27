@@ -1,9 +1,8 @@
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
-
 
 .box-model {
     max-width: 600px;
@@ -15,8 +14,7 @@
     padding: 0.5em 2em 2em 2em;
 }
 
-
-.box-model div:before {
+.box-model div::before {
     display: block;
     padding-bottom: 0.5em;
     margin-left: -1.5em;
@@ -35,7 +33,7 @@
 }
 
 .border::before {
-    content: 'border';
+    content: 'border'
 }
 
 .padding {
@@ -47,7 +45,7 @@
 }
 
 .box-model .content {
-    text-align: center;
     background: #A3D2E2;
+    text-align: center;
     padding: 1em;
 }
