@@ -20,6 +20,7 @@ body {
 .site>* {
     border: 2px solid black;
     padding: 2em;
+    margin: 2em;
 }
 
 .site>*+* {
