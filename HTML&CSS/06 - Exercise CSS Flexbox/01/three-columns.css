@@ -11,7 +11,7 @@ body {
 }
 
 .site {
-    max-width: 1100px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -21,17 +21,44 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 2em;
+    border-radius: 0.3em;
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.1);
 }
 
-.three-columns > * {
-    outline: 1px solid black;
-}
 
-.three-columns header,
-.three-columns footer {
+.three-columns>header,
+.three-columns>footer {
     flex: 1 0 100%;
+    text-align: center;
 }
 
 .three-columns article {
     flex: 1 0 30%;
+}
+
+.three-columns>header h2 {
+    margin-bottom: 0.3em;
+}
+
+.three-columns>header p {
+    max-width: 45%;
+    margin: 0 auto;
+    opacity: 0.7;
+}
+
+.three-columns>footer p {
+    max-width: 65%;
+    margin: 0 auto;
+    opacity: 0.7;
+    font-size: 0.9em;
+}
+
+.three-columns>header p::after,
+.three-columns>footer p::before {
+    display: block;
+    content: '';
+    width: 5em;
+    height: 2px;
+    background: #ccc;
+    margin: 2em auto;
 }
