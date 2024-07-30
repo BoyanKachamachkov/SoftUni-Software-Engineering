@@ -1,0 +1,21 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #eee;
+    padding: 2em;
+    font: 14px/1.5 sans-serif;
+    border: 2px solid red;
+    min-height: 100vh;
+    display: flex;
+}
+
+.card {
+    max-width: 400px;
+    margin: auto;
+    background: #fff;
+    padding: 2em;
+}
