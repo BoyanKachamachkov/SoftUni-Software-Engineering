@@ -19,4 +19,101 @@ textarea {
 
 body {
     padding: 2em;
+    background-color: #c1bdba;
+}
+
+form {
+    max-width: 750px;
+    margin: 0 auto;
+    background: #24333c;
+    color: #fff;
+    padding: 4em;
+    border-radius: 0.4em;
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.2);
+}
+
+.nav {
+    display: flex;
+    margin-bottom: 2em;
+}
+
+.nav li {
+    display: block;
+    list-style: none outside;
+    flex: 1 1 auto;
+}
+
+.nav a {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    padding: 1em 2em;
+    text-align: center;
+    background: #435359;
+}
+
+.nav a:hover {
+    background: #2d7668;
+}
+
+.nav li.current a {
+    background: #1ab188;
+}
+
+form h2 {
+    text-align: center;
+    font-weight: normal;
+    padding-bottom: 2rem;
+    font-size: 2em;
+}
+
+.field {
+    position: relative;
+    padding-bottom: 1.5em;
+}
+
+.field label {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.3em 0.5em;
+    color: #a0b3b0;
+}
+
+.field input {
+    display: block;
+    width: 100%;
+    border: 1px solid #a0b3b0;
+    background-color: transparent;
+    padding: 0.2em 0.3em;
+    line-height: 1;
+    outline: none;
+}
+
+.field input:required ~ label::after {
+    display: inline-block;
+    content: '*';
+    color: #1ab188;
+    padding-left: 0.2em;
+}
+
+form input[type='submit'] {
+    display: block;
+    width: 100%;
+    background: #1ab188;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.5em;
+}
+
+.flex {
+    display: flex;
+    gap: 2em;
+}
+
+.flex .field {
+    flex: 1 1 auto;
 }
