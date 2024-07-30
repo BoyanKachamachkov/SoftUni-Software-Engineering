@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 2em;
+    font: 18px/1.5 sans-serif
+}
+
+ul {
+    padding: 0 0 0 1.5em;
+}
+
+ul li {
+    display: block;
+    list-style: none outside;
+}
+
+details {}
+
+details summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+details summary::before {
+    display: block;
+    content: '+';
+    background: #090;
+    width: 1.1em;
+    aspect-ratio: 1/1;
+    text-align: center;
+    border-radius: 50%;
+    overflow: hidden;
+    color: #fff;
+
+    line-height: 1;
+    align-items: center;
+    
+}
+
+details[open] > summary::before{
+    content: '-';
+}
