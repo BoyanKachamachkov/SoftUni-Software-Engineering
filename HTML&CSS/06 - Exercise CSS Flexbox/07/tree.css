@@ -10,15 +10,34 @@ body {
 }
 
 ul {
-    padding: 0 0 0 1.5em;
+    padding: 0 0 0 0.5em;
 }
 
 ul li {
-    display: block;
+    display: flex;
     list-style: none outside;
 }
 
-details {}
+ul li li {
+    border-left: 2px solid #ccc;
+
+}
+
+ul li li::before {
+    display: block;
+    content: '';
+    border: solid #ccc;
+    border-width: 0 0 2px 2px;
+    border-bottom-left-radius: 0.3em;
+    width: 1em;
+    height: 1.3em;
+    margin-right: 0.5em;
+
+    position: relative;
+    top: -0.5em;
+    left: -2px;
+}
+
 
 details summary {
     display: flex;
@@ -39,9 +58,12 @@ details summary::before {
 
     line-height: 1;
     align-items: center;
-    
+
+    position: relative;
+    z-index: 100;
+
 }
 
-details[open] > summary::before{
+details[open]>summary::before {
     content: '-';
 }
