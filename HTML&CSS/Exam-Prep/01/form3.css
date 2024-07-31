@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font: 14px/1.5 'Kode Mono', sans-serif;
+}
+
+body,
+textarea,
+input,
+button {
+    font: inherit;
+}
+
+body {
+    padding: 2em;
+    background: #c1bdba;
+}
+
+form {
+    max-width: 750px;
+    margin: 0 auto;
+    background: #24333c;
+    color: #fff;
+    padding: 4em;
+    border-radius: 0.4em;
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.2);
+}
+
+.nav {
+    display: flex;
+    margin-bottom: 2em;
+}
+.nav li {
+    display: block;
+    flex: 1 1 auto;
+    list-style: none outside;
+}
+
+.nav li a {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    color: #fff;
+    background: #435359;
+    padding: 1em 2em;
+}
+
+.nav li a:hover {
+    background: #179a77;
+}
+
+.nav li.current a {
+    background: #1ab188;
+}
+
+form h2 {
+    font-size: 2em;
+    padding: 2rem;
+    text-align: center;
+    font-weight: normal;
+}
+
+/* inputs */
+.field {
+    position: relative;
+    padding-bottom: 2em;
+}
+
+.field label {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #a0b3b0;
+    padding: 0.3em 0.5em;
+}
+
+.field input {
+    display: block;
+    background-color: transparent;
+    width: 100%;
+    border: 1px solid #a0b3b0;
+    padding: 0.3em 0.5em;
+    outline: none;
+    line-height: 1;
+}
+
+.field input:required ~ label::after {
+    display: inline-block;
+    content: '*';
+    color: #1ab188;
+}
+
+form input[type='submit'] {
+    display: block;
+    width: 100%;
+    background: #1ab188;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    font-size: 1.5em;
+    padding: 1rem 2rem;
+}
+
+.flex {
+    display: flex;
+    gap: 2em;
+}
+
+.flex .field {
+    flex: 1 1 auto;
+}
