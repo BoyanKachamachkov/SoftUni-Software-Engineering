@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
 
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
 html {
-    font: 14px/1.5 "Kode Mono", sans-serif;
+    font: 14px/1.5 'Kode Mono', sans-serif;
 }
 
 body,
@@ -19,98 +19,98 @@ button {
 
 body {
     padding: 2em;
-    background-color: #C1BDBA;
+    background: #c1bdba;
 }
 
 form {
-    /* taken from figma */
     max-width: 750px;
     margin: 0 auto;
-    background-color: #24333C;
+    background: #24333c;
     color: #fff;
-
-    /* padding taken from figma pixels divided by 14 to get em */
-    padding: 3.6em;
+    padding: 4em;
     border-radius: 0.4em;
     box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.2);
 }
 
+/* nav styles */
 .nav {
     display: flex;
     margin-bottom: 2em;
 }
 
 .nav li {
-    flex: 1 1 auto;
-    list-style: none outside;
     display: block;
+    list-style: none outside;
+    flex: 1 1 auto;
 }
 
-.nav a {
-    color: inherit;
-    background-color: #435359;
+.nav li a {
     display: block;
+    color: inherit;
     text-decoration: none;
-    text-align: center;
+    background: #435359;
     padding: 1em 2em;
-    margin-bottom: 2em;
+    text-align: center;
+}
+
+.nav li a:hover{
+    background: #179A77;
 }
 
 .nav li.current a {
-    background-color: #1AB188;
+    background: #1ab188;
 }
 
-.nav a:hover{
-    background-color: #2D7668;
-}
-
+/* h2 styles */
 form h2 {
-    text-align: center;
     font-weight: normal;
-    font-size: 1.5em;
+    text-align: center;
+    font-size: 2em;
+    padding: 2rem;
 }
 
-.field input {
-    display: block;
-    width: 100%;
-    background-color: transparent;
-    border: 1px solid #A0B3B0;
-    padding: 0.3em 0.5em;
-    line-height: 1;
-    outline: none;
-}
-
-.field input:required~label::after {
-    display: inline-block;
-    content: '*';
-    color: #1AB188;
-    padding-left: 0.2em;
-}
-
-.field{
+/* input fields */
+.field {
     position: relative;
     padding-bottom: 2em;
 }
 
-.field label{
+.field label {
     display: block;
     position: absolute;
     top: 0;
     left: 0;
     padding: 0.3em 0.5em;
-    color: #92999E;
+    color: #A0B3B0;
 }
 
-form input[type="submit"]{
+.field input {
     display: block;
     width: 100%;
-    background-color: #1AB188;
+    border: 1px solid #a0b3b0;
+    background-color: transparent;
+    padding: 0.3em 0.5em;
+    outline: none;
+    line-height: 1;
+}
+
+.field input:required ~ label::after {
+    display: inline-block;
+    content: '*';
+    color: #1ab188;
+}
+
+form input[type='submit'] {
+    display: block;
+    width: 100%;
+    background: #1ab188;
     color: #fff;
     text-transform: uppercase;
     border: none;
-    font-size: 1.5em;
     padding: 1rem 2rem;
+    font-size: 1.5em;
 }
+
 
 .flex{
     display: flex;
