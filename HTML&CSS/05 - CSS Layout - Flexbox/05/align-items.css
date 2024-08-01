@@ -12,6 +12,22 @@
     padding: 1em;
 }
 
+.flex-container.align-items-stretch {
+    align-items: stretch;
+}
+.flex-container.align-items-start {
+    align-items: start;
+}
+.flex-container.align-items-center {
+    align-items: center;
+}
+.flex-container.align-items-flex-end {
+    align-items: flex-end;
+}
+.flex-container.align-items-baseline {
+    align-items: baseline;
+}
+
 .flex-item {
     border: 2px solid black;
     padding: 1em;
