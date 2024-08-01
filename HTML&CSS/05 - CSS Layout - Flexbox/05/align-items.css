@@ -5,9 +5,11 @@
 }
 
 .flex-container {
+    width: 330px;
+    height: 200px;
     border: 2px solid blue;
     display: flex;
-    padding: 2em;
+    padding: 1em;
 }
 
 .flex-item {
