@@ -121,3 +121,28 @@ h6 {
 .site-footer:last-child{
     border-top: 1px solid rgb(255, 255, 255, 0.3) ;
 }
+
+.sponsors{
+    display: flex;
+    gap: 2em;
+    justify-content: center;
+    padding: 2em 0;
+}
+
+.sponsors li {
+    list-style: none outside;
+}
+
+.sponsors li   {
+    display: block;
+    width: 5em;
+    aspect-ratio: 1/1;
+    background: #eee;
+    padding: 1em;
+    border-radius: 50%;
+}
+
+.sponsors li a img{
+    width: 100%;
+    height: auto;
+}
