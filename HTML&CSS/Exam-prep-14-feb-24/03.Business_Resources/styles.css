@@ -100,10 +100,24 @@ h6 {
     background: #fff;
 }
 
-.site-section.partners {
-    background: #fff;
-}
-
+.site-section.partners,
 .site-section.sponsors {
     background: #fff;
+    text-align: center;
+}
+
+
+.column-container {
+    display: flex;
+    gap: 2em;
+}
+
+
+.site-footer{
+    background: #171720;
+    color: #fff;
+}
+
+.site-footer:last-child{
+    border-top: 1px solid rgb(255, 255, 255, 0.3) ;
 }
