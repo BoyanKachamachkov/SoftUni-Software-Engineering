@@ -36,11 +36,11 @@ html {
     display: block;
 }
 
-.section-top-bar .socials li{
+.section-top-bar .socials li {
     padding: 0 0.5em;
 }
 
-.section-top-bar .socials li a span{
+.section-top-bar .socials li a span {
     display: none;
 }
 
@@ -54,4 +54,39 @@ html {
 
 .section-coaches {
     background: #EFEFEF;
+}
+
+/* nav bar */
+.section-site-header {
+    background: #000;
+    color: #fff;
+
+}
+
+.section-site-header a {
+    color: #fff;
+}
+
+.main-nav ul{
+    display: flex;
+
+}
+
+.main-nav li,
+.main-nav li a {
+    display: block;
+}
+
+.section-site-header .container{
+    display: flex;
+    justify-content: flex-end;
+    padding: 1em;
+}
+
+.main-nav a{
+    padding: 0.5em 1em;
+}
+
+.section-site-header .site-title{
+    display: none;
 }
