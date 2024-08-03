@@ -7,3 +7,20 @@
 html {
     font: 12px/1.5 Verdana, sans-serif
 }
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.section-top-bar{
+    background: #d01919;
+}
+
+.section-footer{
+    background: #d01919;
+}
+
+.section-coaches{
+    background: #EFEFEF;
+}
