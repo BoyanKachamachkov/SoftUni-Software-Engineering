@@ -8,6 +8,12 @@ html {
     font: 12px/1.5 Verdana, sans-serif
 }
 
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
 
 .container {
     max-width: 800px;
@@ -48,8 +54,14 @@ html {
     color: #fff;
 }
 
-.section-footer {
+.section-site-footer {
     background: #d01919;
+    color: #fff;
+}
+
+.section-site-footer p {
+    text-align: center;
+    padding: 1em;
 }
 
 .section-coaches {
@@ -67,7 +79,7 @@ html {
     color: #fff;
 }
 
-.main-nav ul{
+.main-nav ul {
     display: flex;
 
 }
@@ -77,16 +89,72 @@ html {
     display: block;
 }
 
-.section-site-header .container{
+.section-site-header .container {
     display: flex;
     justify-content: flex-end;
     padding: 1em;
 }
 
-.main-nav a{
+.main-nav a {
     padding: 0.5em 1em;
 }
 
-.section-site-header .site-title{
+.section-site-header .site-title {
     display: none;
+}
+
+/* hero section */
+.section-hero-banner,
+.section-hero-banner a {
+    background: #000;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.section-hero-banner .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4em 2em;
+}
+
+.section-hero-banner .container p {
+    max-width: 54ch;
+    text-align: center;
+}
+
+
+/* section column */
+
+.section-columns .container {
+    padding: 2em;
+}
+
+
+.section-columns .section-header {
+    text-align: center;
+}
+
+.section-columns .section-content {
+    display: flex;
+    gap: 2em;
+}
+
+.section-columns .section-content article {
+    flex: 1 1 30%;
+    text-align: center;
+}
+
+.section-features img {
+    width: 15%;
+    margin: 0 auto;
+}
+
+
+.section-features h4 {
+    color: #d01919;
+}
+
+.section-coaches h5{
+    color: #d01919;
 }
