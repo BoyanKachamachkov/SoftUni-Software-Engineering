@@ -1,3 +1,5 @@
+import url('https://fonts.googleapis.com/css?family=PT+Sans|PT+Serif');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,13 +7,24 @@
 }
 
 html {
-    font: 12px/1.5 Verdana, sans-serif
+    font: 12px/1.5 'PT Sans', 'PT Serif';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-style: 'PT Serif';
 }
 
 body {
     background-image: url(/Exam-prep-18-oct-23/03.Fitness-Site-Resources/image/fitness-main.jpg);
     background-size: contain;
     background-position: center -20px;
+    background-color: #000;
+    background-repeat: no-repeat;
 }
 
 img {
