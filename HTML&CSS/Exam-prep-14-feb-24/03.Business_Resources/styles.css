@@ -113,16 +113,16 @@ h6 {
 }
 
 
-.site-footer{
+.site-footer {
     background: #171720;
     color: #fff;
 }
 
-.site-footer:last-child{
-    border-top: 1px solid rgb(255, 255, 255, 0.3) ;
+.site-footer:last-child {
+    border-top: 1px solid rgb(255, 255, 255, 0.3);
 }
 
-.sponsors{
+.sponsors {
     display: flex;
     gap: 2em;
     justify-content: center;
@@ -133,7 +133,7 @@ h6 {
     list-style: none outside;
 }
 
-.sponsors li   {
+.sponsors li {
     display: block;
     width: 5em;
     aspect-ratio: 1/1;
@@ -142,7 +142,7 @@ h6 {
     border-radius: 50%;
 }
 
-.sponsors li a img{
+.sponsors li a img {
     width: 100%;
     height: auto;
 }
