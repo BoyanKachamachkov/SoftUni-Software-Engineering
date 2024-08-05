@@ -7,6 +7,12 @@
   box-sizing: border-box;
 }
 
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 html {
   font: 14px/1.5 'Playwrite PE';
 }
@@ -20,26 +26,74 @@ a {
 }
 
 .container {
-  width: 1660px;
+  width: 1600px;
   margin: 0 auto;
 }
 
-.main-nav ul {
+
+.site-header .container {
   display: flex;
   justify-content: center;
   gap: 1.5em;
 }
 
-.main-nav li {
+.site-header .container ul {
+  display: flex;
+  gap: 1.5em;
+}
+
+.site-header .container li {
   list-style: none;
 }
 
-.main-nav li a {
+.site-header .container li a {
   text-decoration: none;
   color: #314584;
   font-weight: bold;
 }
 
-.main-nav li a:hover{
+.site-header .container a:hover {
   color: #FF3C4A;
+}
+
+
+/* hero */
+
+.site-hero .button {
+  display: flex;
+  justify-content: center;
+}
+
+.site-hero .button a {
+  padding: 1em 2.5em;
+  margin: 2em;
+  background: #F0F0F0;
+  border: 2px solid #FF3C4A;
+  border-radius: 0.4em;
+  color: #314584;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.left-hero h1 {
+  font-size: 3em;
+  color: #314584;
+  padding-bottom: 0.7em;
+}
+
+.site-hero .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-hero img {
+  max-width: 800px;
+}
+
+/* #7E807F */
+
+.left-hero p {
+  color: #7E807F;
+  padding-bottom: 1em;
 }
