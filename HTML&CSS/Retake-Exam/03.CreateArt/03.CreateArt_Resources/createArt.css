@@ -76,7 +76,7 @@ a {
 }
 
 .left-hero h1 {
-  font-size: 3em;
+  font-size: 4em;
   color: #314584;
   padding-bottom: 0.7em;
 }
@@ -235,16 +235,19 @@ textarea {
   color: #fff;
 }
 
-.site-company .container form input:nth-child(3) {
+#message {
   height: 200px;
   border-radius: 2em;
   text-align: start;
+  padding: 1.5em;
+  background: #314584;
+  color: #fff;
 }
 
 /* footer */
 
 .site-footer {
-  padding: 3em;
+  padding: 3em 0;
   background: #314584;
   color: #fff;
 }
@@ -278,16 +281,13 @@ textarea {
   position: absolute;
   width: 260px;
   top: 905px;
-  left: 0;
+  left: -70px;
 }
 
 .bubble-two{
   position: absolute;
   width: 260px;
   top: 1400px;
-  right: 0;
+  right: -70px;
 }
 
-body{
-  /* background: #314584; */
-}
