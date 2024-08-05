@@ -167,7 +167,11 @@ a {
 /* development */
 
 
-.site-design,
+.site-design {
+
+  box-shadow: 0 0  0 rgb(0, 0, 0, 0.1);
+}
+
 .site-development {
   box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.1);
 }
@@ -284,10 +288,9 @@ textarea {
   left: -70px;
 }
 
-.bubble-two{
+.bubble-two {
   position: absolute;
   width: 260px;
   top: 1400px;
   right: -70px;
 }
-

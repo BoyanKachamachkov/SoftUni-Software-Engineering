@@ -67,7 +67,7 @@ header{
 .right-side {
   padding: 2em;
   width: 910px;
-  box-shadow: 0.3em 2em 4em 0 rgb(0, 0, 0, 0.4)
+  box-shadow: 0.3em 2em 4em 0 rgb(0, 0, 0, 0.4);
 }
 
 .bar-container {
