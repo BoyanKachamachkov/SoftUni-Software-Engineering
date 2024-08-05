@@ -11,6 +11,35 @@ html {
   font: 14px/1.5 'Playwrite PE';
 }
 
+body {
+  padding: 2em;
+}
+
 a {
   font-family: Roboto;
+}
+
+.container {
+  width: 1660px;
+  margin: 0 auto;
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
+}
+
+.main-nav li {
+  list-style: none;
+}
+
+.main-nav li a {
+  text-decoration: none;
+  color: #314584;
+  font-weight: bold;
+}
+
+.main-nav li a:hover{
+  color: #FF3C4A;
 }
