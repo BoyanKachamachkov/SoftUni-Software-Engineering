@@ -13,25 +13,33 @@ html {
 body {
   background: #FFF0E4;
   padding: 2em;
+  margin: 0 auto;
 }
 
 .container {
   max-width: 1920px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   display: flex;
-  gap: 2em;
+  gap: 1.5em;
 }
 
 .left-side {
-  padding: 1em;
-  border: 1px solid black;
-  box-shadow: 0.5em 0.5em 1em 0 rgb(0, 0, 0, 0.3);
+  padding: 2em 1em 4em 1em;
   width: 450px;
+  box-shadow: 0 2em 4em 0 rgb(0, 0, 0, 0.4)
 }
 
-.left-side header::after{
+.left-side header::after {
+  display: block;
   content: '';
-  background-color: black;
+  width: 410px;
+  height: 1px;
+  background: #ccc;
+  margin: 1.5em auto;
+}
+
+.left-side header h2 {
+  margin-bottom: 1em;
 }
 
 
@@ -48,11 +56,15 @@ body {
 
 .left-side header ul li {
   list-style: none;
+  padding-bottom: 1em;
 }
 
 .right-side {
-  border: 1px solid black;
   padding: 2em;
+  width: 910px;
+  box-shadow: 0.3em 2em 4em 0 rgb(0, 0, 0, 0.4)
+
+
 }
 
 .bar-container {
@@ -91,4 +103,42 @@ body {
   text-align: center;
   border-radius: 1em;
   color: #fff;
+}
+
+.bar h4 {
+  padding-bottom: 1em;
+}
+
+/* work exp */
+
+.right-side h1 {
+  font-weight: normal;
+  text-align: center;
+  padding-bottom: 2em;
+  padding-top: 1em;
+}
+
+.right-side .experience h4 {
+  color: #66605B;
+  font-size: 1em;
+  padding-bottom: 1em;
+}
+
+.experience .date {
+  color: #2991E6;
+  padding-bottom: 1em;
+}
+
+.experience p {
+  padding-bottom: 1em;
+}
+
+.right-side .exp-one::after,
+.right-side .exp-two::after {
+  display: block;
+  content: '';
+  width: 850px;
+  height: 1px;
+  background: #ccc;
+  margin: 1.5em auto;
 }
