@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Margarine&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font: 14px/1.5 'Margarine', sans-serif;
+}
+
+body {
+  background: #FFF0E4;
+  padding: 2em;
+  display: flex;
+  justify-content: center;
+  padding-top: 8em;
+}
+
+.container {
+  max-width: 1920px;
+  display: flex;
+  gap: 1em;
+}
+
+header{
+  padding-left: 0.5em;
+}
+
+.left-side {
+  padding: 2em 1em 4em 1em;
+  width: 450px;
+  box-shadow: 0 2em 4em 0 rgb(0, 0, 0, 0.4)
+}
+
+.left-side header::after {
+  display: block;
+  content: '';
+  width: 410px;
+  height: 1px;
+  background: #ccc;
+  margin: 1.5em auto;
+}
+
+.left-side header h2 {
+  margin-bottom: 1em;
+}
+
+
+.left-side header ul li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+}
+
+.left-side header ul li a i {
+  color: #4D97E6;
+  padding-right: 1em;
+}
+
+.left-side header ul li {
+  list-style: none;
+  padding-bottom: 1em;
+}
+
+.right-side {
+  padding: 2em;
+  width: 910px;
+  box-shadow: 0.3em 2em 4em 0 rgb(0, 0, 0, 0.4)
+}
+
+.bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.bar:nth-child(1) p {
+  width: 90%;
+  background: #2991E6;
+  text-align: center;
+  color: #fff;
+  border-radius: 1em;
+}
+
+.bar:nth-child(2) p {
+  width: 80%;
+  background: #2991E6;
+  text-align: center;
+  border-radius: 1em;
+  color: #fff;
+}
+
+.bar:nth-child(3) p {
+  width: 75%;
+  background: #2991E6;
+  text-align: center;
+  border-radius: 1em;
+  color: #fff;
+}
+
+.bar:nth-child(4) p {
+  width: 50%;
+  background: #2991E6;
+  text-align: center;
+  border-radius: 1em;
+  color: #fff;
+}
+
+.bar h4 {
+  padding-bottom: 1em;
+}
+
+/* work exp */
+
+.right-side h1 {
+  font-weight: normal;
+  text-align: center;
+  padding-bottom: 2em;
+  padding-top: 1em;
+}
+
+.right-side .experience h4 {
+  color: #66605B;
+  font-size: 1em;
+  padding-bottom: 1em;
+}
+
+.experience .date {
+  color: #2991E6;
+  padding-bottom: 1em;
+}
+
+.experience p {
+  padding-bottom: 1em;
+}
+
+.right-side .exp-one::after,
+.right-side .exp-two::after {
+  display: block;
+  content: '';
+  width: 850px;
+  height: 1px;
+  background: #ccc;
+  margin: 1.5em auto;
+}
+
+body {
+ 
+}
