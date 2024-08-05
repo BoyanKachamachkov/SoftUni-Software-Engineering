@@ -4,6 +4,8 @@
     display: flex;
     flex-direction: column;
   }
+  
+  
 
   h1 {
     font-size: 1.5em;
@@ -16,6 +18,29 @@
 
   }
 
-  
+  .pair {
+    display: block;
+  }
+
+  .planet {
+    align-items: center;
+    width: auto;
+  }
+
+  .news h1{
+    font-size: 2em;
+  }
+
+  .news ul{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .news ul li{
+    text-align: center;
+    font-size: 0.8em;
+  }
 
 }
