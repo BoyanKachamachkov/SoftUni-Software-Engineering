@@ -17,9 +17,7 @@ html {
   font: 14px/1.5 'Playwrite PE';
 }
 
-body {
-  padding: 2em;
-}
+
 
 a {
   font-family: Roboto;
@@ -31,10 +29,12 @@ a {
 }
 
 
+
 .site-header .container {
   display: flex;
   justify-content: center;
   gap: 1.5em;
+  padding-top: 2em;
 }
 
 .site-header .container ul {
@@ -87,9 +87,14 @@ a {
   justify-content: center;
 }
 
+.site-hero .right-hero,
+.site-hero .left-hero {
+  padding-bottom: 1em;
+}
+
 .right-hero img {
   max-width: 800px;
-  
+
 }
 
 /* #7E807F */
@@ -135,7 +140,7 @@ a {
 .site-development .top-part img {
   max-width: 250px;
   height: auto;
-  padding-top: 1em;
+  padding-top: 3em;
   padding-bottom: 1em;
 }
 
@@ -185,6 +190,7 @@ a {
   color: #FF3946;
   font-weight: bold;
   padding-bottom: 3em;
+  margin-top: 3em;
 }
 
 .site-company .container h2 {
@@ -199,6 +205,8 @@ a {
   width: 55ch;
   text-align: center;
   padding-bottom: 3em;
+  color: #314584;
+  opacity: 0.8;
 }
 
 .site-company .container form {
@@ -209,7 +217,9 @@ a {
   margin-bottom: 3em;
 }
 
-button, input, textarea{
+button,
+input,
+textarea {
   font: inherit;
 }
 
@@ -221,25 +231,25 @@ button, input, textarea{
   padding: 1.2em;
 }
 
-::placeholder{
+::placeholder {
   color: #fff;
 }
 
-.site-company .container form input:nth-child(3){
+.site-company .container form input:nth-child(3) {
   height: 200px;
   border-radius: 2em;
-  text-align:start;
+  text-align: start;
 }
 
 /* footer */
 
-.site-footer{
+.site-footer {
   padding: 3em;
   background: #314584;
   color: #fff;
 }
 
-.site-footer .container{
+.site-footer .container {
   display: flex;
   flex-direction: column;
   gap: 2em;
@@ -261,4 +271,23 @@ button, input, textarea{
   font-size: 1.2em;
   color: #fff;
   font-weight: bold;
+}
+
+/* images */
+.bubble-one {
+  position: absolute;
+  width: 260px;
+  top: 905px;
+  left: 0;
+}
+
+.bubble-two{
+  position: absolute;
+  width: 260px;
+  top: 1400px;
+  right: 0;
+}
+
+body{
+  /* background: #314584; */
 }
