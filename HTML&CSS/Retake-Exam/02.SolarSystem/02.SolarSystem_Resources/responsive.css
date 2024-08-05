@@ -1,33 +1,21 @@
 @media (max-width: 600px) {
 
+  .primary {
+    display: flex;
+    flex-direction: column;
+  }
 
-
-  header {
-    font-size: 1.2em;
-
+  h1 {
+    font-size: 1.5em;
   }
 
   nav {
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 0.8em;
 
   }
 
-  main{
-    width: 80%;
-  }
-
-.planet{
-  flex-wrap: wrap;
-  width: 80%;
-}
-
-.planet img{
-  /* width: 100%; */
-  height: auto;
-}
-
-
+  
 
 }
