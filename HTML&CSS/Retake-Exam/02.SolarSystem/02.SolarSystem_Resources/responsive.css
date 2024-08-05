@@ -4,17 +4,22 @@
     display: flex;
     flex-direction: column;
   }
-  
-  
+
+
 
   h1 {
-    font-size: 1.5em;
+    font-size: 1.2em;
+  }
+
+  .primary header nav a:nth-child(2) {
+    border-left: none;
+    border-right: none;
   }
 
   nav {
     display: flex;
     flex-direction: column;
-    gap: 0.8em;
+    gap: 0.5em;
 
   }
 
@@ -25,22 +30,32 @@
   .planet {
     align-items: center;
     width: auto;
+    text-align: center;
   }
 
-  .news h1{
+  .news h1 {
     font-size: 2em;
   }
 
-  .news ul{
+  .news ul {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding-left: 0;
   }
 
-  .news ul li{
+  .news ul li {
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.9em;
+  }
+
+  .primary footer nav a:nth-child(even) {
+    border-left: none;
+    border-right: none;
+  }
+
+  footer{
+    font-weight: normal;
   }
 
 }
