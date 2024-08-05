@@ -1,0 +1,33 @@
+@media (max-width: 600px) {
+
+
+
+  header {
+    font-size: 1.2em;
+
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+
+  }
+
+  main{
+    width: 80%;
+  }
+
+.planet{
+  flex-wrap: wrap;
+  width: 80%;
+}
+
+.planet img{
+  /* width: 100%; */
+  height: auto;
+}
+
+
+
+}
