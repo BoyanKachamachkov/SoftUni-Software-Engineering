@@ -13,8 +13,8 @@
 | <a href="https://softuni.bg/trainings/4372/js-advanced-january-2024"> JS Advanced </a>  | <a href="https://softuni.bg/certificates/details/203212/93fc9b03"> Link</a> |
 | <a href="https://softuni.bg/trainings/4373/js-applications-february-2024"> JS Applications </a>  | <a href="https://softuni.bg/certificates/details/209493/04d81013"> Link</a> |
 | **JS Web Module** |
-| <a href="https://softuni.bg/trainings/4533/js-back-end-may-2024"> JS Back-End </a>  | <a href="https://softuni.bg/trainings/4533/js-back-end-may-2024"> Link</a> |
-| <a href="https://softuni.bg/trainings/4529/reactjs-june-2024"> ReactJS </a>  | <a href="https://softuni.bg/trainings/4529/reactjs-june-2024"> Link</a> |
+| <a href="https://softuni.bg/certificates/details/218245/d8e1d3cc"> JS Back-End </a>  | <a href="https://softuni.bg/certificates/details/218245/d8e1d3cc"> Link</a> |
+| <a href="https://softuni.bg/certificates/details/223023/3fa17733"> ReactJS </a>  | <a href="https://softuni.bg/certificates/details/223023/3fa17733"> Link</a> |
 | **Front-End Module** |
 | <a href="https://softuni.bg/certificates/details/218373/3ce98ad2"> HTML & CSS </a>  | <a href="https://softuni.bg/certificates/details/218373/3ce98ad2"> Link</a> |
 | <a href="#"> Angular </a>  | <a href="#"> Link</a> |
